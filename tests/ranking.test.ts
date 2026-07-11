@@ -52,3 +52,27 @@ test("rejects duplicate ranks", () => {
 
   assert.throws(() => parseRankingSnapshot(duplicateRanks), /duplicate rank/i);
 });
+
+test("rejects source scores outside their published scales", () => {
+  const invalidScores = [
+    ["anilist", 101],
+    ["mal", 10.1],
+    ["bangumi", -0.1],
+  ] as const;
+
+  for (const [source, score] of invalidScores) {
+    const sourceScores = {
+      ...validSnapshot.works[0].sourceScores,
+      [source]: { ...validSnapshot.works[0].sourceScores[source], score },
+    };
+    const invalidSnapshot = {
+      ...validSnapshot,
+      works: [{ ...validSnapshot.works[0], sourceScores }],
+    };
+
+    assert.throws(
+      () => parseRankingSnapshot(invalidSnapshot),
+      new RegExp(`sourceScores\\.${source}\\.score must be between`, "i"),
+    );
+  }
+});

@@ -26,6 +26,13 @@ export interface RankingSnapshot {
 
 const requiredSources: RankingSource[] = ["anilist", "mal", "bangumi"];
 
+// Public score scales: AniList uses 0-100, while MyAnimeList and Bangumi use 0-10.
+const sourceScoreRanges: Record<RankingSource, { minimum: number; maximum: number }> = {
+  anilist: { minimum: 0, maximum: 100 },
+  mal: { minimum: 0, maximum: 10 },
+  bangumi: { minimum: 0, maximum: 10 },
+};
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -54,6 +61,16 @@ function requiredNumber(value: unknown, path: string): number {
   return value;
 }
 
+function requiredSourceScore(value: unknown, path: string, source: RankingSource): number {
+  const score = requiredNumber(value, path);
+  const { minimum, maximum } = sourceScoreRanges[source];
+  if (score < minimum || score > maximum) {
+    throw new Error(`${path} must be between ${minimum} and ${maximum}`);
+  }
+
+  return score;
+}
+
 function requiredStringList(value: unknown, path: string): string[] {
   if (!Array.isArray(value) || value.length === 0) {
     throw new Error(`${path} must contain at least one value`);
@@ -77,7 +94,7 @@ function parseSourceScores(value: unknown, path: string): Record<RankingSource, 
       return [
         source,
         {
-          score: requiredNumber(sourceValue.score, `${path}.${source}.score`),
+          score: requiredSourceScore(sourceValue.score, `${path}.${source}.score`, source),
           votes: requiredInteger(sourceValue.votes, `${path}.${source}.votes`, 0),
         },
       ];
