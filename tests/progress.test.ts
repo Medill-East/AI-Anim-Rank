@@ -121,6 +121,37 @@ test("progress backup rejects records for unknown works", () => {
   assert.throws(() => parseProgressBackup(backup, new Set(["work-1"])), /未知作品/);
 });
 
+test("progress backup requires real UTC ISO timestamps", () => {
+  for (const timestamp of ["2026-07-12", "2026-02-31T00:00:00Z"]) {
+    const backup = JSON.stringify({
+      version: 1,
+      exportedAt: timestamp,
+      records: [initial],
+    });
+
+    assert.throws(() => parseProgressBackup(backup, new Set(["work-1"])), /格式无效/);
+  }
+});
+
+test("progress backup rejects contradictory progress records", () => {
+  const contradictoryRecords = [
+    { ...initial, reviewed: true },
+    { ...initial, recommended: true },
+    { ...initial, notInterested: true },
+    { ...initial, watched: true, recommended: true, notInterested: true },
+  ];
+
+  for (const record of contradictoryRecords) {
+    const backup = JSON.stringify({
+      version: 1,
+      exportedAt: "2026-07-12T02:00:00.000Z",
+      records: [record],
+    });
+
+    assert.throws(() => parseProgressBackup(backup, new Set(["work-1"])), /格式无效/);
+  }
+});
+
 test("progress backup import supports explicit merge and replace modes", () => {
   const second: ProgressRecord = { ...initial, workId: "work-2" };
   const backup = parseProgressBackup(

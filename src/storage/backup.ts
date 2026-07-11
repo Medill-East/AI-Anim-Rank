@@ -97,6 +97,13 @@ function parseProgressRecord(value: unknown, index: number): ProgressRecord {
     throw new Error(`${path} 格式无效`);
   }
 
+  if (
+    (!value.watched && (value.reviewed || value.recommended || value.notInterested)) ||
+    (value.recommended && value.notInterested)
+  ) {
+    throw new Error(`${path} 格式无效`);
+  }
+
   return {
     workId: value.workId,
     watched: value.watched,
@@ -118,5 +125,22 @@ function isNonEmptyString(value: unknown): value is string {
 }
 
 function isIsoTimestamp(value: unknown): value is string {
-  return typeof value === "string" && !Number.isNaN(Date.parse(value));
+  if (typeof value !== "string") {
+    return false;
+  }
+
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?Z$/.exec(value);
+  if (!match) {
+    return false;
+  }
+
+  const [year, month, day, hour, minute, second] = match.slice(1, 7).map(Number);
+  const date = new Date(value);
+  return !Number.isNaN(date.getTime()) &&
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() + 1 === month &&
+    date.getUTCDate() === day &&
+    date.getUTCHours() === hour &&
+    date.getUTCMinutes() === minute &&
+    date.getUTCSeconds() === second;
 }
