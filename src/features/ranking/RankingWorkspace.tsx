@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useReducer } from "react";
+import { useEffect, useMemo, useReducer, useRef } from "react";
 
 import type { RankedWork } from "../../data/schema.ts";
 import type { ProgressRecord } from "../../domain/progress.ts";
@@ -36,6 +36,7 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
 
 export function RankingWorkspace({ works, progressByWorkId = {} }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
+  const detailTriggerRef = useRef<HTMLElement | null>(null);
   const progressRecords = useMemo<ProgressRecord[]>(
     () => Object.entries(progressByWorkId).map(([workId, progress]) => ({
       workId,
@@ -54,6 +55,14 @@ export function RankingWorkspace({ works, progressByWorkId = {} }: RankingWorksp
     () => [...new Set(works.flatMap((work) => work.genres))].sort((left, right) => left.localeCompare(right, "zh-CN")),
     [works],
   );
+  const openDetail = (workId: string, trigger: HTMLElement) => {
+    detailTriggerRef.current = trigger;
+    dispatch({ type: "openDetail", workId });
+  };
+  const closeDetail = () => {
+    dispatch({ type: "closeDetail" });
+    detailTriggerRef.current?.focus();
+  };
 
   return (
     <section className="ranking-workspace" aria-label="AI Anim Rank">
@@ -99,34 +108,44 @@ export function RankingWorkspace({ works, progressByWorkId = {} }: RankingWorksp
         <div className="ranking-table-region" aria-label="榜单结果">
           <table>
             <thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>本地进度</th></tr></thead>
-            <tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} progress={progressByWorkId[work.workId]} onOpen={() => dispatch({ type: "openDetail", workId: work.workId })} />)}</tbody>
+            <tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} progress={progressByWorkId[work.workId]} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody>
           </table>
         </div>
         <div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">
-          {visibleWorks.map((work) => <MobileRow key={work.workId} work={work} onOpen={() => dispatch({ type: "openDetail", workId: work.workId })} />)}
+          {visibleWorks.map((work) => <MobileRow key={work.workId} work={work} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}
         </div>
         {visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}
       </>}
 
-      {selectedWork && <WorkDialog work={selectedWork} onClose={() => dispatch({ type: "closeDetail" })} />}
+      {selectedWork && <WorkDialog work={selectedWork} onClose={closeDetail} />}
     </section>
   );
 }
 
-function DesktopRow({ work, progress, onOpen }: { work: RankedWork; progress?: PublicProgress; onOpen: () => void }) {
-  return <tr tabIndex={0} onClick={onOpen} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(); } }}>
-    <td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(); }}>{work.titleZh}<span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td>{work.genres.join(" · ")}</td><td>{work.compositeScore.toFixed(1)}</td><td>{progressLabel(progress)}</td>
+function DesktopRow({ work, progress, onOpen }: { work: RankedWork; progress?: PublicProgress; onOpen: (trigger: HTMLElement) => void }) {
+  return <tr tabIndex={0} onClick={(event) => onOpen(event.currentTarget)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(event.currentTarget); } }}>
+    <td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(event.currentTarget); }}>{work.titleZh}<span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td>{work.genres.join(" · ")}</td><td>{work.compositeScore.toFixed(1)}</td><td>{progressLabel(progress)}</td>
   </tr>;
 }
 
-function MobileRow({ work, onOpen }: { work: RankedWork; onOpen: () => void }) {
-  return <div className="mobile-work-row"><button type="button" className="mobile-work-title" onClick={onOpen}><span>#{work.rank}</span><strong>{work.titleZh}</strong><span>{work.year}</span></button><details><summary>展开公开资料</summary><div className="mobile-work-detail"><p>{work.titleOriginal}</p><p>{work.genres.join(" · ")} · {work.compositeScore.toFixed(1)}</p></div></details></div>;
+function MobileRow({ work, onOpen }: { work: RankedWork; onOpen: (trigger: HTMLElement) => void }) {
+  return <div className="mobile-work-row"><button type="button" className="mobile-work-title" onClick={(event) => onOpen(event.currentTarget)}><span>#{work.rank}</span><strong>{work.titleZh}</strong><span>{work.year}</span></button><details><summary>展开公开资料</summary><div className="mobile-work-detail"><p>{work.titleOriginal}</p><p>{work.genres.join(" · ")} · {work.compositeScore.toFixed(1)}</p></div></details></div>;
 }
 
 function WorkDialog({ work, onClose }: { work: RankedWork; onClose: () => void }) {
   const labelId = `work-detail-${work.workId}`;
-  return <dialog open aria-modal="true" aria-labelledby={labelId} onCancel={onClose}>
-    <div className="dialog-heading"><h2 id={labelId}>{work.titleZh}详情</h2><button type="button" aria-label="关闭详情" onClick={onClose}>×</button></div>
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.showModal();
+    return () => {
+      if (dialog?.open) dialog.close();
+    };
+  }, []);
+
+  return <dialog ref={dialogRef} aria-labelledby={labelId} onCancel={(event) => { event.preventDefault(); dialogRef.current?.close(); }} onClose={onClose}>
+    <div className="dialog-heading"><h2 id={labelId}>{work.titleZh}详情</h2><button type="button" aria-label="关闭详情" onClick={() => dialogRef.current?.close()}>×</button></div>
     <p className="original-title">{work.titleOriginal}</p>
     <dl className="work-facts"><div><dt>排名</dt><dd>{work.rank}</dd></div><div><dt>年份</dt><dd>{work.year}</dd></div><div><dt>制作</dt><dd>{work.studios.join("、")}</dd></div><div><dt>类型</dt><dd>{work.genres.join("、")}</dd></div><div><dt>综合分</dt><dd>{work.compositeScore.toFixed(1)}</dd></div></dl>
   </dialog>;
