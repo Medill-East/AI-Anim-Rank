@@ -13,6 +13,7 @@ export default function Home() {
         <label htmlFor="work-search">搜索作品</label>
         <input id="work-search" type="search" name="query" />
       </form>
+      <p role="status">榜单数据准备中</p>
     </main>
   );
 }

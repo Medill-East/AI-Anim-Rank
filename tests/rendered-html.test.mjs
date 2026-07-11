@@ -35,4 +35,5 @@ test("server-renders the ranking app shell", async () => {
     /<label[^>]*for="work-search"[^>]*>搜索作品<\/label>/i,
   );
   assert.match(html, /<input[^>]*id="work-search"[^>]*type="search"/i);
+  assert.match(html, /榜单数据准备中/i);
 });
