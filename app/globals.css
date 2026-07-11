@@ -35,6 +35,16 @@ button { cursor: pointer; }
 .ranking-kicker { color: var(--accent); font: 700 .72rem/1.2 var(--font-mono), monospace; letter-spacing: .14em; margin: 0 0 12px; }
 .ranking-masthead h1 { font-size: clamp(2.8rem, 8vw, 6.8rem); font-weight: 500; letter-spacing: -.07em; line-height: .85; margin: 0; }
 .ranking-masthead p:last-child { color: var(--muted); max-width: 38rem; margin: 24px 0 0; }
+.private-summary, .private-backup { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+.private-summary h2, .private-backup h2 { font-size: .85rem; font-weight: 600; margin: 0 0 8px; }
+.private-summary p, .private-backup p { color: var(--muted); font-size: .85rem; margin: 0; }
+.private-backup { align-items: center; display: flex; flex-wrap: wrap; gap: 10px 16px; }
+.private-backup h2 { width: 100%; }
+.private-backup button, .private-backup label { background: #191815; border: 1px solid var(--rule); color: var(--foreground); padding: 8px 10px; }
+.private-backup label { cursor: pointer; }
+.private-backup input[type="file"] { display: none; }
+.backup-confirm { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.save-status { color: var(--accent); font-size: .8rem; min-height: 1.1em; margin: 10px 0 0; }
 
 .ranking-controls { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px 14px; align-items: end; padding: 24px 0; border-bottom: 1px solid var(--rule); }
 .ranking-controls label { color: var(--muted); font-size: .78rem; }
@@ -66,6 +76,11 @@ dialog::backdrop { background: rgb(0 0 0 / 72%); }
 .work-facts div { border-top: 1px solid var(--rule); padding-top: 8px; }
 .work-facts dt { color: var(--muted); font-size: .75rem; }
 .work-facts dd { margin: 4px 0 0; }
+.private-progress { border: 1px solid var(--rule); display: grid; gap: 10px; margin: 24px 0 0; padding: 14px; }
+.private-progress legend { color: var(--muted); font-size: .8rem; }
+.private-progress label { align-items: center; display: flex; gap: 8px; }
+.private-progress .progress-note { align-items: stretch; flex-direction: column; }
+.progress-note textarea { background: #10100f; border: 1px solid var(--rule); color: var(--foreground); min-height: 4.5rem; padding: 8px; resize: vertical; }
 
 @media (max-width: 700px) {
   .ranking-workspace { width: min(100% - 28px, 1180px); padding-top: 36px; }
