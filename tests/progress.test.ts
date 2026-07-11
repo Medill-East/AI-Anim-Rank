@@ -3,6 +3,11 @@ import test from "node:test";
 import { IDBFactory } from "fake-indexeddb";
 
 import { applyProgressPatch, type ProgressRecord } from "../src/domain/progress.ts";
+import {
+  applyProgressBackup,
+  exportProgressBackup,
+  parseProgressBackup,
+} from "../src/storage/backup.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
 
 const initial: ProgressRecord = {
@@ -92,4 +97,46 @@ test("ProgressRepository persists only private progress records locally", async 
 
   await repository.clear();
   assert.deepEqual(await repository.loadAll(), []);
+});
+
+test("progress backup exports only versioned progress records", () => {
+  const backup = exportProgressBackup([initial], "2026-07-12T02:00:00.000Z");
+
+  assert.deepEqual(backup, {
+    version: 1,
+    exportedAt: "2026-07-12T02:00:00.000Z",
+    records: [initial],
+  });
+  assert.equal(JSON.stringify(backup).includes("recoveryPhrase"), false);
+  assert.equal(JSON.stringify(backup).includes("syncCredential"), false);
+});
+
+test("progress backup rejects records for unknown works", () => {
+  const backup = JSON.stringify({
+    version: 1,
+    exportedAt: "2026-07-12T02:00:00.000Z",
+    records: [{ ...initial, workId: "removed-work" }],
+  });
+
+  assert.throws(() => parseProgressBackup(backup, new Set(["work-1"])), /未知作品/);
+});
+
+test("progress backup import supports explicit merge and replace modes", () => {
+  const second: ProgressRecord = { ...initial, workId: "work-2" };
+  const backup = parseProgressBackup(
+    JSON.stringify({
+      version: 1,
+      exportedAt: "2026-07-12T02:00:00.000Z",
+      records: [{ ...initial, watched: true }],
+    }),
+    new Set(["work-1", "work-2"]),
+  );
+
+  assert.deepEqual(applyProgressBackup([second], backup, "merge"), [
+    second,
+    { ...initial, watched: true },
+  ]);
+  assert.deepEqual(applyProgressBackup([second], backup, "replace"), [
+    { ...initial, watched: true },
+  ]);
 });
