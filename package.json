@@ -9,7 +9,7 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "node --experimental-strip-types scripts/build.ts",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "test": "npm run build && node --experimental-strip-types --test tests/rendered-html.test.mjs tests/ranking.test.ts tests/progress.test.ts",
+    "test": "npm run build && node --experimental-strip-types --test tests/rendered-html.test.mjs tests/ranking.test.ts tests/ranking-workspace.test.ts tests/progress.test.ts",
     "validate:data": "node --experimental-strip-types scripts/validate-ranking.ts",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"

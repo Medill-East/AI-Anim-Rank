@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import rankingData from "../src/data/ranking.json";
+import { parseRankingSnapshot } from "../src/data/schema.ts";
+import { RankingWorkspace } from "../src/features/ranking/RankingWorkspace.tsx";
 
 export const metadata: Metadata = {
   title: "AI Anim Rank",
@@ -6,14 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <main>
-      <h1>AI Anim Rank</h1>
-      <form role="search">
-        <label htmlFor="work-search">搜索作品</label>
-        <input id="work-search" type="search" name="query" />
-      </form>
-      <p role="status">榜单数据准备中</p>
-    </main>
-  );
+  const snapshot = parseRankingSnapshot(rankingData);
+
+  return <main><RankingWorkspace works={snapshot.works} /></main>;
 }
