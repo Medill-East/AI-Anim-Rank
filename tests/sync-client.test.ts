@@ -65,3 +65,23 @@ test("SyncClient preserves local records and reports unsynced on transport error
 
   assert.deepEqual(result, { state: "unsynced", records: [base] });
 });
+
+test("SyncClient preserves local records when a remote payload is malformed", async () => {
+  const vault = await createRecoveryVault();
+  const payload = await encryptProgressPayload([base], vault);
+  let puts = 0;
+  const transport: SyncTransport = {
+    async fetch() {
+      return { payload: { ...payload, ciphertext: "!" }, version: 3 };
+    },
+    async put() {
+      puts += 1;
+      return { status: 200, version: 4 };
+    },
+  };
+
+  const result = await new SyncClient(transport, vault).sync([base]);
+
+  assert.deepEqual(result, { state: "unsynced", records: [base] });
+  assert.equal(puts, 0);
+});

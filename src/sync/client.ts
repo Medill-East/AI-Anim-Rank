@@ -22,9 +22,14 @@ export class SyncClient {
       return unsynced(localRecords);
     }
 
-    const records = remote
-      ? mergeRecords(localRecords, await decryptProgressPayload(remote.payload, this.vault))
-      : copyRecords(localRecords);
+    let records: ProgressRecord[];
+    try {
+      records = remote
+        ? mergeRecords(localRecords, await decryptProgressPayload(remote.payload, this.vault))
+        : copyRecords(localRecords);
+    } catch {
+      return unsynced(localRecords);
+    }
     const firstResult = await this.put(records, remote?.version ?? null);
     if (firstResult.state === "synced") return firstResult;
     if (firstResult.state === "unsynced") return unsynced(localRecords);
@@ -37,7 +42,12 @@ export class SyncClient {
     }
     if (!latest) return unsynced(localRecords);
 
-    const merged = mergeRecords(records, await decryptProgressPayload(latest.payload, this.vault));
+    let merged: ProgressRecord[];
+    try {
+      merged = mergeRecords(records, await decryptProgressPayload(latest.payload, this.vault));
+    } catch {
+      return unsynced(localRecords);
+    }
     const retryResult = await this.put(merged, latest.version);
     return retryResult.state === "synced" ? retryResult : unsynced(localRecords);
   }
