@@ -6,6 +6,8 @@ import { resolveCaptureSources, selectBangumiMapping, type BangumiMapping } from
 const bangumiSearchUrl = "https://api.bgm.tv/v0/search/subjects";
 const defaultRequestDelayMs = 1_000;
 const resultLimit = 5;
+const suggestionGenerationDirectoryName = "generations";
+const suggestionManifestName = "current.json";
 
 type FetchResponse = Pick<Response, "ok" | "status" | "json">;
 type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
@@ -66,6 +68,12 @@ export interface BangumiSuggestions {
   entries: SuggestionEntry[];
   diagnostic?: Diagnostic;
   approvalRequired: true;
+}
+
+export interface BangumiSuggestionPair {
+  generation: string;
+  suggestions: BangumiSuggestions;
+  report: string;
 }
 
 function normalizeTitle(value: string): string {
@@ -150,30 +158,94 @@ async function writeJson(path: string, value: unknown, renameImpl: Rename) {
   await writeArtifact(path, `${JSON.stringify(value, null, 2)}\n`, renameImpl);
 }
 
+function validGenerationId(generation: string): string {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(generation)) throw new Error("suggestion generation has an invalid name");
+  return generation;
+}
+
+function generatedGenerationId(): string {
+  return `suggestions-${new Date().toISOString().replace(/\D/g, "")}-${process.pid}`;
+}
+
+async function publishSuggestionGeneration({
+  artifactDirectory,
+  generation,
+  suggestions,
+  reportText,
+  renameImpl,
+  beforePointerSwap,
+}: {
+  artifactDirectory: string;
+  generation: string;
+  suggestions: BangumiSuggestions;
+  reportText: string;
+  renameImpl: Rename;
+  beforePointerSwap?: () => void | Promise<void>;
+}) {
+  const generationDirectory = resolve(artifactDirectory, suggestionGenerationDirectoryName, validGenerationId(generation));
+  await mkdir(resolve(artifactDirectory, suggestionGenerationDirectoryName), { recursive: true });
+  await mkdir(generationDirectory);
+  try {
+    await writeJson(resolve(generationDirectory, "suggestions.json"), suggestions, renameImpl);
+    await writeArtifact(resolve(generationDirectory, "report.md"), reportText, renameImpl);
+    await beforePointerSwap?.();
+    const manifestPath = resolve(artifactDirectory, suggestionManifestName);
+    const temporaryManifest = `${manifestPath}.tmp-${process.pid}-${Date.now()}`;
+    try {
+      await writeJson(temporaryManifest, { version: 1, generation }, renameImpl);
+      await renameImpl(temporaryManifest, manifestPath);
+    } catch (error) {
+      await rm(temporaryManifest, { force: true });
+      throw error;
+    }
+  } catch (error) {
+    await rm(generationDirectory, { recursive: true, force: true });
+    throw error;
+  }
+}
+
+export async function readBangumiSuggestionPair(artifactDirectory: string): Promise<BangumiSuggestionPair> {
+  const manifest = await readJson<unknown>(resolve(artifactDirectory, suggestionManifestName));
+  if (typeof manifest !== "object" || manifest === null || Array.isArray(manifest)) {
+    throw new Error("suggestion manifest is invalid");
+  }
+  const manifestRecord = manifest as { version?: unknown; generation?: unknown };
+  if (manifestRecord.version !== 1 || typeof manifestRecord.generation !== "string") throw new Error("suggestion manifest is invalid");
+  const generation = validGenerationId(manifestRecord.generation);
+  const generationDirectory = resolve(artifactDirectory, suggestionGenerationDirectoryName, generation);
+  return {
+    generation,
+    suggestions: await readJson<BangumiSuggestions>(resolve(generationDirectory, "suggestions.json")),
+    report: await readFile(resolve(generationDirectory, "report.md"), "utf8"),
+  };
+}
+
 export async function generateBangumiSuggestions({
   anilist,
   jikan,
   mappings,
-  suggestionsPath,
-  reportPath,
+  artifactDirectory,
   fetchImpl = fetch,
   sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)),
   requestDelayMs = defaultRequestDelayMs,
   env,
   log = console.log,
   renameImpl = rename,
+  generationId = generatedGenerationId(),
+  beforePointerSwap,
 }: {
   anilist: AniListCandidate[];
   jikan: JikanCandidate[];
   mappings: BangumiMapping[];
-  suggestionsPath: string;
-  reportPath: string;
+  artifactDirectory: string;
   fetchImpl?: FetchImpl;
   sleep?: Sleep;
   requestDelayMs?: number;
   env?: Readonly<{ BANGUMI_ACCESS_TOKEN?: string }>;
   log?: (message: string) => void;
   renameImpl?: Rename;
+  generationId?: string;
+  beforePointerSwap?: () => void | Promise<void>;
 }): Promise<BangumiSuggestions> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0) throw new Error("request delay must be a non-negative integer");
   const token = env === undefined ? process.env.BANGUMI_ACCESS_TOKEN : env.BANGUMI_ACCESS_TOKEN;
@@ -231,8 +303,7 @@ export async function generateBangumiSuggestions({
     ...(diagnostic ? { diagnostic } : {}),
     approvalRequired: true,
   };
-  await writeJson(suggestionsPath, suggestions, renameImpl);
-  await writeArtifact(reportPath, report(suggestions), renameImpl);
+  await publishSuggestionGeneration({ artifactDirectory, generation: generationId, suggestions, reportText: report(suggestions), renameImpl, beforePointerSwap });
   log(`Bangumi mapping suggestions: ${suggestions.status}; ${entries.length} candidates written for human review.`);
   return suggestions;
 }
@@ -305,16 +376,14 @@ async function main(args: string[]) {
   const captureDir = resolve(root, "data/ranking/captured");
   const anilistPath = args.includes("--anilist") ? option(args, "--anilist", "") : undefined;
   const jikanPath = args.includes("--jikan") ? option(args, "--jikan", "") : undefined;
-  const suggestionsPath = option(args, "--output", resolve(root, "data/ranking/bangumi-suggestions/suggestions.json"));
-  const reportPath = option(args, "--report", resolve(root, "data/ranking/bangumi-suggestions/report.md"));
-  await assertSuggestionOutputPaths(root, suggestionsPath, reportPath);
+  const artifactDirectory = resolve(root, "data/ranking/bangumi-suggestions");
+  await assertSuggestionOutputPaths(root, resolve(artifactDirectory, "generations/suggestions.json"), resolve(artifactDirectory, "generations/report.md"));
   const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
   await generateBangumiSuggestions({
     anilist: captured.anilist,
     jikan: captured.jikan,
     mappings: await readJson<BangumiMapping[]>(resolve(root, "data/ranking/bangumi-mappings.json")),
-    suggestionsPath,
-    reportPath,
+    artifactDirectory,
   });
 }
 
