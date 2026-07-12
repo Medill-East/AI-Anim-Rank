@@ -100,6 +100,20 @@ test("apply writes a valid mapping set and rejects duplicate identifiers", async
   } finally { await rm(directory, { recursive: true, force: true }); }
 });
 
+test("successful apply saves the exact prior formal mappings as a backup", async () => {
+  const { directory, mappingPath } = await fixture();
+  const priorMappings = '[\n  {"malId": 77, "bangumiId": 7, "titleZh": "old", "score": 8, "votes": 100}\n]\n';
+  try {
+    await writeFile(mappingPath, priorMappings);
+    await resolveBangumiMappings({ suggestions: suggestion(99), source, captureGeneration: "capture-a", artifactDirectory: directory, mappingPath, apply: true, fetchImpl: async () => response(detail()), sleep: async () => {} });
+    assert.equal(await readFile(`${mappingPath}.bak`, "utf8"), priorMappings);
+    assert.deepEqual(JSON.parse(await readFile(mappingPath, "utf8")), [
+      { malId: 77, bangumiId: 7, titleZh: "old", score: 8, votes: 100 },
+      { malId: 10, bangumiId: 99, titleZh: "作品", score: 8.1, votes: 500 },
+    ]);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
+
 test("requires a complete suggestion artifact bound to the supplied capture generation", async () => {
   const { directory, mappingPath } = await fixture();
   try {
