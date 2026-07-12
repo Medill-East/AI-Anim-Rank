@@ -268,14 +268,17 @@ async function fetchAniList(pageCount: number, fetchImpl: FetchImpl): Promise<An
 }
 
 function retryDelay(response: FetchResponse, attempt: number): number {
-  const retryAfter = response.headers.get("retry-after");
-  if (retryAfter !== null) {
-    const seconds = Number(retryAfter);
-    if (Number.isFinite(seconds) && seconds >= 0) return Math.ceil(seconds * 1_000);
-    const retryAt = Date.parse(retryAfter);
-    if (Number.isFinite(retryAt)) return Math.max(0, retryAt - Date.now());
+  if (response.status === 429) {
+    const retryAfter = response.headers.get("retry-after");
+    if (retryAfter !== null) {
+      const seconds = Number(retryAfter);
+      if (Number.isFinite(seconds) && seconds >= 0) return Math.ceil(seconds * 1_000);
+      const retryAt = Date.parse(retryAfter);
+      if (Number.isFinite(retryAt)) return Math.max(0, retryAt - Date.now());
+    }
+    return defaultJikanRetryDelayMs * attempt;
   }
-  return defaultJikanRetryDelayMs * attempt;
+  return Math.min(8_000, 2_000 * 2 ** (attempt - 1));
 }
 
 function isRetryableJikanStatus(status: number): boolean {
@@ -301,9 +304,9 @@ async function fetchJikan(
           continue;
         }
         if (isRetryableJikanStatus(response.status)) {
-          throw new Error(`Jikan request failed after ${retryAttempts} attempts: ${response.status}`);
+          throw new Error(`Jikan page ${page} request failed after ${retryAttempts} attempts: ${response.status}`);
         }
-        throw new Error(`Jikan request failed: ${response.status}`);
+        throw new Error(`Jikan page ${page} request failed: ${response.status}`);
       }
       const payload = await response.json();
       const data = isRecord(payload) ? payload.data : undefined;

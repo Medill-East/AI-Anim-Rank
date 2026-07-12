@@ -200,7 +200,7 @@ test("capture leaves both files untouched when either upstream source fails vali
       captureSources({ captureDir: directory, pageCount: 1, sleep: async () => {}, fetchImpl: async (url) =>
         String(url).includes("graphql") ? response({ data: { Page: { media: [anilist] } } }) : response({}, false, 503),
       }),
-      /Jikan request failed after 3 attempts: 503/i,
+      /Jikan page 1 request failed after 3 attempts: 503/i,
     );
   });
 });
@@ -372,7 +372,7 @@ test("exhausted Jikan retries leave the prior manifest generation current", asyn
           ? response({ data: { Page: { media: [anilist] } } })
           : response({}, false, 429),
       }),
-      /Jikan request failed after 2 attempts: 429/i,
+      /Jikan page 1 request failed after 2 attempts: 429/i,
     );
     assert.deepEqual(delays, [1_000]);
     assert.equal((await readCapturedSources(directory)).generation, "prior");
@@ -398,7 +398,7 @@ test("capture retries a transient Jikan 504 before publishing", async () => {
       },
     });
     assert.equal(jikanAttempts, 3, "two Jikan pages plus one retried first page");
-    assert.deepEqual(delays, [1_000, 1_000]);
+    assert.deepEqual(delays, [2_000, 1_000]);
     assert.equal((await readCapturedSources(directory)).generation, "retry-504");
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -421,9 +421,9 @@ test("exhausted transient Jikan retries preserve the prior manifest generation",
           ? response({ data: { Page: { media: [anilist] } } })
           : response({}, false, 504),
       }),
-      /Jikan request failed after 2 attempts: 504/i,
+      /Jikan page 1 request failed after 2 attempts: 504/i,
     );
-    assert.deepEqual(delays, [1_000]);
+    assert.deepEqual(delays, [2_000]);
     assert.equal((await readCapturedSources(directory)).generation, "prior");
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -445,7 +445,7 @@ test("capture does not retry nonretryable Jikan 4xx responses", async () => {
           return response({}, false, 404);
         },
       }),
-      /Jikan request failed: 404/i,
+      /Jikan page 1 request failed: 404/i,
     );
     assert.equal(jikanAttempts, 1);
   } finally {
