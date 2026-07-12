@@ -36,7 +36,7 @@ npx tsx scripts/ranking-pipeline.ts release --version 2026-07-12
 
 `fetch` writes raw captures under `data/ranking/captured/`. `review` writes the complete candidate review JSON and a readable `data/ranking/unmatched-report.md`; review that report and add only deliberate mappings. Captures and review output are operational artifacts and are ignored by Git.
 
-`release` reads the reviewed candidates and refuses unless exactly 300 entries have all three sources, unique identities, complete required snapshot fields and pass vote eligibility. It uses an adjacent temporary file then rename, so a refusal leaves `src/data/ranking.json` unchanged.
+`release` treats candidate review JSON as untrusted: it rebuilds mapping, eligibility and composite scores from raw source fields, then requires exactly 300 entries with positive, globally unique AniList/MAL/Bangumi IDs, complete snapshot fields and vote eligibility. It uses an adjacent temporary file then rename, so a refusal leaves `src/data/ranking.json` unchanged.
 
 ## Published method
 

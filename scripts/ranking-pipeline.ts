@@ -55,6 +55,13 @@ function requiredNumber(value: unknown, label: string): number {
   return value;
 }
 
+function requiredExternalId(value: unknown, label: string): number {
+  if (!Number.isInteger(value) || (value as number) < 1) {
+    throw new Error(`${label} must be a positive integer`);
+  }
+  return value as number;
+}
+
 function rejectDuplicates<T>(items: T[], key: (item: T) => number | undefined, label: string) {
   const seen = new Set<number>();
   for (const item of items) {
@@ -70,6 +77,9 @@ function validateMappings(mappings: BangumiMapping[]) {
   rejectDuplicates(mappings, (mapping) => mapping.anilistId, "mapping AniList id");
   rejectDuplicates(mappings, (mapping) => mapping.bangumiId, "mapping Bangumi id");
   for (const mapping of mappings) {
+    requiredExternalId(mapping.bangumiId, "Bangumi id");
+    if (mapping.malId !== undefined) requiredExternalId(mapping.malId, "MAL id");
+    if (mapping.anilistId !== undefined) requiredExternalId(mapping.anilistId, "AniList id");
     if ((mapping.malId === undefined) === (mapping.anilistId === undefined)) {
       throw new Error(`Bangumi mapping ${mapping.bangumiId} must contain exactly one of malId or anilistId`);
     }
@@ -104,6 +114,11 @@ export function calculateCompositeScore(scores: Record<RankingSource, number>): 
 }
 
 export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], mappings: BangumiMapping[]): RankingCandidate[] {
+  for (const media of anilist) {
+    requiredExternalId(media.id, "AniList id");
+    if (media.idMal !== null) requiredExternalId(media.idMal, "MAL id");
+  }
+  for (const anime of jikan) requiredExternalId(anime.mal_id, "Jikan MAL id");
   rejectDuplicates(anilist, (media) => media.id, "AniList id");
   rejectDuplicates(anilist.filter((media) => media.idMal !== null), (media) => media.idMal ?? undefined, "AniList idMal");
   rejectDuplicates(jikan, (anime) => anime.mal_id, "Jikan MAL id");
@@ -138,7 +153,33 @@ export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], ma
 }
 
 export function buildReleaseSnapshot(candidates: RankingCandidate[], version: string): RankingSnapshot {
-  const eligible = candidates.filter((candidate) => candidate.eligible && candidate.mal && candidate.bangumi && candidate.compositeScore !== null);
+  const rawAniList = candidates.map((candidate) => candidate.anilist);
+  const rawMal: JikanAnime[] = [];
+  const rawBangumi: BangumiMapping[] = [];
+
+  for (const candidate of candidates) {
+    if (candidate.mal === null || candidate.bangumi === null) {
+      throw new Error(`release candidate AniList ${candidate.anilist.id} is missing a required source`);
+    }
+    if (candidate.anilist.idMal !== candidate.mal.mal_id) {
+      throw new Error(`release candidate AniList ${candidate.anilist.id} has mismatched MAL id`);
+    }
+    rawMal.push(candidate.mal);
+    rawBangumi.push(candidate.bangumi);
+  }
+
+  // Candidate-review JSON is an untrusted operational artifact. Rebuild every
+  // match and score from source fields instead of accepting its derived flags.
+  const recomputed = buildCandidates(rawAniList, rawMal, rawBangumi);
+  for (let index = 0; index < recomputed.length; index += 1) {
+    const original = candidates[index]!;
+    const candidate = recomputed[index]!;
+    if (candidate.mal?.mal_id !== original.mal!.mal_id || candidate.bangumi?.bangumiId !== original.bangumi!.bangumiId) {
+      throw new Error(`release candidate AniList ${original.anilist.id} does not match its reviewed source IDs`);
+    }
+  }
+
+  const eligible = recomputed.filter((candidate) => candidate.eligible && candidate.mal && candidate.bangumi && candidate.compositeScore !== null);
   if (eligible.length !== 300) throw new Error(`release requires exactly 300 fully mapped eligible works; found ${eligible.length}`);
 
   const works: RankedWork[] = eligible

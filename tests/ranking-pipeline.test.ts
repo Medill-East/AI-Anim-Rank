@@ -24,6 +24,19 @@ const anilist = {
 
 const jikan = { mal_id: 101, title: "Example", score: 8.5, scored_by: 3_000, members: 100_000 };
 
+function releaseCandidates() {
+  return Array.from({ length: 300 }, (_, index) => {
+    const id = index + 1;
+    return buildCandidates([
+      { ...anilist, id, idMal: 10_000 + id, title: { romaji: `Example ${id}`, native: `例 ${id}` } },
+    ], [
+      { ...jikan, mal_id: 10_000 + id, title: `Example ${id}` },
+    ], [
+      { malId: 10_000 + id, bangumiId: 20_000 + id, titleZh: `例 ${id}`, score: 9, votes: 300 },
+    ]);
+  }).flat();
+}
+
 test("maps Bangumi by AniList idMal before an explicit mapping", () => {
   const mapping = selectBangumiMapping(anilist, [
     { anilistId: 1, bangumiId: 200, titleZh: "显式映射", score: 9, votes: 300 },
@@ -62,4 +75,38 @@ test("refuses a release unless exactly 300 fully mapped eligible works validate"
   ]);
 
   assert.throws(() => buildReleaseSnapshot([candidate], "2026-07-12"), /exactly 300/i);
+});
+
+test("release recomputes eligibility instead of trusting a tampered candidate review", () => {
+  const candidates = releaseCandidates();
+  const first = candidates[0]!;
+  first.bangumi!.votes = 1;
+  first.eligible = true;
+  first.compositeScore = 100;
+
+  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /exactly 300/i);
+});
+
+test("release rejects duplicate MAL or Bangumi IDs across 300 candidates", () => {
+  const duplicateMal = releaseCandidates();
+  duplicateMal[299]!.anilist.idMal = duplicateMal[0]!.anilist.idMal;
+  duplicateMal[299]!.mal!.mal_id = duplicateMal[0]!.mal!.mal_id;
+  duplicateMal[299]!.bangumi!.malId = duplicateMal[0]!.bangumi!.malId;
+  assert.throws(() => buildReleaseSnapshot(duplicateMal, "2026-07-12"), /duplicate AniList idMal|duplicate Jikan MAL id/i);
+
+  const duplicateBangumi = releaseCandidates();
+  duplicateBangumi[299]!.bangumi!.bangumiId = duplicateBangumi[0]!.bangumi!.bangumiId;
+  assert.throws(() => buildReleaseSnapshot(duplicateBangumi, "2026-07-12"), /duplicate mapping Bangumi id/i);
+});
+
+test("release rejects non-positive external IDs", () => {
+  const invalid = releaseCandidates();
+  invalid[0]!.bangumi!.bangumiId = 0;
+  assert.throws(() => buildReleaseSnapshot(invalid, "2026-07-12"), /Bangumi id must be a positive integer/i);
+});
+
+test("release accepts exactly 300 raw candidates and recalculates their composite", () => {
+  const snapshot = buildReleaseSnapshot(releaseCandidates(), "2026-07-12");
+  assert.equal(snapshot.works.length, 300);
+  assert.equal(snapshot.works[0]?.compositeScore, 85);
 });
