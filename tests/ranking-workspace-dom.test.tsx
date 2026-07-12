@@ -6,9 +6,12 @@ import { createRoot } from "react-dom/client";
 import { JSDOM } from "jsdom";
 
 import { RankingWorkspace } from "../src/features/ranking/RankingWorkspace.tsx";
+import { SyncSettings } from "../src/features/progress/SyncSettings.tsx";
 import type { RankedWork } from "../src/data/schema.ts";
 import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
+import { SyncVaultStore } from "../src/storage/sync-vault.ts";
+import type { RecoveryVault } from "../src/sync/crypto.ts";
 import { IDBFactory } from "fake-indexeddb";
 
 const work: RankedWork = {
@@ -212,6 +215,7 @@ test("sync onboarding requires recovery acknowledgement and removes the phrase w
     assert.ok(enable);
 
     await act(async () => enable.click());
+    await act(async () => { await flush(500); });
     const phrase = document.querySelector("[data-recovery-phrase]");
     assert.ok(phrase?.textContent);
     assert.equal(document.body.textContent?.includes("恢复短语是唯一凭证"), true);
@@ -237,6 +241,48 @@ test("sync onboarding requires recovery acknowledgement and removes the phrase w
     assert.ok(close);
     await act(async () => close.click());
     assert.equal(document.querySelector("[data-recovery-phrase]"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("sync vault survives remount in browser storage and disconnect removes the local credential", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  installDialogStub(dom);
+  const vaultStore = new SyncVaultStore(dom.window.localStorage);
+  const vault: RecoveryVault = {
+    phrase: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about",
+    salt: "test-salt",
+    vaultId: "test-vault",
+    key: {} as CryptoKey,
+  };
+  const createVault = async () => vault;
+  let root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />));
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "启用私密同步")?.click());
+    await act(async () => { await flush(); });
+    const acknowledgement = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
+      .find((input) => input.parentElement?.textContent === "我已保存恢复短语");
+    assert.ok(acknowledgement);
+    await act(async () => acknowledgement.click());
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "我已安全保存，继续")?.click());
+    assert.deepEqual(vaultStore.load(), { phrase: vault.phrase, salt: vault.salt });
+
+    await act(async () => root.unmount());
+    root = createRoot(document.getElementById("root")!);
+    await act(async () => { root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />); await flush(); });
+    assert.equal(document.body.textContent?.includes("本地保险库已启用"), true);
+
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "断开本地保险库")?.click());
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "确认断开本地访问")?.click());
+    assert.equal(vaultStore.load(), null);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
