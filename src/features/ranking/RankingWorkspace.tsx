@@ -25,6 +25,19 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
 ];
 
 export function RankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
+  if (works.length === 0) return <EmptyRankingWorkspace />;
+
+  return <PopulatedRankingWorkspace works={works} progressRepository={progressRepository} />;
+}
+
+function EmptyRankingWorkspace() {
+  return <section className="ranking-workspace" aria-label="AI Anim Rank">
+    <header className="ranking-masthead"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
+    <p className="ranking-empty" role="status">榜单数据准备中</p>
+  </section>;
+}
+
+function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
   const [saveStatus, setSaveStatus] = useState("");
@@ -107,7 +120,7 @@ export function RankingWorkspace({ works, progressRepository }: RankingWorkspace
       <label htmlFor="sort-field">排序</label><select id="sort-field" value={state.sortField} onChange={(event) => dispatch({ type: "sortField", value: event.target.value as RankingSortField })}>{sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select>
       <label htmlFor="sort-direction">方向</label><select id="sort-direction" value={state.sortDirection} onChange={(event) => dispatch({ type: "sortDirection", value: event.target.value as SortDirection })}><option value="asc">升序</option><option value="desc">降序</option></select><button type="button" className="text-button" onClick={() => dispatch({ type: "reset" })}>重置筛选</button>
     </form>
-    {works.length === 0 ? <p className="ranking-empty" role="status">榜单数据准备中</p> : <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>}
+    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>
     {selectedWork && <WorkDialog work={selectedWork} record={selectedRecord} onPatch={savePatch} onClose={closeDetail} />}
   </section>;
 }

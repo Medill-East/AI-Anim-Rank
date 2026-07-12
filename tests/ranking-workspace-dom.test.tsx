@@ -129,6 +129,23 @@ test("workspace shows private progress summary counts", async () => {
   }
 });
 
+test("workspace keeps the empty ranking state free of private controls", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[]} />));
+    assert.match(document.body.textContent ?? "", /榜单数据准备中/);
+    assert.equal(document.querySelector('[aria-label="我的进度"]'), null);
+    assert.equal(document.querySelector('[aria-label="本地备份"]'), null);
+    assert.equal(document.querySelector('[role="search"]'), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
 function installDialogStub(dom: JSDOM) {
   Object.defineProperty(dom.window.HTMLDialogElement.prototype, "showModal", {
     configurable: true,

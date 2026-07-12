@@ -30,10 +30,6 @@ test("server-renders the ranking app shell", async () => {
   const html = await response.text();
   assert.match(html, /<title>AI Anim Rank<\/title>/i);
   assert.match(html, /<h1>AI Anim Rank<\/h1>/i);
-  assert.match(
-    html,
-    /<label[^>]*for="work-search"[^>]*>搜索作品<\/label>/i,
-  );
-  assert.match(html, /<input[^>]*id="work-search"[^>]*type="search"/i);
   assert.match(html, /榜单数据准备中/i);
+  assert.doesNotMatch(html, /我的进度|本地备份|work-search|genre-filter|status-filter|sort-field|sort-direction/i);
 });
