@@ -199,6 +199,50 @@ test("workspace keeps the empty ranking state free of private controls", async (
   }
 });
 
+test("sync onboarding requires recovery acknowledgement and removes the phrase when closed", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  installDialogStub(dom);
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} />));
+    const enable = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "启用私密同步");
+    assert.ok(enable);
+
+    await act(async () => enable.click());
+    const phrase = document.querySelector("[data-recovery-phrase]");
+    assert.ok(phrase?.textContent);
+    assert.equal(document.body.textContent?.includes("恢复短语是唯一凭证"), true);
+
+    const copy = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "复制短语");
+    assert.ok(copy);
+    await act(async () => copy.click());
+    assert.equal(document.body.textContent?.includes("复制失败，请手动抄写"), true);
+
+    const continueButton = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "我已安全保存，继续");
+    assert.ok(continueButton);
+    assert.equal(continueButton.disabled, true);
+
+    const acknowledgement = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
+      .find((input) => input.parentElement?.textContent === "我已保存恢复短语");
+    assert.ok(acknowledgement);
+    await act(async () => acknowledgement.click());
+    assert.equal(continueButton.disabled, false);
+
+    const close = document.querySelector<HTMLButtonElement>('button[aria-label="关闭恢复短语"]');
+    assert.ok(close);
+    await act(async () => close.click());
+    assert.equal(document.querySelector("[data-recovery-phrase]"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
 function installDialogStub(dom: JSDOM) {
   Object.defineProperty(dom.window.HTMLDialogElement.prototype, "showModal", {
     configurable: true,

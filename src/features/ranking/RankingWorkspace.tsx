@@ -6,6 +6,7 @@ import type { RankedWork } from "../../data/schema.ts";
 import { applyProgressPatch, type ProgressPatch, type ProgressRecord } from "../../domain/progress.ts";
 import { applyProgressBackup, exportProgressBackup, parseProgressBackup, type ProgressBackup } from "../../storage/backup.ts";
 import { ProgressRepository } from "../../storage/progress-db.ts";
+import { SyncSettings } from "../progress/SyncSettings.tsx";
 import { createRankingWorkspaceState, reduceRankingWorkspaceState, visibleRankingWorks } from "./workspace.ts";
 import type { PrivateStatusFilter, RankingSortField, SortDirection } from "./query.ts";
 
@@ -125,6 +126,7 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
     <header className="ranking-masthead"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} />
     <section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section>
+    <SyncSettings />
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
     <form className="ranking-controls" role="search" onSubmit={(event) => event.preventDefault()}>
       <label htmlFor="work-search">搜索作品</label><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" />
