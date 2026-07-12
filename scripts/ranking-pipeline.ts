@@ -72,6 +72,47 @@ function rejectDuplicates<T>(items: T[], key: (item: T) => number | undefined, l
   }
 }
 
+export interface AniListDuplicateConflict {
+  malId: number;
+  canonical: AniListMedia;
+  discarded: AniListMedia;
+}
+
+export function canonicalizeAniListByMal(anilist: AniListMedia[]): {
+  anilist: AniListMedia[];
+  discarded: AniListDuplicateConflict[];
+} {
+  rejectDuplicates(anilist, (media) => media.id, "AniList id");
+  const byMal = new Map<number, AniListMedia[]>();
+  const withoutMal: AniListMedia[] = [];
+  for (const media of anilist) {
+    if (media.idMal === null) {
+      withoutMal.push(media);
+      continue;
+    }
+    const linked = byMal.get(media.idMal) ?? [];
+    linked.push(media);
+    byMal.set(media.idMal, linked);
+  }
+
+  const canonical: AniListMedia[] = [...withoutMal];
+  const discarded: AniListDuplicateConflict[] = [];
+  for (const [malId, linked] of byMal) {
+    const ordered = [...linked].sort((left, right) =>
+      (right.averageScore ?? -1) - (left.averageScore ?? -1)
+      || (right.popularity ?? -1) - (left.popularity ?? -1)
+      || left.id - right.id,
+    );
+    const selected = ordered[0]!;
+    canonical.push(selected);
+    for (const alternate of ordered.slice(1)) discarded.push({ malId, canonical: selected, discarded: alternate });
+  }
+  return {
+    anilist: canonical.sort((left, right) => left.id - right.id),
+    discarded: discarded.sort((left, right) => left.malId - right.malId || left.discarded.id - right.discarded.id),
+  };
+}
+
 function validateMappings(mappings: BangumiMapping[]) {
   rejectDuplicates(mappings, (mapping) => mapping.malId, "mapping MAL id");
   rejectDuplicates(mappings, (mapping) => mapping.anilistId, "mapping AniList id");
@@ -114,18 +155,18 @@ export function calculateCompositeScore(scores: Record<RankingSource, number>): 
 }
 
 export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], mappings: BangumiMapping[]): RankingCandidate[] {
-  for (const media of anilist) {
+  const canonicalized = canonicalizeAniListByMal(anilist);
+  for (const media of canonicalized.anilist) {
     requiredExternalId(media.id, "AniList id");
     if (media.idMal !== null) requiredExternalId(media.idMal, "MAL id");
   }
   for (const anime of jikan) requiredExternalId(anime.mal_id, "Jikan MAL id");
-  rejectDuplicates(anilist, (media) => media.id, "AniList id");
-  rejectDuplicates(anilist.filter((media) => media.idMal !== null), (media) => media.idMal ?? undefined, "AniList idMal");
+  rejectDuplicates(canonicalized.anilist.filter((media) => media.idMal !== null), (media) => media.idMal ?? undefined, "AniList idMal");
   rejectDuplicates(jikan, (anime) => anime.mal_id, "Jikan MAL id");
   validateMappings(mappings);
   const jikanByMal = new Map(jikan.map((anime) => [anime.mal_id, anime]));
 
-  return anilist.map((media) => {
+  return canonicalized.anilist.map((media) => {
     const mal = media.idMal === null ? null : jikanByMal.get(media.idMal) ?? null;
     const bangumi = selectBangumiMapping(media, mappings) ?? null;
     const reasons: string[] = [];
@@ -213,7 +254,7 @@ export function buildReleaseSnapshotFromSources(
   return buildReleaseSnapshot(buildCandidates(anilist, jikan, mappings), version);
 }
 
-function unmatchedReport(candidates: RankingCandidate[]): string {
+export function formatUnmatchedReport(candidates: RankingCandidate[], discarded: AniListDuplicateConflict[] = []): string {
   const unmatched = candidates.filter((candidate) => candidate.ineligibilityReasons.length > 0);
   return [
     `# Ranking candidate unmatched report`,
@@ -223,6 +264,12 @@ function unmatchedReport(candidates: RankingCandidate[]): string {
     `Needs review: ${unmatched.length}`,
     "",
     ...unmatched.map((candidate) => `- AniList ${candidate.anilist.id} (${candidate.anilist.title.romaji ?? candidate.anilist.title.native ?? "untitled"}): ${candidate.ineligibilityReasons.join("; ")}`),
+    ...(discarded.length === 0 ? [] : [
+      "",
+      "## Discarded duplicate AniList MAL links",
+      "",
+      ...discarded.map((conflict) => `- AniList ${conflict.discarded.id} discarded for MAL ${conflict.malId}; kept AniList ${conflict.canonical.id}.`),
+    ]),
     "",
   ].join("\n");
 }
@@ -472,10 +519,11 @@ async function main(args: string[]) {
     const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
     const anilist = captured.anilist;
     const jikan = captured.jikan;
-    const candidates = buildCandidates(anilist, jikan, await readJson<BangumiMapping[]>(mappingsPath));
+    const canonicalized = canonicalizeAniListByMal(anilist);
+    const candidates = buildCandidates(canonicalized.anilist, jikan, await readJson<BangumiMapping[]>(mappingsPath));
     await writeJson(candidatesPath, candidates);
     await mkdir(dirname(reportPath), { recursive: true });
-    await writeFile(reportPath, unmatchedReport(candidates), "utf8");
+    await writeFile(reportPath, formatUnmatchedReport(candidates, canonicalized.discarded), "utf8");
     return;
   }
   if (command === "release") {

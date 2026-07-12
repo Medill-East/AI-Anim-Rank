@@ -7,9 +7,11 @@ import { join } from "node:path";
 import {
   buildCandidates,
   captureSources,
+  canonicalizeAniListByMal,
   buildReleaseSnapshot,
   buildReleaseSnapshotFromSources,
   calculateCompositeScore,
+  formatUnmatchedReport,
   normalizeSourceScore,
   readCapturedSources,
   resolveCaptureSources,
@@ -80,8 +82,34 @@ test("maps Bangumi by AniList idMal before an explicit mapping", () => {
 
 test("rejects duplicate external identities during candidate construction", () => {
   assert.throws(
-    () => buildCandidates([anilist, { ...anilist, id: 2 }], [jikan], []),
-    /duplicate AniList idMal/i,
+    () => buildCandidates([anilist, { ...anilist }], [jikan], []),
+    /duplicate AniList id/i,
+  );
+});
+
+test("canonicalizes duplicate AniList MAL links deterministically and reports discarded records", () => {
+  const duplicates = [
+    { ...anilist, id: 5, idMal: 101, averageScore: 90, popularity: 200 },
+    { ...anilist, id: 3, idMal: 101, averageScore: 90, popularity: 300 },
+    { ...anilist, id: 2, idMal: 101, averageScore: 90, popularity: 300 },
+  ];
+  const canonicalized = canonicalizeAniListByMal(duplicates);
+  const candidates = buildCandidates(duplicates, [jikan], [
+    { malId: 101, bangumiId: 100, titleZh: "例", score: 9, votes: 300 },
+  ]);
+
+  assert.deepEqual(canonicalized.anilist.map((media) => media.id), [2]);
+  assert.deepEqual(canonicalized.discarded.map((conflict) => conflict.discarded.id), [3, 5]);
+  assert.equal(candidates.length, 1);
+  assert.equal(candidates[0]?.anilist.id, 2);
+  assert.match(formatUnmatchedReport(candidates, canonicalized.discarded), /discarded duplicate AniList MAL links/i);
+  assert.match(formatUnmatchedReport(candidates, canonicalized.discarded), /AniList 3.*MAL 101/i);
+});
+
+test("still rejects duplicate Jikan MAL IDs after AniList canonicalization", () => {
+  assert.throws(
+    () => buildCandidates([anilist], [jikan, { ...jikan }], []),
+    /duplicate Jikan MAL id/i,
   );
 });
 
