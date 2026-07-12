@@ -34,7 +34,7 @@ npx tsx scripts/ranking-pipeline.ts review
 npx tsx scripts/ranking-pipeline.ts release --version 2026-07-12
 ```
 
-`fetch` writes raw captures under `data/ranking/captured/`. `review` writes the complete candidate review JSON and a readable `data/ranking/unmatched-report.md`; review that report and add only deliberate mappings. Captures and review output are operational artifacts and are ignored by Git.
+`fetch` requires `--pages` to be a positive integer. It validates every HTTP/payload response in memory, then replaces both raw captures under `data/ranking/captured/` as one rollback-safe pair; a failed source leaves prior captures unchanged. `review` writes the complete candidate review JSON and a readable `data/ranking/unmatched-report.md`; review that report and add only deliberate mappings. Captures and review output are operational artifacts and are ignored by Git.
 
 `release` does not read `candidate-review.json`. It rebuilds from the captured AniList/Jikan files plus the checked-in reviewed Bangumi mappings, then requires exactly 300 entries with positive, globally unique AniList/MAL/Bangumi IDs, complete snapshot fields and vote eligibility. Candidate review JSON is only a human review artifact. Release uses an adjacent temporary file then rename, so a refusal leaves `src/data/ranking.json` unchanged.
 

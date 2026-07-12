@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 import {
   buildCandidates,
+  captureSources,
   buildReleaseSnapshot,
   buildReleaseSnapshotFromSources,
   calculateCompositeScore,
@@ -24,6 +28,23 @@ const anilist = {
 };
 
 const jikan = { mal_id: 101, title: "Example", score: 8.5, scored_by: 3_000, members: 100_000 };
+
+async function withExistingCaptures(run: (directory: string) => Promise<void>) {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-capture-"));
+  await writeFile(join(directory, "anilist.json"), "old-anilist\n");
+  await writeFile(join(directory, "jikan.json"), "old-jikan\n");
+  try {
+    await run(directory);
+    assert.equal(await readFile(join(directory, "anilist.json"), "utf8"), "old-anilist\n");
+    assert.equal(await readFile(join(directory, "jikan.json"), "utf8"), "old-jikan\n");
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+}
+
+function response(body: unknown, ok = true, status = 200) {
+  return { ok, status, json: async () => body } as Response;
+}
 
 function releaseCandidates() {
   return Array.from({ length: 300 }, (_, index) => {
@@ -130,4 +151,46 @@ test("source-based release ignores tampered candidate-review source objects", ()
   const snapshot = buildReleaseSnapshotFromSources(anilistCapture, jikanCapture, mappings, "2026-07-12");
   assert.equal(snapshot.works[0]?.compositeScore, 85);
   assert.equal(tamperedReview[0]?.compositeScore, 100);
+});
+
+test("capture rejects invalid page counts before fetching or changing capture files", async () => {
+  for (const pageCount of [0, -1, 1.5, Number.NaN]) {
+    await withExistingCaptures(async (directory) => {
+      let calls = 0;
+      await assert.rejects(
+        captureSources({ captureDir: directory, pageCount, fetchImpl: async () => { calls += 1; return response({}); } }),
+        /pages must be a positive integer/i,
+      );
+      assert.equal(calls, 0);
+    });
+  }
+});
+
+test("capture leaves both files untouched when either upstream source fails validation", async () => {
+  await withExistingCaptures(async (directory) => {
+    await assert.rejects(
+      captureSources({ captureDir: directory, pageCount: 1, fetchImpl: async (url) =>
+        String(url).includes("graphql") ? response({ errors: [{ message: "bad query" }] }) : response({ data: [jikan] }),
+      }),
+      /AniList GraphQL errors/i,
+    );
+  });
+
+  await withExistingCaptures(async (directory) => {
+    await assert.rejects(
+      captureSources({ captureDir: directory, pageCount: 1, fetchImpl: async (url) =>
+        String(url).includes("graphql") ? response({ data: { Page: { media: [anilist] } } }) : response({ data: {} }),
+      }),
+      /Jikan response data must be a non-empty array/i,
+    );
+  });
+
+  await withExistingCaptures(async (directory) => {
+    await assert.rejects(
+      captureSources({ captureDir: directory, pageCount: 1, fetchImpl: async (url) =>
+        String(url).includes("graphql") ? response({ data: { Page: { media: [anilist] } } }) : response({}, false, 503),
+      }),
+      /Jikan request failed: 503/i,
+    );
+  });
 });

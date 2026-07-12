@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, unlink, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 import { parseRankingSnapshot, type RankedWork, type RankingSnapshot, type RankingSource } from "../src/data/schema.ts";
@@ -236,25 +236,103 @@ async function readJson<T>(path: string): Promise<T> {
   return JSON.parse(await readFile(path, "utf8")) as T;
 }
 
-async function fetchAniList(pageCount: number): Promise<AniListMedia[]> {
+type FetchResponse = Pick<Response, "ok" | "status" | "json">;
+type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function positivePageCount(pageCount: number): number {
+  if (!Number.isInteger(pageCount) || pageCount < 1) throw new Error("pages must be a positive integer");
+  return pageCount;
+}
+
+async function fetchAniList(pageCount: number, fetchImpl: FetchImpl): Promise<AniListMedia[]> {
   const query = `query ($page: Int!) { Page(page: $page, perPage: 50) { media(type: ANIME, sort: SCORE_DESC) { id idMal title { romaji native } averageScore popularity seasonYear studios { nodes { name } } genres } } }`;
   const pages = await Promise.all(Array.from({ length: pageCount }, async (_, index) => {
-    const response = await fetch("https://graphql.anilist.co", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ query, variables: { page: index + 1 } }) });
+    const response = await fetchImpl("https://graphql.anilist.co", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ query, variables: { page: index + 1 } }) });
     if (!response.ok) throw new Error(`AniList request failed: ${response.status}`);
-    const payload = await response.json() as { data?: { Page?: { media?: AniListMedia[] } } };
-    return payload.data?.Page?.media ?? [];
+    const payload = await response.json();
+    if (!isRecord(payload)) throw new Error("AniList response must be an object");
+    if (Array.isArray(payload.errors) && payload.errors.length > 0) throw new Error("AniList GraphQL errors");
+    const media = isRecord(payload.data) && isRecord(payload.data.Page) ? payload.data.Page.media : undefined;
+    if (!Array.isArray(media) || media.length === 0) throw new Error("AniList response media must be a non-empty array");
+    return media as AniListMedia[];
   }));
   return pages.flat();
 }
 
-async function fetchJikan(pageCount: number): Promise<JikanAnime[]> {
+async function fetchJikan(pageCount: number, fetchImpl: FetchImpl): Promise<JikanAnime[]> {
   const pages = await Promise.all(Array.from({ length: pageCount }, async (_, index) => {
-    const response = await fetch(`https://api.jikan.moe/v4/top/anime?page=${index + 1}&limit=25`);
+    const response = await fetchImpl(`https://api.jikan.moe/v4/top/anime?page=${index + 1}&limit=25`);
     if (!response.ok) throw new Error(`Jikan request failed: ${response.status}`);
-    const payload = await response.json() as { data?: JikanAnime[] };
-    return payload.data ?? [];
+    const payload = await response.json();
+    const data = isRecord(payload) ? payload.data : undefined;
+    if (!Array.isArray(data) || data.length === 0) throw new Error("Jikan response data must be a non-empty array");
+    return data as JikanAnime[];
   }));
   return pages.flat();
+}
+
+async function removeIfPresent(path: string) {
+  await unlink(path).catch((error: unknown) => {
+    if (!(isRecord(error) && error.code === "ENOENT")) throw error;
+  });
+}
+
+async function replaceCapturePair(captureDir: string, anilist: AniListMedia[], jikan: JikanAnime[]) {
+  await mkdir(captureDir, { recursive: true });
+  const suffix = `.tmp-${process.pid}-${Date.now()}`;
+  const targets = [
+    { path: resolve(captureDir, "anilist.json"), value: anilist },
+    { path: resolve(captureDir, "jikan.json"), value: jikan },
+  ];
+  const staged = targets.map((target) => ({ ...target, temporary: `${target.path}${suffix}`, backup: `${target.path}.bak${suffix}`, hadOriginal: false }));
+
+  try {
+    await Promise.all(staged.map((target) => writeJson(target.temporary, target.value)));
+    for (const target of staged) {
+      try {
+        await rename(target.path, target.backup);
+        target.hadOriginal = true;
+      } catch (error: unknown) {
+        if (!(isRecord(error) && error.code === "ENOENT")) throw error;
+      }
+    }
+    for (const target of staged) await rename(target.temporary, target.path);
+    await Promise.all(staged.map((target) => removeIfPresent(target.backup)));
+  } catch (error) {
+    await Promise.all(staged.map(async (target) => {
+      await removeIfPresent(target.temporary);
+      if (target.hadOriginal) {
+        await removeIfPresent(target.path);
+        await rename(target.backup, target.path).catch(async (rollbackError: unknown) => {
+          if (!(isRecord(rollbackError) && rollbackError.code === "ENOENT")) throw rollbackError;
+        });
+      } else {
+        await removeIfPresent(target.path);
+      }
+    }));
+    throw error;
+  }
+}
+
+export async function captureSources({
+  captureDir,
+  pageCount,
+  fetchImpl = fetch,
+}: {
+  captureDir: string;
+  pageCount: number;
+  fetchImpl?: FetchImpl;
+}) {
+  const pages = positivePageCount(pageCount);
+  const [anilist, jikan] = await Promise.all([
+    fetchAniList(pages, fetchImpl),
+    fetchJikan(Math.ceil(pages * 2), fetchImpl),
+  ]);
+  await replaceCapturePair(captureDir, anilist, jikan);
 }
 
 function option(args: string[], name: string, fallback: string): string {
@@ -277,9 +355,7 @@ async function main(args: string[]) {
   const reportPath = option(args, "--report", resolve(root, "data/ranking/unmatched-report.md"));
 
   if (command === "fetch") {
-    const pageCount = Number(option(args, "--pages", "12"));
-    await writeJson(resolve(captureDir, "anilist.json"), await fetchAniList(pageCount));
-    await writeJson(resolve(captureDir, "jikan.json"), await fetchJikan(Math.ceil(pageCount * 2)));
+    await captureSources({ captureDir, pageCount: Number(option(args, "--pages", "12")) });
     return;
   }
   if (command === "review") {
