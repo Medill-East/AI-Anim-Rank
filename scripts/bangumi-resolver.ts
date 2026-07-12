@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path";
 import { readBangumiSuggestionPair, type BangumiSuggestions } from "./bangumi-suggestions.ts";
 import { resolveCaptureSources, type AniListMedia, type BangumiMapping, type JikanAnime } from "./ranking-pipeline.ts";
 
-export const BANGUMI_RESOLVER_ALGORITHM_VERSION = "v1-exact-title-two-metadata";
+export const BANGUMI_RESOLVER_ALGORITHM_VERSION = "v2-bound-evidence-chain";
 
 const bangumiSubjectUrl = "https://api.bgm.tv/v0/subjects";
 const animationTypes = new Set(["TV", "Movie", "OVA", "ONA", "Special", "Music"]);
@@ -40,13 +40,13 @@ export interface ResolverAccepted {
   bangumiId: number;
   mapping: BangumiMapping;
   evidence: ResolverEvidence;
-  provenance: { suggestionGeneratedAt: string; subjectUrl: string; algorithmVersion: string };
+  provenance: { suggestionGeneratedAt: string; captureGeneration: string; subjectUrl: string; algorithmVersion: string };
 }
 
 export interface ResolverException {
   anilistId: number;
   bangumiId: number | null;
-  reason: "no-exact-top-candidate" | "subject-request-failed" | "invalid-subject" | "title-not-exact" | "metadata-conflict" | "insufficient-metadata-corroboration" | "mapping-already-exists";
+  reason: "no-exact-top-candidate" | "subject-request-failed" | "subject-id-mismatch" | "invalid-subject" | "title-not-exact" | "metadata-conflict" | "insufficient-metadata-corroboration" | "mapping-already-exists";
   detail: string;
 }
 
@@ -107,6 +107,13 @@ async function writeJsonAtomic(path: string, value: unknown) {
   }
 }
 
+async function stageJson(path: string, value: unknown): Promise<string> {
+  await mkdir(dirname(path), { recursive: true });
+  const temporary = `${path}.tmp-${process.pid}-${Date.now()}`;
+  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  return temporary;
+}
+
 async function writeMappingsWithBackup(path: string, mappings: BangumiMapping[]) {
   const backup = `${path}.bak`;
   const temporaryBackup = `${backup}.tmp-${process.pid}-${Date.now()}`;
@@ -158,10 +165,11 @@ function evaluate(detail: BangumiDetail, anilist: CandidateSource["anilist"][num
 }
 
 export async function resolveBangumiMappings({
-  suggestions, source, artifactDirectory, mappingPath, apply = false, fetchImpl = fetch, sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)), requestDelayMs = 1_000, retryAttempts = 3, env,
+  suggestions, source, captureGeneration, artifactDirectory, mappingPath, apply = false, fetchImpl = fetch, sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)), requestDelayMs = 1_000, retryAttempts = 3, env,
 }: {
   suggestions: BangumiSuggestions;
   source: CandidateSource;
+  captureGeneration: string;
   artifactDirectory: string;
   mappingPath: string;
   apply?: boolean;
@@ -172,6 +180,8 @@ export async function resolveBangumiMappings({
   env?: Readonly<{ BANGUMI_ACCESS_TOKEN?: string }>;
 }): Promise<BangumiResolution> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0 || !Number.isInteger(retryAttempts) || retryAttempts < 1) throw new Error("invalid pacing or retry configuration");
+  if (suggestions.status !== "complete") throw new Error("Bangumi suggestions must be complete before resolution");
+  if (suggestions.captureGeneration !== captureGeneration) throw new Error("Bangumi suggestion capture generation does not match the supplied capture generation");
   const existing = JSON.parse(await readFile(mappingPath, "utf8")) as BangumiMapping[];
   validateMappings(existing);
   const accepted: ResolverAccepted[] = [];
@@ -179,6 +189,11 @@ export async function resolveBangumiMappings({
   const anilistById = new Map(source.anilist.map((item) => [item.id, item]));
   const jikanByMal = new Map(source.jikan.map((item) => [item.mal_id, item]));
   const token = env === undefined ? process.env.BANGUMI_ACCESS_TOKEN : env.BANGUMI_ACCESS_TOKEN;
+  const claimed = {
+    malId: new Set(existing.flatMap((mapping) => mapping.malId === undefined ? [] : [mapping.malId])),
+    anilistId: new Set(existing.flatMap((mapping) => mapping.anilistId === undefined ? [] : [mapping.anilistId])),
+    bangumiId: new Set(existing.map((mapping) => mapping.bangumiId)),
+  };
   let requested = 0;
 
   for (const entry of suggestions.entries) {
@@ -188,7 +203,7 @@ export async function resolveBangumiMappings({
       exceptions.push({ anilistId: entry.anilistId, bangumiId: top?.subjectId ?? null, reason: "no-exact-top-candidate", detail: "Only the top exact search candidate is eligible for detail lookup." });
       continue;
     }
-    if (existing.some((mapping) => mapping.bangumiId === top.subjectId || mapping.malId === anilist.idMal || mapping.anilistId === anilist.id)) {
+    if (claimed.bangumiId.has(top.subjectId) || claimed.anilistId.has(anilist.id) || (anilist.idMal !== null && claimed.malId.has(anilist.idMal))) {
       exceptions.push({ anilistId: anilist.id, bangumiId: top.subjectId, reason: "mapping-already-exists", detail: "A formal mapping already uses this source or Bangumi ID." });
       continue;
     }
@@ -197,6 +212,10 @@ export async function resolveBangumiMappings({
     const detail = await fetchDetail(top.subjectId, fetchImpl, sleep, requestDelayMs, retryAttempts, token);
     if (!detail) {
       exceptions.push({ anilistId: anilist.id, bangumiId: top.subjectId, reason: "subject-request-failed", detail: "Subject detail could not be fetched after bounded retries." });
+      continue;
+    }
+    if (detail.id !== top.subjectId) {
+      exceptions.push({ anilistId: anilist.id, bangumiId: top.subjectId, reason: "subject-id-mismatch", detail: "Fetched subject detail ID does not match the top suggested Bangumi ID." });
       continue;
     }
     if (!validRating(detail)) {
@@ -209,15 +228,24 @@ export async function resolveBangumiMappings({
       continue;
     }
     const mapping: BangumiMapping = { bangumiId: detail.id, titleZh: detail.name_cn?.trim() || detail.name, score: detail.rating.score, votes: detail.rating.total, ...(anilist.idMal === null ? { anilistId: anilist.id } : { malId: anilist.idMal }) };
-    accepted.push({ anilistId: anilist.id, bangumiId: detail.id, mapping, evidence: outcome.evidence, provenance: { suggestionGeneratedAt: suggestions.generatedAt, subjectUrl: `${bangumiSubjectUrl}/${detail.id}`, algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION } });
+    accepted.push({ anilistId: anilist.id, bangumiId: detail.id, mapping, evidence: outcome.evidence, provenance: { suggestionGeneratedAt: suggestions.generatedAt, captureGeneration, subjectUrl: `${bangumiSubjectUrl}/${detail.id}`, algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION } });
+    claimed.bangumiId.add(mapping.bangumiId);
+    if (mapping.malId !== undefined) claimed.malId.add(mapping.malId);
+    if (mapping.anilistId !== undefined) claimed.anilistId.add(mapping.anilistId);
   }
   const resolution: BangumiResolution = { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, generatedAt: new Date().toISOString(), dryRun: !apply, accepted, exceptions };
-  await writeJsonAtomic(resolve(artifactDirectory, "resolution.json"), resolution);
-  await writeJsonAtomic(resolve(artifactDirectory, "exceptions.json"), { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, exceptions });
-  if (apply && accepted.length > 0) {
-    const proposed = [...existing, ...accepted.map((item) => item.mapping)];
-    validateMappings(proposed);
-    await writeMappingsWithBackup(mappingPath, proposed);
+  const proposed = [...existing, ...accepted.map((item) => item.mapping)];
+  if (apply) validateMappings(proposed);
+  const staged = await Promise.all([
+    stageJson(resolve(artifactDirectory, "resolution.json"), resolution),
+    stageJson(resolve(artifactDirectory, "exceptions.json"), { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, exceptions }),
+  ]);
+  try {
+    if (apply && accepted.length > 0) await writeMappingsWithBackup(mappingPath, proposed);
+    await Promise.all(staged.map((temporary, index) => rename(temporary, resolve(artifactDirectory, index === 0 ? "resolution.json" : "exceptions.json"))));
+  } catch (error) {
+    await Promise.all(staged.map((temporary) => rm(temporary, { force: true })));
+    throw error;
   }
   return resolution;
 }
@@ -229,6 +257,7 @@ async function main(args: string[]) {
   const result = await resolveBangumiMappings({
     suggestions: suggestionPair.suggestions,
     source: { anilist: captured.anilist, jikan: captured.jikan },
+    captureGeneration: captured.generation,
     artifactDirectory: resolve(root, "data/ranking/bangumi-resolver"),
     mappingPath: resolve(root, "data/ranking/bangumi-mappings.json"),
     apply: args.includes("--apply"),

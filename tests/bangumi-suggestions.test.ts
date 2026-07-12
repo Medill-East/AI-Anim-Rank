@@ -47,12 +47,14 @@ test("writes review-only suggestions with exact-title scores and never writes fo
       },
       sleep: async (milliseconds) => { waits.push(milliseconds); },
       requestDelayMs: 750,
+      captureGeneration: "capture-current",
       env: {},
     });
 
     const pair = await readBangumiSuggestionPair(directory);
     const suggestions = pair.suggestions;
     assert.equal(suggestions.status, "complete");
+    assert.equal(suggestions.captureGeneration, "capture-current");
     assert.equal(suggestions.entries.length, 2);
     assert.equal(suggestions.entries[0].query, "葬送的芙莉莲");
     assert.equal(suggestions.entries[0].results[0].matchScore, 1);

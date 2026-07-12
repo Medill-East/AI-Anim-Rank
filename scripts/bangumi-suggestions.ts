@@ -65,6 +65,7 @@ interface Diagnostic {
 export interface BangumiSuggestions {
   status: "complete" | "blocked";
   generatedAt: string;
+  captureGeneration: string;
   entries: SuggestionEntry[];
   diagnostic?: Diagnostic;
   approvalRequired: true;
@@ -232,6 +233,7 @@ export async function generateBangumiSuggestions({
   log = console.log,
   renameImpl = rename,
   generationId = generatedGenerationId(),
+  captureGeneration = "explicit",
   beforePointerSwap,
 }: {
   anilist: AniListCandidate[];
@@ -245,6 +247,7 @@ export async function generateBangumiSuggestions({
   log?: (message: string) => void;
   renameImpl?: Rename;
   generationId?: string;
+  captureGeneration?: string;
   beforePointerSwap?: () => void | Promise<void>;
 }): Promise<BangumiSuggestions> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0) throw new Error("request delay must be a non-negative integer");
@@ -299,6 +302,7 @@ export async function generateBangumiSuggestions({
   const suggestions: BangumiSuggestions = {
     status: diagnostic ? "blocked" : "complete",
     generatedAt: new Date().toISOString(),
+    captureGeneration: validGenerationId(captureGeneration),
     entries,
     ...(diagnostic ? { diagnostic } : {}),
     approvalRequired: true,
@@ -384,6 +388,7 @@ async function main(args: string[]) {
     jikan: captured.jikan,
     mappings: await readJson<BangumiMapping[]>(resolve(root, "data/ranking/bangumi-mappings.json")),
     artifactDirectory,
+    captureGeneration: captured.generation,
   });
 }
 
