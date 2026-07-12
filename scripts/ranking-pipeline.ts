@@ -259,10 +259,11 @@ export function buildReleaseSnapshot(candidates: RankingCandidate[], version: st
   }
 
   const eligible = recomputed.filter((candidate) => candidate.eligible && candidate.mal && candidate.bangumi && candidate.compositeScore !== null);
-  if (eligible.length !== 300) throw new Error(`release requires exactly 300 fully mapped eligible works; found ${eligible.length}`);
+  if (eligible.length < 300) throw new Error(`release requires at least 300 fully mapped eligible works; found ${eligible.length}`);
 
   const works: RankedWork[] = eligible
     .sort((left, right) => right.compositeScore! - left.compositeScore! || left.anilist.id - right.anilist.id)
+    .slice(0, 300)
     .map((candidate, index) => ({
       workId: `anilist:${candidate.anilist.id}`,
       rank: index + 1,

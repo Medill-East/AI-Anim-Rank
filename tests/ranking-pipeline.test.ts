@@ -59,8 +59,8 @@ async function writeGeneration(directory: string, generation: string, capturedAn
   await writeFile(join(directory, "current.json"), `${JSON.stringify({ version: 1, generation })}\n`);
 }
 
-function releaseCandidates() {
-  return Array.from({ length: 300 }, (_, index) => {
+function releaseCandidates(count = 300) {
+  return Array.from({ length: count }, (_, index) => {
     const id = index + 1;
     return buildCandidates([
       { ...anilist, id, idMal: 10_000 + id, title: { romaji: `Example ${id}`, native: `例 ${id}` } },
@@ -151,12 +151,12 @@ test("does not score candidates below a source minimum-vote threshold", () => {
   assert.match(candidate.ineligibilityReasons.join(" "), /Bangumi votes/i);
 });
 
-test("refuses a release unless exactly 300 fully mapped eligible works validate", () => {
+test("refuses a release with fewer than 300 fully mapped eligible works", () => {
   const [candidate] = buildCandidates([anilist], [jikan], [
     { malId: 101, bangumiId: 100, titleZh: "例", score: 9, votes: 300 },
   ]);
 
-  assert.throws(() => buildReleaseSnapshot([candidate], "2026-07-12"), /exactly 300/i);
+  assert.throws(() => buildReleaseSnapshot([candidate], "2026-07-12"), /at least 300/i);
 });
 
 test("release recomputes eligibility instead of trusting a tampered candidate review", () => {
@@ -166,7 +166,7 @@ test("release recomputes eligibility instead of trusting a tampered candidate re
   first.eligible = true;
   first.compositeScore = 100;
 
-  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /exactly 300/i);
+  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /at least 300/i);
 });
 
 test("release rejects duplicate MAL or Bangumi IDs across 300 candidates", () => {
@@ -187,10 +187,32 @@ test("release rejects non-positive external IDs", () => {
   assert.throws(() => buildReleaseSnapshot(invalid, "2026-07-12"), /Bangumi id must be a positive integer/i);
 });
 
-test("release accepts exactly 300 raw candidates and recalculates their composite", () => {
+test("release accepts 300 raw candidates and recalculates their composite", () => {
   const snapshot = buildReleaseSnapshot(releaseCandidates(), "2026-07-12");
   assert.equal(snapshot.works.length, 300);
   assert.equal(snapshot.works[0]?.compositeScore, 85);
+});
+
+test("release deterministically selects the top 300 from 306 valid candidates", () => {
+  const candidates = releaseCandidates(306);
+  for (const candidate of candidates) {
+    candidate.anilist.averageScore = 80 + (candidate.anilist.id % 2);
+  }
+
+  const snapshot = buildReleaseSnapshot(candidates, "2026-07-12");
+
+  assert.equal(snapshot.works.length, 300);
+  assert.deepEqual(snapshot.works.slice(0, 3).map((work) => work.workId), ["anilist:1", "anilist:3", "anilist:5"]);
+  assert.equal(snapshot.works.some((work) => work.workId === "anilist:306"), false);
+});
+
+test("release rejects a lower-ranked complete candidate with mismatched source identity before selection", () => {
+  const candidates = releaseCandidates(306);
+  const lowerRanked = candidates[305]!;
+  lowerRanked.anilist.averageScore = 1;
+  lowerRanked.mal!.mal_id = 999_999;
+
+  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /mismatched MAL id/i);
 });
 
 test("release recomputes a complete candidate forged as ineligible", () => {
@@ -227,7 +249,7 @@ test("release still rejects an eligible candidate that is missing a required sou
   const candidates = releaseCandidates();
   candidates[0]!.mal = null;
 
-  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /exactly 300/i);
+  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /at least 300/i);
 });
 
 test("source-based release ignores tampered candidate-review source objects", () => {
