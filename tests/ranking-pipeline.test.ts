@@ -12,6 +12,7 @@ import {
   calculateCompositeScore,
   normalizeSourceScore,
   readCapturedSources,
+  resolveCaptureSources,
   selectBangumiMapping,
 } from "../scripts/ranking-pipeline.ts";
 
@@ -247,6 +248,33 @@ test("capture pointer swap publishes AniList and Jikan from one generation", asy
     assert.equal(captured.generation, "next");
     assert.equal(captured.anilist[0]?.id, anilist.id);
     assert.equal(captured.jikan[0]?.mal_id, jikan.mal_id);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("capture overrides must be paired or resolve the current manifest generation", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-generation-"));
+  try {
+    await writeGeneration(directory, "current", [{ ...anilist, id: 99 }], [{ ...jikan, mal_id: 99 }]);
+    const explicitAniList = join(directory, "manual-anilist.json");
+    const explicitJikan = join(directory, "manual-jikan.json");
+    await writeFile(explicitAniList, `${JSON.stringify([anilist])}\n`);
+    await writeFile(explicitJikan, `${JSON.stringify([jikan])}\n`);
+
+    await assert.rejects(
+      resolveCaptureSources({ captureDir: directory, anilistPath: explicitAniList }),
+      /provide both --anilist and --jikan together/i,
+    );
+    const explicit = await resolveCaptureSources({ captureDir: directory, anilistPath: explicitAniList, jikanPath: explicitJikan });
+    assert.equal(explicit.generation, "explicit");
+    assert.equal(explicit.anilist[0]?.id, anilist.id);
+    assert.equal(explicit.jikan[0]?.mal_id, jikan.mal_id);
+
+    const current = await resolveCaptureSources({ captureDir: directory });
+    assert.equal(current.generation, "current");
+    assert.equal(current.anilist[0]?.id, 99);
+    assert.equal(current.jikan[0]?.mal_id, 99);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

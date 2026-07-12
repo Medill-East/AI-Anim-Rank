@@ -320,6 +320,32 @@ export async function readCapturedSources(captureDir: string): Promise<CapturedS
   };
 }
 
+function assertPairedCaptureOverrides(anilistPath: string | undefined, jikanPath: string | undefined) {
+  if ((anilistPath === undefined) !== (jikanPath === undefined)) {
+    throw new Error("provide both --anilist and --jikan together, or neither to use the current capture generation");
+  }
+}
+
+export async function resolveCaptureSources({
+  captureDir,
+  anilistPath,
+  jikanPath,
+}: {
+  captureDir: string;
+  anilistPath?: string;
+  jikanPath?: string;
+}): Promise<CapturedSources> {
+  assertPairedCaptureOverrides(anilistPath, jikanPath);
+  if (anilistPath !== undefined && jikanPath !== undefined) {
+    return {
+      generation: "explicit",
+      anilist: await readJson<AniListMedia[]>(anilistPath),
+      jikan: await readJson<JikanAnime[]>(jikanPath),
+    };
+  }
+  return readCapturedSources(captureDir);
+}
+
 async function publishCaptureGeneration(
   captureDir: string,
   generation: string,
@@ -382,9 +408,9 @@ async function main(args: string[]) {
   const root = resolve(import.meta.dirname, "..");
   const captureDir = resolve(root, "data/ranking/captured");
   const mappingsPath = option(args, "--mappings", resolve(root, "data/ranking/bangumi-mappings.json"));
-  const anilistPath = option(args, "--anilist", resolve(captureDir, "anilist.json"));
-  const jikanPath = option(args, "--jikan", resolve(captureDir, "jikan.json"));
-  const explicitCapturePaths = args.includes("--anilist") || args.includes("--jikan");
+  const anilistPath = args.includes("--anilist") ? option(args, "--anilist", "") : undefined;
+  const jikanPath = args.includes("--jikan") ? option(args, "--jikan", "") : undefined;
+  assertPairedCaptureOverrides(anilistPath, jikanPath);
   const candidatesPath = option(args, "--candidates", resolve(root, "data/ranking/candidate-review.json"));
   const reportPath = option(args, "--report", resolve(root, "data/ranking/unmatched-report.md"));
 
@@ -393,9 +419,7 @@ async function main(args: string[]) {
     return;
   }
   if (command === "review") {
-    const captured = explicitCapturePaths
-      ? { anilist: await readJson<AniListMedia[]>(anilistPath), jikan: await readJson<JikanAnime[]>(jikanPath) }
-      : await readCapturedSources(captureDir);
+    const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
     const anilist = captured.anilist;
     const jikan = captured.jikan;
     const candidates = buildCandidates(anilist, jikan, await readJson<BangumiMapping[]>(mappingsPath));
@@ -405,9 +429,7 @@ async function main(args: string[]) {
     return;
   }
   if (command === "release") {
-    const captured = explicitCapturePaths
-      ? { anilist: await readJson<AniListMedia[]>(anilistPath), jikan: await readJson<JikanAnime[]>(jikanPath) }
-      : await readCapturedSources(captureDir);
+    const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
     const snapshot = buildReleaseSnapshotFromSources(
       captured.anilist,
       captured.jikan,

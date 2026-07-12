@@ -38,6 +38,8 @@ npx tsx scripts/ranking-pipeline.ts release --version 2026-07-12
 
 `release` does not read `candidate-review.json`. It rebuilds from the captured AniList/Jikan files plus the checked-in reviewed Bangumi mappings, then requires exactly 300 entries with positive, globally unique AniList/MAL/Bangumi IDs, complete snapshot fields and vote eligibility. Candidate review JSON is only a human review artifact. Release uses an adjacent temporary file then rename, so a refusal leaves `src/data/ranking.json` unchanged.
 
+For `review` and `release`, source overrides are intentionally paired: provide both `--anilist <path>` and `--jikan <path>`, or neither to use `current.json`. A single override is rejected before any capture source is read.
+
 ## Published method
 
 Scores are normalized to a common 0–100 scale: AniList is already 0–100; MAL and Bangumi are multiplied by 10. The composite is the equal-weight arithmetic mean of those three normalized scores, rounded to four decimal places. Eligibility has an explicit independent threshold of at least 100 source votes for AniList `popularity`, MAL `scored_by`, and the manually reviewed Bangumi `votes` value. This threshold and the method version are emitted with every release snapshot.
