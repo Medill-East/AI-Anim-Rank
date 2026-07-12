@@ -8,6 +8,7 @@ import { JSDOM } from "jsdom";
 
 import { RankingWorkspace } from "../src/features/ranking/RankingWorkspace.tsx";
 import { SyncSettings } from "../src/features/progress/SyncSettings.tsx";
+import { AppStatus } from "../src/features/app/AppStatus.tsx";
 import type { RankedWork } from "../src/data/schema.ts";
 import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
@@ -30,6 +31,15 @@ const work: RankedWork = {
     bangumi: { score: 9.2, votes: 300 },
   },
 };
+
+test("app status explains offline availability without claiming unconfigured remote sync", () => {
+  const html = renderToStaticMarkup(<AppStatus syncBaseUrl="" />);
+
+  assert.match(html, /role="status"/);
+  assert.match(html, /本机保存/);
+  assert.match(html, /未配置远程同步端点/);
+  assert.doesNotMatch(html, /已同步/);
+});
 
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });

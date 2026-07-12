@@ -31,6 +31,8 @@ button { cursor: pointer; }
   padding: 64px 0 48px;
 }
 
+.app-status { border-bottom: 1px solid var(--rule); color: var(--muted); font-size: .78rem; margin: 0; padding: 10px 20px; text-align: center; }
+
 .ranking-masthead { border-bottom: 1px solid var(--rule); padding-bottom: 28px; }
 .ranking-kicker { color: var(--accent); font: 700 .72rem/1.2 var(--font-mono), monospace; letter-spacing: .14em; margin: 0 0 12px; }
 .ranking-masthead h1 { font-size: clamp(2.8rem, 8vw, 6.8rem); font-weight: 500; letter-spacing: -.07em; line-height: .85; margin: 0; }

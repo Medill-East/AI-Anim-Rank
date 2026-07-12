@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="AI Anim Rank">
+  <defs>
+    <linearGradient id="sky" x1="76" y1="48" x2="436" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4d387"/>
+      <stop offset=".48" stop-color="#dc8d5f"/>
+      <stop offset="1" stop-color="#794c8d"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#161510"/>
+  <path d="M63 383c74-88 125-98 195-75 69 23 112 11 191-62v154c0 27-22 49-49 49H112c-27 0-49-22-49-49v-17Z" fill="url(#sky)"/>
+  <circle cx="383" cy="137" r="61" fill="#f4d387"/>
+  <path d="m256 91 43 126h-37l-12-39h-49l-14 39h-37l45-126h21Zm-45 60h29l-14-45-15 45Z" fill="#f8f4e9"/>
+  <path d="M151 305c43-48 79-73 109-75 31-2 61 22 91 73" fill="none" stroke="#f8f4e9" stroke-linecap="round" stroke-width="22"/>
+  <circle cx="151" cy="305" r="14" fill="#f8f4e9"/><circle cx="351" cy="305" r="14" fill="#f8f4e9"/>
+</svg>
