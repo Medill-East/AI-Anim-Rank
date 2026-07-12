@@ -306,6 +306,32 @@ test("capture fetches Jikan pages one at a time", async () => {
   }
 });
 
+test("capture paces successful Jikan pages only between requests", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-jikan-"));
+  const events: string[] = [];
+  try {
+    await captureSources({
+      captureDir: directory,
+      pageCount: 2,
+      generationId: "paced",
+      jikanPageDelayMs: 1_500,
+      sleep: async (delay) => { events.push(`sleep:${delay}`); },
+      fetchImpl: async (url) => {
+        if (String(url).includes("graphql")) return response({ data: { Page: { media: [anilist] } } });
+        const page = Number(new URL(String(url)).searchParams.get("page"));
+        events.push(`request:${page}`);
+        return response({ data: [jikan] });
+      },
+    });
+    assert.deepEqual(events, [
+      "request:1", "sleep:1500", "request:2", "sleep:1500",
+      "request:3", "sleep:1500", "request:4",
+    ]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
 test("capture retries a Jikan 429 using Retry-After before publishing", async () => {
   const directory = await mkdtemp(join(tmpdir(), "anim-rank-jikan-"));
   const delays: number[] = [];
@@ -323,7 +349,7 @@ test("capture retries a Jikan 429 using Retry-After before publishing", async ()
       },
     });
     assert.equal(jikanAttempts, 3, "two Jikan pages plus one retried first page");
-    assert.deepEqual(delays, [2_000]);
+    assert.deepEqual(delays, [2_000, 1_000]);
     assert.equal((await readCapturedSources(directory)).generation, "retry-success");
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -372,7 +398,7 @@ test("capture retries a transient Jikan 504 before publishing", async () => {
       },
     });
     assert.equal(jikanAttempts, 3, "two Jikan pages plus one retried first page");
-    assert.deepEqual(delays, [1_000]);
+    assert.deepEqual(delays, [1_000, 1_000]);
     assert.equal((await readCapturedSources(directory)).generation, "retry-504");
   } finally {
     await rm(directory, { recursive: true, force: true });

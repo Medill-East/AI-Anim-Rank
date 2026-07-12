@@ -241,6 +241,7 @@ type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
 type Sleep = (milliseconds: number) => Promise<void>;
 const defaultJikanRetryAttempts = 3;
 const defaultJikanRetryDelayMs = 1_000;
+const defaultJikanPageDelayMs = 1_000;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -286,8 +287,10 @@ async function fetchJikan(
   fetchImpl: FetchImpl,
   sleep: Sleep,
   retryAttempts: number,
+  pageDelayMs: number,
 ): Promise<JikanAnime[]> {
   if (!Number.isInteger(retryAttempts) || retryAttempts < 1) throw new Error("Jikan retry attempts must be a positive integer");
+  if (!Number.isInteger(pageDelayMs) || pageDelayMs < 0) throw new Error("Jikan page delay must be a non-negative integer");
   const anime: JikanAnime[] = [];
   for (let page = 1; page <= pageCount; page += 1) {
     for (let attempt = 1; attempt <= retryAttempts; attempt += 1) {
@@ -306,6 +309,7 @@ async function fetchJikan(
       const data = isRecord(payload) ? payload.data : undefined;
       if (!Array.isArray(data) || data.length === 0) throw new Error("Jikan response data must be a non-empty array");
       anime.push(...data as JikanAnime[]);
+      if (page < pageCount) await sleep(pageDelayMs);
       break;
     }
   }
@@ -418,6 +422,7 @@ export async function captureSources({
   beforePointerSwap,
   sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)),
   jikanRetryAttempts = defaultJikanRetryAttempts,
+  jikanPageDelayMs = defaultJikanPageDelayMs,
 }: {
   captureDir: string;
   pageCount: number;
@@ -426,11 +431,12 @@ export async function captureSources({
   beforePointerSwap?: () => void | Promise<void>;
   sleep?: Sleep;
   jikanRetryAttempts?: number;
+  jikanPageDelayMs?: number;
 }) {
   const pages = positivePageCount(pageCount);
   const [anilist, jikan] = await Promise.all([
     fetchAniList(pages, fetchImpl),
-    fetchJikan(Math.ceil(pages * 2), fetchImpl, sleep, jikanRetryAttempts),
+    fetchJikan(Math.ceil(pages * 2), fetchImpl, sleep, jikanRetryAttempts, jikanPageDelayMs),
   ]);
   await publishCaptureGeneration(captureDir, generationId, anilist, jikan, beforePointerSwap);
 }
