@@ -134,13 +134,23 @@ function etag(version: number): HeadersInit {
 
 function corsHeaders(request: Request, env: SyncEnv): HeadersInit | undefined {
   const origin = request.headers.get("origin");
-  if (!origin || origin !== env.ALLOWED_ORIGIN) return undefined;
+  if (!origin || !isExplicitOrigin(env.ALLOWED_ORIGIN) || origin !== env.ALLOWED_ORIGIN) return undefined;
   return {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "GET, PUT, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, If-Match",
     Vary: "Origin",
   };
+}
+
+function isExplicitOrigin(value: string | undefined): value is string {
+  if (!value || value === "*") return false;
+  try {
+    const url = new URL(value);
+    return (url.protocol === "http:" || url.protocol === "https:") && url.origin === value;
+  } catch {
+    return false;
+  }
 }
 
 function conflict(row: VaultRow, cors: HeadersInit | undefined): Response {

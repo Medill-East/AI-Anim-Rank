@@ -1,0 +1,15 @@
+name = "ai-anim-rank-sync"
+main = "sync-api.ts"
+compatibility_date = "2026-07-12"
+workers_dev = true
+
+# Replace this placeholder after `wrangler d1 create ai-anim-rank-sync`.
+# Keeping a non-existent ID prevents accidental deployment to an unknown D1 database.
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-anim-rank-sync"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+# ALLOWED_ORIGIN is deliberately not a `vars` binding. Set it explicitly with
+# `wrangler secret put ALLOWED_ORIGIN`; when absent or invalid, CORS is denied.

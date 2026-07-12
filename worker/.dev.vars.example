@@ -1,0 +1,2 @@
+# Wrangler reads this file only for local development. Do not use * here.
+ALLOWED_ORIGIN=http://localhost:5173

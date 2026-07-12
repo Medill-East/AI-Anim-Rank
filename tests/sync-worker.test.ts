@@ -46,6 +46,13 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
     assert.equal(created.headers.get("etag"), '"1"');
     assert.equal(created.headers.get("access-control-allow-origin"), "https://app.example");
 
+    const preflight = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
+      method: "OPTIONS",
+      headers: { origin: "https://app.example" },
+    });
+    assert.equal(preflight.status, 204);
+    assert.equal(preflight.headers.get("access-control-allow-origin"), "https://app.example");
+
     const fetched = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`);
     assert.equal(fetched.status, 200);
     assert.equal(fetched.headers.get("etag"), '"1"');
@@ -82,6 +89,40 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
       headers: { origin: "https://untrusted.example" },
     });
     assert.equal(untrustedOrigin.headers.get("access-control-allow-origin"), null);
+  } finally {
+    await mf?.dispose();
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("encrypted vault worker only grants CORS preflight to an explicit origin", async () => {
+  const directory = await mkdtemp(resolve(".wrangler", "sync-worker-cors-test-"));
+  const output = resolve(directory, "worker.mjs");
+  let mf: Miniflare | undefined;
+
+  try {
+    await build({
+      bundle: true,
+      entryPoints: [resolve("worker/sync-api.ts")],
+      format: "esm",
+      outfile: output,
+      platform: "neutral",
+      target: "es2022",
+    });
+    mf = new Miniflare({
+      modules: true,
+      scriptPath: output,
+      compatibilityDate: "2026-05-22",
+      d1Databases: { DB: "sync-test" },
+      bindings: { ALLOWED_ORIGIN: "*" },
+    });
+
+    const preflight = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
+      method: "OPTIONS",
+      headers: { origin: "*" },
+    });
+    assert.equal(preflight.status, 403);
+    assert.equal(preflight.headers.get("access-control-allow-origin"), null);
   } finally {
     await mf?.dispose();
     await rm(directory, { recursive: true, force: true });
