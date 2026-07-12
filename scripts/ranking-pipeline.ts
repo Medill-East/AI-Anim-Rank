@@ -234,14 +234,12 @@ export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], ma
 }
 
 export function buildReleaseSnapshot(candidates: RankingCandidate[], version: string): RankingSnapshot {
-  const rawAniList = candidates.map((candidate) => candidate.anilist);
+  const selected = candidates.filter((candidate) => candidate.eligible && candidate.mal !== null && candidate.bangumi !== null);
+  const rawAniList = selected.map((candidate) => candidate.anilist);
   const rawMal: JikanAnime[] = [];
   const rawBangumi: BangumiMapping[] = [];
 
-  for (const candidate of candidates) {
-    if (candidate.mal === null || candidate.bangumi === null) {
-      throw new Error(`release candidate AniList ${candidate.anilist.id} is missing a required source`);
-    }
+  for (const candidate of selected) {
     if (candidate.anilist.idMal !== candidate.mal.mal_id) {
       throw new Error(`release candidate AniList ${candidate.anilist.id} has mismatched MAL id`);
     }
@@ -253,7 +251,7 @@ export function buildReleaseSnapshot(candidates: RankingCandidate[], version: st
   // match and score from source fields instead of accepting its derived flags.
   const recomputed = buildCandidates(rawAniList, rawMal, rawBangumi);
   for (let index = 0; index < recomputed.length; index += 1) {
-    const original = candidates[index]!;
+    const original = selected[index]!;
     const candidate = recomputed[index]!;
     if (candidate.mal?.mal_id !== original.mal!.mal_id || candidate.bangumi?.bangumiId !== original.bangumi!.bangumiId) {
       throw new Error(`release candidate AniList ${original.anilist.id} does not match its reviewed source IDs`);
