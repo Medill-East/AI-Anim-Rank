@@ -1,7 +1,7 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
-import { resolveCaptureSources } from "./ranking-pipeline.ts";
+import { resolveCaptureSources, selectBangumiMapping, type BangumiMapping } from "./ranking-pipeline.ts";
 
 const bangumiSearchUrl = "https://api.bgm.tv/v0/search/subjects";
 const defaultRequestDelayMs = 1_000;
@@ -79,15 +79,22 @@ function preferredTitle(candidate: AniListCandidate): string | null {
 }
 
 function isSubject(value: unknown): value is BangumiSubject {
-  return typeof value === "object" && value !== null && "id" in value && "name" in value
-    && typeof (value as BangumiSubject).id === "number" && typeof (value as BangumiSubject).name === "string";
+  if (typeof value !== "object" || value === null || Array.isArray(value)) return false;
+  const subject = value as BangumiSubject;
+  return Number.isInteger(subject.id) && subject.id > 0
+    && typeof subject.name === "string"
+    && typeof subject.name_cn === "string"
+    && typeof subject.rating === "object" && subject.rating !== null
+    && typeof subject.rating.score === "number" && Number.isFinite(subject.rating.score)
+    && typeof subject.rating.total === "number" && Number.isInteger(subject.rating.total) && subject.rating.total >= 0;
 }
 
 function parseSubjects(payload: unknown): BangumiSubject[] {
   if (typeof payload !== "object" || payload === null || !("data" in payload) || !Array.isArray(payload.data)) {
     throw new Error("Bangumi response data must be an array");
   }
-  return payload.data.filter(isSubject).slice(0, resultLimit);
+  if (!payload.data.every(isSubject)) throw new Error("Bangumi response contains an invalid subject");
+  return payload.data.slice(0, resultLimit);
 }
 
 function toSuggestionResult(subject: BangumiSubject, query: string): SuggestionResult {
@@ -134,30 +141,35 @@ async function writeJson(path: string, value: unknown) {
 export async function generateBangumiSuggestions({
   anilist,
   jikan,
+  mappings,
   suggestionsPath,
   reportPath,
   fetchImpl = fetch,
   sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)),
   requestDelayMs = defaultRequestDelayMs,
-  env = process.env,
+  env,
   log = console.log,
 }: {
   anilist: AniListCandidate[];
   jikan: JikanCandidate[];
+  mappings: BangumiMapping[];
   suggestionsPath: string;
   reportPath: string;
   fetchImpl?: FetchImpl;
   sleep?: Sleep;
   requestDelayMs?: number;
-  env?: NodeJS.ProcessEnv;
+  env?: Readonly<{ BANGUMI_ACCESS_TOKEN?: string }>;
   log?: (message: string) => void;
 }): Promise<BangumiSuggestions> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0) throw new Error("request delay must be a non-negative integer");
-  const token = env.BANGUMI_ACCESS_TOKEN;
+  const token = env === undefined ? process.env.BANGUMI_ACCESS_TOKEN : env.BANGUMI_ACCESS_TOKEN;
   const entries: SuggestionEntry[] = [];
   let diagnostic: Diagnostic | undefined;
   const jikanTitles = new Map(jikan.map((candidate) => [candidate.mal_id, candidate.title]));
-  const candidates = anilist.map((candidate) => ({ candidate, query: preferredTitle(candidate) })).filter((item): item is { candidate: AniListCandidate; query: string } => item.query !== null);
+  const candidates = anilist
+    .filter((candidate) => selectBangumiMapping(candidate, mappings) === undefined)
+    .map((candidate) => ({ candidate, query: preferredTitle(candidate) }))
+    .filter((item): item is { candidate: AniListCandidate; query: string } => item.query !== null);
 
   for (let index = 0; index < candidates.length; index += 1) {
     if (index > 0) await sleep(requestDelayMs);
@@ -217,17 +229,35 @@ function option(args: string[], name: string, fallback: string): string {
   return index === -1 ? fallback : (args[index + 1] ?? (() => { throw new Error(`${name} requires a value`); })());
 }
 
+export function assertSuggestionOutputPaths(root: string, suggestionsPath: string, reportPath: string) {
+  const protectedMappingPath = resolve(root, "data/ranking/bangumi-mappings.json");
+  const protectedReleaseDataPath = resolve(root, "src/data");
+  for (const path of [resolve(root, suggestionsPath), resolve(root, reportPath)]) {
+    if (path === protectedMappingPath || path === protectedReleaseDataPath || path.startsWith(`${protectedReleaseDataPath}/`)) {
+      throw new Error("suggestion output path is protected");
+    }
+  }
+}
+
+async function readJson<T>(path: string): Promise<T> {
+  return JSON.parse(await readFile(path, "utf8")) as T;
+}
+
 async function main(args: string[]) {
   const root = resolve(import.meta.dirname, "..");
   const captureDir = resolve(root, "data/ranking/captured");
   const anilistPath = args.includes("--anilist") ? option(args, "--anilist", "") : undefined;
   const jikanPath = args.includes("--jikan") ? option(args, "--jikan", "") : undefined;
+  const suggestionsPath = option(args, "--output", resolve(root, "data/ranking/bangumi-suggestions.json"));
+  const reportPath = option(args, "--report", resolve(root, "data/ranking/bangumi-suggestions-report.md"));
+  assertSuggestionOutputPaths(root, suggestionsPath, reportPath);
   const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
   await generateBangumiSuggestions({
     anilist: captured.anilist,
     jikan: captured.jikan,
-    suggestionsPath: option(args, "--output", resolve(root, "data/ranking/bangumi-suggestions.json")),
-    reportPath: option(args, "--report", resolve(root, "data/ranking/bangumi-suggestions-report.md")),
+    mappings: await readJson<BangumiMapping[]>(resolve(root, "data/ranking/bangumi-mappings.json")),
+    suggestionsPath,
+    reportPath,
   });
 }
 

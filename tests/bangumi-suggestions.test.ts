@@ -4,7 +4,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { generateBangumiSuggestions } from "../scripts/bangumi-suggestions.ts";
+import { assertSuggestionOutputPaths, generateBangumiSuggestions } from "../scripts/bangumi-suggestions.ts";
 
 const anilist = [
   {
@@ -41,6 +41,7 @@ test("writes review-only suggestions with exact-title scores and never writes fo
     await generateBangumiSuggestions({
       anilist,
       jikan,
+      mappings: [],
       suggestionsPath,
       reportPath,
       fetchImpl: async (url, init) => {
@@ -88,6 +89,7 @@ test("records a resumable authentication diagnostic without logging or persistin
     await generateBangumiSuggestions({
       anilist: anilist.slice(0, 1),
       jikan: jikan.slice(0, 1),
+      mappings: [],
       suggestionsPath,
       reportPath,
       fetchImpl: async (_url, init) => {
@@ -105,6 +107,70 @@ test("records a resumable authentication diagnostic without logging or persistin
     assert.match(suggestionsText, /"nextStep": "Set BANGUMI_ACCESS_TOKEN/);
     assert.match(reportText, /authentication/i);
     assert.equal(`${suggestionsText}\n${reportText}\n${logs.join("\n")}`.includes(token), false);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("rejects suggestion outputs that resolve to the formal mapping or released ranking", () => {
+  const root = "/tmp/anim-rank";
+  assert.throws(
+    () => assertSuggestionOutputPaths(root, "data/ranking/bangumi-mappings.json", "data/ranking/bangumi-suggestions-report.md"),
+    /protected/i,
+  );
+  assert.throws(
+    () => assertSuggestionOutputPaths(root, "data/ranking/bangumi-suggestions.json", "src/data/ranking.json"),
+    /protected/i,
+  );
+});
+
+test("skips candidates already covered by reviewed MAL-first or AniList mappings", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-bangumi-mapped-"));
+  let requests = 0;
+  try {
+    const suggestions = await generateBangumiSuggestions({
+      anilist,
+      jikan,
+      mappings: [
+        { malId: 101, bangumiId: 1, titleZh: "已审核", score: 9, votes: 100 },
+        { anilistId: 2, bangumiId: 2, titleZh: "已审核二", score: 9, votes: 100 },
+      ],
+      suggestionsPath: join(directory, "bangumi-suggestions.json"),
+      reportPath: join(directory, "bangumi-suggestions-report.md"),
+      fetchImpl: async () => {
+        requests += 1;
+        return response({ data: [] });
+      },
+      sleep: async () => {},
+      env: {},
+    });
+
+    assert.equal(suggestions.status, "complete");
+    assert.deepEqual(suggestions.entries, []);
+    assert.equal(requests, 0);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("blocks the run when Bangumi returns a malformed subject instead of silently dropping it", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-bangumi-malformed-"));
+  try {
+    const suggestions = await generateBangumiSuggestions({
+      anilist: anilist.slice(0, 1),
+      jikan: jikan.slice(0, 1),
+      mappings: [],
+      suggestionsPath: join(directory, "bangumi-suggestions.json"),
+      reportPath: join(directory, "bangumi-suggestions-report.md"),
+      fetchImpl: async () => response({ data: [{ id: 123, name: "葬送的芙莉莲", name_cn: "葬送的芙莉莲", rating: { score: 9.1 } }] }),
+      sleep: async () => {},
+      env: {},
+      log: () => {},
+    });
+
+    assert.equal(suggestions.status, "blocked");
+    assert.equal(suggestions.diagnostic?.kind, "invalid-response");
+    assert.deepEqual(suggestions.entries, []);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

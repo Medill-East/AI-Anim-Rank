@@ -48,9 +48,9 @@ When a captured AniList work has no reviewed Bangumi mapping, generate a separat
 npx tsx scripts/bangumi-suggestions.ts
 ```
 
-It reads the current captured AniList/Jikan generation and writes ignored operational artifacts: `data/ranking/bangumi-suggestions.json` and `data/ranking/bangumi-suggestions-report.md`. To review a specific capture pair, provide both `--anilist <path>` and `--jikan <path>`.
+It reads the current captured AniList/Jikan generation and the checked-in reviewed mappings, then writes ignored operational artifacts: `data/ranking/bangumi-suggestions.json` and `data/ranking/bangumi-suggestions-report.md`. Candidates already covered by a reviewed MAL mapping (before an explicit AniList mapping) are skipped. To review a specific capture pair, provide both `--anilist <path>` and `--jikan <path>`.
 
-The tool sends deliberately paced, single-flight `POST` requests to Bangumi v0 subject search with the anime type filter and a browser-like User-Agent. It uses `BANGUMI_ACCESS_TOKEN` only when supplied through the environment; the token is never written to JSON, Markdown, or logs. Results contain only candidate data and an exact normalized-title indicator. They are never accepted automatically, never write `data/ranking/bangumi-mappings.json`, and have no effect on review or release. A 401/403, network problem, or malformed response produces a resumable blocked report instead of a mapping.
+The tool sends deliberately paced, single-flight `POST` requests to Bangumi v0 subject search with the anime type filter and a browser-like User-Agent. It uses `BANGUMI_ACCESS_TOKEN` only when supplied through the environment; the token is never written to JSON, Markdown, or logs. Results contain only candidate data and an exact normalized-title indicator. They are never accepted automatically, never write `data/ranking/bangumi-mappings.json`, and have no effect on review or release. `--output` and `--report` reject the formal mapping path and every `src/data/` release-data path. A 401/403, network problem, or malformed subject response produces a resumable blocked report instead of a mapping.
 
 For `review` and `release`, source overrides are intentionally paired: provide both `--anilist <path>` and `--jikan <path>`, or neither to use `current.json`. A single override is rejected before any capture source is read.
 

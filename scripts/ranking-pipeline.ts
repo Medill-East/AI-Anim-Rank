@@ -172,7 +172,7 @@ function validateMappings(mappings: BangumiMapping[]) {
 }
 
 /** Uses the stable shared MAL ID before a deliberately reviewed AniList-only mapping. */
-export function selectBangumiMapping(media: AniListMedia, mappings: BangumiMapping[]): BangumiMapping | undefined {
+export function selectBangumiMapping(media: Pick<AniListMedia, "id" | "idMal">, mappings: BangumiMapping[]): BangumiMapping | undefined {
   validateMappings(mappings);
   if (media.idMal !== null) {
     const byMal = mappings.find((mapping) => mapping.malId === media.idMal);
