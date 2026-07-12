@@ -12,7 +12,7 @@ import type { RankedWork } from "../src/data/schema.ts";
 import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
 import { serializeRecoveryPayload, SyncVaultStore } from "../src/storage/sync-vault.ts";
-import { createRecoveryVault } from "../src/sync/crypto.ts";
+import { createRecoveryVault, type RecoveryVault } from "../src/sync/crypto.ts";
 import { IDBFactory } from "fake-indexeddb";
 
 const work: RankedWork = {
@@ -53,6 +53,7 @@ test("workspace opens a named modal from a Chinese title and restores focus on c
 
   try {
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
+    await act(async () => { await flush(); });
     const trigger = [...document.querySelectorAll("button")].find((button) => button.textContent?.includes(work.titleZh));
     assert.ok(trigger);
 
@@ -259,6 +260,7 @@ test("sync vault survives remount in browser storage and disconnect removes the 
 
   try {
     await act(async () => root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />));
+    await act(async () => { await flush(); });
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "启用私密同步")?.click());
     await act(async () => { await flush(); });
     const acknowledgement = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
@@ -298,7 +300,8 @@ test("sync settings does not read browser storage during server render and hydra
   });
   const markup = renderToStaticMarkup(<SyncSettings vaultStore={blockedStore} />);
   assert.equal(getItemCalls, 0);
-  assert.match(markup, /启用私密同步/);
+  assert.match(markup, /正在检查本地保险库/);
+  assert.doesNotMatch(markup, /启用私密同步|导入配对二维码|断开本地保险库/);
   assert.doesNotMatch(markup, /data-recovery-phrase/);
 
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
@@ -323,6 +326,7 @@ test("pairing import validates a QR recovery payload before saving it locally", 
   const root = createRoot(document.getElementById("root")!);
   try {
     await act(async () => root.render(<SyncSettings vaultStore={vaultStore} />));
+    await act(async () => { await flush(); });
     const importButton = [...document.querySelectorAll<HTMLButtonElement>("button")]
       .find((button) => button.textContent === "导入配对二维码");
     assert.ok(importButton);
@@ -343,6 +347,34 @@ test("pairing import validates a QR recovery payload before saving it locally", 
     assert.equal((await vaultStore.load())?.vaultId, vault.vaultId);
     assert.equal(document.location.href.includes(vault.phrase), false);
     assert.equal(document.querySelector("[data-recovery-phrase]"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("sync settings keeps controls unavailable until deferred vault hydration preserves the existing vault", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const existingVault = await createRecoveryVault();
+  let resolveLoad: (vault: RecoveryVault | null) => void = () => {};
+  const pendingLoad = new Promise<RecoveryVault | null>((resolve) => { resolveLoad = resolve; });
+  let saveCalls = 0;
+  const deferredStore = {
+    load: () => pendingLoad,
+    save: () => { saveCalls += 1; },
+    clear: () => {},
+  } as unknown as SyncVaultStore;
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<SyncSettings vaultStore={deferredStore} />));
+    assert.match(document.body.textContent ?? "", /正在检查本地保险库/);
+    assert.equal([...document.querySelectorAll("button")].some((button) => /启用私密同步|导入配对二维码|断开本地保险库/.test(button.textContent ?? "")), false);
+
+    await act(async () => { resolveLoad(existingVault); await flush(); });
+    assert.equal(document.body.textContent?.includes("本地保险库已启用"), true);
+    assert.equal(saveCalls, 0);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
