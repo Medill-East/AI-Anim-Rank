@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   buildCandidates,
   buildReleaseSnapshot,
+  buildReleaseSnapshotFromSources,
   calculateCompositeScore,
   normalizeSourceScore,
   selectBangumiMapping,
@@ -109,4 +110,24 @@ test("release accepts exactly 300 raw candidates and recalculates their composit
   const snapshot = buildReleaseSnapshot(releaseCandidates(), "2026-07-12");
   assert.equal(snapshot.works.length, 300);
   assert.equal(snapshot.works[0]?.compositeScore, 85);
+});
+
+test("source-based release ignores tampered candidate-review source objects", () => {
+  const verified = releaseCandidates();
+  const anilistCapture = verified.map((candidate) => candidate.anilist);
+  const jikanCapture = verified.map((candidate) => candidate.mal!);
+  const mappings = verified.map((candidate) => candidate.bangumi!);
+  const tamperedReview = structuredClone(verified);
+  for (const candidate of tamperedReview) {
+    candidate.anilist.averageScore = 100;
+    candidate.mal!.score = 10;
+    candidate.bangumi!.score = 10;
+    candidate.bangumi!.votes = 1_000_000;
+    candidate.eligible = true;
+    candidate.compositeScore = 100;
+  }
+
+  const snapshot = buildReleaseSnapshotFromSources(anilistCapture, jikanCapture, mappings, "2026-07-12");
+  assert.equal(snapshot.works[0]?.compositeScore, 85);
+  assert.equal(tamperedReview[0]?.compositeScore, 100);
 });

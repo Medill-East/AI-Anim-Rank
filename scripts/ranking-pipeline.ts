@@ -203,6 +203,16 @@ export function buildReleaseSnapshot(candidates: RankingCandidate[], version: st
   return parseRankingSnapshot(snapshot);
 }
 
+/** Builds a release only from captured upstream responses and reviewed mappings. */
+export function buildReleaseSnapshotFromSources(
+  anilist: AniListMedia[],
+  jikan: JikanAnime[],
+  mappings: BangumiMapping[],
+  version: string,
+): RankingSnapshot {
+  return buildReleaseSnapshot(buildCandidates(anilist, jikan, mappings), version);
+}
+
 function unmatchedReport(candidates: RankingCandidate[]): string {
   const unmatched = candidates.filter((candidate) => candidate.ineligibilityReasons.length > 0);
   return [
@@ -261,6 +271,8 @@ async function main(args: string[]) {
   const root = resolve(import.meta.dirname, "..");
   const captureDir = resolve(root, "data/ranking/captured");
   const mappingsPath = option(args, "--mappings", resolve(root, "data/ranking/bangumi-mappings.json"));
+  const anilistPath = option(args, "--anilist", resolve(captureDir, "anilist.json"));
+  const jikanPath = option(args, "--jikan", resolve(captureDir, "jikan.json"));
   const candidatesPath = option(args, "--candidates", resolve(root, "data/ranking/candidate-review.json"));
   const reportPath = option(args, "--report", resolve(root, "data/ranking/unmatched-report.md"));
 
@@ -271,8 +283,8 @@ async function main(args: string[]) {
     return;
   }
   if (command === "review") {
-    const anilist = await readJson<AniListMedia[]>(option(args, "--anilist", resolve(captureDir, "anilist.json")));
-    const jikan = await readJson<JikanAnime[]>(option(args, "--jikan", resolve(captureDir, "jikan.json")));
+    const anilist = await readJson<AniListMedia[]>(anilistPath);
+    const jikan = await readJson<JikanAnime[]>(jikanPath);
     const candidates = buildCandidates(anilist, jikan, await readJson<BangumiMapping[]>(mappingsPath));
     await writeJson(candidatesPath, candidates);
     await mkdir(dirname(reportPath), { recursive: true });
@@ -280,7 +292,12 @@ async function main(args: string[]) {
     return;
   }
   if (command === "release") {
-    const snapshot = buildReleaseSnapshot(await readJson<RankingCandidate[]>(candidatesPath), option(args, "--version", new Date().toISOString().slice(0, 10)));
+    const snapshot = buildReleaseSnapshotFromSources(
+      await readJson<AniListMedia[]>(anilistPath),
+      await readJson<JikanAnime[]>(jikanPath),
+      await readJson<BangumiMapping[]>(mappingsPath),
+      option(args, "--version", new Date().toISOString().slice(0, 10)),
+    );
     const output = option(args, "--output", resolve(root, "src/data/ranking.json"));
     const temporary = `${output}.next`;
     await writeJson(temporary, snapshot);
