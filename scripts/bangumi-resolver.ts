@@ -12,6 +12,7 @@ const animationTypes = new Set(["TV", "Movie", "OVA", "ONA", "Special", "Music"]
 type FetchResponse = Pick<Response, "ok" | "status" | "json">;
 type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
 type Sleep = (milliseconds: number) => Promise<void>;
+type Rename = (oldPath: string, newPath: string) => Promise<void>;
 
 type CandidateSource = {
   anilist: Pick<AniListMedia, "id" | "idMal" | "title" | "seasonYear">[];
@@ -46,7 +47,7 @@ export interface ResolverAccepted {
 export interface ResolverException {
   anilistId: number;
   bangumiId: number | null;
-  reason: "no-exact-top-candidate" | "subject-request-failed" | "subject-id-mismatch" | "invalid-subject" | "title-not-exact" | "metadata-conflict" | "insufficient-metadata-corroboration" | "mapping-already-exists";
+  reason: "no-exact-top-candidate" | "subject-request-failed" | "subject-id-mismatch" | "non-anime-subject" | "invalid-subject" | "title-not-exact" | "metadata-conflict" | "insufficient-metadata-corroboration" | "mapping-already-exists";
   detail: string;
 }
 
@@ -95,31 +96,100 @@ function validateMappings(mappings: BangumiMapping[]) {
   }
 }
 
-async function writeJsonAtomic(path: string, value: unknown) {
+async function writeJsonAtomic(path: string, value: unknown, renameImpl: Rename) {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.tmp-${process.pid}-${Date.now()}`;
   try {
     await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-    await rename(temporary, path);
+    await renameImpl(temporary, path);
   } catch (error) {
     await rm(temporary, { force: true });
     throw error;
   }
 }
 
-async function stageJson(path: string, value: unknown): Promise<string> {
-  await mkdir(dirname(path), { recursive: true });
-  const temporary = `${path}.tmp-${process.pid}-${Date.now()}`;
-  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-  return temporary;
+function validGenerationId(value: string): string {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(value)) throw new Error("resolver generation has an invalid name");
+  return value;
 }
 
-async function writeMappingsWithBackup(path: string, mappings: BangumiMapping[]) {
-  const backup = `${path}.bak`;
-  const temporaryBackup = `${backup}.tmp-${process.pid}-${Date.now()}`;
-  await copyFile(path, temporaryBackup);
-  await rename(temporaryBackup, backup);
-  await writeJsonAtomic(path, mappings);
+function generatedGenerationId(): string {
+  return `resolver-${new Date().toISOString().replace(/\D/g, "")}-${process.pid}`;
+}
+
+async function stageMappingUpdate(path: string, mappings: BangumiMapping[]) {
+  const replacement = `${path}.tmp-${process.pid}-${Date.now()}`;
+  const backupTemporary = `${path}.bak.tmp-${process.pid}-${Date.now()}`;
+  try {
+    await writeFile(replacement, `${JSON.stringify(mappings, null, 2)}\n`, "utf8");
+    await copyFile(path, backupTemporary);
+    return { replacement, backupTemporary };
+  } catch (error) {
+    await rm(replacement, { force: true });
+    await rm(backupTemporary, { force: true });
+    throw error;
+  }
+}
+
+async function stageResolverGeneration({ artifactDirectory, generation, resolution, exceptions, renameImpl }: {
+  artifactDirectory: string;
+  generation: string;
+  resolution: BangumiResolution;
+  exceptions: ResolverException[];
+  renameImpl: Rename;
+}) {
+  const generationDirectory = resolve(artifactDirectory, "generations", validGenerationId(generation));
+  const pointerPath = resolve(artifactDirectory, "current.json");
+  const pointerTemporary = `${pointerPath}.tmp-${process.pid}-${Date.now()}`;
+  await mkdir(resolve(artifactDirectory, "generations"), { recursive: true });
+  await mkdir(generationDirectory);
+  try {
+    await writeJsonAtomic(resolve(generationDirectory, "resolution.json"), resolution, renameImpl);
+    await writeJsonAtomic(resolve(generationDirectory, "exceptions.json"), { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, exceptions }, renameImpl);
+    await writeFile(pointerTemporary, `${JSON.stringify({ version: 1, generation }, null, 2)}\n`, "utf8");
+    return { generationDirectory, pointerPath, pointerTemporary };
+  } catch (error) {
+    await rm(pointerTemporary, { force: true });
+    await rm(generationDirectory, { recursive: true, force: true });
+    throw error;
+  }
+}
+
+async function commitApplyTransaction({ mappingPath, stagedMapping, pointerPath, pointerTemporary, renameImpl }: {
+  mappingPath: string;
+  stagedMapping: { replacement: string; backupTemporary: string } | undefined;
+  pointerPath: string;
+  pointerTemporary: string;
+  renameImpl: Rename;
+}) {
+  let mappingReplaced = false;
+  try {
+    if (stagedMapping) {
+      await renameImpl(stagedMapping.backupTemporary, `${mappingPath}.bak`);
+      await renameImpl(stagedMapping.replacement, mappingPath);
+      mappingReplaced = true;
+    }
+    // This pointer is the resolver's commit marker. Until it moves, readers
+    // continue to observe the prior immutable evidence generation.
+    await renameImpl(pointerTemporary, pointerPath);
+  } catch (error) {
+    if (mappingReplaced) {
+      const rollback = `${mappingPath}.rollback-${process.pid}-${Date.now()}`;
+      try {
+        await copyFile(`${mappingPath}.bak`, rollback);
+        await renameImpl(rollback, mappingPath);
+      } catch (rollbackError) {
+        throw new AggregateError([error, rollbackError], "Bangumi apply failed and rollback could not restore formal mappings");
+      }
+    }
+    throw error;
+  } finally {
+    if (stagedMapping) {
+      await rm(stagedMapping.replacement, { force: true });
+      await rm(stagedMapping.backupTemporary, { force: true });
+    }
+    await rm(pointerTemporary, { force: true });
+  }
 }
 
 async function fetchDetail(id: number, fetchImpl: FetchImpl, sleep: Sleep, requestDelayMs: number, retryAttempts: number, token?: string): Promise<BangumiDetail | null> {
@@ -165,7 +235,7 @@ function evaluate(detail: BangumiDetail, anilist: CandidateSource["anilist"][num
 }
 
 export async function resolveBangumiMappings({
-  suggestions, source, captureGeneration, artifactDirectory, mappingPath, apply = false, fetchImpl = fetch, sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)), requestDelayMs = 1_000, retryAttempts = 3, env,
+  suggestions, source, captureGeneration, artifactDirectory, mappingPath, apply = false, fetchImpl = fetch, sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)), requestDelayMs = 1_000, retryAttempts = 3, env, generationId = generatedGenerationId(), renameImpl = rename,
 }: {
   suggestions: BangumiSuggestions;
   source: CandidateSource;
@@ -178,6 +248,8 @@ export async function resolveBangumiMappings({
   requestDelayMs?: number;
   retryAttempts?: number;
   env?: Readonly<{ BANGUMI_ACCESS_TOKEN?: string }>;
+  generationId?: string;
+  renameImpl?: Rename;
 }): Promise<BangumiResolution> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0 || !Number.isInteger(retryAttempts) || retryAttempts < 1) throw new Error("invalid pacing or retry configuration");
   if (suggestions.status !== "complete") throw new Error("Bangumi suggestions must be complete before resolution");
@@ -214,6 +286,10 @@ export async function resolveBangumiMappings({
       exceptions.push({ anilistId: anilist.id, bangumiId: top.subjectId, reason: "subject-request-failed", detail: "Subject detail could not be fetched after bounded retries." });
       continue;
     }
+    if (detail.type !== 2) {
+      exceptions.push({ anilistId: anilist.id, bangumiId: detail.id, reason: "non-anime-subject", detail: "Fetched Bangumi subject is not in the animation category." });
+      continue;
+    }
     if (detail.id !== top.subjectId) {
       exceptions.push({ anilistId: anilist.id, bangumiId: top.subjectId, reason: "subject-id-mismatch", detail: "Fetched subject detail ID does not match the top suggested Bangumi ID." });
       continue;
@@ -236,17 +312,24 @@ export async function resolveBangumiMappings({
   const resolution: BangumiResolution = { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, generatedAt: new Date().toISOString(), dryRun: !apply, accepted, exceptions };
   const proposed = [...existing, ...accepted.map((item) => item.mapping)];
   if (apply) validateMappings(proposed);
-  const staged = await Promise.all([
-    stageJson(resolve(artifactDirectory, "resolution.json"), resolution),
-    stageJson(resolve(artifactDirectory, "exceptions.json"), { algorithmVersion: BANGUMI_RESOLVER_ALGORITHM_VERSION, exceptions }),
-  ]);
+  const stagedMapping = apply && accepted.length > 0 ? await stageMappingUpdate(mappingPath, proposed) : undefined;
+  let stagedGeneration: Awaited<ReturnType<typeof stageResolverGeneration>>;
   try {
-    if (apply && accepted.length > 0) await writeMappingsWithBackup(mappingPath, proposed);
-    await Promise.all(staged.map((temporary, index) => rename(temporary, resolve(artifactDirectory, index === 0 ? "resolution.json" : "exceptions.json"))));
+    stagedGeneration = await stageResolverGeneration({ artifactDirectory, generation: generationId, resolution, exceptions, renameImpl });
   } catch (error) {
-    await Promise.all(staged.map((temporary) => rm(temporary, { force: true })));
+    if (stagedMapping) {
+      await rm(stagedMapping.replacement, { force: true });
+      await rm(stagedMapping.backupTemporary, { force: true });
+    }
     throw error;
   }
+  await commitApplyTransaction({
+    mappingPath,
+    stagedMapping,
+    pointerPath: stagedGeneration.pointerPath,
+    pointerTemporary: stagedGeneration.pointerTemporary,
+    renameImpl,
+  });
   return resolution;
 }
 
