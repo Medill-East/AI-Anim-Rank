@@ -9,7 +9,7 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "node --experimental-strip-types scripts/build.ts",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "test": "npm run build && node --experimental-strip-types --test tests/rendered-html.test.mjs tests/pwa-assets.test.mjs tests/release-build.test.mjs tests/service-worker.test.mjs tests/precache-manifest.test.ts tests/ranking.test.ts tests/ranking-workspace.test.ts tests/progress.test.ts tests/sync-crypto.test.ts tests/sync-client.test.ts tests/sync-vault.test.ts tests/sync-worker.test.ts && tsx --test tests/ranking-workspace-dom.test.tsx",
+    "test": "npm run build && node --experimental-strip-types --test tests/rendered-html.test.mjs tests/pwa-assets.test.mjs tests/release-build.test.mjs tests/service-worker.test.mjs tests/precache-manifest.test.ts tests/ranking.test.ts tests/ranking-pipeline.test.ts tests/ranking-workspace.test.ts tests/progress.test.ts tests/sync-crypto.test.ts tests/sync-client.test.ts tests/sync-vault.test.ts tests/sync-worker.test.ts && tsx --test tests/ranking-workspace-dom.test.tsx",
     "test:worker": "node --experimental-strip-types --test tests/sync-worker.test.ts",
     "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
     "worker:migrate": "wrangler d1 migrations apply ai-anim-rank-sync --remote --config worker/wrangler.toml",

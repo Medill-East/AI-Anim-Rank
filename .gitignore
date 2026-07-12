@@ -8,3 +8,6 @@ dist/
 .env
 .env.*
 !.env.example
+data/ranking/captured/
+data/ranking/candidate-review.json
+data/ranking/unmatched-report.md
