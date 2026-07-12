@@ -31,8 +31,8 @@ export function AppStatus({ syncBaseUrl }: AppStatusProps) {
   }, []);
 
   const offlineMessage = offlineShell === "ready"
-    ? "离线应用壳已准备。"
-    : "离线应用壳尚未就绪。";
+    ? "排行榜与公开资料可离线查看；恢复短语和本机进度不会写入离线缓存。"
+    : "离线排行榜尚未就绪。";
   const syncMessage = remoteSyncConfigured
     ? "远程同步端点已配置，自动同步尚未启用。"
     : "未配置远程同步端点；个人进度仅本机保存。";

@@ -25,10 +25,19 @@ test("PWA manifest identifies AI Anim Rank as a standalone app with branded PNG 
   }
 });
 
-test("offline worker precaches only the static offline shell and branded assets", async () => {
-  const worker = await readFile(publicFile("sw.js"), "utf8");
+test("offline worker uses the generated public app-shell manifest without caching private data", async () => {
+  const [worker, precache] = await Promise.all([
+    readFile(publicFile("sw.js"), "utf8"),
+    readFile(new URL("../dist/client/precache-manifest.js", import.meta.url), "utf8"),
+  ]);
 
-  assert.match(worker, /offline\.html/);
-  assert.match(worker, /manifest\.webmanifest/);
+  assert.match(worker, /precache-manifest\.js/);
+  assert.match(worker, /caches\.match\("\/"\)/);
+  assert.match(worker, /await self\.skipWaiting\(\)/);
+  assert.match(worker, /await self\.clients\.claim\(\)/);
+  assert.match(precache, /offline\.html/);
+  assert.match(precache, /manifest\.webmanifest/);
+  assert.match(precache, /assets\/RankingWorkspace-[A-Za-z0-9_-]+\.js/);
+  assert.doesNotMatch(precache, /recovery|vault|progress|credential/i);
   assert.doesNotMatch(worker, /recovery|vault|progress|runtime cache/i);
 });

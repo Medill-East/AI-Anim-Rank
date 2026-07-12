@@ -1,5 +1,7 @@
 import { spawnSync } from "node:child_process";
 
+import { generatePrecacheManifest } from "./generate-precache-manifest.ts";
+
 function run(command: string, args: string[]) {
   const result = spawnSync(command, args, {
     stdio: "inherit",
@@ -22,3 +24,4 @@ if (process.env.VITE_RELEASE_BUILD === "true") {
 }
 
 run("vinext", ["build"]);
+await generatePrecacheManifest();
