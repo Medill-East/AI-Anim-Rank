@@ -43,12 +43,19 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
   const [saveStatus, setSaveStatus] = useState("");
   const [pendingBackup, setPendingBackup] = useState<ProgressBackup | null>(null);
   const detailTriggerRef = useRef<HTMLElement | null>(null);
+  const recordsRef = useRef<ProgressRecord[]>([]);
+  const pendingSavesRef = useRef<Promise<void>>(Promise.resolve());
   const repository = useMemo<ProgressStore>(() => progressRepository ?? new ProgressRepository(), [progressRepository]);
 
   useEffect(() => {
     let active = true;
     void repository.loadAll().then(
-      (loaded) => { if (active && loaded.length > 0) setRecords(loaded); },
+      (loaded) => {
+        if (active && loaded.length > 0) {
+          recordsRef.current = loaded;
+          setRecords(loaded);
+        }
+      },
       () => {},
     );
     return () => { active = false; };
@@ -59,17 +66,22 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
   const selectedRecord = selectedWork ? records.find((record) => record.workId === selectedWork.workId) : undefined;
   const genres = useMemo(() => [...new Set(works.flatMap((work) => work.genres))].sort((a, b) => a.localeCompare(b, "zh-CN")), [works]);
 
-  const savePatch = async (workId: string, patch: ProgressPatch) => {
-    const existing = records.find((record) => record.workId === workId) ?? emptyProgress(workId);
+  const savePatch = (workId: string, patch: ProgressPatch) => {
+    const existing = recordsRef.current.find((record) => record.workId === workId) ?? emptyProgress(workId);
     const next = applyProgressPatch(existing, patch, new Date().toISOString());
-    if (next === existing) return;
-    try {
-      await repository.save(next);
-      setRecords((current) => [...current.filter((record) => record.workId !== workId), next]);
+    if (next === existing) return Promise.resolve();
+
+    const updatedRecords = [...recordsRef.current.filter((record) => record.workId !== workId), next];
+    recordsRef.current = updatedRecords;
+    setRecords(updatedRecords);
+    const save = pendingSavesRef.current.then(() => repository.save(next));
+    pendingSavesRef.current = save.catch(() => {});
+    return save.then(
+      () => {
       setSaveStatus("已保存");
-    } catch {
-      setSaveStatus("保存失败");
-    }
+      },
+      () => { setSaveStatus("保存失败"); },
+    );
   };
   const importBackup = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -89,6 +101,7 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
     const next = applyProgressBackup(records, pendingBackup, mode);
     try {
       await repository.replaceAll(next);
+      recordsRef.current = next;
       setRecords(next);
       setPendingBackup(null);
       setSaveStatus("已保存");

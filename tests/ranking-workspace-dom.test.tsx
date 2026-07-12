@@ -7,6 +7,7 @@ import { JSDOM } from "jsdom";
 
 import { RankingWorkspace } from "../src/features/ranking/RankingWorkspace.tsx";
 import type { RankedWork } from "../src/data/schema.ts";
+import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
 import { IDBFactory } from "fake-indexeddb";
 
@@ -109,6 +110,58 @@ test("workspace renders private progress controls and saves a normalized recomme
       revision: 1,
     }]);
     assert.equal(document.querySelector('[role="status"]')?.textContent, "已保存");
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace preserves rapid private progress patches for the same work", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const saves: Array<{ record: ProgressRecord; resolve: () => void }> = [];
+  const repository = {
+    loadAll: async () => [],
+    save: (record: ProgressRecord) => new Promise<void>((resolve) => { saves.push({ record, resolve }); }),
+    replaceAll: async () => {},
+  };
+  installDialogStub(dom);
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => {
+      root.render(<RankingWorkspace works={[work]} progressRepository={repository} />);
+      await flush();
+    });
+    const trigger = [...document.querySelectorAll("button")].find((button) => button.textContent?.includes(work.titleZh));
+    assert.ok(trigger);
+    await act(async () => trigger.click());
+
+    const reviewed = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
+      .find((input) => input.parentElement?.textContent === "已评价");
+    const recommended = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
+      .find((input) => input.parentElement?.textContent === "推荐");
+    assert.ok(reviewed);
+    assert.ok(recommended);
+    await act(async () => {
+      reviewed.click();
+      recommended.click();
+    });
+    assert.equal(saves.length, 1);
+
+    await act(async () => {
+      saves[0].resolve();
+      await flush();
+    });
+    assert.equal(saves.length, 2);
+    assert.equal(saves[1].record.reviewed, true);
+    assert.equal(saves[1].record.recommended, true);
+    await act(async () => {
+      saves[1].resolve();
+      await flush();
+    });
+
+    assert.match(document.body.textContent ?? "", /已评价 1[\s\S]*推荐 1/);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
