@@ -139,6 +139,7 @@ function corsHeaders(request: Request, env: SyncEnv): HeadersInit | undefined {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "GET, PUT, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, If-Match",
+    "Access-Control-Expose-Headers": "ETag",
     Vary: "Origin",
   };
 }

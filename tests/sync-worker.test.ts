@@ -45,6 +45,7 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
     assert.equal(created.status, 201);
     assert.equal(created.headers.get("etag"), '"1"');
     assert.equal(created.headers.get("access-control-allow-origin"), "https://app.example");
+    assert.equal(created.headers.get("access-control-expose-headers"), "ETag");
 
     const preflight = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
       method: "OPTIONS",
@@ -53,28 +54,33 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
     assert.equal(preflight.status, 204);
     assert.equal(preflight.headers.get("access-control-allow-origin"), "https://app.example");
 
-    const fetched = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`);
+    const fetched = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
+      headers: { origin: "https://app.example" },
+    });
     assert.equal(fetched.status, 200);
     assert.equal(fetched.headers.get("etag"), '"1"');
+    assert.equal(fetched.headers.get("access-control-expose-headers"), "ETag");
     assert.deepEqual(await fetched.json(), payload);
 
     const updatedPayload = { ...payload, ciphertext: "e".repeat(32) };
     const updated = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
       method: "PUT",
-      headers: { "content-type": "application/json", "if-match": '"1"' },
+      headers: { "content-type": "application/json", "if-match": '"1"', origin: "https://app.example" },
       body: JSON.stringify(updatedPayload),
     });
     assert.equal(updated.status, 200);
     assert.equal(updated.headers.get("etag"), '"2"');
+    assert.equal(updated.headers.get("access-control-expose-headers"), "ETag");
 
     const stale = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
       method: "PUT",
-      headers: { "content-type": "application/json", "if-match": '"1"' },
+      headers: { "content-type": "application/json", "if-match": '"1"', origin: "https://app.example" },
       body: JSON.stringify({ ...payload, ciphertext: "f".repeat(32) }),
     });
     assert.equal(stale.status, 409);
     assert.deepEqual(await stale.json(), updatedPayload);
     assert.equal(stale.headers.get("etag"), '"2"');
+    assert.equal(stale.headers.get("access-control-expose-headers"), "ETag");
 
     const invalidId = await mf.dispatchFetch("https://sync.example/v1/vaults/not-valid!");
     assert.equal(invalidId.status, 400);
