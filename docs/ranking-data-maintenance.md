@@ -7,7 +7,8 @@ The checked-in `src/data/ranking.json` is currently a development sample. This p
 - `fetch` captures public AniList GraphQL anime records (`id`, `idMal`, titles, average score, popularity, year, studios and genres) and Jikan's public top-anime records (MAL score, score count and members). It needs no credentials.
 - `data/ranking/bangumi-mappings.json` is a checked-in, manually reviewed source. It contains no scraper and must have exactly one stable match key per record: `malId` or `anilistId`, plus the reviewed `bangumiId`, Chinese title, score and vote count.
 - Matching uses AniList's `idMal` to find a reviewed `malId` record first. Only then can it use an explicit reviewed `anilistId` record. Title-based/fuzzy matching is intentionally absent.
-- AniList can expose alternate records with the same `idMal`. Before matching, the pipeline deterministically keeps one record per MAL ID by higher AniList average score, then higher popularity, then smaller AniList ID. Every discarded record is listed in the unmatched review report; this is selection, not a silent merge. Duplicate AniList IDs, Jikan MAL IDs and Bangumi IDs still fail validation.
+- AniList can expose alternate records with the same `idMal`. Before matching, the pipeline deterministically keeps one record per MAL ID by higher AniList average score, then higher popularity, then smaller AniList ID. Every discarded record is listed in the unmatched review report; this is selection, not a silent merge. Duplicate AniList IDs and duplicate reviewed mapping/Bangumi IDs still fail validation.
+- Jikan may also repeat a MAL ID. It keeps one record by higher score, then `scored_by`, then members, then title order; discarded Jikan records are likewise listed in the review report. Mapping and release identity checks remain strict after both source-side selections.
 
 Example reviewed mapping:
 

@@ -8,6 +8,7 @@ import {
   buildCandidates,
   captureSources,
   canonicalizeAniListByMal,
+  canonicalizeJikanByMal,
   buildReleaseSnapshot,
   buildReleaseSnapshotFromSources,
   calculateCompositeScore,
@@ -106,10 +107,31 @@ test("canonicalizes duplicate AniList MAL links deterministically and reports di
   assert.match(formatUnmatchedReport(candidates, canonicalized.discarded), /AniList 3.*MAL 101/i);
 });
 
-test("still rejects duplicate Jikan MAL IDs after AniList canonicalization", () => {
+test("canonicalizes duplicate Jikan MAL links deterministically and reports discarded records", () => {
+  const duplicates = [
+    { ...jikan, title: "Zulu", score: 8.5, scored_by: 1_000, members: 9_000 },
+    { ...jikan, title: "Alpha", score: 8.6, scored_by: 500, members: 100 },
+    { ...jikan, title: "Beta", score: 8.6, scored_by: 500, members: 100 },
+  ];
+  const canonicalized = canonicalizeJikanByMal(duplicates);
+  const candidates = buildCandidates([anilist], duplicates, [
+    { malId: 101, bangumiId: 100, titleZh: "例", score: 9, votes: 300 },
+  ]);
+
+  assert.equal(canonicalized.jikan[0]?.title, "Alpha");
+  assert.deepEqual(canonicalized.discarded.map((conflict) => conflict.discarded.title), ["Beta", "Zulu"]);
+  assert.equal(candidates[0]?.mal?.title, "Alpha");
+  assert.match(formatUnmatchedReport(candidates, [], canonicalized.discarded), /discarded duplicate Jikan MAL links/i);
+  assert.match(formatUnmatchedReport(candidates, [], canonicalized.discarded), /Jikan Beta.*MAL 101/i);
+});
+
+test("still rejects duplicate Bangumi IDs after source canonicalization", () => {
   assert.throws(
-    () => buildCandidates([anilist], [jikan, { ...jikan }], []),
-    /duplicate Jikan MAL id/i,
+    () => buildCandidates([anilist], [jikan, { ...jikan }], [
+      { malId: 101, bangumiId: 100, titleZh: "例", score: 9, votes: 300 },
+      { anilistId: 2, bangumiId: 100, titleZh: "例二", score: 9, votes: 300 },
+    ]),
+    /duplicate mapping Bangumi id/i,
   );
 });
 
@@ -152,7 +174,7 @@ test("release rejects duplicate MAL or Bangumi IDs across 300 candidates", () =>
   duplicateMal[299]!.anilist.idMal = duplicateMal[0]!.anilist.idMal;
   duplicateMal[299]!.mal!.mal_id = duplicateMal[0]!.mal!.mal_id;
   duplicateMal[299]!.bangumi!.malId = duplicateMal[0]!.bangumi!.malId;
-  assert.throws(() => buildReleaseSnapshot(duplicateMal, "2026-07-12"), /duplicate AniList idMal|duplicate Jikan MAL id/i);
+  assert.throws(() => buildReleaseSnapshot(duplicateMal, "2026-07-12"), /duplicate AniList idMal|duplicate Jikan MAL id|duplicate mapping MAL id/i);
 
   const duplicateBangumi = releaseCandidates();
   duplicateBangumi[299]!.bangumi!.bangumiId = duplicateBangumi[0]!.bangumi!.bangumiId;
