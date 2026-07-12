@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, unlink, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 import { parseRankingSnapshot, type RankedWork, type RankingSnapshot, type RankingSource } from "../src/data/schema.ts";
@@ -275,64 +275,97 @@ async function fetchJikan(pageCount: number, fetchImpl: FetchImpl): Promise<Jika
   return pages.flat();
 }
 
-async function removeIfPresent(path: string) {
-  await unlink(path).catch((error: unknown) => {
-    if (!(isRecord(error) && error.code === "ENOENT")) throw error;
-  });
+const captureManifestName = "current.json";
+const generationDirectoryName = "generations";
+
+function validGenerationId(generation: string): string {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(generation)) throw new Error("capture generation has an invalid name");
+  return generation;
 }
 
-async function replaceCapturePair(captureDir: string, anilist: AniListMedia[], jikan: JikanAnime[]) {
-  await mkdir(captureDir, { recursive: true });
-  const suffix = `.tmp-${process.pid}-${Date.now()}`;
-  const targets = [
-    { path: resolve(captureDir, "anilist.json"), value: anilist },
-    { path: resolve(captureDir, "jikan.json"), value: jikan },
-  ];
-  const staged = targets.map((target) => ({ ...target, temporary: `${target.path}${suffix}`, backup: `${target.path}.bak${suffix}`, hadOriginal: false }));
+function generatedId(): string {
+  return `capture-${new Date().toISOString().replace(/\D/g, "")}-${process.pid}`;
+}
 
+export interface CapturedSources {
+  generation: string;
+  anilist: AniListMedia[];
+  jikan: JikanAnime[];
+}
+
+export async function readCapturedSources(captureDir: string): Promise<CapturedSources> {
+  const manifestPath = resolve(captureDir, captureManifestName);
+  let manifest: unknown;
   try {
-    await Promise.all(staged.map((target) => writeJson(target.temporary, target.value)));
-    for (const target of staged) {
-      try {
-        await rename(target.path, target.backup);
-        target.hadOriginal = true;
-      } catch (error: unknown) {
-        if (!(isRecord(error) && error.code === "ENOENT")) throw error;
-      }
+    manifest = await readJson<unknown>(manifestPath);
+  } catch (error: unknown) {
+    if (isRecord(error) && error.code === "ENOENT") {
+      return {
+        generation: "legacy",
+        anilist: await readJson<AniListMedia[]>(resolve(captureDir, "anilist.json")),
+        jikan: await readJson<JikanAnime[]>(resolve(captureDir, "jikan.json")),
+      };
     }
-    for (const target of staged) await rename(target.temporary, target.path);
-    await Promise.all(staged.map((target) => removeIfPresent(target.backup)));
-  } catch (error) {
-    await Promise.all(staged.map(async (target) => {
-      await removeIfPresent(target.temporary);
-      if (target.hadOriginal) {
-        await removeIfPresent(target.path);
-        await rename(target.backup, target.path).catch(async (rollbackError: unknown) => {
-          if (!(isRecord(rollbackError) && rollbackError.code === "ENOENT")) throw rollbackError;
-        });
-      } else {
-        await removeIfPresent(target.path);
-      }
-    }));
     throw error;
   }
+  if (!isRecord(manifest) || manifest.version !== 1 || typeof manifest.generation !== "string") {
+    throw new Error("capture manifest is invalid");
+  }
+  const generation = validGenerationId(manifest.generation);
+  const generationDir = resolve(captureDir, generationDirectoryName, generation);
+  return {
+    generation,
+    anilist: await readJson<AniListMedia[]>(resolve(generationDir, "anilist.json")),
+    jikan: await readJson<JikanAnime[]>(resolve(generationDir, "jikan.json")),
+  };
+}
+
+async function publishCaptureGeneration(
+  captureDir: string,
+  generation: string,
+  anilist: AniListMedia[],
+  jikan: JikanAnime[],
+  beforePointerSwap?: () => void | Promise<void>,
+) {
+  const generationDir = resolve(captureDir, generationDirectoryName, validGenerationId(generation));
+  await mkdir(resolve(captureDir, generationDirectoryName), { recursive: true });
+  await mkdir(generationDir);
+  try {
+    await Promise.all([
+      writeJson(resolve(generationDir, "anilist.json"), anilist),
+      writeJson(resolve(generationDir, "jikan.json"), jikan),
+    ]);
+  } catch (error) {
+    await rm(generationDir, { recursive: true, force: true });
+    throw error;
+  }
+
+  await beforePointerSwap?.();
+  const manifestPath = resolve(captureDir, captureManifestName);
+  const temporaryManifest = `${manifestPath}.tmp-${process.pid}-${Date.now()}`;
+  await writeJson(temporaryManifest, { version: 1, generation });
+  await rename(temporaryManifest, manifestPath);
 }
 
 export async function captureSources({
   captureDir,
   pageCount,
   fetchImpl = fetch,
+  generationId = generatedId(),
+  beforePointerSwap,
 }: {
   captureDir: string;
   pageCount: number;
   fetchImpl?: FetchImpl;
+  generationId?: string;
+  beforePointerSwap?: () => void | Promise<void>;
 }) {
   const pages = positivePageCount(pageCount);
   const [anilist, jikan] = await Promise.all([
     fetchAniList(pages, fetchImpl),
     fetchJikan(Math.ceil(pages * 2), fetchImpl),
   ]);
-  await replaceCapturePair(captureDir, anilist, jikan);
+  await publishCaptureGeneration(captureDir, generationId, anilist, jikan, beforePointerSwap);
 }
 
 function option(args: string[], name: string, fallback: string): string {
@@ -351,6 +384,7 @@ async function main(args: string[]) {
   const mappingsPath = option(args, "--mappings", resolve(root, "data/ranking/bangumi-mappings.json"));
   const anilistPath = option(args, "--anilist", resolve(captureDir, "anilist.json"));
   const jikanPath = option(args, "--jikan", resolve(captureDir, "jikan.json"));
+  const explicitCapturePaths = args.includes("--anilist") || args.includes("--jikan");
   const candidatesPath = option(args, "--candidates", resolve(root, "data/ranking/candidate-review.json"));
   const reportPath = option(args, "--report", resolve(root, "data/ranking/unmatched-report.md"));
 
@@ -359,8 +393,11 @@ async function main(args: string[]) {
     return;
   }
   if (command === "review") {
-    const anilist = await readJson<AniListMedia[]>(anilistPath);
-    const jikan = await readJson<JikanAnime[]>(jikanPath);
+    const captured = explicitCapturePaths
+      ? { anilist: await readJson<AniListMedia[]>(anilistPath), jikan: await readJson<JikanAnime[]>(jikanPath) }
+      : await readCapturedSources(captureDir);
+    const anilist = captured.anilist;
+    const jikan = captured.jikan;
     const candidates = buildCandidates(anilist, jikan, await readJson<BangumiMapping[]>(mappingsPath));
     await writeJson(candidatesPath, candidates);
     await mkdir(dirname(reportPath), { recursive: true });
@@ -368,9 +405,12 @@ async function main(args: string[]) {
     return;
   }
   if (command === "release") {
+    const captured = explicitCapturePaths
+      ? { anilist: await readJson<AniListMedia[]>(anilistPath), jikan: await readJson<JikanAnime[]>(jikanPath) }
+      : await readCapturedSources(captureDir);
     const snapshot = buildReleaseSnapshotFromSources(
-      await readJson<AniListMedia[]>(anilistPath),
-      await readJson<JikanAnime[]>(jikanPath),
+      captured.anilist,
+      captured.jikan,
       await readJson<BangumiMapping[]>(mappingsPath),
       option(args, "--version", new Date().toISOString().slice(0, 10)),
     );

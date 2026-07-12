@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -11,6 +11,7 @@ import {
   buildReleaseSnapshotFromSources,
   calculateCompositeScore,
   normalizeSourceScore,
+  readCapturedSources,
   selectBangumiMapping,
 } from "../scripts/ranking-pipeline.ts";
 
@@ -44,6 +45,14 @@ async function withExistingCaptures(run: (directory: string) => Promise<void>) {
 
 function response(body: unknown, ok = true, status = 200) {
   return { ok, status, json: async () => body } as Response;
+}
+
+async function writeGeneration(directory: string, generation: string, capturedAniList: unknown, capturedJikan: unknown) {
+  const generationDir = join(directory, "generations", generation);
+  await mkdir(generationDir, { recursive: true });
+  await writeFile(join(generationDir, "anilist.json"), `${JSON.stringify(capturedAniList)}\n`);
+  await writeFile(join(generationDir, "jikan.json"), `${JSON.stringify(capturedJikan)}\n`);
+  await writeFile(join(directory, "current.json"), `${JSON.stringify({ version: 1, generation })}\n`);
 }
 
 function releaseCandidates() {
@@ -193,4 +202,52 @@ test("capture leaves both files untouched when either upstream source fails vali
       /Jikan request failed: 503/i,
     );
   });
+});
+
+test("capture failure before pointer swap keeps readers on the prior complete generation", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-generation-"));
+  try {
+    await writeGeneration(directory, "prior", [{ ...anilist, id: 99 }], [{ ...jikan, mal_id: 99 }]);
+    await assert.rejects(
+      captureSources({
+        captureDir: directory,
+        pageCount: 1,
+        generationId: "next",
+        beforePointerSwap: () => { throw new Error("pointer swap blocked"); },
+        fetchImpl: async (url) => String(url).includes("graphql")
+          ? response({ data: { Page: { media: [anilist] } } })
+          : response({ data: [jikan] }),
+      }),
+      /pointer swap blocked/i,
+    );
+    const captured = await readCapturedSources(directory);
+    assert.equal(captured.anilist[0]?.id, 99);
+    assert.equal(captured.jikan[0]?.mal_id, 99);
+    assert.match(await readFile(join(directory, "current.json"), "utf8"), /prior/);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("capture pointer swap publishes AniList and Jikan from one generation", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-generation-"));
+  try {
+    await writeGeneration(directory, "prior", [{ ...anilist, id: 99 }], [{ ...jikan, mal_id: 99 }]);
+    await writeFile(join(directory, "anilist.json"), "legacy-anilist\n");
+    await writeFile(join(directory, "jikan.json"), "legacy-jikan\n");
+    await captureSources({
+      captureDir: directory,
+      pageCount: 1,
+      generationId: "next",
+      fetchImpl: async (url) => String(url).includes("graphql")
+        ? response({ data: { Page: { media: [anilist] } } })
+        : response({ data: [jikan] }),
+    });
+    const captured = await readCapturedSources(directory);
+    assert.equal(captured.generation, "next");
+    assert.equal(captured.anilist[0]?.id, anilist.id);
+    assert.equal(captured.jikan[0]?.mal_id, jikan.mal_id);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 });
