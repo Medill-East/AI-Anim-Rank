@@ -44,8 +44,8 @@ async function withExistingCaptures(run: (directory: string) => Promise<void>) {
   }
 }
 
-function response(body: unknown, ok = true, status = 200) {
-  return { ok, status, json: async () => body } as Response;
+function response(body: unknown, ok = true, status = 200, retryAfter?: string) {
+  return { ok, status, headers: new Headers(retryAfter === undefined ? undefined : { "retry-after": retryAfter }), json: async () => body } as Response;
 }
 
 async function writeGeneration(directory: string, generation: string, capturedAniList: unknown, capturedJikan: unknown) {
@@ -275,6 +275,81 @@ test("capture overrides must be paired or resolve the current manifest generatio
     assert.equal(current.generation, "current");
     assert.equal(current.anilist[0]?.id, 99);
     assert.equal(current.jikan[0]?.mal_id, 99);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("capture fetches Jikan pages one at a time", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-jikan-"));
+  let inFlightJikan = 0;
+  const jikanPages: number[] = [];
+  try {
+    await captureSources({
+      captureDir: directory,
+      pageCount: 2,
+      generationId: "sequential",
+      fetchImpl: async (url) => {
+        if (String(url).includes("graphql")) return response({ data: { Page: { media: [anilist] } } });
+        const page = Number(new URL(String(url)).searchParams.get("page"));
+        assert.equal(inFlightJikan, 0, "Jikan requests must not overlap");
+        inFlightJikan += 1;
+        await Promise.resolve();
+        inFlightJikan -= 1;
+        jikanPages.push(page);
+        return response({ data: [jikan] });
+      },
+    });
+    assert.deepEqual(jikanPages, [1, 2, 3, 4]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("capture retries a Jikan 429 using Retry-After before publishing", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-jikan-"));
+  const delays: number[] = [];
+  let jikanAttempts = 0;
+  try {
+    await captureSources({
+      captureDir: directory,
+      pageCount: 1,
+      generationId: "retry-success",
+      sleep: async (delay) => { delays.push(delay); },
+      fetchImpl: async (url) => {
+        if (String(url).includes("graphql")) return response({ data: { Page: { media: [anilist] } } });
+        jikanAttempts += 1;
+        return jikanAttempts === 1 ? response({}, false, 429, "2") : response({ data: [jikan] });
+      },
+    });
+    assert.equal(jikanAttempts, 3, "two Jikan pages plus one retried first page");
+    assert.deepEqual(delays, [2_000]);
+    assert.equal((await readCapturedSources(directory)).generation, "retry-success");
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("exhausted Jikan retries leave the prior manifest generation current", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "anim-rank-jikan-"));
+  const delays: number[] = [];
+  try {
+    await writeGeneration(directory, "prior", [{ ...anilist, id: 99 }], [{ ...jikan, mal_id: 99 }]);
+    await assert.rejects(
+      captureSources({
+        captureDir: directory,
+        pageCount: 1,
+        generationId: "blocked",
+        jikanRetryAttempts: 2,
+        sleep: async (delay) => { delays.push(delay); },
+        fetchImpl: async (url) => String(url).includes("graphql")
+          ? response({ data: { Page: { media: [anilist] } } })
+          : response({}, false, 429),
+      }),
+      /Jikan request failed after 2 attempts: 429/i,
+    );
+    assert.deepEqual(delays, [1_000]);
+    assert.equal((await readCapturedSources(directory)).generation, "prior");
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

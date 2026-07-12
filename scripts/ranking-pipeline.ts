@@ -236,8 +236,11 @@ async function readJson<T>(path: string): Promise<T> {
   return JSON.parse(await readFile(path, "utf8")) as T;
 }
 
-type FetchResponse = Pick<Response, "ok" | "status" | "json">;
+type FetchResponse = Pick<Response, "ok" | "status" | "headers" | "json">;
 type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
+type Sleep = (milliseconds: number) => Promise<void>;
+const defaultJikanRetryAttempts = 3;
+const defaultJikanRetryDelayMs = 1_000;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -263,16 +266,44 @@ async function fetchAniList(pageCount: number, fetchImpl: FetchImpl): Promise<An
   return pages.flat();
 }
 
-async function fetchJikan(pageCount: number, fetchImpl: FetchImpl): Promise<JikanAnime[]> {
-  const pages = await Promise.all(Array.from({ length: pageCount }, async (_, index) => {
-    const response = await fetchImpl(`https://api.jikan.moe/v4/top/anime?page=${index + 1}&limit=25`);
-    if (!response.ok) throw new Error(`Jikan request failed: ${response.status}`);
-    const payload = await response.json();
-    const data = isRecord(payload) ? payload.data : undefined;
-    if (!Array.isArray(data) || data.length === 0) throw new Error("Jikan response data must be a non-empty array");
-    return data as JikanAnime[];
-  }));
-  return pages.flat();
+function retryDelay(response: FetchResponse, attempt: number): number {
+  const retryAfter = response.headers.get("retry-after");
+  if (retryAfter !== null) {
+    const seconds = Number(retryAfter);
+    if (Number.isFinite(seconds) && seconds >= 0) return Math.ceil(seconds * 1_000);
+    const retryAt = Date.parse(retryAfter);
+    if (Number.isFinite(retryAt)) return Math.max(0, retryAt - Date.now());
+  }
+  return defaultJikanRetryDelayMs * attempt;
+}
+
+async function fetchJikan(
+  pageCount: number,
+  fetchImpl: FetchImpl,
+  sleep: Sleep,
+  retryAttempts: number,
+): Promise<JikanAnime[]> {
+  if (!Number.isInteger(retryAttempts) || retryAttempts < 1) throw new Error("Jikan retry attempts must be a positive integer");
+  const anime: JikanAnime[] = [];
+  for (let page = 1; page <= pageCount; page += 1) {
+    for (let attempt = 1; attempt <= retryAttempts; attempt += 1) {
+      const response = await fetchImpl(`https://api.jikan.moe/v4/top/anime?page=${page}&limit=25`);
+      if (!response.ok) {
+        if (response.status === 429 && attempt < retryAttempts) {
+          await sleep(retryDelay(response, attempt));
+          continue;
+        }
+        if (response.status === 429) throw new Error(`Jikan request failed after ${retryAttempts} attempts: 429`);
+        throw new Error(`Jikan request failed: ${response.status}`);
+      }
+      const payload = await response.json();
+      const data = isRecord(payload) ? payload.data : undefined;
+      if (!Array.isArray(data) || data.length === 0) throw new Error("Jikan response data must be a non-empty array");
+      anime.push(...data as JikanAnime[]);
+      break;
+    }
+  }
+  return anime;
 }
 
 const captureManifestName = "current.json";
@@ -379,17 +410,21 @@ export async function captureSources({
   fetchImpl = fetch,
   generationId = generatedId(),
   beforePointerSwap,
+  sleep = (milliseconds) => new Promise<void>((resolveSleep) => setTimeout(resolveSleep, milliseconds)),
+  jikanRetryAttempts = defaultJikanRetryAttempts,
 }: {
   captureDir: string;
   pageCount: number;
   fetchImpl?: FetchImpl;
   generationId?: string;
   beforePointerSwap?: () => void | Promise<void>;
+  sleep?: Sleep;
+  jikanRetryAttempts?: number;
 }) {
   const pages = positivePageCount(pageCount);
   const [anilist, jikan] = await Promise.all([
     fetchAniList(pages, fetchImpl),
-    fetchJikan(Math.ceil(pages * 2), fetchImpl),
+    fetchJikan(Math.ceil(pages * 2), fetchImpl, sleep, jikanRetryAttempts),
   ]);
   await publishCaptureGeneration(captureDir, generationId, anilist, jikan, beforePointerSwap);
 }
