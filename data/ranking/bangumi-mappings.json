@@ -1,1 +1,2172 @@
-[]
+[
+  {
+    "bangumiId": 400602,
+    "titleZh": "葬送的芙莉莲",
+    "score": 8.5,
+    "votes": 35505,
+    "malId": 52991
+  },
+  {
+    "bangumiId": 276641,
+    "titleZh": "银魂 THE FINAL",
+    "score": 7.2,
+    "votes": 888,
+    "malId": 39486
+  },
+  {
+    "bangumiId": 1428,
+    "titleZh": "钢之炼金术师 FULLMETAL ALCHEMIST",
+    "score": 8.8,
+    "votes": 24679,
+    "malId": 5114
+  },
+  {
+    "bangumiId": 518519,
+    "titleZh": "航海王：粉丝来信",
+    "score": 8.6,
+    "votes": 4207,
+    "malId": 60022
+  },
+  {
+    "bangumiId": 263750,
+    "titleZh": "进击的巨人 第三季 Part.2",
+    "score": 8.7,
+    "votes": 23134,
+    "malId": 38524
+  },
+  {
+    "bangumiId": 315516,
+    "titleZh": "水果篮子 最终季",
+    "score": 7.1,
+    "votes": 779,
+    "malId": 42938
+  },
+  {
+    "bangumiId": 175596,
+    "titleZh": "终物语（下）",
+    "score": 8.1,
+    "votes": 7994,
+    "malId": 35247
+  },
+  {
+    "bangumiId": 47576,
+    "titleZh": "银魂' 延长战",
+    "score": 8.3,
+    "votes": 4605,
+    "malId": 15417
+  },
+  {
+    "bangumiId": 317613,
+    "titleZh": "辉夜大小姐想让我告白-超级浪漫-",
+    "score": 8.3,
+    "votes": 23168,
+    "malId": 43608
+  },
+  {
+    "bangumiId": 211567,
+    "titleZh": "3月的狮子 第二季",
+    "score": 8.8,
+    "votes": 10522,
+    "malId": 35180
+  },
+  {
+    "bangumiId": 302286,
+    "titleZh": "死神 千年血战篇",
+    "score": 7.9,
+    "votes": 4656,
+    "malId": 41467
+  },
+  {
+    "bangumiId": 67753,
+    "titleZh": "明日之丈2",
+    "score": 8.7,
+    "votes": 892,
+    "malId": 2921
+  },
+  {
+    "bangumiId": 486347,
+    "titleZh": "药屋少女的呢喃 第二季",
+    "score": 7.5,
+    "votes": 6961,
+    "malId": 58514
+  },
+  {
+    "bangumiId": 2907,
+    "titleZh": "银河英雄传说",
+    "score": 8.7,
+    "votes": 2901,
+    "malId": 820
+  },
+  {
+    "bangumiId": 296739,
+    "titleZh": "冰海战记 第二季",
+    "score": 8.1,
+    "votes": 7984,
+    "malId": 49387
+  },
+  {
+    "bangumiId": 117777,
+    "titleZh": "声之形",
+    "score": 7.1,
+    "votes": 16523,
+    "malId": 28851
+  },
+  {
+    "bangumiId": 1959,
+    "titleZh": "怪物",
+    "score": 8.2,
+    "votes": 4589,
+    "malId": 19
+  },
+  {
+    "bangumiId": 420628,
+    "titleZh": "药屋少女的呢喃",
+    "score": 7.5,
+    "votes": 11372,
+    "malId": 54492
+  },
+  {
+    "bangumiId": 68812,
+    "titleZh": "物语系列 第二季",
+    "score": 8.2,
+    "votes": 13108,
+    "malId": 17074
+  },
+  {
+    "bangumiId": 515759,
+    "titleZh": "葬送的芙莉莲 第二季",
+    "score": 7.5,
+    "votes": 11569,
+    "malId": 59978
+  },
+  {
+    "bangumiId": 240760,
+    "titleZh": "灵能百分百 第二季",
+    "score": 8.1,
+    "votes": 15087,
+    "malId": 37510
+  },
+  {
+    "bangumiId": 283643,
+    "titleZh": "吹响吧！上低音号 第三季",
+    "score": 5,
+    "votes": 11525,
+    "malId": 39894
+  },
+  {
+    "bangumiId": 240386,
+    "titleZh": "冰海战记",
+    "score": 8.3,
+    "votes": 13085,
+    "malId": 37521
+  },
+  {
+    "bangumiId": 67217,
+    "titleZh": "银魂剧场版 完结篇 万事屋永不落",
+    "score": 7.9,
+    "votes": 3659,
+    "malId": 15335
+  },
+  {
+    "bangumiId": 975,
+    "titleZh": "航海王",
+    "score": 8.3,
+    "votes": 14572,
+    "malId": 21
+  },
+  {
+    "bangumiId": 518413,
+    "titleZh": "我的英雄学院 最终季",
+    "score": 5.9,
+    "votes": 561,
+    "malId": 60098
+  },
+  {
+    "bangumiId": 173849,
+    "titleZh": "排球少年 乌野高校 VS 白鸟泽学园高校",
+    "score": 8.4,
+    "votes": 6599,
+    "malId": 32935
+  },
+  {
+    "bangumiId": 148037,
+    "titleZh": "伤物语Ⅲ冷血篇",
+    "score": 8.2,
+    "votes": 9372,
+    "malId": 31758
+  },
+  {
+    "bangumiId": 493016,
+    "titleZh": "异国日记",
+    "score": 8.4,
+    "votes": 7284,
+    "malId": 58788
+  },
+  {
+    "bangumiId": 353605,
+    "titleZh": "灵能百分百 第三季",
+    "score": 8.2,
+    "votes": 11766,
+    "malId": 50172
+  },
+  {
+    "bangumiId": 8,
+    "titleZh": "Code Geass 反叛的鲁路修R2",
+    "score": 8.3,
+    "votes": 18466,
+    "malId": 2904
+  },
+  {
+    "bangumiId": 242216,
+    "titleZh": "剧场版 紫罗兰永恒花园",
+    "score": 7.6,
+    "votes": 9150,
+    "malId": 37987
+  },
+  {
+    "bangumiId": 294135,
+    "titleZh": "剧场版 少女☆歌剧 Revue Starlight",
+    "score": 8.5,
+    "votes": 11045,
+    "malId": 40664
+  },
+  {
+    "bangumiId": 285666,
+    "titleZh": "进击的巨人 最终季",
+    "score": 7.7,
+    "votes": 15169,
+    "malId": 40028
+  },
+  {
+    "bangumiId": 472620,
+    "titleZh": "赛马娘 Pretty Derby 新时代之门",
+    "score": 7.5,
+    "votes": 3998,
+    "malId": 57647
+  },
+  {
+    "bangumiId": 331887,
+    "titleZh": "86 -不存在的战区- 第2部分",
+    "score": 8,
+    "votes": 15364,
+    "malId": 48569
+  },
+  {
+    "bangumiId": 328609,
+    "titleZh": "孤独摇滚！",
+    "score": 8.4,
+    "votes": 40042,
+    "malId": 47917
+  },
+  {
+    "bangumiId": 324720,
+    "titleZh": "灌篮高手",
+    "score": 7.7,
+    "votes": 2751,
+    "malId": 45649
+  },
+  {
+    "bangumiId": 527620,
+    "titleZh": "章鱼哔的原罪",
+    "score": 6.8,
+    "votes": 10619,
+    "malId": 60489
+  },
+  {
+    "bangumiId": 501958,
+    "titleZh": "剧场版 鬼灭之刃 无限城篇 第一章 猗窝座再袭",
+    "score": 7.4,
+    "votes": 6765,
+    "malId": 59192
+  },
+  {
+    "bangumiId": 331752,
+    "titleZh": "进击的巨人 最终季 Part.2",
+    "score": 7.7,
+    "votes": 13073,
+    "malId": 48583
+  },
+  {
+    "bangumiId": 457326,
+    "titleZh": "死神 千年血战篇-相克谭-",
+    "score": 7.4,
+    "votes": 2266,
+    "malId": 56784
+  },
+  {
+    "bangumiId": 501963,
+    "titleZh": "无职转生 第三季 ～到了异世界就拿出真本事～",
+    "score": 8,
+    "votes": 1925,
+    "malId": 59193
+  },
+  {
+    "bangumiId": 441795,
+    "titleZh": "我心里危险的东西 第二季",
+    "score": 8.3,
+    "votes": 13744,
+    "malId": 55690
+  },
+  {
+    "bangumiId": 232884,
+    "titleZh": "银魂. 银之魂篇",
+    "score": 7.3,
+    "votes": 1496,
+    "malId": 36838
+  },
+  {
+    "bangumiId": 530377,
+    "titleZh": "赛马娘 芦毛灰姑娘 第2部分",
+    "score": 6.8,
+    "votes": 3904,
+    "malId": 61930
+  },
+  {
+    "bangumiId": 517057,
+    "titleZh": "【我推的孩子】 第三季",
+    "score": 7.2,
+    "votes": 7079,
+    "malId": 60058
+  },
+  {
+    "bangumiId": 480441,
+    "titleZh": "蓦然回首",
+    "score": 7.8,
+    "votes": 12638,
+    "malId": 58125
+  },
+  {
+    "bangumiId": 412916,
+    "titleZh": "死神 千年血战篇-诀别谭-",
+    "score": 7.5,
+    "votes": 3153,
+    "malId": 53998
+  },
+  {
+    "bangumiId": 389156,
+    "titleZh": "地。 ―关于地球的运动―",
+    "score": 6.3,
+    "votes": 5424,
+    "malId": 52215
+  },
+  {
+    "bangumiId": 341311,
+    "titleZh": "时光代理人 第二季",
+    "score": 5.7,
+    "votes": 1415,
+    "malId": 49413
+  },
+  {
+    "bangumiId": 294288,
+    "titleZh": "王者天下 第三季",
+    "score": 7.7,
+    "votes": 424,
+    "malId": 40682
+  },
+  {
+    "bangumiId": 472741,
+    "titleZh": "咒术回战 死灭回游 前篇",
+    "score": 7.9,
+    "votes": 7165,
+    "malId": 57658
+  },
+  {
+    "bangumiId": 320224,
+    "titleZh": "时光代理人",
+    "score": 7.3,
+    "votes": 3729,
+    "malId": 44074
+  },
+  {
+    "bangumiId": 120236,
+    "titleZh": "排球少年 第二季",
+    "score": 8.2,
+    "votes": 7202,
+    "malId": 28891
+  },
+  {
+    "bangumiId": 217300,
+    "titleZh": "进击的巨人 第三季",
+    "score": 8.3,
+    "votes": 20640,
+    "malId": 35760
+  },
+  {
+    "bangumiId": 311,
+    "titleZh": "千与千寻",
+    "score": 8.6,
+    "votes": 27163,
+    "malId": 199
+  },
+  {
+    "bangumiId": 253,
+    "titleZh": "星际牛仔",
+    "score": 9.1,
+    "votes": 19336,
+    "malId": 1
+  },
+  {
+    "bangumiId": 328195,
+    "titleZh": "鬼灭之刃 游郭篇",
+    "score": 7.3,
+    "votes": 12337,
+    "malId": 47778
+  },
+  {
+    "bangumiId": 289102,
+    "titleZh": "天官赐福 第二季",
+    "score": 5.6,
+    "votes": 170,
+    "malId": 50399
+  },
+  {
+    "bangumiId": 160209,
+    "titleZh": "你的名字。",
+    "score": 8.1,
+    "votes": 34257,
+    "malId": 32281
+  },
+  {
+    "bangumiId": 93739,
+    "titleZh": "乒乓",
+    "score": 8.7,
+    "votes": 17289,
+    "malId": 22135
+  },
+  {
+    "bangumiId": 3375,
+    "titleZh": "凉宫春日的消失",
+    "score": 8.7,
+    "votes": 24297,
+    "malId": 7311
+  },
+  {
+    "bangumiId": 577226,
+    "titleZh": "诡秘之主特别篇",
+    "score": 6.8,
+    "votes": 79,
+    "malId": 62276
+  },
+  {
+    "bangumiId": 377130,
+    "titleZh": "尖帽子的魔法工房",
+    "score": 6.3,
+    "votes": 4129,
+    "malId": 51553
+  },
+  {
+    "bangumiId": 291039,
+    "titleZh": "水果篮子 第二季",
+    "score": 7.1,
+    "votes": 936,
+    "malId": 40417
+  },
+  {
+    "bangumiId": 293049,
+    "titleZh": "辉夜大小姐想让我告白?～天才们的恋爱头脑战～",
+    "score": 7.9,
+    "votes": 24433,
+    "malId": 40591
+  },
+  {
+    "bangumiId": 183878,
+    "titleZh": "紫罗兰永恒花园",
+    "score": 7.6,
+    "votes": 22228,
+    "malId": 33352
+  },
+  {
+    "bangumiId": 3641,
+    "titleZh": "第一神拳 New Challenger",
+    "score": 7.8,
+    "votes": 248,
+    "malId": 5258
+  },
+  {
+    "bangumiId": 298477,
+    "titleZh": "来自深渊 烈日的黄金乡",
+    "score": 8.3,
+    "votes": 13498,
+    "malId": 41084
+  },
+  {
+    "bangumiId": 230914,
+    "titleZh": "来自深渊 深沉灵魂的黎明",
+    "score": 7.9,
+    "votes": 11024,
+    "malId": 36862
+  },
+  {
+    "bangumiId": 29883,
+    "titleZh": "新・福音战士剧场版：终",
+    "score": 8.4,
+    "votes": 14596,
+    "malId": 3786
+  },
+  {
+    "bangumiId": 509297,
+    "titleZh": "赛马娘 芦毛灰姑娘",
+    "score": 7.5,
+    "votes": 8883,
+    "malId": 59636
+  },
+  {
+    "bangumiId": 403503,
+    "titleZh": "王者天下 第五季",
+    "score": 7.4,
+    "votes": 343,
+    "malId": 53223
+  },
+  {
+    "bangumiId": 353266,
+    "titleZh": "王者天下 第四季",
+    "score": 7.5,
+    "votes": 381,
+    "malId": 50160
+  },
+  {
+    "bangumiId": 23495,
+    "titleZh": "夏目友人帐 肆",
+    "score": 8,
+    "votes": 6640,
+    "malId": 11665
+  },
+  {
+    "bangumiId": 426815,
+    "titleZh": "文豪野犬 第五季",
+    "score": 6,
+    "votes": 1498,
+    "malId": 54898
+  },
+  {
+    "bangumiId": 325285,
+    "titleZh": "奇巧计程车",
+    "score": 8.5,
+    "votes": 21515,
+    "malId": 46102
+  },
+  {
+    "bangumiId": 55770,
+    "titleZh": "进击的巨人",
+    "score": 8.2,
+    "votes": 31068,
+    "malId": 16498
+  },
+  {
+    "bangumiId": 405212,
+    "titleZh": "凸变英雄X",
+    "score": 5.7,
+    "votes": 1336,
+    "malId": 53447
+  },
+  {
+    "bangumiId": 203387,
+    "titleZh": "夏目友人帐 陆",
+    "score": 7.7,
+    "votes": 3423,
+    "malId": 34591
+  },
+  {
+    "bangumiId": 770,
+    "titleZh": "天元突破 红莲螺岩",
+    "score": 8.5,
+    "votes": 16415,
+    "malId": 2001
+  },
+  {
+    "bangumiId": 793,
+    "titleZh": "Code Geass 反叛的鲁路修",
+    "score": 8.3,
+    "votes": 22120,
+    "malId": 1575
+  },
+  {
+    "bangumiId": 839,
+    "titleZh": "蓝色恐惧",
+    "score": 8.7,
+    "votes": 11304,
+    "malId": 437
+  },
+  {
+    "bangumiId": 312,
+    "titleZh": "哈尔的移动城堡",
+    "score": 7.8,
+    "votes": 12067,
+    "malId": 431
+  },
+  {
+    "bangumiId": 443428,
+    "titleZh": "【我推的孩子】 第二季",
+    "score": 7.2,
+    "votes": 12472,
+    "malId": 55791
+  },
+  {
+    "bangumiId": 442114,
+    "titleZh": "罗小黑战记2",
+    "score": 7.7,
+    "votes": 3277,
+    "malId": 61952
+  },
+  {
+    "bangumiId": 118335,
+    "titleZh": "进击的巨人 第二季",
+    "score": 8.1,
+    "votes": 21704,
+    "malId": 25777
+  },
+  {
+    "bangumiId": 148036,
+    "titleZh": "伤物语Ⅱ热血篇",
+    "score": 8,
+    "votes": 8824,
+    "malId": 31757
+  },
+  {
+    "bangumiId": 78798,
+    "titleZh": "第一神拳 Rising",
+    "score": 7.7,
+    "votes": 250,
+    "malId": 19647
+  },
+  {
+    "bangumiId": 247,
+    "titleZh": "银魂",
+    "score": 8.7,
+    "votes": 13760,
+    "malId": 918
+  },
+  {
+    "bangumiId": 310,
+    "titleZh": "幽灵公主",
+    "score": 8.4,
+    "votes": 12377,
+    "malId": 164
+  },
+  {
+    "bangumiId": 1728,
+    "titleZh": "浪客剑心 追忆篇",
+    "score": 8.9,
+    "votes": 9519,
+    "malId": 44
+  },
+  {
+    "bangumiId": 513345,
+    "titleZh": "薰香花朵凛然绽放",
+    "score": 6.9,
+    "votes": 6062,
+    "malId": 59845
+  },
+  {
+    "bangumiId": 395378,
+    "titleZh": "迷宫饭",
+    "score": 7.8,
+    "votes": 17638,
+    "malId": 52701
+  },
+  {
+    "bangumiId": 235128,
+    "titleZh": "JOJO的奇妙冒险 黄金之风",
+    "score": 8,
+    "votes": 15650,
+    "malId": 37991
+  },
+  {
+    "bangumiId": 238815,
+    "titleZh": "歌牌情缘 第三季",
+    "score": 7.4,
+    "votes": 1550,
+    "malId": 37379
+  },
+  {
+    "bangumiId": 4019,
+    "titleZh": "四叠半神话大系",
+    "score": 8.6,
+    "votes": 15339,
+    "malId": 7785
+  },
+  {
+    "bangumiId": 340,
+    "titleZh": "虫师",
+    "score": 8.7,
+    "votes": 11753,
+    "malId": 457
+  },
+  {
+    "bangumiId": 553106,
+    "titleZh": "王者天下 第六季",
+    "score": 7.4,
+    "votes": 252,
+    "malId": 61517
+  },
+  {
+    "bangumiId": 203526,
+    "titleZh": "来自深渊",
+    "score": 8.2,
+    "votes": 18935,
+    "malId": 34599
+  },
+  {
+    "bangumiId": 294993,
+    "titleZh": "咒术回战",
+    "score": 7.1,
+    "votes": 16995,
+    "malId": 40748
+  },
+  {
+    "bangumiId": 150490,
+    "titleZh": "JOJO的奇妙冒险 不灭钻石",
+    "score": 7.8,
+    "votes": 15458,
+    "malId": 31933
+  },
+  {
+    "bangumiId": 2045,
+    "titleZh": "麻辣教师GTO",
+    "score": 7.9,
+    "votes": 2230,
+    "malId": 245
+  },
+  {
+    "bangumiId": 604826,
+    "titleZh": "超时空辉夜姬！",
+    "score": 8.1,
+    "votes": 21117,
+    "malId": 62896
+  },
+  {
+    "bangumiId": 443676,
+    "titleZh": "夏目友人帐 柒",
+    "score": 7.8,
+    "votes": 1825,
+    "malId": 55823
+  },
+  {
+    "bangumiId": 260680,
+    "titleZh": "青春猪头少年不会梦到怀梦美少女",
+    "score": 7.4,
+    "votes": 12914,
+    "malId": 38329
+  },
+  {
+    "bangumiId": 174638,
+    "titleZh": "夏目友人帐 伍",
+    "score": 7.7,
+    "votes": 3974,
+    "malId": 32983
+  },
+  {
+    "bangumiId": 320209,
+    "titleZh": "天官赐福 特别篇",
+    "score": 6.1,
+    "votes": 85,
+    "malId": 44070
+  },
+  {
+    "bangumiId": 158316,
+    "titleZh": "灵能百分百",
+    "score": 7.8,
+    "votes": 16902,
+    "malId": 32182
+  },
+  {
+    "bangumiId": 120700,
+    "titleZh": "虫师 特别篇 铃之雫",
+    "score": 8.2,
+    "votes": 2489,
+    "malId": 28957
+  },
+  {
+    "bangumiId": 12536,
+    "titleZh": "夏目友人帐 叁",
+    "score": 8.1,
+    "votes": 9082,
+    "malId": 10379
+  },
+  {
+    "bangumiId": 1773,
+    "titleZh": "死亡笔记",
+    "score": 8.4,
+    "votes": 25438,
+    "malId": 1535
+  },
+  {
+    "bangumiId": 262897,
+    "titleZh": "摇曳露营△ 第二季",
+    "score": 8.3,
+    "votes": 12322,
+    "malId": 38474
+  },
+  {
+    "bangumiId": 221736,
+    "titleZh": "我想吃掉你的胰脏",
+    "score": 6.9,
+    "votes": 9287,
+    "malId": 36098
+  },
+  {
+    "bangumiId": 119394,
+    "titleZh": "昭和元禄落语心中",
+    "score": 8.1,
+    "votes": 3801,
+    "malId": 28735
+  },
+  {
+    "bangumiId": 100444,
+    "titleZh": "四月是你的谎言",
+    "score": 8,
+    "votes": 23364,
+    "malId": 23273
+  },
+  {
+    "bangumiId": 696,
+    "titleZh": "剑风传奇",
+    "score": 8.1,
+    "votes": 2946,
+    "malId": 33
+  },
+  {
+    "bangumiId": 611089,
+    "titleZh": "棱镜恋曲",
+    "score": 6.6,
+    "votes": 437,
+    "malId": 63019
+  },
+  {
+    "bangumiId": 254,
+    "titleZh": "混沌武士",
+    "score": 8.5,
+    "votes": 11156,
+    "malId": 205
+  },
+  {
+    "bangumiId": 386809,
+    "titleZh": "【我推的孩子】",
+    "score": 7.4,
+    "votes": 20964,
+    "malId": 52034
+  },
+  {
+    "bangumiId": 233926,
+    "titleZh": "续·终物语",
+    "score": 7.9,
+    "votes": 6192,
+    "malId": 36999
+  },
+  {
+    "bangumiId": 228350,
+    "titleZh": "战栗杀机",
+    "score": 7.3,
+    "votes": 2105,
+    "malId": 36649
+  },
+  {
+    "bangumiId": 218708,
+    "titleZh": "比宇宙更远的地方",
+    "score": 8.2,
+    "votes": 15645,
+    "malId": 35839
+  },
+  {
+    "bangumiId": 326,
+    "titleZh": "攻壳机动队 S.A.C. 2nd GIG",
+    "score": 9.2,
+    "votes": 9949,
+    "malId": 801
+  },
+  {
+    "bangumiId": 623851,
+    "titleZh": "日本三国",
+    "score": 6.7,
+    "votes": 2675,
+    "malId": 63375
+  },
+  {
+    "bangumiId": 356413,
+    "titleZh": "文豪野犬 第四季",
+    "score": 6.7,
+    "votes": 1898,
+    "malId": 50330
+  },
+  {
+    "bangumiId": 217021,
+    "titleZh": "冥王",
+    "score": 7.2,
+    "votes": 3735,
+    "malId": 35737
+  },
+  {
+    "bangumiId": 515880,
+    "titleZh": "碧蓝之海 第二季",
+    "score": 7.3,
+    "votes": 8871,
+    "malId": 59986
+  },
+  {
+    "bangumiId": 484623,
+    "titleZh": "彻夜之歌 第二季",
+    "score": 7.7,
+    "votes": 5733,
+    "malId": 58390
+  },
+  {
+    "bangumiId": 453140,
+    "titleZh": "好想告诉你 第三季",
+    "score": 7.3,
+    "votes": 707,
+    "malId": 56538
+  },
+  {
+    "bangumiId": 354700,
+    "titleZh": "吉伊卡哇",
+    "score": 7.2,
+    "votes": 719,
+    "malId": 50250
+  },
+  {
+    "bangumiId": 84171,
+    "titleZh": "排球少年",
+    "score": 8.1,
+    "votes": 9333,
+    "malId": 20583
+  },
+  {
+    "bangumiId": 12426,
+    "titleZh": "轻音少女 剧场版",
+    "score": 8.4,
+    "votes": 16590,
+    "malId": 9617
+  },
+  {
+    "bangumiId": 296109,
+    "titleZh": "国王排名",
+    "score": 4.8,
+    "votes": 6992,
+    "malId": 40834
+  },
+  {
+    "bangumiId": 280837,
+    "titleZh": "紫罗兰永恒花园 外传 - 永远与自动手记人偶 -",
+    "score": 7.5,
+    "votes": 10745,
+    "malId": 39741
+  },
+  {
+    "bangumiId": 269918,
+    "titleZh": "排球少年 TO THE TOP",
+    "score": 7.5,
+    "votes": 3467,
+    "malId": 38883
+  },
+  {
+    "bangumiId": 243916,
+    "titleZh": "约定的梦幻岛",
+    "score": 7.6,
+    "votes": 12186,
+    "malId": 37779
+  },
+  {
+    "bangumiId": 529431,
+    "titleZh": "胆大党 第二季",
+    "score": 7.3,
+    "votes": 8798,
+    "malId": 60543
+  },
+  {
+    "bangumiId": 321885,
+    "titleZh": "链锯人",
+    "score": 6.9,
+    "votes": 18774,
+    "malId": 44511
+  },
+  {
+    "bangumiId": 315574,
+    "titleZh": "赛马娘 Pretty Derby 第二季",
+    "score": 8.4,
+    "votes": 17643,
+    "malId": 42941
+  },
+  {
+    "bangumiId": 289101,
+    "titleZh": "天官赐福",
+    "score": 5.4,
+    "votes": 627,
+    "malId": 40730
+  },
+  {
+    "bangumiId": 131891,
+    "titleZh": "暗杀教室 第二季",
+    "score": 7.7,
+    "votes": 8110,
+    "malId": 30654
+  },
+  {
+    "bangumiId": 88473,
+    "titleZh": "虫师 特別篇 蚀日之翳",
+    "score": 8.2,
+    "votes": 3141,
+    "malId": 21329
+  },
+  {
+    "bangumiId": 33352,
+    "titleZh": "爆漫王。3",
+    "score": 8.3,
+    "votes": 5116,
+    "malId": 12365
+  },
+  {
+    "bangumiId": 28440,
+    "titleZh": "狼的孩子雨和雪",
+    "score": 8,
+    "votes": 8028,
+    "malId": 12355
+  },
+  {
+    "bangumiId": 891,
+    "titleZh": "续 夏目友人帐",
+    "score": 8,
+    "votes": 7958,
+    "malId": 5300
+  },
+  {
+    "bangumiId": 548818,
+    "titleZh": "金牌得主 第二季",
+    "score": 7.7,
+    "votes": 6381,
+    "malId": 61335
+  },
+  {
+    "bangumiId": 474371,
+    "titleZh": "异兽魔都 第二季",
+    "score": 7.6,
+    "votes": 1246,
+    "malId": 57779
+  },
+  {
+    "bangumiId": 347888,
+    "titleZh": "擅长捉弄的高木同学 剧场版",
+    "score": 7.7,
+    "votes": 4383,
+    "malId": 49722
+  },
+  {
+    "bangumiId": 326895,
+    "titleZh": "夏日重现",
+    "score": 7.5,
+    "votes": 20258,
+    "malId": 47194
+  },
+  {
+    "bangumiId": 152091,
+    "titleZh": "吹响吧！上低音号 第二季",
+    "score": 8.5,
+    "votes": 17807,
+    "malId": 31988
+  },
+  {
+    "bangumiId": 147365,
+    "titleZh": "元气少女缘结神 过去篇",
+    "score": 7.3,
+    "votes": 970,
+    "malId": 30709
+  },
+  {
+    "bangumiId": 496135,
+    "titleZh": "百米。",
+    "score": 6.9,
+    "votes": 1920,
+    "malId": 58919
+  },
+  {
+    "bangumiId": 431767,
+    "titleZh": "少女乐队的呐喊",
+    "score": 7.6,
+    "votes": 24184,
+    "malId": 55102
+  },
+  {
+    "bangumiId": 382,
+    "titleZh": "萤火虫之墓",
+    "score": 7.5,
+    "votes": 4319,
+    "malId": 578
+  },
+  {
+    "bangumiId": 467461,
+    "titleZh": "胆大党",
+    "score": 7.5,
+    "votes": 16218,
+    "malId": 57334
+  },
+  {
+    "bangumiId": 41568,
+    "titleZh": "歌牌情缘 第二季",
+    "score": 8.2,
+    "votes": 4047,
+    "malId": 14397
+  },
+  {
+    "bangumiId": 265,
+    "titleZh": "新世纪福音战士",
+    "score": 8.7,
+    "votes": 33847,
+    "malId": 30
+  },
+  {
+    "bangumiId": 329906,
+    "titleZh": "间谍过家家",
+    "score": 7.2,
+    "votes": 23216,
+    "malId": 50265
+  },
+  {
+    "bangumiId": 248175,
+    "titleZh": "辉夜大小姐想让我告白～天才们的恋爱头脑战～",
+    "score": 7.8,
+    "votes": 27447,
+    "malId": 37999
+  },
+  {
+    "bangumiId": 430699,
+    "titleZh": "金牌得主",
+    "score": 8,
+    "votes": 13468,
+    "malId": 55318
+  },
+  {
+    "bangumiId": 216371,
+    "titleZh": "莉兹与青鸟",
+    "score": 8.6,
+    "votes": 20099,
+    "malId": 35677
+  },
+  {
+    "bangumiId": 214799,
+    "titleZh": "宝石之国",
+    "score": 7.6,
+    "votes": 11656,
+    "malId": 35557
+  },
+  {
+    "bangumiId": 147068,
+    "titleZh": "3月的狮子",
+    "score": 8.3,
+    "votes": 11138,
+    "malId": 31646
+  },
+  {
+    "bangumiId": 9912,
+    "titleZh": "日常",
+    "score": 8.5,
+    "votes": 25266,
+    "malId": 10165
+  },
+  {
+    "bangumiId": 9717,
+    "titleZh": "魔法少女小圆",
+    "score": 8.6,
+    "votes": 38247,
+    "malId": 9756
+  },
+  {
+    "bangumiId": 571784,
+    "titleZh": "在超市后门吸烟的二人",
+    "score": 7.1,
+    "votes": 2703,
+    "malId": 62076
+  },
+  {
+    "bangumiId": 353792,
+    "titleZh": "蓝色巨星",
+    "score": 7.4,
+    "votes": 1369,
+    "malId": 50183
+  },
+  {
+    "bangumiId": 302189,
+    "titleZh": "86 -不存在的战区-",
+    "score": 7.6,
+    "votes": 16559,
+    "malId": 41457
+  },
+  {
+    "bangumiId": 277518,
+    "titleZh": "GIVEN 被赠与的未来",
+    "score": 6.7,
+    "votes": 436,
+    "malId": 39533
+  },
+  {
+    "bangumiId": 262898,
+    "titleZh": "电影 摇曳露营△",
+    "score": 7.2,
+    "votes": 4548,
+    "malId": 38475
+  },
+  {
+    "bangumiId": 28533,
+    "titleZh": "宇宙兄弟",
+    "score": 8.1,
+    "votes": 1742,
+    "malId": 12431
+  },
+  {
+    "bangumiId": 525565,
+    "titleZh": "相反的你和我",
+    "score": 7.7,
+    "votes": 7506,
+    "malId": 60371
+  },
+  {
+    "bangumiId": 456165,
+    "titleZh": "时光代理人 英都篇",
+    "score": 5.6,
+    "votes": 453,
+    "malId": 56752
+  },
+  {
+    "bangumiId": 282684,
+    "titleZh": "悠哉日常大王 Nonstop",
+    "score": 8.2,
+    "votes": 6293,
+    "malId": 39808
+  },
+  {
+    "bangumiId": 278826,
+    "titleZh": "Re：从零开始的异世界生活 第二季",
+    "score": 7.4,
+    "votes": 15660,
+    "malId": 39587
+  },
+  {
+    "bangumiId": 245665,
+    "titleZh": "鬼灭之刃",
+    "score": 7.3,
+    "votes": 21590,
+    "malId": 38000
+  },
+  {
+    "bangumiId": 248154,
+    "titleZh": "强风吹拂",
+    "score": 8.4,
+    "votes": 10607,
+    "malId": 37965
+  },
+  {
+    "bangumiId": 231497,
+    "titleZh": "路人女主的养成方法 Fine",
+    "score": 7.7,
+    "votes": 11564,
+    "malId": 36885
+  },
+  {
+    "bangumiId": 127563,
+    "titleZh": "一拳超人",
+    "score": 8,
+    "votes": 21633,
+    "malId": 30276
+  },
+  {
+    "bangumiId": 7707,
+    "titleZh": "伤物语Ⅰ铁血篇",
+    "score": 7.9,
+    "votes": 9407,
+    "malId": 9260
+  },
+  {
+    "bangumiId": 1704,
+    "titleZh": "猎人",
+    "score": 8.4,
+    "votes": 5751,
+    "malId": 136
+  },
+  {
+    "bangumiId": 383308,
+    "titleZh": "哪吒之魔童闹海",
+    "score": 6.4,
+    "votes": 4530,
+    "malId": 60544
+  },
+  {
+    "bangumiId": 443831,
+    "titleZh": "Fate/strange Fake",
+    "score": 7.3,
+    "votes": 9459,
+    "malId": 55830
+  },
+  {
+    "bangumiId": 424372,
+    "titleZh": "石纪元 新世界 第2部分",
+    "score": 7.4,
+    "votes": 3920,
+    "malId": 55644
+  },
+  {
+    "bangumiId": 426239,
+    "titleZh": "青春猪头少年不会梦到红书包女孩",
+    "score": 6.9,
+    "votes": 4643,
+    "malId": 54870
+  },
+  {
+    "bangumiId": 331751,
+    "titleZh": "IDOLiSH7-偶像星愿- Third BEAT! 第2部分",
+    "score": 7.3,
+    "votes": 157,
+    "malId": 46654
+  },
+  {
+    "bangumiId": 309002,
+    "titleZh": "银魂 THE SEMI-FINAL",
+    "score": 7.2,
+    "votes": 587,
+    "malId": 44087
+  },
+  {
+    "bangumiId": 295778,
+    "titleZh": "乔西的虎与鱼",
+    "score": 6.7,
+    "votes": 3089,
+    "malId": 40787
+  },
+  {
+    "bangumiId": 278031,
+    "titleZh": "关于我转生变成史莱姆这档事 第二季",
+    "score": 6.1,
+    "votes": 8028,
+    "malId": 39551
+  },
+  {
+    "bangumiId": 113292,
+    "titleZh": "JOJO的奇妙冒险 星尘斗士 埃及篇",
+    "score": 8.2,
+    "votes": 17842,
+    "malId": 26055
+  },
+  {
+    "bangumiId": 2889,
+    "titleZh": "棒球大联盟 第五季",
+    "score": 7.5,
+    "votes": 225,
+    "malId": 5028
+  },
+  {
+    "bangumiId": 1453,
+    "titleZh": "少女革命",
+    "score": 8.4,
+    "votes": 5627,
+    "malId": 440
+  },
+  {
+    "bangumiId": 8803,
+    "titleZh": "幽游白书",
+    "score": 7.7,
+    "votes": 1986,
+    "malId": 392
+  },
+  {
+    "bangumiId": 208827,
+    "titleZh": "少女与战车 最终章 第4话",
+    "score": 7.8,
+    "votes": 1812,
+    "malId": 39167
+  },
+  {
+    "bangumiId": 1671,
+    "titleZh": "化物语",
+    "score": 8.4,
+    "votes": 24769,
+    "malId": 5081
+  },
+  {
+    "bangumiId": 515856,
+    "titleZh": "杖与剑的魔剑谭 第二季",
+    "score": 6.2,
+    "votes": 2110,
+    "malId": 59983
+  },
+  {
+    "bangumiId": 471578,
+    "titleZh": "石纪元 科学与未来",
+    "score": 7.3,
+    "votes": 3070,
+    "malId": 57592
+  },
+  {
+    "bangumiId": 277954,
+    "titleZh": "我的青春恋爱物语果然有问题 完",
+    "score": 6.7,
+    "votes": 12128,
+    "malId": 39547
+  },
+  {
+    "bangumiId": 569116,
+    "titleZh": "碧蓝之海 第三季",
+    "score": 7.3,
+    "votes": 457,
+    "malId": 62542
+  },
+  {
+    "bangumiId": 443106,
+    "titleZh": "黄金神威 最终章",
+    "score": 7.6,
+    "votes": 1027,
+    "malId": 55772
+  },
+  {
+    "bangumiId": 342667,
+    "titleZh": "为美好的世界献上祝福！第三季",
+    "score": 7.7,
+    "votes": 13446,
+    "malId": 49458
+  },
+  {
+    "bangumiId": 267615,
+    "titleZh": "钻石王牌 act2",
+    "score": 7.4,
+    "votes": 601,
+    "malId": 38731
+  },
+  {
+    "bangumiId": 235130,
+    "titleZh": "碧蓝之海",
+    "score": 7.9,
+    "votes": 17942,
+    "malId": 37105
+  },
+  {
+    "bangumiId": 227392,
+    "titleZh": "剧场版 夏目友人帐 ～缘结空蝉～",
+    "score": 7.3,
+    "votes": 1775,
+    "malId": 36538
+  },
+  {
+    "bangumiId": 324,
+    "titleZh": "攻壳机动队 STAND ALONE COMPLEX",
+    "score": 9.1,
+    "votes": 11357,
+    "malId": 467
+  },
+  {
+    "bangumiId": 514353,
+    "titleZh": "小林家的龙女仆 怕寂寞的龙",
+    "score": 6.6,
+    "votes": 3411,
+    "malId": 59897
+  },
+  {
+    "bangumiId": 498947,
+    "titleZh": "咔嗒咔嗒",
+    "score": 6.2,
+    "votes": 1626,
+    "malId": 59062
+  },
+  {
+    "bangumiId": 170689,
+    "titleZh": "战姬绝唱SYMPHOGEAR XV",
+    "score": 7.3,
+    "votes": 990,
+    "malId": 32843
+  },
+  {
+    "bangumiId": 860,
+    "titleZh": "星际牛仔 天国之扉",
+    "score": 8.2,
+    "votes": 7129,
+    "malId": 5
+  },
+  {
+    "bangumiId": 535669,
+    "titleZh": "冰之城墙",
+    "score": 7.1,
+    "votes": 2320,
+    "malId": 60852
+  },
+  {
+    "bangumiId": 491930,
+    "titleZh": "伍六七之记忆碎片",
+    "score": 6,
+    "votes": 1432,
+    "malId": 59150
+  },
+  {
+    "bangumiId": 428735,
+    "titleZh": "BanG Dream! It's MyGO!!!!!",
+    "score": 7.9,
+    "votes": 31185,
+    "malId": 54959
+  },
+  {
+    "bangumiId": 322967,
+    "titleZh": "境界触发者 第三季",
+    "score": 8,
+    "votes": 962,
+    "malId": 44940
+  },
+  {
+    "bangumiId": 199423,
+    "titleZh": "魔道祖师 前尘篇",
+    "score": 6.8,
+    "votes": 654,
+    "malId": 37208
+  },
+  {
+    "bangumiId": 218971,
+    "titleZh": "朝花夕誓——于离别之朝束起约定之花",
+    "score": 7.5,
+    "votes": 9258,
+    "malId": 35851
+  },
+  {
+    "bangumiId": 498378,
+    "titleZh": "间谍过家家 第三季",
+    "score": 7.3,
+    "votes": 5584,
+    "malId": 59027
+  },
+  {
+    "bangumiId": 407515,
+    "titleZh": "名侦探柯南 黑铁的鱼影",
+    "score": 6.7,
+    "votes": 3568,
+    "malId": 53540
+  },
+  {
+    "bangumiId": 347887,
+    "titleZh": "擅长捉弄的高木同学 第三季",
+    "score": 8,
+    "votes": 8236,
+    "malId": 49721
+  },
+  {
+    "bangumiId": 266455,
+    "titleZh": "水果篮子 第一季",
+    "score": 7,
+    "votes": 1613,
+    "malId": 38680
+  },
+  {
+    "bangumiId": 419846,
+    "titleZh": "想要成为影之实力者！ 第二季",
+    "score": 7.3,
+    "votes": 10361,
+    "malId": 54595
+  },
+  {
+    "bangumiId": 83868,
+    "titleZh": "元气囝仔",
+    "score": 7.7,
+    "votes": 5041,
+    "malId": 22789
+  },
+  {
+    "bangumiId": 995,
+    "titleZh": "欢迎加入NHK！",
+    "score": 8.2,
+    "votes": 8968,
+    "malId": 1210
+  },
+  {
+    "bangumiId": 277554,
+    "titleZh": "无职转生～到了异世界就拿出真本事～",
+    "score": 7.9,
+    "votes": 26054,
+    "malId": 39535
+  },
+  {
+    "bangumiId": 109386,
+    "titleZh": "Fate/stay night [Unlimited Blade Works] 第二季",
+    "score": 7.5,
+    "votes": 18658,
+    "malId": 28701
+  },
+  {
+    "bangumiId": 12317,
+    "titleZh": "赌博默示录 破戒录篇",
+    "score": 7.8,
+    "votes": 4604,
+    "malId": 10271
+  },
+  {
+    "bangumiId": 403430,
+    "titleZh": "伍六七之暗影宿命",
+    "score": 6.1,
+    "votes": 2049,
+    "malId": 54029
+  },
+  {
+    "bangumiId": 353181,
+    "titleZh": "佐贺偶像是传奇 梦想银河乐园",
+    "score": 7.9,
+    "votes": 2112,
+    "malId": 50159
+  },
+  {
+    "bangumiId": 316007,
+    "titleZh": "GOTCHA！",
+    "score": 7.9,
+    "votes": 862,
+    "malId": 42984
+  },
+  {
+    "bangumiId": 109724,
+    "titleZh": "元气少女缘结神◎",
+    "score": 7.1,
+    "votes": 2479,
+    "malId": 25681
+  },
+  {
+    "bangumiId": 2496,
+    "titleZh": "物怪",
+    "score": 8.2,
+    "votes": 4264,
+    "malId": 2246
+  },
+  {
+    "bangumiId": 4293,
+    "titleZh": "棒球大联盟 第六季",
+    "score": 7.5,
+    "votes": 227,
+    "malId": 7655
+  },
+  {
+    "bangumiId": 3892,
+    "titleZh": "赌博默示录",
+    "score": 7.9,
+    "votes": 6680,
+    "malId": 3002
+  },
+  {
+    "bangumiId": 444334,
+    "titleZh": "指尖相触，恋恋不舍",
+    "score": 6.5,
+    "votes": 1107,
+    "malId": 55866
+  },
+  {
+    "bangumiId": 285813,
+    "titleZh": "大欺诈师",
+    "score": 7.2,
+    "votes": 4316,
+    "malId": 40052
+  },
+  {
+    "bangumiId": 266794,
+    "titleZh": "石纪元",
+    "score": 7.2,
+    "votes": 9051,
+    "malId": 38691
+  },
+  {
+    "bangumiId": 218707,
+    "titleZh": "少女终末旅行",
+    "score": 8.1,
+    "votes": 16807,
+    "malId": 35838
+  },
+  {
+    "bangumiId": 128239,
+    "titleZh": "同级生",
+    "score": 7.5,
+    "votes": 1331,
+    "malId": 30346
+  },
+  {
+    "bangumiId": 110467,
+    "titleZh": "白箱",
+    "score": 8.7,
+    "votes": 23115,
+    "malId": 25835
+  },
+  {
+    "bangumiId": 88433,
+    "titleZh": "寄生兽 生命的准则",
+    "score": 8,
+    "votes": 16569,
+    "malId": 22535
+  },
+  {
+    "bangumiId": 37685,
+    "titleZh": "心理测量者",
+    "score": 7.9,
+    "votes": 14577,
+    "malId": 13601
+  },
+  {
+    "bangumiId": 3471,
+    "titleZh": "刀语",
+    "score": 7.6,
+    "votes": 4409,
+    "malId": 6594
+  },
+  {
+    "bangumiId": 1443,
+    "titleZh": "四叶游戏",
+    "score": 8.1,
+    "votes": 1450,
+    "malId": 5941
+  },
+  {
+    "bangumiId": 840,
+    "titleZh": "千年女优",
+    "score": 8.7,
+    "votes": 12799,
+    "malId": 1033
+  },
+  {
+    "bangumiId": 842,
+    "titleZh": "东京教父",
+    "score": 8.3,
+    "votes": 8381,
+    "malId": 759
+  },
+  {
+    "bangumiId": 12579,
+    "titleZh": "凡尔赛玫瑰",
+    "score": 7.8,
+    "votes": 512,
+    "malId": 338
+  },
+  {
+    "bangumiId": 404804,
+    "titleZh": "天国大魔境",
+    "score": 7.7,
+    "votes": 14960,
+    "malId": 53393
+  },
+  {
+    "bangumiId": 394623,
+    "titleZh": "怪兽8号",
+    "score": 6.1,
+    "votes": 5556,
+    "malId": 52588
+  },
+  {
+    "bangumiId": 373267,
+    "titleZh": "间谍过家家 第2部分",
+    "score": 7.3,
+    "votes": 14560,
+    "malId": 50602
+  },
+  {
+    "bangumiId": 362577,
+    "titleZh": "铃芽之旅",
+    "score": 6.6,
+    "votes": 15155,
+    "malId": 50594
+  },
+  {
+    "bangumiId": 312658,
+    "titleZh": "雾山五行 犀川幻紫林",
+    "score": 7.6,
+    "votes": 2549,
+    "malId": 50407
+  },
+  {
+    "bangumiId": 254762,
+    "titleZh": "文豪野犬 第三季",
+    "score": 6.8,
+    "votes": 3105,
+    "malId": 38003
+  },
+  {
+    "bangumiId": 207195,
+    "titleZh": "摇曳露营△",
+    "score": 8.2,
+    "votes": 17329,
+    "malId": 34798
+  },
+  {
+    "bangumiId": 137722,
+    "titleZh": "只有我不存在的城市",
+    "score": 7.6,
+    "votes": 14419,
+    "malId": 31043
+  },
+  {
+    "bangumiId": 22588,
+    "titleZh": "爆漫王。2",
+    "score": 8.1,
+    "votes": 5359,
+    "malId": 10030
+  },
+  {
+    "bangumiId": 1512,
+    "titleZh": "狼与香辛料 第二季",
+    "score": 7.8,
+    "votes": 8414,
+    "malId": 5341
+  },
+  {
+    "bangumiId": 297954,
+    "titleZh": "致不灭的你",
+    "score": 6.6,
+    "votes": 5636,
+    "malId": 41025
+  },
+  {
+    "bangumiId": 277436,
+    "titleZh": "伍六七之最强发型师",
+    "score": 7.2,
+    "votes": 4670,
+    "malId": 40784
+  },
+  {
+    "bangumiId": 269235,
+    "titleZh": "天气之子",
+    "score": 7.1,
+    "votes": 18971,
+    "malId": 38826
+  },
+  {
+    "bangumiId": 295,
+    "titleZh": "风之谷",
+    "score": 8.3,
+    "votes": 8893,
+    "malId": 572
+  },
+  {
+    "bangumiId": 305,
+    "titleZh": "魔女宅急便",
+    "score": 7.8,
+    "votes": 6592,
+    "malId": 512
+  },
+  {
+    "bangumiId": 135196,
+    "titleZh": "第一神拳 间柴vs木村 死刑执行",
+    "score": 7.5,
+    "votes": 63,
+    "malId": 265
+  },
+  {
+    "bangumiId": 345980,
+    "titleZh": "四叠半时光机布鲁斯",
+    "score": 7.7,
+    "votes": 4228,
+    "malId": 49590
+  },
+  {
+    "bangumiId": 323960,
+    "titleZh": "IDOLiSH7-偶像星愿- Third BEAT!",
+    "score": 7.1,
+    "votes": 186,
+    "malId": 45577
+  },
+  {
+    "bangumiId": 215618,
+    "titleZh": "剧场版 悠哉日常大王 Vacation",
+    "score": 8,
+    "votes": 4323,
+    "malId": 36990
+  },
+  {
+    "bangumiId": 140001,
+    "titleZh": "Re：从零开始的异世界生活",
+    "score": 7.5,
+    "votes": 24182,
+    "malId": 31240
+  },
+  {
+    "bangumiId": 72266,
+    "titleZh": "少女与战车 剧场版",
+    "score": 8.3,
+    "votes": 6980,
+    "malId": 18617
+  },
+  {
+    "bangumiId": 62680,
+    "titleZh": "机动战士高达 THE ORIGIN",
+    "score": 7.9,
+    "votes": 3324,
+    "malId": 10937
+  },
+  {
+    "bangumiId": 10404,
+    "titleZh": "明日之丈",
+    "score": 8.1,
+    "votes": 920,
+    "malId": 2402
+  },
+  {
+    "bangumiId": 339515,
+    "titleZh": "幼女战记 第二季",
+    "score": 7.2,
+    "votes": 311,
+    "malId": 49233
+  },
+  {
+    "bangumiId": 56847,
+    "titleZh": "辉夜姬物语",
+    "score": 8.1,
+    "votes": 3380,
+    "malId": 16664
+  },
+  {
+    "bangumiId": 3302,
+    "titleZh": "福音战士新剧场版：破",
+    "score": 8.4,
+    "votes": 17916,
+    "malId": 3784
+  },
+  {
+    "bangumiId": 500,
+    "titleZh": "侧耳倾听",
+    "score": 7.9,
+    "votes": 4692,
+    "malId": 585
+  },
+  {
+    "bangumiId": 638497,
+    "titleZh": "相反的你和我 第二季",
+    "score": 7.5,
+    "votes": 605,
+    "malId": 63832
+  },
+  {
+    "bangumiId": 211523,
+    "titleZh": "排球少年 观念之战",
+    "score": 7.4,
+    "votes": 446,
+    "malId": 35111
+  },
+  {
+    "bangumiId": 329114,
+    "titleZh": "想要成为影之实力者！",
+    "score": 7.1,
+    "votes": 13474,
+    "malId": 48316
+  },
+  {
+    "bangumiId": 240287,
+    "titleZh": "龙珠超 布罗利",
+    "score": 7.4,
+    "votes": 2134,
+    "malId": 36946
+  },
+  {
+    "bangumiId": 148389,
+    "titleZh": "黑执事 豪华客船篇",
+    "score": 7,
+    "votes": 812,
+    "malId": 31812
+  },
+  {
+    "bangumiId": 84501,
+    "titleZh": "夏目友人帐 曾几何时下雪之日",
+    "score": 7.6,
+    "votes": 2091,
+    "malId": 20651
+  },
+  {
+    "bangumiId": 10843,
+    "titleZh": "白兔糖",
+    "score": 8,
+    "votes": 8634,
+    "malId": 10162
+  },
+  {
+    "bangumiId": 8726,
+    "titleZh": "红线",
+    "score": 7.9,
+    "votes": 3569,
+    "malId": 6675
+  },
+  {
+    "bangumiId": 493,
+    "titleZh": "皇家国教骑士团 OVA",
+    "score": 8.2,
+    "votes": 7060,
+    "malId": 777
+  },
+  {
+    "bangumiId": 234771,
+    "titleZh": "剧场版 幼女战记",
+    "score": 7.1,
+    "votes": 3091,
+    "malId": 37055
+  },
+  {
+    "bangumiId": 102134,
+    "titleZh": "我的青春恋爱物语果然有问题 续",
+    "score": 7.4,
+    "votes": 19147,
+    "malId": 23847
+  },
+  {
+    "bangumiId": 101442,
+    "titleZh": "悠哉日常大王 Repeat",
+    "score": 8,
+    "votes": 7505,
+    "malId": 23623
+  },
+  {
+    "bangumiId": 54550,
+    "titleZh": "在这世界的角落",
+    "score": 7.2,
+    "votes": 1894,
+    "malId": 15227
+  },
+  {
+    "bangumiId": 19130,
+    "titleZh": "哆啦A梦：新·大雄与铁人兵团",
+    "score": 7.6,
+    "votes": 1285,
+    "malId": 10534
+  },
+  {
+    "bangumiId": 1940,
+    "titleZh": "魔卡少女樱",
+    "score": 8.2,
+    "votes": 11196,
+    "malId": 232
+  },
+  {
+    "bangumiId": 508455,
+    "titleZh": "加油吧！中村君！！",
+    "score": 7.3,
+    "votes": 797,
+    "malId": 59551
+  },
+  {
+    "bangumiId": 394260,
+    "titleZh": "我心里危险的东西",
+    "score": 7.8,
+    "votes": 15677,
+    "malId": 52578
+  },
+  {
+    "bangumiId": 208826,
+    "titleZh": "少女与战车 最终章 第3话",
+    "score": 7.7,
+    "votes": 2127,
+    "malId": 39166
+  },
+  {
+    "bangumiId": 294836,
+    "titleZh": "NOMAD MEGALO BOX 2",
+    "score": 8,
+    "votes": 5467,
+    "malId": 40729
+  },
+  {
+    "bangumiId": 240038,
+    "titleZh": "青春猪头少年不会梦到兔女郎学姐",
+    "score": 7.4,
+    "votes": 24416,
+    "malId": 37450
+  },
+  {
+    "bangumiId": 213816,
+    "titleZh": "ReLIFE 完结篇",
+    "score": 7.7,
+    "votes": 8974,
+    "malId": 35466
+  },
+  {
+    "bangumiId": 192732,
+    "titleZh": "名侦探柯南 Episode“ONE” 变小的名侦探",
+    "score": 6.8,
+    "votes": 1221,
+    "malId": 34036
+  },
+  {
+    "bangumiId": 174043,
+    "titleZh": "为美好的世界献上祝福！ 第二季",
+    "score": 7.7,
+    "votes": 18937,
+    "malId": 32937
+  },
+  {
+    "bangumiId": 1942,
+    "titleZh": "魔卡少女樱 被封印的卡片",
+    "score": 7.9,
+    "votes": 3468,
+    "malId": 372
+  },
+  {
+    "bangumiId": 77646,
+    "titleZh": "天方魔谭MAGI 第二季",
+    "score": 7.2,
+    "votes": 2055,
+    "malId": 18115
+  },
+  {
+    "bangumiId": 2785,
+    "titleZh": "犬夜叉 完结篇",
+    "score": 7.6,
+    "votes": 2863,
+    "malId": 6811
+  },
+  {
+    "bangumiId": 302,
+    "titleZh": "龙猫",
+    "score": 8.2,
+    "votes": 12912,
+    "malId": 523
+  },
+  {
+    "bangumiId": 161710,
+    "titleZh": "银魂 爱染香篇",
+    "score": 7.3,
+    "votes": 797,
+    "malId": 32366
+  },
+  {
+    "bangumiId": 54552,
+    "titleZh": "宇宙战舰大和号2199",
+    "score": 7.9,
+    "votes": 1873,
+    "malId": 12029
+  },
+  {
+    "bangumiId": 30141,
+    "titleZh": "棒球大联盟OVA World Series篇",
+    "score": 7.3,
+    "votes": 84,
+    "malId": 11917
+  },
+  {
+    "bangumiId": 29426,
+    "titleZh": "坂道上的阿波罗",
+    "score": 7.5,
+    "votes": 3264,
+    "malId": 12531
+  },
+  {
+    "bangumiId": 259,
+    "titleZh": "夏目友人帐",
+    "score": 8,
+    "votes": 11963,
+    "malId": 4081
+  },
+  {
+    "bangumiId": 9005,
+    "titleZh": "龙珠Z",
+    "score": 8.2,
+    "votes": 4003,
+    "malId": 813
+  },
+  {
+    "bangumiId": 298,
+    "titleZh": "天空之城",
+    "score": 8.5,
+    "votes": 15371,
+    "malId": 513
+  },
+  {
+    "bangumiId": 4035,
+    "titleZh": "摇滚新乐团",
+    "score": 7.7,
+    "votes": 1500,
+    "malId": 57
+  },
+  {
+    "bangumiId": 237,
+    "titleZh": "攻壳机动队",
+    "score": 8.8,
+    "votes": 12731,
+    "malId": 43
+  }
+]

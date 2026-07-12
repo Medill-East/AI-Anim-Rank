@@ -12,3 +12,5 @@ data/ranking/captured/
 data/ranking/candidate-review.json
 data/ranking/unmatched-report.md
 data/ranking/bangumi-suggestions/
+data/ranking/bangumi-resolver/
+data/ranking/bangumi-mappings.json.bak

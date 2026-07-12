@@ -1,6 +1,9212 @@
 {
-  "version": "0.1.0",
-  "methodologyVersion": "0.1.0",
-  "sample": true,
-  "works": []
+  "version": "2026-07-12",
+  "methodologyVersion": "v1-auditable-three-source",
+  "sample": false,
+  "works": [
+    {
+      "workId": "anilist:5114",
+      "rank": 1,
+      "titleZh": "钢之炼金术师 FULLMETAL ALCHEMIST",
+      "titleOriginal": "Hagane no Renkinjutsushi: FULLMETAL ALCHEMIST",
+      "year": 2009,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 89.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 90,
+          "votes": 710505
+        },
+        "mal": {
+          "score": 9.11,
+          "votes": 2326660
+        },
+        "bangumi": {
+          "score": 8.8,
+          "votes": 24679
+        }
+      }
+    },
+    {
+      "workId": "anilist:154587",
+      "rank": 2,
+      "titleZh": "葬送的芙莉莲",
+      "titleOriginal": "Sousou no Frieren",
+      "year": 2023,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 89.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 91,
+          "votes": 456473
+        },
+        "mal": {
+          "score": 9.26,
+          "votes": 911197
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 35505
+        }
+      }
+    },
+    {
+      "workId": "anilist:104578",
+      "rank": 3,
+      "titleZh": "进击的巨人 第三季 Part.2",
+      "titleOriginal": "Shingeki no Kyojin Season 3 Part 2",
+      "year": 2019,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "compositeScore": 89.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 90,
+          "votes": 596853
+        },
+        "mal": {
+          "score": 9.05,
+          "votes": 1809509
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 23134
+        }
+      }
+    },
+    {
+      "workId": "anilist:182469",
+      "rank": 4,
+      "titleZh": "航海王：粉丝来信",
+      "titleOriginal": "ONE PIECE FAN LETTER",
+      "year": 2024,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "compositeScore": 88.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 90,
+          "votes": 55333
+        },
+        "mal": {
+          "score": 9.01,
+          "votes": 115517
+        },
+        "bangumi": {
+          "score": 8.6,
+          "votes": 4207
+        }
+      }
+    },
+    {
+      "workId": "anilist:98478",
+      "rank": 5,
+      "titleZh": "3月的狮子 第二季",
+      "titleOriginal": "3-gatsu no Lion 2nd Season",
+      "year": 2017,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 88.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 89,
+          "votes": 128536
+        },
+        "mal": {
+          "score": 8.9,
+          "votes": 216514
+        },
+        "bangumi": {
+          "score": 8.8,
+          "votes": 10522
+        }
+      }
+    },
+    {
+      "workId": "anilist:820",
+      "rank": 6,
+      "titleZh": "银河英雄传说",
+      "titleOriginal": "Ginga Eiyuu Densetsu",
+      "year": 1988,
+      "studios": [
+        "Kitty Film"
+      ],
+      "genres": [
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 88.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 83170
+        },
+        "mal": {
+          "score": 9.02,
+          "votes": 88618
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 2901
+        }
+      }
+    },
+    {
+      "workId": "anilist:1",
+      "rank": 7,
+      "titleZh": "星际牛仔",
+      "titleOriginal": "Cowboy Bebop",
+      "year": 1998,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 88.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 457201
+        },
+        "mal": {
+          "score": 8.75,
+          "votes": 1068268
+        },
+        "bangumi": {
+          "score": 9.1,
+          "votes": 19336
+        }
+      }
+    },
+    {
+      "workId": "anilist:2921",
+      "rank": 8,
+      "titleZh": "明日之丈2",
+      "titleOriginal": "Ashita no Joe 2",
+      "year": 1980,
+      "studios": [
+        "Tokyo Movie Shinsha"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 87.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 21262
+        },
+        "mal": {
+          "score": 8.81,
+          "votes": 26756
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 892
+        }
+      }
+    },
+    {
+      "workId": "anilist:15417",
+      "rank": 9,
+      "titleZh": "银魂' 延长战",
+      "titleOriginal": "Gintama': Enchousen",
+      "year": 2012,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 87.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 89,
+          "votes": 83104
+        },
+        "mal": {
+          "score": 9.02,
+          "votes": 180367
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 4605
+        }
+      }
+    },
+    {
+      "workId": "anilist:125367",
+      "rank": 10,
+      "titleZh": "辉夜大小姐想让我告白-超级浪漫-",
+      "titleOriginal": "Kaguya-sama wa Kokurasetai: Ultra Romantic",
+      "year": 2022,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Psychological",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 87.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 89,
+          "votes": 284563
+        },
+        "mal": {
+          "score": 8.95,
+          "votes": 643894
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 23168
+        }
+      }
+    },
+    {
+      "workId": "anilist:918",
+      "rank": 11,
+      "titleZh": "银魂",
+      "titleOriginal": "Gintama",
+      "year": 2006,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 87.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 289232
+        },
+        "mal": {
+          "score": 8.93,
+          "votes": 426569
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 13760
+        }
+      }
+    },
+    {
+      "workId": "anilist:801",
+      "rank": 12,
+      "titleZh": "攻壳机动队 S.A.C. 2nd GIG",
+      "titleOriginal": "Koukaku Kidoutai: Stand Alone Complex 2nd GIG",
+      "year": 2004,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Action",
+        "Mystery",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 87.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 43781
+        },
+        "mal": {
+          "score": 8.51,
+          "votes": 109772
+        },
+        "bangumi": {
+          "score": 9.2,
+          "votes": 9949
+        }
+      }
+    },
+    {
+      "workId": "anilist:44",
+      "rank": 13,
+      "titleZh": "浪客剑心 追忆篇",
+      "titleOriginal": "Rurouni Kenshin: Meiji Kenkaku Romantan - Tsuioku-hen",
+      "year": 1999,
+      "studios": [
+        "Studio DEEN"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 86.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 46693
+        },
+        "mal": {
+          "score": 8.69,
+          "votes": 144597
+        },
+        "bangumi": {
+          "score": 8.9,
+          "votes": 9519
+        }
+      }
+    },
+    {
+      "workId": "anilist:199",
+      "rank": 14,
+      "titleZh": "千与千寻",
+      "titleOriginal": "Sen to Chihiro no Kamikakushi",
+      "year": 2001,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 86.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 469752
+        },
+        "mal": {
+          "score": 8.77,
+          "votes": 1420609
+        },
+        "bangumi": {
+          "score": 8.6,
+          "votes": 27163
+        }
+      }
+    },
+    {
+      "workId": "anilist:20607",
+      "rank": 15,
+      "titleZh": "乒乓",
+      "titleOriginal": "Ping Pong THE ANIMATION",
+      "year": 2014,
+      "studios": [
+        "Tatsunoko Production"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sports"
+      ],
+      "compositeScore": 86.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 122617
+        },
+        "mal": {
+          "score": 8.63,
+          "votes": 205855
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 17289
+        }
+      }
+    },
+    {
+      "workId": "anilist:2904",
+      "rank": 16,
+      "titleZh": "Code Geass 反叛的鲁路修R2",
+      "titleOriginal": "Code Geass: Hangyaku no Lelouch R2",
+      "year": 2008,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "compositeScore": 86.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 354460
+        },
+        "mal": {
+          "score": 8.92,
+          "votes": 1307350
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 18466
+        }
+      }
+    },
+    {
+      "workId": "anilist:19",
+      "rank": 17,
+      "titleZh": "怪物",
+      "titleOriginal": "MONSTER",
+      "year": 2004,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 86.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 331111
+        },
+        "mal": {
+          "score": 8.89,
+          "votes": 518589
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 4589
+        }
+      }
+    },
+    {
+      "workId": "anilist:7311",
+      "rank": 18,
+      "titleZh": "凉宫春日的消失",
+      "titleOriginal": "Suzumiya Haruhi no Shoushitsu",
+      "year": 2010,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Sci-Fi",
+        "Supernatural"
+      ],
+      "compositeScore": 86.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 145594
+        },
+        "mal": {
+          "score": 8.59,
+          "votes": 330733
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 24297
+        }
+      }
+    },
+    {
+      "workId": "anilist:21698",
+      "rank": 19,
+      "titleZh": "排球少年 乌野高校 VS 白鸟泽学园高校",
+      "titleOriginal": "Haikyuu!!: Karasuno Koukou VS Shiratorizawa Gakuen Koukou",
+      "year": 2016,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 86.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 355791
+        },
+        "mal": {
+          "score": 8.77,
+          "votes": 879850
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 6599
+        }
+      }
+    },
+    {
+      "workId": "anilist:21745",
+      "rank": 20,
+      "titleZh": "终物语（下）",
+      "titleOriginal": "Owarimonogatari (Ge)",
+      "year": 2017,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Comedy",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 86.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 89,
+          "votes": 121915
+        },
+        "mal": {
+          "score": 8.86,
+          "votes": 211628
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 7994
+        }
+      }
+    },
+    {
+      "workId": "anilist:457",
+      "rank": 21,
+      "titleZh": "虫师",
+      "titleOriginal": "Mushishi",
+      "year": 2005,
+      "studios": [
+        "Artland"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Mystery",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 86.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 190132
+        },
+        "mal": {
+          "score": 8.65,
+          "votes": 299249
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 11753
+        }
+      }
+    },
+    {
+      "workId": "anilist:130003",
+      "rank": 22,
+      "titleZh": "孤独摇滚！",
+      "titleOriginal": "Bocchi the Rock!",
+      "year": 2022,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Comedy",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 86.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 255997
+        },
+        "mal": {
+          "score": 8.73,
+          "votes": 488005
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 40042
+        }
+      }
+    },
+    {
+      "workId": "anilist:177385",
+      "rank": 23,
+      "titleZh": "异国日记",
+      "titleOriginal": "Ikoku Nikki",
+      "year": 2026,
+      "studios": [
+        "Shuka"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 86.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 46767
+        },
+        "mal": {
+          "score": 8.73,
+          "votes": 42837
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 7284
+        }
+      }
+    },
+    {
+      "workId": "anilist:101348",
+      "rank": 24,
+      "titleZh": "冰海战记",
+      "titleOriginal": "VINLAND SAGA",
+      "year": 2019,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "compositeScore": 85.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 528503
+        },
+        "mal": {
+          "score": 8.78,
+          "votes": 1077424
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 13085
+        }
+      }
+    },
+    {
+      "workId": "anilist:437",
+      "rank": 25,
+      "titleZh": "蓝色恐惧",
+      "titleOriginal": "PERFECT BLUE",
+      "year": 1998,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Horror",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 85.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 238639
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 447966
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 11304
+        }
+      }
+    },
+    {
+      "workId": "anilist:17074",
+      "rank": 26,
+      "titleZh": "物语系列 第二季",
+      "titleOriginal": "Monogatari Series: Second Season",
+      "year": 2013,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 85.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 169177
+        },
+        "mal": {
+          "score": 8.76,
+          "votes": 382118
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 13108
+        }
+      }
+    },
+    {
+      "workId": "anilist:21",
+      "rank": 27,
+      "titleZh": "航海王",
+      "titleOriginal": "ONE PIECE",
+      "year": 1999,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 85.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 727528
+        },
+        "mal": {
+          "score": 8.73,
+          "votes": 1544161
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 14572
+        }
+      }
+    },
+    {
+      "workId": "anilist:136430",
+      "rank": 28,
+      "titleZh": "冰海战记 第二季",
+      "titleOriginal": "VINLAND SAGA SEASON 2",
+      "year": 2023,
+      "studios": [
+        "Twin Engine"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "compositeScore": 85.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 264902
+        },
+        "mal": {
+          "score": 8.83,
+          "votes": 496466
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 7984
+        }
+      }
+    },
+    {
+      "workId": "anilist:467",
+      "rank": 29,
+      "titleZh": "攻壳机动队 STAND ALONE COMPLEX",
+      "titleOriginal": "Koukaku Kidoutai: STAND ALONE COMPLEX",
+      "year": 2002,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Action",
+        "Mystery",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 85.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 80387
+        },
+        "mal": {
+          "score": 8.42,
+          "votes": 173240
+        },
+        "bangumi": {
+          "score": 9.1,
+          "votes": 11357
+        }
+      }
+    },
+    {
+      "workId": "anilist:113024",
+      "rank": 30,
+      "titleZh": "剧场版 少女☆歌剧 Revue Starlight",
+      "titleOriginal": "Shoujo☆Kageki Revue Starlight Movie",
+      "year": 2021,
+      "studios": [
+        "Kinema Citrus"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Music",
+        "Psychological"
+      ],
+      "compositeScore": 85.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 20521
+        },
+        "mal": {
+          "score": 8.52,
+          "votes": 11338
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 11045
+        }
+      }
+    },
+    {
+      "workId": "anilist:21400",
+      "rank": 31,
+      "titleZh": "伤物语Ⅲ冷血篇",
+      "titleOriginal": "Kizumonogatari III: Reiketsu-hen",
+      "year": 2017,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Ecchi",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 85.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 145011
+        },
+        "mal": {
+          "score": 8.78,
+          "votes": 300959
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 9372
+        }
+      }
+    },
+    {
+      "workId": "anilist:116674",
+      "rank": 32,
+      "titleZh": "死神 千年血战篇",
+      "titleOriginal": "BLEACH: Sennen Kessen-hen",
+      "year": 2022,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Supernatural"
+      ],
+      "compositeScore": 85.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 197388
+        },
+        "mal": {
+          "score": 8.98,
+          "votes": 389085
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 4656
+        }
+      }
+    },
+    {
+      "workId": "anilist:2001",
+      "rank": 33,
+      "titleZh": "天元突破 红莲螺岩",
+      "titleOriginal": "Tengen Toppa Gurren Lagann",
+      "year": 2007,
+      "studios": [
+        "Gainax"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Mecha",
+        "Romance",
+        "Sci-Fi"
+      ],
+      "compositeScore": 85.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 369526
+        },
+        "mal": {
+          "score": 8.65,
+          "votes": 983465
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 16415
+        }
+      }
+    },
+    {
+      "workId": "anilist:7785",
+      "rank": 34,
+      "titleZh": "四叠半神话大系",
+      "titleOriginal": "Yojouhan Shinwa Taikei",
+      "year": 2010,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Comedy",
+        "Mystery",
+        "Psychological",
+        "Romance"
+      ],
+      "compositeScore": 85.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 146005
+        },
+        "mal": {
+          "score": 8.55,
+          "votes": 157614
+        },
+        "bangumi": {
+          "score": 8.6,
+          "votes": 15339
+        }
+      }
+    },
+    {
+      "workId": "anilist:128547",
+      "rank": 35,
+      "titleZh": "奇巧计程车",
+      "titleOriginal": "Odd Taxi",
+      "year": 2021,
+      "studios": [
+        "OLM"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 85.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 146713
+        },
+        "mal": {
+          "score": 8.63,
+          "votes": 253283
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 21515
+        }
+      }
+    },
+    {
+      "workId": "anilist:140439",
+      "rank": 36,
+      "titleZh": "灵能百分百 第三季",
+      "titleOriginal": "Mob Psycho 100 III",
+      "year": 2022,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 85.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 256357
+        },
+        "mal": {
+          "score": 8.72,
+          "votes": 454750
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 11766
+        }
+      }
+    },
+    {
+      "workId": "anilist:101338",
+      "rank": 37,
+      "titleZh": "灵能百分百 第二季",
+      "titleOriginal": "Mob Psycho 100 II",
+      "year": 2019,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 85.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 439488
+        },
+        "mal": {
+          "score": 8.78,
+          "votes": 1099047
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 15087
+        }
+      }
+    },
+    {
+      "workId": "anilist:166216",
+      "rank": 38,
+      "titleZh": "我心里危险的东西 第二季",
+      "titleOriginal": "Boku no Kokoro no Yabai Yatsu 2nd Season",
+      "year": 2024,
+      "studios": [
+        "Shin-Ei Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 85.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 100159
+        },
+        "mal": {
+          "score": 8.68,
+          "votes": 181578
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 13744
+        }
+      }
+    },
+    {
+      "workId": "anilist:164",
+      "rank": 39,
+      "titleZh": "幽灵公主",
+      "titleOriginal": "Mononoke-hime",
+      "year": 1997,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 85.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 295243
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 893418
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 12377
+        }
+      }
+    },
+    {
+      "workId": "anilist:178789",
+      "rank": 40,
+      "titleZh": "无职转生 第三季 ～到了异世界就拿出真本事～",
+      "titleOriginal": "Mushoku Tensei III: Isekai Ittara Honki Dasu",
+      "year": 2026,
+      "studios": [
+        "Studio Bind"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Ecchi",
+        "Fantasy"
+      ],
+      "compositeScore": 85.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 114960
+        },
+        "mal": {
+          "score": 8.96,
+          "votes": 22428
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 1925
+        }
+      }
+    },
+    {
+      "workId": "anilist:99147",
+      "rank": 41,
+      "titleZh": "进击的巨人 第三季",
+      "titleOriginal": "Shingeki no Kyojin Season 3",
+      "year": 2018,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "compositeScore": 85.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 670244
+        },
+        "mal": {
+          "score": 8.65,
+          "votes": 1826739
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 20640
+        }
+      }
+    },
+    {
+      "workId": "anilist:21519",
+      "rank": 42,
+      "titleZh": "你的名字。",
+      "titleOriginal": "Kimi no Na wa.",
+      "year": 2016,
+      "studios": [
+        "CoMix Wave"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 85.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 696083
+        },
+        "mal": {
+          "score": 8.82,
+          "votes": 2096751
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 34257
+        }
+      }
+    },
+    {
+      "workId": "anilist:1575",
+      "rank": 43,
+      "titleZh": "Code Geass 反叛的鲁路修",
+      "titleOriginal": "Code Geass: Hangyaku no Lelouch",
+      "year": 2006,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "compositeScore": 85.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 486185
+        },
+        "mal": {
+          "score": 8.71,
+          "votes": 1533220
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 22120
+        }
+      }
+    },
+    {
+      "workId": "anilist:15335",
+      "rank": 44,
+      "titleZh": "银魂剧场版 完结篇 万事屋永不落",
+      "titleOriginal": "Gintama: Kanketsu-hen - Yorozuya yo Eien Nare",
+      "year": 2013,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 54705
+        },
+        "mal": {
+          "score": 8.89,
+          "votes": 145339
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 3659
+        }
+      }
+    },
+    {
+      "workId": "anilist:3786",
+      "rank": 45,
+      "titleZh": "新・福音战士剧场版：终",
+      "titleOriginal": "Shin Evangelion Movie:||",
+      "year": 2021,
+      "studios": [
+        "Studio Khara"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 114865
+        },
+        "mal": {
+          "score": 8.58,
+          "votes": 195125
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 14596
+        }
+      }
+    },
+    {
+      "workId": "anilist:131586",
+      "rank": 46,
+      "titleZh": "86 -不存在的战区- 第2部分",
+      "titleOriginal": "86: Eighty Six Part 2",
+      "year": 2021,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 189744
+        },
+        "mal": {
+          "score": 8.73,
+          "votes": 381962
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 15364
+        }
+      }
+    },
+    {
+      "workId": "anilist:205",
+      "rank": 47,
+      "titleZh": "混沌武士",
+      "titleOriginal": "Samurai Champloo",
+      "year": 2004,
+      "studios": [
+        "Manglobe"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "compositeScore": 84.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 274177
+        },
+        "mal": {
+          "score": 8.52,
+          "votes": 689957
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 11156
+        }
+      }
+    },
+    {
+      "workId": "anilist:1535",
+      "rank": 48,
+      "titleZh": "死亡笔记",
+      "titleOriginal": "DEATH NOTE",
+      "year": 2006,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Mystery",
+        "Psychological",
+        "Supernatural",
+        "Thriller"
+      ],
+      "compositeScore": 84.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 935682
+        },
+        "mal": {
+          "score": 8.62,
+          "votes": 3027344
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 25438
+        }
+      }
+    },
+    {
+      "workId": "anilist:20992",
+      "rank": 49,
+      "titleZh": "排球少年 第二季",
+      "titleOriginal": "Haikyuu!! 2nd Season",
+      "year": 2015,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 84.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 391451
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 1033959
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 7202
+        }
+      }
+    },
+    {
+      "workId": "anilist:114745",
+      "rank": 50,
+      "titleZh": "来自深渊 烈日的黄金乡",
+      "titleOriginal": "Made in Abyss: Retsujitsu no Ougonkyou",
+      "year": 2022,
+      "studios": [
+        "KADOKAWA"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 152021
+        },
+        "mal": {
+          "score": 8.59,
+          "votes": 264745
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 13498
+        }
+      }
+    },
+    {
+      "workId": "anilist:30",
+      "rank": 51,
+      "titleZh": "新世纪福音战士",
+      "titleOriginal": "Shin Seiki Evangelion",
+      "year": 1995,
+      "studios": [
+        "Gainax"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Mystery",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 480863
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 1224246
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 33847
+        }
+      }
+    },
+    {
+      "workId": "anilist:114129",
+      "rank": 52,
+      "titleZh": "银魂 THE FINAL",
+      "titleOriginal": "Gintama: THE FINAL",
+      "year": 2021,
+      "studios": [
+        "Bandai Namco Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 91,
+          "votes": 54075
+        },
+        "mal": {
+          "score": 9.05,
+          "votes": 88047
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 888
+        }
+      }
+    },
+    {
+      "workId": "anilist:9756",
+      "rank": 53,
+      "titleZh": "魔法少女小圆",
+      "titleOriginal": "Mahou Shoujo Madoka☆Magica",
+      "year": 2011,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mahou Shoujo",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 84.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 318553
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 823213
+        },
+        "bangumi": {
+          "score": 8.6,
+          "votes": 38247
+        }
+      }
+    },
+    {
+      "workId": "anilist:10165",
+      "rank": 54,
+      "titleZh": "日常",
+      "titleOriginal": "Nichijou",
+      "year": 2011,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 84.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 236305
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 403616
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 25266
+        }
+      }
+    },
+    {
+      "workId": "anilist:16498",
+      "rank": 55,
+      "titleZh": "进击的巨人",
+      "titleOriginal": "Shingeki no Kyojin",
+      "year": 2013,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "compositeScore": 84.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 1026381
+        },
+        "mal": {
+          "score": 8.57,
+          "votes": 3089065
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 31068
+        }
+      }
+    },
+    {
+      "workId": "anilist:97986",
+      "rank": 56,
+      "titleZh": "来自深渊",
+      "titleOriginal": "Made in Abyss",
+      "year": 2017,
+      "studios": [
+        "Kinema Citrus"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Sci-Fi"
+      ],
+      "compositeScore": 84.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 396423
+        },
+        "mal": {
+          "score": 8.62,
+          "votes": 843150
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 18935
+        }
+      }
+    },
+    {
+      "workId": "anilist:176301",
+      "rank": 57,
+      "titleZh": "药屋少女的呢喃 第二季",
+      "titleOriginal": "Kusuriya no Hitorigoto 2nd Season",
+      "year": 2025,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "compositeScore": 84.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 191347
+        },
+        "mal": {
+          "score": 8.91,
+          "votes": 277139
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 6961
+        }
+      }
+    },
+    {
+      "workId": "anilist:104459",
+      "rank": 58,
+      "titleZh": "摇曳露营△ 第二季",
+      "titleOriginal": "Yuru Camp△ SEASON 2",
+      "year": 2021,
+      "studios": [
+        "C-Station"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 84,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 77715
+        },
+        "mal": {
+          "score": 8.5,
+          "votes": 114369
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 12322
+        }
+      }
+    },
+    {
+      "workId": "anilist:110277",
+      "rank": 59,
+      "titleZh": "进击的巨人 最终季",
+      "titleOriginal": "Shingeki no Kyojin: The Final Season",
+      "year": 2021,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "compositeScore": 83.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 627230
+        },
+        "mal": {
+          "score": 8.79,
+          "votes": 1537699
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 15169
+        }
+      }
+    },
+    {
+      "workId": "anilist:21008",
+      "rank": 60,
+      "titleZh": "虫师 特别篇 铃之雫",
+      "titleOriginal": "Mushishi Tokubetsu-hen: Suzu no Shizuku",
+      "year": 2015,
+      "studios": [
+        "Artland"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Mystery",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 83.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 31674
+        },
+        "mal": {
+          "score": 8.58,
+          "votes": 56412
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 2489
+        }
+      }
+    },
+    {
+      "workId": "anilist:9617",
+      "rank": 61,
+      "titleZh": "轻音少女 剧场版",
+      "titleOriginal": "K-ON! Movie",
+      "year": 2011,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 88134
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 210654
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 16590
+        }
+      }
+    },
+    {
+      "workId": "anilist:182255",
+      "rank": 62,
+      "titleZh": "葬送的芙莉莲 第二季",
+      "titleOriginal": "Sousou no Frieren 2nd Season",
+      "year": 2026,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 83.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 208758
+        },
+        "mal": {
+          "score": 8.86,
+          "votes": 265935
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 11569
+        }
+      }
+    },
+    {
+      "workId": "anilist:21460",
+      "rank": 63,
+      "titleZh": "吹响吧！上低音号 第二季",
+      "titleOriginal": "Hibike! Euphonium 2",
+      "year": 2016,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 76487
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 137195
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 17807
+        }
+      }
+    },
+    {
+      "workId": "anilist:113108",
+      "rank": 64,
+      "titleZh": "王者天下 第三季",
+      "titleOriginal": "Kingdom 3rd Season",
+      "year": 2020,
+      "studios": [
+        "Studio Signpost"
+      ],
+      "genres": [
+        "Action"
+      ],
+      "compositeScore": 83.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 25983
+        },
+        "mal": {
+          "score": 8.85,
+          "votes": 56632
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 424
+        }
+      }
+    },
+    {
+      "workId": "anilist:161645",
+      "rank": 65,
+      "titleZh": "药屋少女的呢喃",
+      "titleOriginal": "Kusuriya no Hitorigoto",
+      "year": 2023,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "compositeScore": 83.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 306838
+        },
+        "mal": {
+          "score": 8.85,
+          "votes": 491126
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 11372
+        }
+      }
+    },
+    {
+      "workId": "anilist:136",
+      "rank": 66,
+      "titleZh": "猎人",
+      "titleOriginal": "HUNTER×HUNTER",
+      "year": 1999,
+      "studios": [
+        "Nippon Animation"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "compositeScore": 83.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 131247
+        },
+        "mal": {
+          "score": 8.44,
+          "votes": 316600
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 5751
+        }
+      }
+    },
+    {
+      "workId": "anilist:20958",
+      "rank": 67,
+      "titleZh": "进击的巨人 第二季",
+      "titleOriginal": "Shingeki no Kyojin Season 2",
+      "year": 2017,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "compositeScore": 83.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 716788
+        },
+        "mal": {
+          "score": 8.54,
+          "votes": 2080826
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 21704
+        }
+      }
+    },
+    {
+      "workId": "anilist:11665",
+      "rank": 68,
+      "titleZh": "夏目友人帐 肆",
+      "titleOriginal": "Natsume Yuujinchou Shi",
+      "year": 2012,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 83.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 48404
+        },
+        "mal": {
+          "score": 8.63,
+          "votes": 118074
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 6640
+        }
+      }
+    },
+    {
+      "workId": "anilist:100178",
+      "rank": 69,
+      "titleZh": "莉兹与青鸟",
+      "titleOriginal": "Liz to Aoi Tori",
+      "year": 2018,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 71123
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 67538
+        },
+        "bangumi": {
+          "score": 8.6,
+          "votes": 20099
+        }
+      }
+    },
+    {
+      "workId": "anilist:103047",
+      "rank": 70,
+      "titleZh": "剧场版 紫罗兰永恒花园",
+      "titleOriginal": "Violet Evergarden Movie",
+      "year": 2020,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 195768
+        },
+        "mal": {
+          "score": 8.83,
+          "votes": 345849
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 9150
+        }
+      }
+    },
+    {
+      "workId": "anilist:12365",
+      "rank": 71,
+      "titleZh": "爆漫王。3",
+      "titleOriginal": "Bakuman. 3",
+      "year": 2012,
+      "studios": [
+        "J.C.STAFF"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 58128
+        },
+        "mal": {
+          "score": 8.52,
+          "votes": 204190
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 5116
+        }
+      }
+    },
+    {
+      "workId": "anilist:33",
+      "rank": 72,
+      "titleZh": "剑风传奇",
+      "titleOriginal": "Kenpuu Denki Berserk",
+      "year": 1997,
+      "studios": [
+        "OLM"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Supernatural"
+      ],
+      "compositeScore": 83.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 178582
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 417256
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 2946
+        }
+      }
+    },
+    {
+      "workId": "anilist:172463",
+      "rank": 73,
+      "titleZh": "咒术回战 死灭回游 前篇",
+      "titleOriginal": "Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen",
+      "year": 2026,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Supernatural"
+      ],
+      "compositeScore": 83.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 238960
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 268383
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 7165
+        }
+      }
+    },
+    {
+      "workId": "anilist:99426",
+      "rank": 74,
+      "titleZh": "比宇宙更远的地方",
+      "titleOriginal": "Sora yori mo Tooi Basho",
+      "year": 2018,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Adventure",
+        "Comedy",
+        "Drama"
+      ],
+      "compositeScore": 83.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 164042
+        },
+        "mal": {
+          "score": 8.5,
+          "votes": 237317
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 15645
+        }
+      }
+    },
+    {
+      "workId": "anilist:128207",
+      "rank": 75,
+      "titleZh": "灌篮高手",
+      "titleOriginal": "THE FIRST SLAM DUNK",
+      "year": 2022,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Sports"
+      ],
+      "compositeScore": 83.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 31269
+        },
+        "mal": {
+          "score": 8.7,
+          "votes": 37153
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 2751
+        }
+      }
+    },
+    {
+      "workId": "anilist:101903",
+      "rank": 76,
+      "titleZh": "强风吹拂",
+      "titleOriginal": "Kaze ga Tsuyoku Fuiteiru",
+      "year": 2018,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 83.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 96327
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 152104
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 10607
+        }
+      }
+    },
+    {
+      "workId": "anilist:102883",
+      "rank": 77,
+      "titleZh": "JOJO的奇妙冒险 黄金之风",
+      "titleOriginal": "JoJo no Kimyou na Bouken: Ougon no Kaze",
+      "year": 2018,
+      "studios": [
+        "david production"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 83.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 292993
+        },
+        "mal": {
+          "score": 8.58,
+          "votes": 795431
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 15650
+        }
+      }
+    },
+    {
+      "workId": "anilist:43",
+      "rank": 78,
+      "titleZh": "攻壳机动队",
+      "titleOriginal": "GHOST IN THE SHELL: Koukaku Kidoutai",
+      "year": 1995,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Action",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 83.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 170900
+        },
+        "mal": {
+          "score": 8.27,
+          "votes": 365178
+        },
+        "bangumi": {
+          "score": 8.8,
+          "votes": 12731
+        }
+      }
+    },
+    {
+      "workId": "anilist:131681",
+      "rank": 79,
+      "titleZh": "进击的巨人 最终季 Part.2",
+      "titleOriginal": "Shingeki no Kyojin: The Final Season Part 2",
+      "year": 2022,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery",
+        "Psychological"
+      ],
+      "compositeScore": 83.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 427490
+        },
+        "mal": {
+          "score": 8.77,
+          "votes": 947921
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 13073
+        }
+      }
+    },
+    {
+      "workId": "anilist:10379",
+      "rank": 80,
+      "titleZh": "夏目友人帐 叁",
+      "titleOriginal": "Natsume Yuujinchou San",
+      "year": 2011,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 83.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 48447
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 127418
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 9082
+        }
+      }
+    },
+    {
+      "workId": "anilist:20812",
+      "rank": 81,
+      "titleZh": "白箱",
+      "titleOriginal": "SHIROBAKO",
+      "year": 2014,
+      "studios": [
+        "P.A.WORKS"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 111217
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 150024
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 23115
+        }
+      }
+    },
+    {
+      "workId": "anilist:21399",
+      "rank": 82,
+      "titleZh": "伤物语Ⅱ热血篇",
+      "titleOriginal": "Kizumonogatari II: Nekketsu-hen",
+      "year": 2016,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Ecchi",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 83.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 140854
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 298802
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 8824
+        }
+      }
+    },
+    {
+      "workId": "anilist:1033",
+      "rank": 83,
+      "titleZh": "千年女优",
+      "titleOriginal": "Sennen Joyuu",
+      "year": 2002,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Romance"
+      ],
+      "compositeScore": 83.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 63671
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 96223
+        },
+        "bangumi": {
+          "score": 8.7,
+          "votes": 12799
+        }
+      }
+    },
+    {
+      "workId": "anilist:20665",
+      "rank": 84,
+      "titleZh": "四月是你的谎言",
+      "titleOriginal": "Shigatsu wa Kimi no Uso",
+      "year": 2014,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 599273
+        },
+        "mal": {
+          "score": 8.64,
+          "votes": 1482163
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 23364
+        }
+      }
+    },
+    {
+      "workId": "anilist:20972",
+      "rank": 85,
+      "titleZh": "昭和元禄落语心中",
+      "titleOriginal": "Shouwa Genroku Rakugo Shinjuu",
+      "year": 2016,
+      "studios": [
+        "Studio DEEN"
+      ],
+      "genres": [
+        "Drama"
+      ],
+      "compositeScore": 83.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 81429
+        },
+        "mal": {
+          "score": 8.54,
+          "votes": 99943
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 3801
+        }
+      }
+    },
+    {
+      "workId": "anilist:20526",
+      "rank": 86,
+      "titleZh": "虫师 特別篇 蚀日之翳",
+      "titleOriginal": "Mushishi: Hihamukage",
+      "year": 2014,
+      "studios": [
+        "Artland"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Mystery",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 83.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 34578
+        },
+        "mal": {
+          "score": 8.53,
+          "votes": 73630
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 3141
+        }
+      }
+    },
+    {
+      "workId": "anilist:124223",
+      "rank": 87,
+      "titleZh": "赛马娘 Pretty Derby 第二季",
+      "titleOriginal": "Uma Musume: Pretty Derby Season 2",
+      "year": 2021,
+      "studios": [
+        "Studio KAI"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 83.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 45336
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 61728
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 17643
+        }
+      }
+    },
+    {
+      "workId": "anilist:112641",
+      "rank": 88,
+      "titleZh": "辉夜大小姐想让我告白?～天才们的恋爱头脑战～",
+      "titleOriginal": "Kaguya-sama wa Kokurasetai?: Tensaitachi no Renai Zunousen",
+      "year": 2020,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Comedy",
+        "Psychological",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 425592
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 967681
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 24433
+        }
+      }
+    },
+    {
+      "workId": "anilist:174788",
+      "rank": 89,
+      "titleZh": "蓦然回首",
+      "titleOriginal": "Look Back",
+      "year": 2024,
+      "studios": [
+        "Studio Durian"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 118297
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 145703
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 12638
+        }
+      }
+    },
+    {
+      "workId": "anilist:100643",
+      "rank": 90,
+      "titleZh": "来自深渊 深沉灵魂的黎明",
+      "titleOriginal": "Made in Abyss: Fukaki Tamashii no Reimei",
+      "year": 2020,
+      "studios": [
+        "Kinema Citrus"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 83.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 159691
+        },
+        "mal": {
+          "score": 8.6,
+          "votes": 308179
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 11024
+        }
+      }
+    },
+    {
+      "workId": "anilist:245",
+      "rank": 91,
+      "titleZh": "麻辣教师GTO",
+      "titleOriginal": "GTO",
+      "year": 1999,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 171720
+        },
+        "mal": {
+          "score": 8.68,
+          "votes": 452608
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 2230
+        }
+      }
+    },
+    {
+      "workId": "anilist:431",
+      "rank": 92,
+      "titleZh": "哈尔的移动城堡",
+      "titleOriginal": "Howl no Ugoku Shiro",
+      "year": 2004,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Romance"
+      ],
+      "compositeScore": 83.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 354634
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 1033105
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 12067
+        }
+      }
+    },
+    {
+      "workId": "anilist:5258",
+      "rank": 93,
+      "titleZh": "第一神拳 New Challenger",
+      "titleOriginal": "Hajime no Ippo: New Challenger",
+      "year": 2009,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 83.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 59805
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 190956
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 248
+        }
+      }
+    },
+    {
+      "workId": "anilist:21366",
+      "rank": 94,
+      "titleZh": "3月的狮子",
+      "titleOriginal": "3-gatsu no Lion",
+      "year": 2016,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 83.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 210309
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 302752
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 11138
+        }
+      }
+    },
+    {
+      "workId": "anilist:201903",
+      "rank": 95,
+      "titleZh": "超时空辉夜姬！",
+      "titleOriginal": "Chou Kaguya-hime!",
+      "year": 2026,
+      "studios": [
+        "Studio Colorido"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Fantasy",
+        "Music",
+        "Sci-Fi"
+      ],
+      "compositeScore": 83.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 54752
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 50662
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 21117
+        }
+      }
+    },
+    {
+      "workId": "anilist:440",
+      "rank": 96,
+      "titleZh": "少女革命",
+      "titleOriginal": "Shoujo Kakumei Utena",
+      "year": 1997,
+      "studios": [
+        "J.C.STAFF"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery",
+        "Psychological",
+        "Romance"
+      ],
+      "compositeScore": 83.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 78905
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 72630
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 5627
+        }
+      }
+    },
+    {
+      "workId": "anilist:20799",
+      "rank": 97,
+      "titleZh": "JOJO的奇妙冒险 星尘斗士 埃及篇",
+      "titleOriginal": "JoJo no Kimyou na Bouken: Stardust Crusaders - Egypt-hen",
+      "year": 2015,
+      "studios": [
+        "david production"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Supernatural"
+      ],
+      "compositeScore": 83.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 284708
+        },
+        "mal": {
+          "score": 8.44,
+          "votes": 893580
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 17842
+        }
+      }
+    },
+    {
+      "workId": "anilist:20464",
+      "rank": 98,
+      "titleZh": "排球少年",
+      "titleOriginal": "Haikyuu!!",
+      "year": 2014,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 83.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 571187
+        },
+        "mal": {
+          "score": 8.43,
+          "votes": 1356597
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 9333
+        }
+      }
+    },
+    {
+      "workId": "anilist:124194",
+      "rank": 99,
+      "titleZh": "水果篮子 最终季",
+      "titleOriginal": "Fruits Basket: The Final",
+      "year": 2021,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 83.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 89,
+          "votes": 173168
+        },
+        "mal": {
+          "score": 8.93,
+          "votes": 283096
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 779
+        }
+      }
+    },
+    {
+      "workId": "anilist:5081",
+      "rank": 100,
+      "titleZh": "化物语",
+      "titleOriginal": "Bakemonogatari",
+      "year": 2009,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 83.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 335425
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 775269
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 24769
+        }
+      }
+    },
+    {
+      "workId": "anilist:12431",
+      "rank": 101,
+      "titleZh": "宇宙兄弟",
+      "titleOriginal": "Uchuu Kyoudai",
+      "year": 2012,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Sci-Fi",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 48596
+        },
+        "mal": {
+          "score": 8.48,
+          "votes": 56068
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 1742
+        }
+      }
+    },
+    {
+      "workId": "anilist:153518",
+      "rank": 102,
+      "titleZh": "迷宫饭",
+      "titleOriginal": "Dungeon Meshi",
+      "year": 2024,
+      "studios": [
+        "TRIGGER"
+      ],
+      "genres": [
+        "Adventure",
+        "Comedy",
+        "Fantasy"
+      ],
+      "compositeScore": 82.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 216655
+        },
+        "mal": {
+          "score": 8.58,
+          "votes": 308917
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 17638
+        }
+      }
+    },
+    {
+      "workId": "anilist:14397",
+      "rank": 103,
+      "titleZh": "歌牌情缘 第二季",
+      "titleOriginal": "Chihayafuru 2",
+      "year": 2013,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 82.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 56492
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 138891
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 4047
+        }
+      }
+    },
+    {
+      "workId": "anilist:12355",
+      "rank": 104,
+      "titleZh": "狼的孩子雨和雪",
+      "titleOriginal": "Ookami Kodomo no Ame to Yuki",
+      "year": 2012,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 190867
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 488117
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 8028
+        }
+      }
+    },
+    {
+      "workId": "anilist:109403",
+      "rank": 105,
+      "titleZh": "悠哉日常大王 Nonstop",
+      "titleOriginal": "Non Non Biyori: Nonstop",
+      "year": 2021,
+      "studios": [
+        "SILVER LINK."
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 40343
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 54352
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 6293
+        }
+      }
+    },
+    {
+      "workId": "anilist:166475",
+      "rank": 106,
+      "titleZh": "罗小黑战记2",
+      "titleOriginal": "Luo Xiaohei Zhan Ji 2",
+      "year": 1,
+      "studios": [
+        "HMCH"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "compositeScore": 82.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 5872
+        },
+        "mal": {
+          "score": 8.65,
+          "votes": 3368
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 3277
+        }
+      }
+    },
+    {
+      "workId": "anilist:172420",
+      "rank": 107,
+      "titleZh": "赛马娘 Pretty Derby 新时代之门",
+      "titleOriginal": "Uma Musume: Pretty Derby - Shin Jidai no Tobira",
+      "year": 2024,
+      "studios": [
+        "CygamesPictures"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 82.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 30291
+        },
+        "mal": {
+          "score": 8.64,
+          "votes": 38450
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 3998
+        }
+      }
+    },
+    {
+      "workId": "anilist:5300",
+      "rank": 108,
+      "titleZh": "续 夏目友人帐",
+      "titleOriginal": "Zoku Natsume Yuujinchou",
+      "year": 2009,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 82.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 50789
+        },
+        "mal": {
+          "score": 8.53,
+          "votes": 134844
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 7958
+        }
+      }
+    },
+    {
+      "workId": "anilist:20954",
+      "rank": 109,
+      "titleZh": "声之形",
+      "titleOriginal": "Koe no Katachi",
+      "year": 2016,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 88,
+          "votes": 695928
+        },
+        "mal": {
+          "score": 8.93,
+          "votes": 1815079
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 16523
+        }
+      }
+    },
+    {
+      "workId": "anilist:2246",
+      "rank": 110,
+      "titleZh": "物怪",
+      "titleOriginal": "Mononoke",
+      "year": 2007,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 82.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 90870
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 106698
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 4264
+        }
+      }
+    },
+    {
+      "workId": "anilist:19647",
+      "rank": 111,
+      "titleZh": "第一神拳 Rising",
+      "titleOriginal": "Hajime no Ippo: Rising",
+      "year": 2013,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 82.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 58492
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 165376
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 250
+        }
+      }
+    },
+    {
+      "workId": "anilist:97983",
+      "rank": 112,
+      "titleZh": "夏目友人帐 陆",
+      "titleOriginal": "Natsume Yuujinchou Roku",
+      "year": 2017,
+      "studios": [
+        "Shuka"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 82.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 39579
+        },
+        "mal": {
+          "score": 8.61,
+          "votes": 76857
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 3423
+        }
+      }
+    },
+    {
+      "workId": "anilist:159322",
+      "rank": 113,
+      "titleZh": "死神 千年血战篇-诀别谭-",
+      "titleOriginal": "BLEACH: Sennen Kessen-hen - Ketsubetsu-tan",
+      "year": 2023,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Supernatural"
+      ],
+      "compositeScore": 82.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 134930
+        },
+        "mal": {
+          "score": 8.7,
+          "votes": 241606
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 3153
+        }
+      }
+    },
+    {
+      "workId": "anilist:3784",
+      "rank": 114,
+      "titleZh": "福音战士新剧场版：破",
+      "titleOriginal": "Evangelion Shin Movie: Ha",
+      "year": 2009,
+      "studios": [
+        "Gainax"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 82.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 131405
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 368235
+        },
+        "bangumi": {
+          "score": 8.4,
+          "votes": 17916
+        }
+      }
+    },
+    {
+      "workId": "anilist:21827",
+      "rank": 115,
+      "titleZh": "紫罗兰永恒花园",
+      "titleOriginal": "Violet Evergarden",
+      "year": 2018,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 534822
+        },
+        "mal": {
+          "score": 8.69,
+          "votes": 1099666
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 22228
+        }
+      }
+    },
+    {
+      "workId": "anilist:5",
+      "rank": 116,
+      "titleZh": "星际牛仔 天国之扉",
+      "titleOriginal": "Cowboy Bebop: Tengoku no Tobira",
+      "year": 2001,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mystery",
+        "Sci-Fi"
+      ],
+      "compositeScore": 82.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 82934
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 233133
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 7129
+        }
+      }
+    },
+    {
+      "workId": "anilist:21087",
+      "rank": 117,
+      "titleZh": "一拳超人",
+      "titleOriginal": "One Punch Man",
+      "year": 2015,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Sci-Fi",
+        "Supernatural"
+      ],
+      "compositeScore": 82.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 751701
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 2435163
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 21633
+        }
+      }
+    },
+    {
+      "workId": "anilist:166611",
+      "rank": 118,
+      "titleZh": "夏目友人帐 柒",
+      "titleOriginal": "Natsume Yuujinchou Shichi",
+      "year": 2024,
+      "studios": [
+        "Shuka"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 82.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 15432
+        },
+        "mal": {
+          "score": 8.57,
+          "votes": 19092
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 1825
+        }
+      }
+    },
+    {
+      "workId": "anilist:513",
+      "rank": 119,
+      "titleZh": "天空之城",
+      "titleOriginal": "Tenkuu no Shiro Laputa",
+      "year": 1986,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 82.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 130412
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 336819
+        },
+        "bangumi": {
+          "score": 8.5,
+          "votes": 15371
+        }
+      }
+    },
+    {
+      "workId": "anilist:572",
+      "rank": 120,
+      "titleZh": "风之谷",
+      "titleOriginal": "Kaze no Tani no Nausicaä",
+      "year": 1984,
+      "studios": [
+        "Studio Hibari"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 82.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 105939
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 259463
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 8893
+        }
+      }
+    },
+    {
+      "workId": "anilist:100815",
+      "rank": 121,
+      "titleZh": "续·终物语",
+      "titleOriginal": "Zoku Owarimonogatari",
+      "year": 2019,
+      "studios": [
+        "Shaft"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 82.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 84686
+        },
+        "mal": {
+          "score": 8.44,
+          "votes": 122535
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 6192
+        }
+      }
+    },
+    {
+      "workId": "anilist:140350",
+      "rank": 122,
+      "titleZh": "王者天下 第四季",
+      "titleOriginal": "Kingdom 4th Season",
+      "year": 2022,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action"
+      ],
+      "compositeScore": 82.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 18768
+        },
+        "mal": {
+          "score": 8.73,
+          "votes": 41871
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 381
+        }
+      }
+    },
+    {
+      "workId": "anilist:1210",
+      "rank": 123,
+      "titleZh": "欢迎加入NHK！",
+      "titleOriginal": "NHK ni Youkoso!",
+      "year": 2006,
+      "studios": [
+        "GONZO"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 82.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 196740
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 376205
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 8968
+        }
+      }
+    },
+    {
+      "workId": "anilist:21450",
+      "rank": 124,
+      "titleZh": "JOJO的奇妙冒险 不灭钻石",
+      "titleOriginal": "JoJo no Kimyou na Bouken: Diamond wa Kudakenai",
+      "year": 2016,
+      "studios": [
+        "david production"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 82.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 308088
+        },
+        "mal": {
+          "score": 8.51,
+          "votes": 887943
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 15458
+        }
+      }
+    },
+    {
+      "workId": "anilist:100784",
+      "rank": 125,
+      "titleZh": "银魂. 银之魂篇",
+      "titleOriginal": "Gintama.: Shirogane no Tamashii-hen",
+      "year": 2018,
+      "studios": [
+        "Bandai Namco Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 82.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 59579
+        },
+        "mal": {
+          "score": 8.81,
+          "votes": 116842
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 1496
+        }
+      }
+    },
+    {
+      "workId": "anilist:759",
+      "rank": 126,
+      "titleZh": "东京教父",
+      "titleOriginal": "Tokyo Godfathers",
+      "year": 2003,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Adventure",
+        "Comedy",
+        "Drama"
+      ],
+      "compositeScore": 82.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 88564
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 166311
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 8381
+        }
+      }
+    },
+    {
+      "workId": "anilist:21507",
+      "rank": 127,
+      "titleZh": "灵能百分百",
+      "titleOriginal": "Mob Psycho 100",
+      "year": 2016,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 82.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 610706
+        },
+        "mal": {
+          "score": 8.49,
+          "votes": 1432682
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 16902
+        }
+      }
+    },
+    {
+      "workId": "anilist:165171",
+      "rank": 128,
+      "titleZh": "金牌得主",
+      "titleOriginal": "Medalist",
+      "year": 2025,
+      "studios": [
+        "ENGI"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sports"
+      ],
+      "compositeScore": 82.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 39490
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 40321
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 13468
+        }
+      }
+    },
+    {
+      "workId": "anilist:169755",
+      "rank": 129,
+      "titleZh": "死神 千年血战篇-相克谭-",
+      "titleOriginal": "BLEACH: Sennen Kessen-hen - Soukoku-tan",
+      "year": 2024,
+      "studios": [
+        "PIERROT FILMS"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Supernatural"
+      ],
+      "compositeScore": 82.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 108620
+        },
+        "mal": {
+          "score": 8.68,
+          "votes": 164911
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 2266
+        }
+      }
+    },
+    {
+      "workId": "anilist:21710",
+      "rank": 130,
+      "titleZh": "夏目友人帐 伍",
+      "titleOriginal": "Natsume Yuujinchou Go",
+      "year": 2016,
+      "studios": [
+        "Shuka"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 82.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 39531
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 84149
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 3974
+        }
+      }
+    },
+    {
+      "workId": "anilist:178788",
+      "rank": 131,
+      "titleZh": "剧场版 鬼灭之刃 无限城篇 第一章 猗窝座再袭",
+      "titleOriginal": "Kimetsu no Yaiba: Mugenjou-hen Movie 1 - Akaza Sairai",
+      "year": 2025,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 82.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 180093
+        },
+        "mal": {
+          "score": 8.66,
+          "votes": 205648
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 6765
+        }
+      }
+    },
+    {
+      "workId": "anilist:777",
+      "rank": 132,
+      "titleZh": "皇家国教骑士团 OVA",
+      "titleOriginal": "HELLSING OVA",
+      "year": 2006,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Action",
+        "Horror",
+        "Supernatural"
+      ],
+      "compositeScore": 82.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 181305
+        },
+        "mal": {
+          "score": 8.34,
+          "votes": 528830
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 7060
+        }
+      }
+    },
+    {
+      "workId": "anilist:155227",
+      "rank": 133,
+      "titleZh": "王者天下 第五季",
+      "titleOriginal": "Kingdom 5th Season",
+      "year": 2024,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action"
+      ],
+      "compositeScore": 82.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 14825
+        },
+        "mal": {
+          "score": 8.72,
+          "votes": 29720
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 343
+        }
+      }
+    },
+    {
+      "workId": "anilist:18617",
+      "rank": 134,
+      "titleZh": "少女与战车 剧场版",
+      "titleOriginal": "Girls und Panzer Movie",
+      "year": 2015,
+      "studios": [
+        "Actas"
+      ],
+      "genres": [
+        "Action",
+        "Sports"
+      ],
+      "compositeScore": 82,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 31607
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 65293
+        },
+        "bangumi": {
+          "score": 8.3,
+          "votes": 6980
+        }
+      }
+    },
+    {
+      "workId": "anilist:126403",
+      "rank": 135,
+      "titleZh": "时光代理人",
+      "titleOriginal": "Shiguang Dailiren",
+      "year": 1,
+      "studios": [
+        "BeDream"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Supernatural",
+        "Thriller"
+      ],
+      "compositeScore": 82,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 169006
+        },
+        "mal": {
+          "score": 8.7,
+          "votes": 192360
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 3729
+        }
+      }
+    },
+    {
+      "workId": "anilist:142329",
+      "rank": 136,
+      "titleZh": "鬼灭之刃 游郭篇",
+      "titleOriginal": "Kimetsu no Yaiba: Yuukaku-hen",
+      "year": 2022,
+      "studios": [
+        "ufotable"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 81.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 469983
+        },
+        "mal": {
+          "score": 8.69,
+          "votes": 1130583
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 12337
+        }
+      }
+    },
+    {
+      "workId": "anilist:2402",
+      "rank": 137,
+      "titleZh": "明日之丈",
+      "titleOriginal": "Ashita no Joe",
+      "year": 1970,
+      "studios": [
+        "Mushi Production"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 81.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 38709
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 30133
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 920
+        }
+      }
+    },
+    {
+      "workId": "anilist:5941",
+      "rank": 138,
+      "titleZh": "四叶游戏",
+      "titleOriginal": "Cross Game",
+      "year": 2009,
+      "studios": [
+        "SynergySP"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Sports"
+      ],
+      "compositeScore": 81.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 28866
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 53761
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 1450
+        }
+      }
+    },
+    {
+      "workId": "anilist:180516",
+      "rank": 139,
+      "titleZh": "赛马娘 芦毛灰姑娘",
+      "titleOriginal": "Uma Musume: Cinderella Gray",
+      "year": 2025,
+      "studios": [
+        "CygamesPictures"
+      ],
+      "genres": [
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 81.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 44646
+        },
+        "mal": {
+          "score": 8.57,
+          "votes": 54392
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 8883
+        }
+      }
+    },
+    {
+      "workId": "anilist:9260",
+      "rank": 140,
+      "titleZh": "伤物语Ⅰ铁血篇",
+      "titleOriginal": "Kizumonogatari I: Tekketsu-hen",
+      "year": 2016,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Ecchi",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 81.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 163903
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 315015
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 9407
+        }
+      }
+    },
+    {
+      "workId": "anilist:98444",
+      "rank": 141,
+      "titleZh": "摇曳露营△",
+      "titleOriginal": "Yuru Camp△",
+      "year": 2018,
+      "studios": [
+        "C-Station"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 163736
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 241137
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 17329
+        }
+      }
+    },
+    {
+      "workId": "anilist:138424",
+      "rank": 142,
+      "titleZh": "擅长捉弄的高木同学 第三季",
+      "titleOriginal": "Karakai Jouzu no Takagi-san 3",
+      "year": 2022,
+      "studios": [
+        "Shin-Ei Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 55477
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 97382
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 8236
+        }
+      }
+    },
+    {
+      "workId": "anilist:523",
+      "rank": 143,
+      "titleZh": "龙猫",
+      "titleOriginal": "Tonari no Totoro",
+      "year": 1988,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 81.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 274481
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 761203
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 12912
+        }
+      }
+    },
+    {
+      "workId": "anilist:100922",
+      "rank": 144,
+      "titleZh": "碧蓝之海",
+      "titleOriginal": "Grand Blue",
+      "year": 2018,
+      "studios": [
+        "Zero-G"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 81.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 227705
+        },
+        "mal": {
+          "score": 8.45,
+          "votes": 488531
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 17942
+        }
+      }
+    },
+    {
+      "workId": "anilist:10030",
+      "rank": 145,
+      "titleZh": "爆漫王。2",
+      "titleOriginal": "Bakuman. 2",
+      "year": 2011,
+      "studios": [
+        "J.C.STAFF"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 62126
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 222728
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 5359
+        }
+      }
+    },
+    {
+      "workId": "anilist:101921",
+      "rank": 146,
+      "titleZh": "辉夜大小姐想让我告白～天才们的恋爱头脑战～",
+      "titleOriginal": "Kaguya-sama wa Kokurasetai: Tensaitachi no Renai Zunousen",
+      "year": 2019,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Comedy",
+        "Psychological",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 545035
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 1222708
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 27447
+        }
+      }
+    },
+    {
+      "workId": "anilist:232",
+      "rank": 147,
+      "titleZh": "魔卡少女樱",
+      "titleOriginal": "Cardcaptor Sakura",
+      "year": 1998,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Fantasy",
+        "Mahou Shoujo",
+        "Romance"
+      ],
+      "compositeScore": 81.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 101034
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 235095
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 11196
+        }
+      }
+    },
+    {
+      "workId": "anilist:182587",
+      "rank": 148,
+      "titleZh": "【我推的孩子】 第三季",
+      "titleOriginal": "[Oshi no Ko] 3rd Season",
+      "year": 2026,
+      "studios": [
+        "KADOKAWA"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 81.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 102758
+        },
+        "mal": {
+          "score": 8.69,
+          "votes": 122094
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 7079
+        }
+      }
+    },
+    {
+      "workId": "anilist:21170",
+      "rank": 149,
+      "titleZh": "暗杀教室 第二季",
+      "titleOriginal": "Ansatsu Kyoushitsu 2nd Season",
+      "year": 2016,
+      "studios": [
+        "Lerche"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Supernatural"
+      ],
+      "compositeScore": 81.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 362253
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 979800
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 8110
+        }
+      }
+    },
+    {
+      "workId": "anilist:190840",
+      "rank": 150,
+      "titleZh": "王者天下 第六季",
+      "titleOriginal": "Kingdom 6th Season",
+      "year": 2025,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action"
+      ],
+      "compositeScore": 81.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 9646
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 18580
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 252
+        }
+      }
+    },
+    {
+      "workId": "anilist:392",
+      "rank": 151,
+      "titleZh": "幽游白书",
+      "titleOriginal": "Yuu☆Yuu☆Hakusho",
+      "year": 1992,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Supernatural"
+      ],
+      "compositeScore": 81.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 155740
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 359868
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 1986
+        }
+      }
+    },
+    {
+      "workId": "anilist:99420",
+      "rank": 152,
+      "titleZh": "少女终末旅行",
+      "titleOriginal": "Shoujo Shuumatsu Ryokou",
+      "year": 2017,
+      "studios": [
+        "WHITE FOX"
+      ],
+      "genres": [
+        "Adventure",
+        "Sci-Fi",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 133967
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 153688
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 16807
+        }
+      }
+    },
+    {
+      "workId": "anilist:127400",
+      "rank": 153,
+      "titleZh": "境界触发者 第三季",
+      "titleOriginal": "World Trigger 3rd Season",
+      "year": 2021,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Action",
+        "Sci-Fi"
+      ],
+      "compositeScore": 81.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 35876
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 55945
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 962
+        }
+      }
+    },
+    {
+      "workId": "anilist:175914",
+      "rank": 154,
+      "titleZh": "彻夜之歌 第二季",
+      "titleOriginal": "Yofukashi no Uta Season 2",
+      "year": 2025,
+      "studios": [
+        "LIDENFILMS"
+      ],
+      "genres": [
+        "Comedy",
+        "Psychological",
+        "Romance",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 81.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 96785
+        },
+        "mal": {
+          "score": 8.34,
+          "votes": 100165
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 5733
+        }
+      }
+    },
+    {
+      "workId": "anilist:189275",
+      "rank": 155,
+      "titleZh": "金牌得主 第二季",
+      "titleOriginal": "Medalist 2nd Season",
+      "year": 2026,
+      "studios": [
+        "ENGI"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sports"
+      ],
+      "compositeScore": 81.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 18522
+        },
+        "mal": {
+          "score": 8.44,
+          "votes": 20696
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 6381
+        }
+      }
+    },
+    {
+      "workId": "anilist:16664",
+      "rank": 156,
+      "titleZh": "辉夜姬物语",
+      "titleOriginal": "Kaguya-hime no Monogatari",
+      "year": 2013,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Romance"
+      ],
+      "compositeScore": 81.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 71618
+        },
+        "mal": {
+          "score": 8.22,
+          "votes": 137424
+        },
+        "bangumi": {
+          "score": 8.1,
+          "votes": 3380
+        }
+      }
+    },
+    {
+      "workId": "anilist:20623",
+      "rank": 157,
+      "titleZh": "寄生兽 生命的准则",
+      "titleOriginal": "Kiseijuu: Sei no Kakuritsu",
+      "year": 2014,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Horror",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 81.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 490437
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 1258964
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 16569
+        }
+      }
+    },
+    {
+      "workId": "anilist:100675",
+      "rank": 158,
+      "titleZh": "路人女主的养成方法 Fine",
+      "titleOriginal": "Saenai Heroine no Sodatekata Fine",
+      "year": 2019,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 58163
+        },
+        "mal": {
+          "score": 8.42,
+          "votes": 95443
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 11564
+        }
+      }
+    },
+    {
+      "workId": "anilist:108465",
+      "rank": 159,
+      "titleZh": "无职转生～到了异世界就拿出真本事～",
+      "titleOriginal": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+      "year": 2021,
+      "studios": [
+        "Studio Bind"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Ecchi",
+        "Fantasy"
+      ],
+      "compositeScore": 81.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 438985
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 987051
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 26054
+        }
+      }
+    },
+    {
+      "workId": "anilist:124561",
+      "rank": 160,
+      "titleZh": "GOTCHA！",
+      "titleOriginal": "GOTCHA!",
+      "year": 1,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Adventure"
+      ],
+      "compositeScore": 81.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 11532
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 20295
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 862
+        }
+      }
+    },
+    {
+      "workId": "anilist:813",
+      "rank": 161,
+      "titleZh": "龙珠Z",
+      "titleOriginal": "Dragon Ball Z",
+      "year": 1989,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 81.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 252952
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 910766
+        },
+        "bangumi": {
+          "score": 8.2,
+          "votes": 4003
+        }
+      }
+    },
+    {
+      "workId": "anilist:10162",
+      "rank": 162,
+      "titleZh": "白兔糖",
+      "titleOriginal": "Usagi Drop",
+      "year": 2011,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Slice of Life"
+      ],
+      "compositeScore": 81.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 100467
+        },
+        "mal": {
+          "score": 8.31,
+          "votes": 256039
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 8634
+        }
+      }
+    },
+    {
+      "workId": "anilist:140337",
+      "rank": 163,
+      "titleZh": "佐贺偶像是传奇 梦想银河乐园",
+      "titleOriginal": "Zombie Land Saga: Yume Ginga Paradise",
+      "year": 2025,
+      "studios": [
+        "Avex Pictures"
+      ],
+      "genres": [
+        "Comedy",
+        "Music",
+        "Supernatural"
+      ],
+      "compositeScore": 81.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 17919
+        },
+        "mal": {
+          "score": 8.31,
+          "votes": 4200
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 2112
+        }
+      }
+    },
+    {
+      "workId": "anilist:138425",
+      "rank": 164,
+      "titleZh": "擅长捉弄的高木同学 剧场版",
+      "titleOriginal": "Karakai Jouzu no Takagi-san Movie",
+      "year": 2022,
+      "studios": [
+        "Shin-Ei Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 29994
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 44569
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 4383
+        }
+      }
+    },
+    {
+      "workId": "anilist:104157",
+      "rank": 165,
+      "titleZh": "青春猪头少年不会梦到怀梦美少女",
+      "titleOriginal": "Seishun Buta Yarou wa Yumemiru Shoujo no Yume wo Minai",
+      "year": 2019,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 81.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 253779
+        },
+        "mal": {
+          "score": 8.59,
+          "votes": 525057
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 12914
+        }
+      }
+    },
+    {
+      "workId": "anilist:132420",
+      "rank": 166,
+      "titleZh": "少女与战车 最终章 第4话",
+      "titleOriginal": "Girls und Panzer: Saishuushou 4",
+      "year": 2023,
+      "studios": [
+        "Actas"
+      ],
+      "genres": [
+        "Action",
+        "Sports"
+      ],
+      "compositeScore": 81.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 9787
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 10105
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 1812
+        }
+      }
+    },
+    {
+      "workId": "anilist:101759",
+      "rank": 167,
+      "titleZh": "约定的梦幻岛",
+      "titleOriginal": "Yakusoku no Neverland",
+      "year": 2019,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 81.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 621297
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 1406136
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 12186
+        }
+      }
+    },
+    {
+      "workId": "anilist:173172",
+      "rank": 168,
+      "titleZh": "异兽魔都 第二季",
+      "titleOriginal": "Dorohedoro Season 2",
+      "year": 2026,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Fantasy",
+        "Horror",
+        "Mystery"
+      ],
+      "compositeScore": 81.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 40932
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 28617
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 1246
+        }
+      }
+    },
+    {
+      "workId": "anilist:101215",
+      "rank": 169,
+      "titleZh": "歌牌情缘 第三季",
+      "titleOriginal": "Chihayafuru 3",
+      "year": 2019,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 81.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 44521
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 71483
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 1550
+        }
+      }
+    },
+    {
+      "workId": "anilist:3002",
+      "rank": 170,
+      "titleZh": "赌博默示录",
+      "titleOriginal": "Gyakkyou Burai Kaiji: Ultimate Survivor",
+      "year": 2007,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 81.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 96553
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 179406
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 6680
+        }
+      }
+    },
+    {
+      "workId": "anilist:578",
+      "rank": 171,
+      "titleZh": "萤火虫之墓",
+      "titleOriginal": "Hotaru no Haka",
+      "year": 1988,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Drama"
+      ],
+      "compositeScore": 81.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 197503
+        },
+        "mal": {
+          "score": 8.54,
+          "votes": 463965
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 4319
+        }
+      }
+    },
+    {
+      "workId": "anilist:98779",
+      "rank": 172,
+      "titleZh": "剧场版 悠哉日常大王 Vacation",
+      "titleOriginal": "Non Non Biyori: Vacation",
+      "year": 2018,
+      "studios": [
+        "SILVER LINK."
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 27305
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 41439
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 4323
+        }
+      }
+    },
+    {
+      "workId": "anilist:163571",
+      "rank": 173,
+      "titleZh": "BanG Dream! It's MyGO!!!!!",
+      "titleOriginal": "BanG Dream! It's MyGO!!!!!",
+      "year": 2023,
+      "studios": [
+        "SANZIGEN"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 21262
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 20951
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 31185
+        }
+      }
+    },
+    {
+      "workId": "anilist:10937",
+      "rank": 174,
+      "titleZh": "机动战士高达 THE ORIGIN",
+      "titleOriginal": "Kidou Senshi Gundam: THE ORIGIN",
+      "year": 2015,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Mecha",
+        "Sci-Fi"
+      ],
+      "compositeScore": 81.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 24411
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 36594
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 3324
+        }
+      }
+    },
+    {
+      "workId": "anilist:150672",
+      "rank": 175,
+      "titleZh": "【我推的孩子】",
+      "titleOriginal": "[Oshi no Ko]",
+      "year": 2023,
+      "studios": [
+        "Doga Kobo"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 81.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 318731
+        },
+        "mal": {
+          "score": 8.53,
+          "votes": 630253
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 20964
+        }
+      }
+    },
+    {
+      "workId": "anilist:13601",
+      "rank": 176,
+      "titleZh": "心理测量者",
+      "titleOriginal": "PSYCHO-PASS",
+      "year": 2012,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Action",
+        "Psychological",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "compositeScore": 81.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 349651
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 833754
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 14577
+        }
+      }
+    },
+    {
+      "workId": "anilist:4081",
+      "rank": 177,
+      "titleZh": "夏目友人帐",
+      "titleOriginal": "Natsume Yuujinchou",
+      "year": 2008,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 81,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 125878
+        },
+        "mal": {
+          "score": 8.3,
+          "votes": 200753
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 11963
+        }
+      }
+    },
+    {
+      "workId": "anilist:6675",
+      "rank": 178,
+      "titleZh": "红线",
+      "titleOriginal": "REDLINE",
+      "year": 2009,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Action",
+        "Romance",
+        "Sci-Fi",
+        "Sports"
+      ],
+      "compositeScore": 80.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 110642
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 227738
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 3569
+        }
+      }
+    },
+    {
+      "workId": "anilist:98707",
+      "rank": 179,
+      "titleZh": "宝石之国",
+      "titleOriginal": "Houseki no Kuni",
+      "year": 2017,
+      "studios": [
+        "Orange"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery",
+        "Psychological"
+      ],
+      "compositeScore": 80.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 157134
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 221523
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 11656
+        }
+      }
+    },
+    {
+      "workId": "anilist:20694",
+      "rank": 180,
+      "titleZh": "悠哉日常大王 Repeat",
+      "titleOriginal": "Non Non Biyori: Repeat",
+      "year": 2015,
+      "studios": [
+        "SILVER LINK."
+      ],
+      "genres": [
+        "Slice of Life"
+      ],
+      "compositeScore": 80.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 54958
+        },
+        "mal": {
+          "score": 8.18,
+          "votes": 107720
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 7505
+        }
+      }
+    },
+    {
+      "workId": "anilist:113359",
+      "rank": 181,
+      "titleZh": "NOMAD MEGALO BOX 2",
+      "titleOriginal": "NOMAD: Megalo Box 2",
+      "year": 2021,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Sci-Fi",
+        "Sports"
+      ],
+      "compositeScore": 80.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 57673
+        },
+        "mal": {
+          "score": 8.18,
+          "votes": 92552
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 5467
+        }
+      }
+    },
+    {
+      "workId": "anilist:184951",
+      "rank": 182,
+      "titleZh": "相反的你和我",
+      "titleOriginal": "Seihantai na Kimi to Boku",
+      "year": 2026,
+      "studios": [
+        "Lapin Track"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 106773
+        },
+        "mal": {
+          "score": 8.28,
+          "votes": 106136
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 7506
+        }
+      }
+    },
+    {
+      "workId": "anilist:338",
+      "rank": 183,
+      "titleZh": "凡尔赛玫瑰",
+      "titleOriginal": "Versailles no Bara",
+      "year": 1979,
+      "studios": [
+        "Tokyo Movie Shinsha"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 80.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 33764
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 34363
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 512
+        }
+      }
+    },
+    {
+      "workId": "anilist:20722",
+      "rank": 184,
+      "titleZh": "元气囝仔",
+      "titleOriginal": "Barakamon",
+      "year": 2014,
+      "studios": [
+        "Kinema Citrus"
+      ],
+      "genres": [
+        "Slice of Life"
+      ],
+      "compositeScore": 80.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 150759
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 363627
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 5041
+        }
+      }
+    },
+    {
+      "workId": "anilist:129201",
+      "rank": 185,
+      "titleZh": "夏日重现",
+      "titleOriginal": "Summer Time Render",
+      "year": 2022,
+      "studios": [
+        "OLM"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mystery",
+        "Supernatural",
+        "Thriller"
+      ],
+      "compositeScore": 80.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 218756
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 295491
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 20258
+        }
+      }
+    },
+    {
+      "workId": "anilist:164212",
+      "rank": 186,
+      "titleZh": "少女乐队的呐喊",
+      "titleOriginal": "GIRLS BAND CRY",
+      "year": 2024,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 64726
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 56111
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 24184
+        }
+      }
+    },
+    {
+      "workId": "anilist:116589",
+      "rank": 187,
+      "titleZh": "86 -不存在的战区-",
+      "titleOriginal": "86: Eighty Six",
+      "year": 2021,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Sci-Fi"
+      ],
+      "compositeScore": 80.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 311648
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 517665
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 16559
+        }
+      }
+    },
+    {
+      "workId": "anilist:10271",
+      "rank": 188,
+      "titleZh": "赌博默示录 破戒录篇",
+      "titleOriginal": "Gyakkyou Burai Kaiji: Hakairoku-hen",
+      "year": 2011,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 80.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 53164
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 118205
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 4604
+        }
+      }
+    },
+    {
+      "workId": "anilist:585",
+      "rank": 189,
+      "titleZh": "侧耳倾听",
+      "titleOriginal": "Mimi wo Sumaseba",
+      "year": 1995,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 107418
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 231122
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 4692
+        }
+      }
+    },
+    {
+      "workId": "anilist:109190",
+      "rank": 190,
+      "titleZh": "紫罗兰永恒花园 外传 - 永远与自动手记人偶 -",
+      "titleOriginal": "Violet Evergarden Gaiden: Eien to Jidou Shuki Ningyou",
+      "year": 2019,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 142004
+        },
+        "mal": {
+          "score": 8.43,
+          "votes": 286510
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 10745
+        }
+      }
+    },
+    {
+      "workId": "anilist:136804",
+      "rank": 191,
+      "titleZh": "为美好的世界献上祝福！第三季",
+      "titleOriginal": "Kono Subarashii Sekai ni Shukufuku wo! 3",
+      "year": 2024,
+      "studios": [
+        "Drive"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Ecchi",
+        "Fantasy"
+      ],
+      "compositeScore": 80.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 173292
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 246857
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 13446
+        }
+      }
+    },
+    {
+      "workId": "anilist:372",
+      "rank": 192,
+      "titleZh": "魔卡少女樱 被封印的卡片",
+      "titleOriginal": "Cardcaptor Sakura Movie: Fuinsareta Card",
+      "year": 2000,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Mahou Shoujo",
+        "Romance"
+      ],
+      "compositeScore": 80.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 24887
+        },
+        "mal": {
+          "score": 8.22,
+          "votes": 70980
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 3468
+        }
+      }
+    },
+    {
+      "workId": "anilist:12029",
+      "rank": 193,
+      "titleZh": "宇宙战舰大和号2199",
+      "titleOriginal": "Uchuu Senkan Yamato 2199",
+      "year": 2012,
+      "studios": [
+        "Xebec"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 80.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 30710
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 41947
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 1873
+        }
+      }
+    },
+    {
+      "workId": "anilist:166531",
+      "rank": 194,
+      "titleZh": "【我推的孩子】 第二季",
+      "titleOriginal": "[Oshi no Ko] 2nd Season",
+      "year": 2024,
+      "studios": [
+        "KADOKAWA"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 80.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 171943
+        },
+        "mal": {
+          "score": 8.51,
+          "votes": 268693
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 12472
+        }
+      }
+    },
+    {
+      "workId": "anilist:5341",
+      "rank": 195,
+      "titleZh": "狼与香辛料 第二季",
+      "titleOriginal": "Ookami to Koushinryou II",
+      "year": 2009,
+      "studios": [
+        "Imagin"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 96338
+        },
+        "mal": {
+          "score": 8.3,
+          "votes": 290569
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 8414
+        }
+      }
+    },
+    {
+      "workId": "anilist:171018",
+      "rank": 196,
+      "titleZh": "胆大党",
+      "titleOriginal": "Dandadan",
+      "year": 2024,
+      "studios": [
+        "Science SARU"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Sci-Fi",
+        "Supernatural"
+      ],
+      "compositeScore": 80.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 367859
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 611590
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 16218
+        }
+      }
+    },
+    {
+      "workId": "anilist:182309",
+      "rank": 197,
+      "titleZh": "碧蓝之海 第二季",
+      "titleOriginal": "Grand Blue Season 2",
+      "year": 2025,
+      "studios": [
+        "Zero-G"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 80.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 63679
+        },
+        "mal": {
+          "score": 8.5,
+          "votes": 94754
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 8871
+        }
+      }
+    },
+    {
+      "workId": "anilist:5028",
+      "rank": 198,
+      "titleZh": "棒球大联盟 第五季",
+      "titleOriginal": "Major S5",
+      "year": 2009,
+      "studios": [
+        "NHK"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Sports"
+      ],
+      "compositeScore": 80.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 13477
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 43902
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 225
+        }
+      }
+    },
+    {
+      "workId": "anilist:140842",
+      "rank": 199,
+      "titleZh": "吉伊卡哇",
+      "titleOriginal": "Chiikawa",
+      "year": 2022,
+      "studios": [
+        "Doga Kobo"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 9664
+        },
+        "mal": {
+          "score": 8.59,
+          "votes": 6993
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 719
+        }
+      }
+    },
+    {
+      "workId": "anilist:166521",
+      "rank": 200,
+      "titleZh": "黄金神威 最终章",
+      "titleOriginal": "Golden Kamuy: Saishuushou",
+      "year": 2026,
+      "studios": [
+        "Brain's Base"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "compositeScore": 80.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 20521
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 18671
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 1027
+        }
+      }
+    },
+    {
+      "workId": "anilist:106625",
+      "rank": 201,
+      "titleZh": "排球少年 TO THE TOP",
+      "titleOriginal": "Haikyuu!! TO THE TOP",
+      "year": 2020,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 80.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 288563
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 652776
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 3467
+        }
+      }
+    },
+    {
+      "workId": "anilist:100388",
+      "rank": 202,
+      "titleZh": "战栗杀机",
+      "titleOriginal": "BANANA FISH",
+      "year": 2018,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 80.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 303320
+        },
+        "mal": {
+          "score": 8.45,
+          "votes": 417066
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 2105
+        }
+      }
+    },
+    {
+      "workId": "anilist:185407",
+      "rank": 203,
+      "titleZh": "章鱼哔的原罪",
+      "titleOriginal": "Takopii no Genzai",
+      "year": 2025,
+      "studios": [
+        "ENISHIYA"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 80.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 133255
+        },
+        "mal": {
+          "score": 8.75,
+          "votes": 187557
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 10619
+        }
+      }
+    },
+    {
+      "workId": "anilist:512",
+      "rank": 204,
+      "titleZh": "魔女宅急便",
+      "titleOriginal": "Majo no Takkyuubin",
+      "year": 1989,
+      "studios": [
+        "Studio Ghibli"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 182356
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 432921
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 6592
+        }
+      }
+    },
+    {
+      "workId": "anilist:111762",
+      "rank": 205,
+      "titleZh": "水果篮子 第二季",
+      "titleOriginal": "Fruits Basket: 2nd Season",
+      "year": 2020,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 80.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 182904
+        },
+        "mal": {
+          "score": 8.52,
+          "votes": 305554
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 936
+        }
+      }
+    },
+    {
+      "workId": "anilist:168872",
+      "rank": 206,
+      "titleZh": "好想告诉你 第三季",
+      "titleOriginal": "Kimi ni Todoke 3RD SEASON",
+      "year": 2024,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 46641
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 44688
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 707
+        }
+      }
+    },
+    {
+      "workId": "anilist:99457",
+      "rank": 207,
+      "titleZh": "朝花夕誓——于离别之朝束起约定之花",
+      "titleOriginal": "Sayonara no Asa ni Yakusoku no Hana wo Kazarou",
+      "year": 2018,
+      "studios": [
+        "P.A.WORKS"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Psychological"
+      ],
+      "compositeScore": 80.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 143227
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 219478
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 9258
+        }
+      }
+    },
+    {
+      "workId": "anilist:140499",
+      "rank": 208,
+      "titleZh": "蓝色巨星",
+      "titleOriginal": "BLUE GIANT",
+      "year": 2023,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Drama",
+        "Music"
+      ],
+      "compositeScore": 80.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 24209
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 18460
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 1369
+        }
+      }
+    },
+    {
+      "workId": "anilist:153152",
+      "rank": 209,
+      "titleZh": "我心里危险的东西",
+      "titleOriginal": "Boku no Kokoro no Yabai Yatsu",
+      "year": 2023,
+      "studios": [
+        "Shin-Ei Animation"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 153879
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 235027
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 15677
+        }
+      }
+    },
+    {
+      "workId": "anilist:195240",
+      "rank": 210,
+      "titleZh": "赛马娘 芦毛灰姑娘 第2部分",
+      "titleOriginal": "Uma Musume: Cinderella Gray Part 2",
+      "year": 2025,
+      "studios": [
+        "CygamesPictures"
+      ],
+      "genres": [
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 80.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 27499
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 36674
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 3904
+        }
+      }
+    },
+    {
+      "workId": "anilist:10534",
+      "rank": 211,
+      "titleZh": "哆啦A梦：新·大雄与铁人兵团",
+      "titleOriginal": "Doraemon: Shin Nobita to Tetsujin Heidan - Habatake Tenshi-tachi",
+      "year": 2011,
+      "studios": [
+        "TV Asahi"
+      ],
+      "genres": [
+        "Comedy"
+      ],
+      "compositeScore": 80.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 5078
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 14640
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 1285
+        }
+      }
+    },
+    {
+      "workId": "anilist:21699",
+      "rank": 212,
+      "titleZh": "为美好的世界献上祝福！ 第二季",
+      "titleOriginal": "Kono Subarashii Sekai ni Shukufuku wo! 2",
+      "year": 2017,
+      "studios": [
+        "Studio DEEN"
+      ],
+      "genres": [
+        "Adventure",
+        "Comedy",
+        "Ecchi",
+        "Fantasy"
+      ],
+      "compositeScore": 80.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 368431
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 1099769
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 18937
+        }
+      }
+    },
+    {
+      "workId": "anilist:99088",
+      "rank": 213,
+      "titleZh": "冥王",
+      "titleOriginal": "PLUTO",
+      "year": 2023,
+      "studios": [
+        "Studio M2"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Mystery",
+        "Psychological",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "compositeScore": 80.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 100876
+        },
+        "mal": {
+          "score": 8.44,
+          "votes": 113314
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 3735
+        }
+      }
+    },
+    {
+      "workId": "anilist:108632",
+      "rank": 214,
+      "titleZh": "Re：从零开始的异世界生活 第二季",
+      "titleOriginal": "Re:Zero kara Hajimeru Isekai Seikatsu 2nd Season",
+      "year": 2020,
+      "studios": [
+        "WHITE FOX"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Psychological",
+        "Thriller"
+      ],
+      "compositeScore": 80.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 367678
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 771111
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 15660
+        }
+      }
+    },
+    {
+      "workId": "anilist:7655",
+      "rank": 215,
+      "titleZh": "棒球大联盟 第六季",
+      "titleOriginal": "Major S6",
+      "year": 2010,
+      "studios": [
+        "NHK"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 80.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 12488
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 39075
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 227
+        }
+      }
+    },
+    {
+      "workId": "anilist:20478",
+      "rank": 216,
+      "titleZh": "夏目友人帐 曾几何时下雪之日",
+      "titleOriginal": "Natsume Yuujinchou: Itsuka Yuki no Hi ni",
+      "year": 2014,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 80.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 16807
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 38917
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 2091
+        }
+      }
+    },
+    {
+      "workId": "anilist:20792",
+      "rank": 217,
+      "titleZh": "Fate/stay night [Unlimited Blade Works] 第二季",
+      "titleOriginal": "Fate/stay night: Unlimited Blade Works 2nd Season",
+      "year": 2015,
+      "studios": [
+        "ufotable"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 80.0667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 201036
+        },
+        "mal": {
+          "score": 8.32,
+          "votes": 609253
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 18658
+        }
+      }
+    },
+    {
+      "workId": "anilist:21186",
+      "rank": 218,
+      "titleZh": "元气少女缘结神 过去篇",
+      "titleOriginal": "Kamisama Hajimemashita: Kako-hen",
+      "year": 2015,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Fantasy",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 80.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 37083
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 92024
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 970
+        }
+      }
+    },
+    {
+      "workId": "anilist:98635",
+      "rank": 219,
+      "titleZh": "ReLIFE 完结篇",
+      "titleOriginal": "ReLIFE: Kanketsu-hen",
+      "year": 2018,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 107543
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 268570
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 8974
+        }
+      }
+    },
+    {
+      "workId": "anilist:21234",
+      "rank": 220,
+      "titleZh": "只有我不存在的城市",
+      "titleOriginal": "Boku dake ga Inai Machi",
+      "year": 2016,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Supernatural",
+        "Thriller"
+      ],
+      "compositeScore": 80,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 592557
+        },
+        "mal": {
+          "score": 8.3,
+          "votes": 1487314
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 14419
+        }
+      }
+    },
+    {
+      "workId": "anilist:101922",
+      "rank": 221,
+      "titleZh": "鬼灭之刃",
+      "titleOriginal": "Kimetsu no Yaiba",
+      "year": 2019,
+      "studios": [
+        "ufotable"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Supernatural"
+      ],
+      "compositeScore": 80,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 969571
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 2383196
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 21590
+        }
+      }
+    },
+    {
+      "workId": "anilist:113415",
+      "rank": 222,
+      "titleZh": "咒术回战",
+      "titleOriginal": "Jujutsu Kaisen",
+      "year": 2020,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Supernatural"
+      ],
+      "compositeScore": 80,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 943354
+        },
+        "mal": {
+          "score": 8.5,
+          "votes": 2025814
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 16995
+        }
+      }
+    },
+    {
+      "workId": "anilist:155783",
+      "rank": 223,
+      "titleZh": "天国大魔境",
+      "titleOriginal": "Tengoku Daimakyou",
+      "year": 2023,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Adventure",
+        "Mystery",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "compositeScore": 80,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 206543
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 296798
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 14960
+        }
+      }
+    },
+    {
+      "workId": "anilist:162670",
+      "rank": 224,
+      "titleZh": "石纪元 新世界 第2部分",
+      "titleOriginal": "Dr. STONE: NEW WORLD Part 2",
+      "year": 2023,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 80,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 133312
+        },
+        "mal": {
+          "score": 8.3,
+          "votes": 240403
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 3920
+        }
+      }
+    },
+    {
+      "workId": "anilist:57",
+      "rank": 225,
+      "titleZh": "摇滚新乐团",
+      "titleOriginal": "BECK",
+      "year": 2004,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 80766
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 151831
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 1500
+        }
+      }
+    },
+    {
+      "workId": "anilist:6594",
+      "rank": 226,
+      "titleZh": "刀语",
+      "titleOriginal": "Katanagatari",
+      "year": 2010,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Romance"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 132503
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 224105
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 4409
+        }
+      }
+    },
+    {
+      "workId": "anilist:122585",
+      "rank": 227,
+      "titleZh": "雾山五行 犀川幻紫林",
+      "titleOriginal": "Wu Shan Wu Xing: Xi Chuan Huan Zi Lin",
+      "year": 1,
+      "studios": [
+        "Samsara Studio"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 7444
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 6460
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 2549
+        }
+      }
+    },
+    {
+      "workId": "anilist:124115",
+      "rank": 228,
+      "titleZh": "少女与战车 最终章 第3话",
+      "titleOriginal": "Girls und Panzer: Saishuushou 3",
+      "year": 2021,
+      "studios": [
+        "Actas"
+      ],
+      "genres": [
+        "Action",
+        "Sports"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 12723
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 17071
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 2127
+        }
+      }
+    },
+    {
+      "workId": "anilist:137819",
+      "rank": 229,
+      "titleZh": "四叠半时光机布鲁斯",
+      "titleOriginal": "Yojouhan Time Machine Blues",
+      "year": 2022,
+      "studios": [
+        "Science SARU"
+      ],
+      "genres": [
+        "Comedy",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Sci-Fi"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 25305
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 16146
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 4228
+        }
+      }
+    },
+    {
+      "workId": "anilist:185660",
+      "rank": 230,
+      "titleZh": "胆大党 第二季",
+      "titleOriginal": "Dandadan 2nd Season",
+      "year": 2025,
+      "studios": [
+        "Science SARU"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Sci-Fi",
+        "Supernatural"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 215471
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 308771
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 8798
+        }
+      }
+    },
+    {
+      "workId": "anilist:126819",
+      "rank": 231,
+      "titleZh": "银魂 THE SEMI-FINAL",
+      "titleOriginal": "Gintama: THE SEMI-FINAL",
+      "year": 2021,
+      "studios": [
+        "Bandai Namco Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Comedy"
+      ],
+      "compositeScore": 79.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 31148
+        },
+        "mal": {
+          "score": 8.45,
+          "votes": 47934
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 587
+        }
+      }
+    },
+    {
+      "workId": "anilist:128890",
+      "rank": 232,
+      "titleZh": "IDOLiSH7-偶像星愿- Third BEAT! 第2部分",
+      "titleOriginal": "IDOLiSH7: Third BEAT! Part 2",
+      "year": 2022,
+      "studios": [
+        "TROYCA"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Psychological"
+      ],
+      "compositeScore": 79.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 5330
+        },
+        "mal": {
+          "score": 8.34,
+          "votes": 6060
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 157
+        }
+      }
+    },
+    {
+      "workId": "anilist:210031",
+      "rank": 233,
+      "titleZh": "相反的你和我 第二季",
+      "titleOriginal": "Seihantai na Kimi to Boku 2nd Season",
+      "year": 2026,
+      "studios": [
+        "Lapin Track"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.8,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 38169
+        },
+        "mal": {
+          "score": 8.34,
+          "votes": 5239
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 605
+        }
+      }
+    },
+    {
+      "workId": "anilist:100268",
+      "rank": 234,
+      "titleZh": "剧场版 夏目友人帐 ～缘结空蝉～",
+      "titleOriginal": "Natsume Yuujinchou: Utsusemi ni Musubu",
+      "year": 2018,
+      "studios": [
+        "Shuka"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 79.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 18062
+        },
+        "mal": {
+          "score": 8.42,
+          "votes": 31080
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 1775
+        }
+      }
+    },
+    {
+      "workId": "anilist:140960",
+      "rank": 235,
+      "titleZh": "间谍过家家",
+      "titleOriginal": "SPY×FAMILY",
+      "year": 2022,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 79.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 554083
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 1177060
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 23216
+        }
+      }
+    },
+    {
+      "workId": "anilist:199111",
+      "rank": 236,
+      "titleZh": "碧蓝之海 第三季",
+      "titleOriginal": "Grand Blue Season 3",
+      "year": 2026,
+      "studios": [
+        "NBCUniversal Entertainment Japan"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 79.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 29364
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 3898
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 457
+        }
+      }
+    },
+    {
+      "workId": "anilist:6811",
+      "rank": 237,
+      "titleZh": "犬夜叉 完结篇",
+      "titleOriginal": "Inuyasha: Kanketsu-hen",
+      "year": 2009,
+      "studios": [
+        "Sunrise"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Fantasy",
+        "Romance"
+      ],
+      "compositeScore": 79.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 51137
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 154118
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 2863
+        }
+      }
+    },
+    {
+      "workId": "anilist:181444",
+      "rank": 238,
+      "titleZh": "薰香花朵凛然绽放",
+      "titleOriginal": "Kaoru Hana wa Rin to Saku",
+      "year": 2025,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 79.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 194162
+        },
+        "mal": {
+          "score": 8.49,
+          "votes": 240573
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 6062
+        }
+      }
+    },
+    {
+      "workId": "anilist:104460",
+      "rank": 239,
+      "titleZh": "电影 摇曳露营△",
+      "titleOriginal": "Yuru Camp△ Movie",
+      "year": 2022,
+      "studios": [
+        "C-Station"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 38786
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 35761
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 4548
+        }
+      }
+    },
+    {
+      "workId": "anilist:105749",
+      "rank": 240,
+      "titleZh": "钻石王牌 act2",
+      "titleOriginal": "Diamond no Ace act II",
+      "year": 2019,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Sports"
+      ],
+      "compositeScore": 79.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 26402
+        },
+        "mal": {
+          "score": 8.28,
+          "votes": 51686
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 601
+        }
+      }
+    },
+    {
+      "workId": "anilist:166617",
+      "rank": 241,
+      "titleZh": "Fate/strange Fake",
+      "titleOriginal": "Fate/strange Fake",
+      "year": 2026,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 79.6,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 78089
+        },
+        "mal": {
+          "score": 8.28,
+          "votes": 67987
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 9459
+        }
+      }
+    },
+    {
+      "workId": "anilist:21096",
+      "rank": 242,
+      "titleZh": "同级生",
+      "titleOriginal": "Doukyuusei",
+      "year": 2016,
+      "studios": [
+        "Half H.P Studio"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 82775
+        },
+        "mal": {
+          "score": 8.27,
+          "votes": 159782
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 1331
+        }
+      }
+    },
+    {
+      "workId": "anilist:196187",
+      "rank": 243,
+      "titleZh": "在超市后门吸烟的二人",
+      "titleOriginal": "Super no Ura de Yani Suu Futari",
+      "year": 2026,
+      "studios": [
+        "Asahi Production"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.5667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 81873
+        },
+        "mal": {
+          "score": 8.47,
+          "votes": 32953
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 2703
+        }
+      }
+    },
+    {
+      "workId": "anilist:21355",
+      "rank": 244,
+      "titleZh": "Re：从零开始的异世界生活",
+      "titleOriginal": "Re:Zero kara Hajimeru Isekai Seikatsu",
+      "year": 2016,
+      "studios": [
+        "WHITE FOX"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Psychological",
+        "Romance",
+        "Thriller"
+      ],
+      "compositeScore": 79.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 603015
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 1584666
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 24182
+        }
+      }
+    },
+    {
+      "workId": "anilist:99750",
+      "rank": 245,
+      "titleZh": "我想吃掉你的胰脏",
+      "titleOriginal": "Kimi no Suizou wo Tabetai",
+      "year": 2018,
+      "studios": [
+        "Studio VOLN"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 363217
+        },
+        "mal": {
+          "score": 8.55,
+          "votes": 675988
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 9287
+        }
+      }
+    },
+    {
+      "workId": "anilist:12531",
+      "rank": 246,
+      "titleZh": "坂道上的阿波罗",
+      "titleOriginal": "Sakamichi no Apollon",
+      "year": 2012,
+      "studios": [
+        "Dentsu"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 95122
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 183019
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 3264
+        }
+      }
+    },
+    {
+      "workId": "anilist:98885",
+      "rank": 247,
+      "titleZh": "排球少年 观念之战",
+      "titleOriginal": "Haikyuu!!: Concept no Tatakai",
+      "year": 2017,
+      "studios": [
+        "Production I.G"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 79.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 29715
+        },
+        "mal": {
+          "score": 8.27,
+          "votes": 43200
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 446
+        }
+      }
+    },
+    {
+      "workId": "anilist:172019",
+      "rank": 248,
+      "titleZh": "石纪元 科学与未来",
+      "titleOriginal": "Dr. STONE: SCIENCE FUTURE",
+      "year": 2025,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 79.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 110281
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 158397
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 3070
+        }
+      }
+    },
+    {
+      "workId": "anilist:161964",
+      "rank": 249,
+      "titleZh": "想要成为影之实力者！ 第二季",
+      "titleOriginal": "Kage no Jitsuryokusha ni Naritakute! 2nd season",
+      "year": 2023,
+      "studios": [
+        "KADOKAWA"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Fantasy"
+      ],
+      "compositeScore": 79.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 187015
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 306616
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 10361
+        }
+      }
+    },
+    {
+      "workId": "anilist:101291",
+      "rank": 250,
+      "titleZh": "青春猪头少年不会梦到兔女郎学姐",
+      "titleOriginal": "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai",
+      "year": 2018,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 79.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 564277
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 1249612
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 24416
+        }
+      }
+    },
+    {
+      "workId": "anilist:135865",
+      "rank": 251,
+      "titleZh": "幼女战记 第二季",
+      "titleOriginal": "Youjo Senki II",
+      "year": 2026,
+      "studios": [
+        "NUT"
+      ],
+      "genres": [
+        "Action",
+        "Fantasy"
+      ],
+      "compositeScore": 79.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 74427
+        },
+        "mal": {
+          "score": 8.43,
+          "votes": 4145
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 311
+        }
+      }
+    },
+    {
+      "workId": "anilist:101302",
+      "rank": 252,
+      "titleZh": "龙珠超 布罗利",
+      "titleOriginal": "Dragon Ball Super: Broly",
+      "year": 2018,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 79.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 120784
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 327973
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 2134
+        }
+      }
+    },
+    {
+      "workId": "anilist:177937",
+      "rank": 253,
+      "titleZh": "间谍过家家 第三季",
+      "titleOriginal": "SPY×FAMILY Season 3",
+      "year": 2025,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 79.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 125634
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 142352
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 5584
+        }
+      }
+    },
+    {
+      "workId": "anilist:20698",
+      "rank": 254,
+      "titleZh": "我的青春恋爱物语果然有问题 续",
+      "titleOriginal": "Yahari Ore no Seishun Love Come wa Machigatteiru. Zoku",
+      "year": 2015,
+      "studios": [
+        "feel."
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 269984
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 751988
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 19147
+        }
+      }
+    },
+    {
+      "workId": "anilist:21673",
+      "rank": 255,
+      "titleZh": "战姬绝唱SYMPHOGEAR XV",
+      "titleOriginal": "Senki Zesshou Symphogear XV",
+      "year": 2019,
+      "studios": [
+        "Satelight"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mahou Shoujo",
+        "Music",
+        "Sci-Fi"
+      ],
+      "compositeScore": 79,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 18633
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 15859
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 990
+        }
+      }
+    },
+    {
+      "workId": "anilist:21588",
+      "rank": 256,
+      "titleZh": "银魂 爱染香篇",
+      "titleOriginal": "Gintamaº: Aizome Kaori-hen",
+      "year": 2016,
+      "studios": [
+        "Bandai Namco Pictures"
+      ],
+      "genres": [
+        "Comedy"
+      ],
+      "compositeScore": 78.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 80,
+          "votes": 21351
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 49256
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 797
+        }
+      }
+    },
+    {
+      "workId": "anilist:206914",
+      "rank": 257,
+      "titleZh": "日本三国",
+      "titleOriginal": "Nippon Sangoku",
+      "year": 2026,
+      "studios": [
+        "Studio Kafka"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "compositeScore": 78.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 50885
+        },
+        "mal": {
+          "score": 8.56,
+          "votes": 35435
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 2675
+        }
+      }
+    },
+    {
+      "workId": "anilist:127230",
+      "rank": 258,
+      "titleZh": "链锯人",
+      "titleOriginal": "Chainsaw Man",
+      "year": 2022,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Horror",
+        "Supernatural"
+      ],
+      "compositeScore": 78.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 609355
+        },
+        "mal": {
+          "score": 8.42,
+          "votes": 1165436
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 18774
+        }
+      }
+    },
+    {
+      "workId": "anilist:151514",
+      "rank": 259,
+      "titleZh": "地。 ―关于地球的运动―",
+      "titleOriginal": "Chi. Chikyuu no Undou ni Tsuite",
+      "year": 2024,
+      "studios": [
+        "MADHOUSE"
+      ],
+      "genres": [
+        "Drama"
+      ],
+      "compositeScore": 78.7333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 116496
+        },
+        "mal": {
+          "score": 8.72,
+          "votes": 125072
+        },
+        "bangumi": {
+          "score": 6.3,
+          "votes": 5424
+        }
+      }
+    },
+    {
+      "workId": "anilist:180228",
+      "rank": 260,
+      "titleZh": "加油吧！中村君！！",
+      "titleOriginal": "Ganbare! Nakamura-kun!!",
+      "year": 2026,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 78.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 29873
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 18880
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 797
+        }
+      }
+    },
+    {
+      "workId": "anilist:142838",
+      "rank": 261,
+      "titleZh": "间谍过家家 第2部分",
+      "titleOriginal": "SPY×FAMILY Part 2",
+      "year": 2022,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 78.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 321198
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 627756
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 14560
+        }
+      }
+    },
+    {
+      "workId": "anilist:105333",
+      "rank": 262,
+      "titleZh": "石纪元",
+      "titleOriginal": "Dr. STONE",
+      "year": 2019,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "compositeScore": 78.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 541642
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 1190903
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 9051
+        }
+      }
+    },
+    {
+      "workId": "anilist:20801",
+      "rank": 263,
+      "titleZh": "元气少女缘结神◎",
+      "titleOriginal": "Kamisama Hajimemashita◎",
+      "year": 2015,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Fantasy",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 78.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 91200
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 252058
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 2479
+        }
+      }
+    },
+    {
+      "workId": "anilist:177687",
+      "rank": 264,
+      "titleZh": "百米。",
+      "titleOriginal": "Hyakuemu.",
+      "year": 2025,
+      "studios": [
+        "Pony Canyon"
+      ],
+      "genres": [
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 78.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 39416
+        },
+        "mal": {
+          "score": 8.34,
+          "votes": 46842
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 1920
+        }
+      }
+    },
+    {
+      "workId": "anilist:15227",
+      "rank": 265,
+      "titleZh": "在这世界的角落",
+      "titleOriginal": "Kono Sekai no Katasumi ni",
+      "year": 2016,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Drama",
+        "Slice of Life"
+      ],
+      "compositeScore": 78.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 62856
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 84950
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 1894
+        }
+      }
+    },
+    {
+      "workId": "anilist:186497",
+      "rank": 266,
+      "titleZh": "冰之城墙",
+      "titleOriginal": "Koori no Jouheki",
+      "year": 2026,
+      "studios": [
+        "Studio KAI"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 78.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 62981
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 41979
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 2320
+        }
+      }
+    },
+    {
+      "workId": "anilist:141249",
+      "rank": 267,
+      "titleZh": "文豪野犬 第四季",
+      "titleOriginal": "Bungou Stray Dogs 4th Season",
+      "year": 2023,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 78.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 106907
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 151510
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 1898
+        }
+      }
+    },
+    {
+      "workId": "anilist:18115",
+      "rank": 268,
+      "titleZh": "天方魔谭MAGI 第二季",
+      "titleOriginal": "Magi: The kingdom of magic",
+      "year": 2013,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "compositeScore": 78.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 166071
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 485906
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 2055
+        }
+      }
+    },
+    {
+      "workId": "anilist:113290",
+      "rank": 269,
+      "titleZh": "伍六七之最强发型师",
+      "titleOriginal": "Wu Liuqi: Zui Qiang Faxingshi",
+      "year": 1,
+      "studios": [
+        "Sharefun Studio"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 78.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 30558
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 57074
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 4670
+        }
+      }
+    },
+    {
+      "workId": "anilist:110349",
+      "rank": 270,
+      "titleZh": "大欺诈师",
+      "titleOriginal": "GREAT PRETENDER",
+      "year": 2020,
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Thriller"
+      ],
+      "compositeScore": 78.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 226567
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 359795
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 4316
+        }
+      }
+    },
+    {
+      "workId": "anilist:161474",
+      "rank": 271,
+      "titleZh": "青春猪头少年不会梦到红书包女孩",
+      "titleOriginal": "Seishun Buta Yarou wa Randoseru Girl no Yume wo Minai",
+      "year": 2023,
+      "studios": [
+        "CloverWorks"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Supernatural"
+      ],
+      "compositeScore": 78.2667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 80787
+        },
+        "mal": {
+          "score": 8.28,
+          "votes": 87014
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 4643
+        }
+      }
+    },
+    {
+      "workId": "anilist:106286",
+      "rank": 272,
+      "titleZh": "天气之子",
+      "titleOriginal": "Tenki no Ko",
+      "year": 2019,
+      "studios": [
+        "CoMix Wave"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 78.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 346926
+        },
+        "mal": {
+          "score": 8.27,
+          "votes": 684457
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 18971
+        }
+      }
+    },
+    {
+      "workId": "anilist:202955",
+      "rank": 273,
+      "titleZh": "棱镜恋曲",
+      "titleOriginal": "Prism Rondo",
+      "year": 2026,
+      "studios": [
+        "Netflix"
+      ],
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 78.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 33297
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 23932
+        },
+        "bangumi": {
+          "score": 6.6,
+          "votes": 437
+        }
+      }
+    },
+    {
+      "workId": "anilist:101972",
+      "rank": 274,
+      "titleZh": "魔道祖师 前尘篇",
+      "titleOriginal": "Modao Zushi",
+      "year": 1,
+      "studios": [
+        "Tencent Penguin Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 78.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 68204
+        },
+        "mal": {
+          "score": 8.45,
+          "votes": 89467
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 654
+        }
+      }
+    },
+    {
+      "workId": "anilist:127721",
+      "rank": 275,
+      "titleZh": "IDOLiSH7-偶像星愿- Third BEAT!",
+      "titleOriginal": "IDOLiSH7: Third BEAT!",
+      "year": 2021,
+      "studios": [
+        "TROYCA"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Psychological"
+      ],
+      "compositeScore": 78.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 7882
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 9232
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 186
+        }
+      }
+    },
+    {
+      "workId": "anilist:100878",
+      "rank": 276,
+      "titleZh": "剧场版 幼女战记",
+      "titleOriginal": "Youjo Senki Movie",
+      "year": 2019,
+      "studios": [
+        "NUT"
+      ],
+      "genres": [
+        "Action",
+        "Fantasy"
+      ],
+      "compositeScore": 78.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 97078
+        },
+        "mal": {
+          "score": 8.23,
+          "votes": 179825
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 3091
+        }
+      }
+    },
+    {
+      "workId": "anilist:130298",
+      "rank": 277,
+      "titleZh": "想要成为影之实力者！",
+      "titleOriginal": "Kage no Jitsuryokusha ni Naritakute!",
+      "year": 2022,
+      "studios": [
+        "Nexus"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Fantasy"
+      ],
+      "compositeScore": 78.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 300952
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 479208
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 13474
+        }
+      }
+    },
+    {
+      "workId": "anilist:105334",
+      "rank": 278,
+      "titleZh": "水果篮子 第一季",
+      "titleOriginal": "Fruits Basket: 1st Season",
+      "year": 2019,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 78,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 304339
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 453608
+        },
+        "bangumi": {
+          "score": 7,
+          "votes": 1613
+        }
+      }
+    },
+    {
+      "workId": "anilist:113596",
+      "rank": 279,
+      "titleZh": "乔西的虎与鱼",
+      "titleOriginal": "Josee to Tora to Sakanatachi",
+      "year": 2020,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 77.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 179779
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 281330
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 3089
+        }
+      }
+    },
+    {
+      "workId": "anilist:21425",
+      "rank": 280,
+      "titleZh": "黑执事 豪华客船篇",
+      "titleOriginal": "Kuroshitsuji: Book of the Atlantic",
+      "year": 2017,
+      "studios": [
+        "A-1 Pictures"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Fantasy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 77.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 51587
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 105878
+        },
+        "bangumi": {
+          "score": 7,
+          "votes": 812
+        }
+      }
+    },
+    {
+      "workId": "anilist:147105",
+      "rank": 281,
+      "titleZh": "尖帽子的魔法工房",
+      "titleOriginal": "Tongari Boushi no Atelier",
+      "year": 2026,
+      "studios": [
+        "BUG FILMS"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 77.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 200929
+        },
+        "mal": {
+          "score": 8.53,
+          "votes": 144774
+        },
+        "bangumi": {
+          "score": 6.3,
+          "votes": 4129
+        }
+      }
+    },
+    {
+      "workId": "anilist:182896",
+      "rank": 282,
+      "titleZh": "我的英雄学院 最终季",
+      "titleOriginal": "Boku no Hero Academia FINAL SEASON",
+      "year": 2025,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Action",
+        "Adventure"
+      ],
+      "compositeScore": 77.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 124003
+        },
+        "mal": {
+          "score": 8.71,
+          "votes": 173412
+        },
+        "bangumi": {
+          "score": 5.9,
+          "votes": 561
+        }
+      }
+    },
+    {
+      "workId": "anilist:108430",
+      "rank": 283,
+      "titleZh": "GIVEN 被赠与的未来",
+      "titleOriginal": "Given",
+      "year": 2019,
+      "studios": [
+        "Lerche"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 77.6333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 207436
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 349823
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 436
+        }
+      }
+    },
+    {
+      "workId": "anilist:156841",
+      "rank": 284,
+      "titleZh": "名侦探柯南 黑铁的鱼影",
+      "titleOriginal": "Meitantei Conan: Kurogane no Submarine",
+      "year": 2023,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "compositeScore": 77.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 6887
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 9808
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 3568
+        }
+      }
+    },
+    {
+      "workId": "anilist:108489",
+      "rank": 285,
+      "titleZh": "我的青春恋爱物语果然有问题 完",
+      "titleOriginal": "Yahari Ore no Seishun Love Come wa Machigatteiru. Kan",
+      "year": 2020,
+      "studios": [
+        "feel."
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 77.5,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 218850
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 461848
+        },
+        "bangumi": {
+          "score": 6.7,
+          "votes": 12128
+        }
+      }
+    },
+    {
+      "workId": "anilist:98604",
+      "rank": 286,
+      "titleZh": "名侦探柯南 Episode“ONE” 变小的名侦探",
+      "titleOriginal": "Meitantei Conan: Episode \"ONE\" - Chiisakunatta Meitantei",
+      "year": 2016,
+      "studios": [
+        "TMS Entertainment"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Mystery"
+      ],
+      "compositeScore": 77.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 7001
+        },
+        "mal": {
+          "score": 8.26,
+          "votes": 16553
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 1221
+        }
+      }
+    },
+    {
+      "workId": "anilist:186861",
+      "rank": 287,
+      "titleZh": "哪吒之魔童闹海",
+      "titleOriginal": "Nezha: Zhi Mo Tong Nao Hai",
+      "year": 1,
+      "studios": [
+        "Coco Cartoon"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 77.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 5296
+        },
+        "mal": {
+          "score": 8.46,
+          "votes": 5776
+        },
+        "bangumi": {
+          "score": 6.4,
+          "votes": 4530
+        }
+      }
+    },
+    {
+      "workId": "anilist:181839",
+      "rank": 288,
+      "titleZh": "小林家的龙女仆 怕寂寞的龙",
+      "titleOriginal": "Kobayashi-san Chi no Maidragon: Samishigariya no Ryuu",
+      "year": 2025,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 77.0333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 24953
+        },
+        "mal": {
+          "score": 8.31,
+          "votes": 15077
+        },
+        "bangumi": {
+          "score": 6.6,
+          "votes": 3411
+        }
+      }
+    },
+    {
+      "workId": "anilist:163263",
+      "rank": 289,
+      "titleZh": "文豪野犬 第五季",
+      "titleOriginal": "Bungou Stray Dogs 5th Season",
+      "year": 2023,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 77,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 78213
+        },
+        "mal": {
+          "score": 8.6,
+          "votes": 123670
+        },
+        "bangumi": {
+          "score": 6,
+          "votes": 1498
+        }
+      }
+    },
+    {
+      "workId": "anilist:103223",
+      "rank": 290,
+      "titleZh": "文豪野犬 第三季",
+      "titleOriginal": "Bungou Stray Dogs 3rd Season",
+      "year": 2019,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 76.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 194684
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 380472
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 3105
+        }
+      }
+    },
+    {
+      "workId": "anilist:114535",
+      "rank": 291,
+      "titleZh": "致不灭的你",
+      "titleOriginal": "Fumetsu no Anata e",
+      "year": 2021,
+      "studios": [
+        "Brain's Base"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 76.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 310207
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 429616
+        },
+        "bangumi": {
+          "score": 6.6,
+          "votes": 5636
+        }
+      }
+    },
+    {
+      "workId": "anilist:142770",
+      "rank": 292,
+      "titleZh": "铃芽之旅",
+      "titleOriginal": "Suzume no Tojimari",
+      "year": 2022,
+      "studios": [
+        "CoMix Wave"
+      ],
+      "genres": [
+        "Adventure",
+        "Fantasy",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 76.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 193949
+        },
+        "mal": {
+          "score": 8.24,
+          "votes": 286061
+        },
+        "bangumi": {
+          "score": 6.6,
+          "votes": 15155
+        }
+      }
+    },
+    {
+      "workId": "anilist:136484",
+      "rank": 293,
+      "titleZh": "时光代理人 第二季",
+      "titleOriginal": "Shiguang Dailiren II",
+      "year": 1,
+      "studios": [
+        "BeDream"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Supernatural",
+        "Thriller"
+      ],
+      "compositeScore": 76.4,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 67137
+        },
+        "mal": {
+          "score": 8.62,
+          "votes": 82440
+        },
+        "bangumi": {
+          "score": 5.7,
+          "votes": 1415
+        }
+      }
+    },
+    {
+      "workId": "anilist:156092",
+      "rank": 294,
+      "titleZh": "凸变英雄X",
+      "titleOriginal": "Tu Bian Yingxiong X",
+      "year": 1,
+      "studios": [
+        "BeDream"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 76.2333,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 120810
+        },
+        "mal": {
+          "score": 8.67,
+          "votes": 116588
+        },
+        "bangumi": {
+          "score": 5.7,
+          "votes": 1336
+        }
+      }
+    },
+    {
+      "workId": "anilist:127976",
+      "rank": 295,
+      "titleZh": "天官赐福 第二季",
+      "titleOriginal": "Tian Guan Ci Fu 2",
+      "year": 1,
+      "studios": [
+        "bilibili"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy",
+        "Romance"
+      ],
+      "compositeScore": 76.1333,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 24193
+        },
+        "mal": {
+          "score": 8.64,
+          "votes": 25869
+        },
+        "bangumi": {
+          "score": 5.6,
+          "votes": 170
+        }
+      }
+    },
+    {
+      "workId": "anilist:166794",
+      "rank": 296,
+      "titleZh": "指尖相触，恋恋不舍",
+      "titleOriginal": "Yubisaki to Renren",
+      "year": 2024,
+      "studios": [
+        "Ajiado"
+      ],
+      "genres": [
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 75.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 134110
+        },
+        "mal": {
+          "score": 8.19,
+          "votes": 164707
+        },
+        "bangumi": {
+          "score": 6.5,
+          "votes": 1107
+        }
+      }
+    },
+    {
+      "workId": "anilist:108511",
+      "rank": 297,
+      "titleZh": "关于我转生变成史莱姆这档事 第二季",
+      "titleOriginal": "Tensei Shitara Slime Datta Ken 2nd Season",
+      "year": 2021,
+      "studios": [
+        "8-bit"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Fantasy"
+      ],
+      "compositeScore": 75.7667,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 311173
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 656053
+        },
+        "bangumi": {
+          "score": 6.1,
+          "votes": 8028
+        }
+      }
+    },
+    {
+      "workId": "anilist:178025",
+      "rank": 298,
+      "titleZh": "咔嗒咔嗒",
+      "titleOriginal": "Gachiakuta",
+      "year": 2025,
+      "studios": [
+        "bones"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 75.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 239167
+        },
+        "mal": {
+          "score": 8.21,
+          "votes": 235288
+        },
+        "bangumi": {
+          "score": 6.2,
+          "votes": 1626
+        }
+      }
+    },
+    {
+      "workId": "anilist:182300",
+      "rank": 299,
+      "titleZh": "杖与剑的魔剑谭 第二季",
+      "titleOriginal": "Tsue to Tsurugi no Wistoria Season 2",
+      "year": 2026,
+      "studios": [
+        "Actas"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "compositeScore": 75.3333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 106774
+        },
+        "mal": {
+          "score": 8.2,
+          "votes": 71985
+        },
+        "bangumi": {
+          "score": 6.2,
+          "votes": 2110
+        }
+      }
+    },
+    {
+      "workId": "anilist:159490",
+      "rank": 300,
+      "titleZh": "伍六七之暗影宿命",
+      "titleOriginal": "Wu Liuqi: Anying Suming",
+      "year": 1,
+      "studios": [
+        "bilibili"
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Supernatural"
+      ],
+      "compositeScore": 75.1667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 15455
+        },
+        "mal": {
+          "score": 8.25,
+          "votes": 21156
+        },
+        "bangumi": {
+          "score": 6.1,
+          "votes": 2049
+        }
+      }
+    }
+  ]
 }
