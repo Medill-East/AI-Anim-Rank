@@ -277,6 +277,10 @@ function retryDelay(response: FetchResponse, attempt: number): number {
   return defaultJikanRetryDelayMs * attempt;
 }
 
+function isRetryableJikanStatus(status: number): boolean {
+  return status === 429 || (status >= 500 && status <= 599);
+}
+
 async function fetchJikan(
   pageCount: number,
   fetchImpl: FetchImpl,
@@ -289,11 +293,13 @@ async function fetchJikan(
     for (let attempt = 1; attempt <= retryAttempts; attempt += 1) {
       const response = await fetchImpl(`https://api.jikan.moe/v4/top/anime?page=${page}&limit=25`);
       if (!response.ok) {
-        if (response.status === 429 && attempt < retryAttempts) {
+        if (isRetryableJikanStatus(response.status) && attempt < retryAttempts) {
           await sleep(retryDelay(response, attempt));
           continue;
         }
-        if (response.status === 429) throw new Error(`Jikan request failed after ${retryAttempts} attempts: 429`);
+        if (isRetryableJikanStatus(response.status)) {
+          throw new Error(`Jikan request failed after ${retryAttempts} attempts: ${response.status}`);
+        }
         throw new Error(`Jikan request failed: ${response.status}`);
       }
       const payload = await response.json();
