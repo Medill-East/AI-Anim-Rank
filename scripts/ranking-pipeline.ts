@@ -48,6 +48,15 @@ export interface RankingCandidate {
   compositeScore: number | null;
 }
 
+type FullyMappedRankingCandidate = RankingCandidate & {
+  mal: JikanAnime;
+  bangumi: BangumiMapping;
+};
+
+function hasSourceMappings(candidate: RankingCandidate): candidate is FullyMappedRankingCandidate {
+  return candidate.mal !== null && candidate.bangumi !== null;
+}
+
 const sourceMaximum: Record<RankingSource, number> = { anilist: 100, mal: 10, bangumi: 10 };
 
 function requiredNumber(value: unknown, label: string): number {
@@ -234,7 +243,7 @@ export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], ma
 }
 
 export function buildReleaseSnapshot(candidates: RankingCandidate[], version: string): RankingSnapshot {
-  const selected = candidates.filter((candidate) => candidate.mal !== null && candidate.bangumi !== null);
+  const selected = candidates.filter(hasSourceMappings);
   const rawAniList = selected.map((candidate) => candidate.anilist);
   const rawMal: JikanAnime[] = [];
   const rawBangumi: BangumiMapping[] = [];

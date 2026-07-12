@@ -5,13 +5,14 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { resolveBangumiMappings } from "../scripts/bangumi-resolver.ts";
+import type { BangumiSuggestions } from "../scripts/bangumi-suggestions.ts";
 
 const source = {
   anilist: [{ id: 1, idMal: 10, title: { native: "作品", romaji: "Sakuhin" }, seasonYear: 2024 }],
   jikan: [{ mal_id: 10, title: "Work", type: "TV", year: 2024, episodes: 12 }],
 };
 
-const suggestion = (subjectId: number) => ({
+const suggestion = (subjectId: number): BangumiSuggestions => ({
   status: "complete",
   generatedAt: "2026-07-12T00:00:00.000Z",
   captureGeneration: "capture-a",
