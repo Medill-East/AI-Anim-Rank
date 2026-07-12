@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { act } from "react";
 import { createRoot } from "react-dom/client";
+import { renderToStaticMarkup } from "react-dom/server";
 import { JSDOM } from "jsdom";
 
 import { RankingWorkspace } from "../src/features/ranking/RankingWorkspace.tsx";
@@ -10,8 +11,8 @@ import { SyncSettings } from "../src/features/progress/SyncSettings.tsx";
 import type { RankedWork } from "../src/data/schema.ts";
 import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
-import { SyncVaultStore } from "../src/storage/sync-vault.ts";
-import type { RecoveryVault } from "../src/sync/crypto.ts";
+import { serializeRecoveryPayload, SyncVaultStore } from "../src/storage/sync-vault.ts";
+import { createRecoveryVault } from "../src/sync/crypto.ts";
 import { IDBFactory } from "fake-indexeddb";
 
 const work: RankedWork = {
@@ -252,12 +253,7 @@ test("sync vault survives remount in browser storage and disconnect removes the 
   const originalGlobals = installDom(dom);
   installDialogStub(dom);
   const vaultStore = new SyncVaultStore(dom.window.localStorage);
-  const vault: RecoveryVault = {
-    phrase: "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about",
-    salt: "test-salt",
-    vaultId: "test-vault",
-    key: {} as CryptoKey,
-  };
+  const vault = await createRecoveryVault();
   const createVault = async () => vault;
   let root = createRoot(document.getElementById("root")!);
 
@@ -271,18 +267,82 @@ test("sync vault survives remount in browser storage and disconnect removes the 
     await act(async () => acknowledgement.click());
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
       .find((button) => button.textContent === "我已安全保存，继续")?.click());
-    assert.deepEqual(vaultStore.load(), { phrase: vault.phrase, salt: vault.salt });
+    await act(async () => { await flush(50); });
+    const storedVault = await vaultStore.load();
+    assert.equal(storedVault?.phrase, vault.phrase);
+    assert.equal(storedVault?.salt, vault.salt);
 
     await act(async () => root.unmount());
     root = createRoot(document.getElementById("root")!);
-    await act(async () => { root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />); await flush(); });
+    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />));
+    await act(async () => { await flush(300); });
     assert.equal(document.body.textContent?.includes("本地保险库已启用"), true);
 
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
       .find((button) => button.textContent === "断开本地保险库")?.click());
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
       .find((button) => button.textContent === "确认断开本地访问")?.click());
-    assert.equal(vaultStore.load(), null);
+    assert.equal(await vaultStore.load(), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("sync settings does not read browser storage during server render and hydrates to disabled on blocked storage", async () => {
+  let getItemCalls = 0;
+  const blockedStore = new SyncVaultStore({
+    getItem() { getItemCalls += 1; throw new DOMException("blocked", "SecurityError"); },
+    setItem() { throw new DOMException("blocked", "SecurityError"); },
+    removeItem() { throw new DOMException("blocked", "SecurityError"); },
+  });
+  const markup = renderToStaticMarkup(<SyncSettings vaultStore={blockedStore} />);
+  assert.equal(getItemCalls, 0);
+  assert.match(markup, /启用私密同步/);
+  assert.doesNotMatch(markup, /data-recovery-phrase/);
+
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const root = createRoot(document.getElementById("root")!);
+  try {
+    await act(async () => { root.render(<SyncSettings vaultStore={blockedStore} />); await flush(); });
+    assert.equal(getItemCalls, 1);
+    assert.equal(document.body.textContent?.includes("启用私密同步"), true);
+    assert.equal(document.querySelector("[data-recovery-phrase]"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("pairing import validates a QR recovery payload before saving it locally", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const vaultStore = new SyncVaultStore(dom.window.localStorage);
+  const vault = await createRecoveryVault();
+  const root = createRoot(document.getElementById("root")!);
+  try {
+    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} />));
+    const importButton = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "导入配对二维码");
+    assert.ok(importButton);
+    await act(async () => importButton.click());
+    const input = document.querySelector<HTMLTextAreaElement>("#pairing-payload");
+    assert.ok(input);
+    setTextAreaValue(dom, input, "invalid");
+    await act(async () => input.dispatchEvent(new dom.window.Event("input", { bubbles: true })));
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "确认导入")?.click());
+    assert.equal(await vaultStore.load(), null);
+
+    setTextAreaValue(dom, input, serializeRecoveryPayload(vault));
+    await act(async () => input.dispatchEvent(new dom.window.Event("input", { bubbles: true })));
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "确认导入")?.click());
+    await act(async () => { await flush(700); });
+    assert.equal((await vaultStore.load())?.vaultId, vault.vaultId);
+    assert.equal(document.location.href.includes(vault.phrase), false);
+    assert.equal(document.querySelector("[data-recovery-phrase]"), null);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
@@ -307,7 +367,19 @@ function flush(delay = 20) {
   return new Promise<void>((resolve) => setTimeout(resolve, delay));
 }
 
+function setTextAreaValue(dom: JSDOM, input: HTMLTextAreaElement, value: string) {
+  Object.getOwnPropertyDescriptor(dom.window.HTMLTextAreaElement.prototype, "value")?.set?.call(input, value);
+}
+
 function installDom(dom: JSDOM) {
+  Object.defineProperty(dom.window.HTMLCanvasElement.prototype, "getContext", {
+    configurable: true,
+    value: () => ({
+      clearRect: () => {},
+      createImageData: (width: number, height: number) => ({ data: new Uint8ClampedArray(width * height * 4) }),
+      putImageData: () => {},
+    }),
+  });
   const globals = ["window", "document", "navigator", "HTMLElement", "HTMLDialogElement", "Node", "Event", "MouseEvent"] as const;
   const originals = new Map<string, PropertyDescriptor | undefined>();
   for (const name of globals) {
