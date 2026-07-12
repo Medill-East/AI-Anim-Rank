@@ -40,6 +40,18 @@ npx tsx scripts/ranking-pipeline.ts release --version 2026-07-12
 
 `release` does not read `candidate-review.json`. It rebuilds from the captured AniList/Jikan files plus the checked-in reviewed Bangumi mappings, then requires exactly 300 entries with positive, globally unique AniList/MAL/Bangumi IDs, complete snapshot fields and vote eligibility. Candidate review JSON is only a human review artifact. Release uses an adjacent temporary file then rename, so a refusal leaves `src/data/ranking.json` unchanged.
 
+## Bangumi search suggestions (review-only)
+
+When a captured AniList work has no reviewed Bangumi mapping, generate a separate search aid with:
+
+```bash
+npx tsx scripts/bangumi-suggestions.ts
+```
+
+It reads the current captured AniList/Jikan generation and writes ignored operational artifacts: `data/ranking/bangumi-suggestions.json` and `data/ranking/bangumi-suggestions-report.md`. To review a specific capture pair, provide both `--anilist <path>` and `--jikan <path>`.
+
+The tool sends deliberately paced, single-flight `POST` requests to Bangumi v0 subject search with the anime type filter and a browser-like User-Agent. It uses `BANGUMI_ACCESS_TOKEN` only when supplied through the environment; the token is never written to JSON, Markdown, or logs. Results contain only candidate data and an exact normalized-title indicator. They are never accepted automatically, never write `data/ranking/bangumi-mappings.json`, and have no effect on review or release. A 401/403, network problem, or malformed response produces a resumable blocked report instead of a mapping.
+
 For `review` and `release`, source overrides are intentionally paired: provide both `--anilist <path>` and `--jikan <path>`, or neither to use `current.json`. A single override is rejected before any capture source is read.
 
 ## Published method

@@ -11,3 +11,5 @@ dist/
 data/ranking/captured/
 data/ranking/candidate-review.json
 data/ranking/unmatched-report.md
+data/ranking/bangumi-suggestions.json
+data/ranking/bangumi-suggestions-report.md
