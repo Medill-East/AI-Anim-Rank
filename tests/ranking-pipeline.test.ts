@@ -193,6 +193,24 @@ test("release accepts exactly 300 raw candidates and recalculates their composit
   assert.equal(snapshot.works[0]?.compositeScore, 85);
 });
 
+test("release recomputes a complete candidate forged as ineligible", () => {
+  const candidates = releaseCandidates();
+  candidates[0]!.eligible = false;
+
+  const snapshot = buildReleaseSnapshot(candidates, "2026-07-12");
+
+  assert.equal(snapshot.works.length, 300);
+  assert.equal(snapshot.works.some((work) => work.workId === "anilist:1"), true);
+});
+
+test("release validates complete candidates forged as ineligible", () => {
+  const candidates = releaseCandidates();
+  candidates[0]!.eligible = false;
+  candidates[0]!.mal!.mal_id = 99_999;
+
+  assert.throws(() => buildReleaseSnapshot(candidates, "2026-07-12"), /mismatched MAL id/i);
+});
+
 test("release ignores ineligible candidates that are missing required sources", () => {
   const candidates = releaseCandidates();
   const extras = buildCandidates([

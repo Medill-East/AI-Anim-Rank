@@ -234,7 +234,7 @@ export function buildCandidates(anilist: AniListMedia[], jikan: JikanAnime[], ma
 }
 
 export function buildReleaseSnapshot(candidates: RankingCandidate[], version: string): RankingSnapshot {
-  const selected = candidates.filter((candidate) => candidate.eligible && candidate.mal !== null && candidate.bangumi !== null);
+  const selected = candidates.filter((candidate) => candidate.mal !== null && candidate.bangumi !== null);
   const rawAniList = selected.map((candidate) => candidate.anilist);
   const rawMal: JikanAnime[] = [];
   const rawBangumi: BangumiMapping[] = [];
