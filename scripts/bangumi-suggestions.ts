@@ -1,5 +1,5 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { mkdir, readFile, realpath, rename, rm, writeFile } from "node:fs/promises";
+import { dirname, relative, resolve, sep } from "node:path";
 
 import { resolveCaptureSources, selectBangumiMapping, type BangumiMapping } from "./ranking-pipeline.ts";
 
@@ -10,6 +10,7 @@ const resultLimit = 5;
 type FetchResponse = Pick<Response, "ok" | "status" | "json">;
 type FetchImpl = (input: string, init?: RequestInit) => Promise<FetchResponse>;
 type Sleep = (milliseconds: number) => Promise<void>;
+type Rename = (oldPath: string, newPath: string) => Promise<void>;
 
 interface AniListTitle {
   chinese?: string | null;
@@ -133,9 +134,20 @@ function report(suggestions: BangumiSuggestions): string {
   return lines.join("\n");
 }
 
-async function writeJson(path: string, value: unknown) {
+async function writeArtifact(path: string, content: string, renameImpl: Rename) {
   await mkdir(dirname(path), { recursive: true });
-  await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  const temporary = `${path}.tmp-${process.pid}-${Date.now()}`;
+  try {
+    await writeFile(temporary, content, "utf8");
+    await renameImpl(temporary, path);
+  } catch (error) {
+    await rm(temporary, { force: true });
+    throw error;
+  }
+}
+
+async function writeJson(path: string, value: unknown, renameImpl: Rename) {
+  await writeArtifact(path, `${JSON.stringify(value, null, 2)}\n`, renameImpl);
 }
 
 export async function generateBangumiSuggestions({
@@ -149,6 +161,7 @@ export async function generateBangumiSuggestions({
   requestDelayMs = defaultRequestDelayMs,
   env,
   log = console.log,
+  renameImpl = rename,
 }: {
   anilist: AniListCandidate[];
   jikan: JikanCandidate[];
@@ -160,6 +173,7 @@ export async function generateBangumiSuggestions({
   requestDelayMs?: number;
   env?: Readonly<{ BANGUMI_ACCESS_TOKEN?: string }>;
   log?: (message: string) => void;
+  renameImpl?: Rename;
 }): Promise<BangumiSuggestions> {
   if (!Number.isInteger(requestDelayMs) || requestDelayMs < 0) throw new Error("request delay must be a non-negative integer");
   const token = env === undefined ? process.env.BANGUMI_ACCESS_TOKEN : env.BANGUMI_ACCESS_TOKEN;
@@ -217,9 +231,8 @@ export async function generateBangumiSuggestions({
     ...(diagnostic ? { diagnostic } : {}),
     approvalRequired: true,
   };
-  await writeJson(suggestionsPath, suggestions);
-  await mkdir(dirname(reportPath), { recursive: true });
-  await writeFile(reportPath, report(suggestions), "utf8");
+  await writeJson(suggestionsPath, suggestions, renameImpl);
+  await writeArtifact(reportPath, report(suggestions), renameImpl);
   log(`Bangumi mapping suggestions: ${suggestions.status}; ${entries.length} candidates written for human review.`);
   return suggestions;
 }
@@ -229,13 +242,57 @@ function option(args: string[], name: string, fallback: string): string {
   return index === -1 ? fallback : (args[index + 1] ?? (() => { throw new Error(`${name} requires a value`); })());
 }
 
-export function assertSuggestionOutputPaths(root: string, suggestionsPath: string, reportPath: string) {
-  const protectedMappingPath = resolve(root, "data/ranking/bangumi-mappings.json");
-  const protectedReleaseDataPath = resolve(root, "src/data");
-  for (const path of [resolve(root, suggestionsPath), resolve(root, reportPath)]) {
-    if (path === protectedMappingPath || path === protectedReleaseDataPath || path.startsWith(`${protectedReleaseDataPath}/`)) {
-      throw new Error("suggestion output path is protected");
+function isWithin(path: string, directory: string): boolean {
+  return path.startsWith(`${directory}${sep}`);
+}
+
+async function nearestExistingParent(path: string): Promise<string> {
+  let parent = dirname(path);
+  while (parent !== dirname(parent)) {
+    try {
+      return await realpath(parent);
+    } catch (error: unknown) {
+      if (typeof error === "object" && error !== null && "code" in error && error.code === "ENOENT") {
+        parent = dirname(parent);
+        continue;
+      }
+      throw error;
     }
+  }
+  return realpath(parent);
+}
+
+async function canonicalArtifactPath(path: string, allowedDirectory: string): Promise<string> {
+  const parent = await nearestExistingParent(path);
+  if (!isWithin(parent, allowedDirectory) && parent !== allowedDirectory) throw new Error("suggestion output path is protected");
+  try {
+    const existing = await realpath(path);
+    if (!isWithin(existing, allowedDirectory)) throw new Error("suggestion output path is protected");
+    return existing;
+  } catch (error: unknown) {
+    if (typeof error === "object" && error !== null && "code" in error && error.code === "ENOENT") {
+      return resolve(parent, path.slice(parent.length + 1));
+    }
+    throw error;
+  }
+}
+
+export async function assertSuggestionOutputPaths(root: string, suggestionsPath: string, reportPath: string) {
+  const lexicalRoot = resolve(root);
+  const rootPath = await realpath(root);
+  const artifactDirectory = resolve(rootPath, "data/ranking/bangumi-suggestions");
+  await mkdir(artifactDirectory, { recursive: true });
+  const realArtifactDirectory = await realpath(artifactDirectory);
+  if (realArtifactDirectory !== artifactDirectory) throw new Error("suggestion output path is protected");
+  const requested = [suggestionsPath, reportPath].map((path) => {
+    const lexicalPath = resolve(root, path);
+    const rootRelativePath = relative(lexicalRoot, lexicalPath);
+    return resolve(rootPath, rootRelativePath);
+  });
+  if (requested.some((path) => !isWithin(path, artifactDirectory))) throw new Error("suggestion output path is protected");
+  const [suggestionsArtifact, reportArtifact] = await Promise.all(requested.map((path) => canonicalArtifactPath(path, realArtifactDirectory)));
+  if (suggestionsArtifact === reportArtifact || isWithin(suggestionsArtifact, reportArtifact) || isWithin(reportArtifact, suggestionsArtifact)) {
+    throw new Error("suggestion output paths overlap");
   }
 }
 
@@ -248,9 +305,9 @@ async function main(args: string[]) {
   const captureDir = resolve(root, "data/ranking/captured");
   const anilistPath = args.includes("--anilist") ? option(args, "--anilist", "") : undefined;
   const jikanPath = args.includes("--jikan") ? option(args, "--jikan", "") : undefined;
-  const suggestionsPath = option(args, "--output", resolve(root, "data/ranking/bangumi-suggestions.json"));
-  const reportPath = option(args, "--report", resolve(root, "data/ranking/bangumi-suggestions-report.md"));
-  assertSuggestionOutputPaths(root, suggestionsPath, reportPath);
+  const suggestionsPath = option(args, "--output", resolve(root, "data/ranking/bangumi-suggestions/suggestions.json"));
+  const reportPath = option(args, "--report", resolve(root, "data/ranking/bangumi-suggestions/report.md"));
+  await assertSuggestionOutputPaths(root, suggestionsPath, reportPath);
   const captured = await resolveCaptureSources({ captureDir, anilistPath, jikanPath });
   await generateBangumiSuggestions({
     anilist: captured.anilist,
