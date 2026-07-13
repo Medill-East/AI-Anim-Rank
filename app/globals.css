@@ -78,6 +78,13 @@ button { cursor: pointer; }
 .ranking-table-region tbody tr:hover, .ranking-table-region tbody tr:focus { background: #1a1916; }
 .work-title { color: var(--foreground); background: transparent; border: 0; font-weight: 600; padding: 0; text-align: left; }
 .work-title span { color: var(--muted); display: block; font-size: .8rem; font-weight: 400; margin-top: 3px; }
+.progress-status { display: flex; flex-wrap: wrap; gap: 5px; min-width: 7rem; }
+.progress-status > span { border: 1px solid var(--rule); color: var(--muted); font-size: .72rem; line-height: 1; padding: 5px 6px; white-space: nowrap; }
+.progress-status .progress-status-watched { color: #b8d5ff; }
+.progress-status .progress-status-reviewed { color: #d5c3ff; }
+.progress-status .progress-status-recommended { border-color: #a95e7d; color: #ff9cbc; }
+.progress-status .progress-status-not-interested { color: #8e8c86; opacity: .72; }
+.progress-status .progress-status-empty { border-color: transparent; padding-left: 0; }
 
 .ranking-mobile-list { display: none; }
 dialog { background: #191815; border: 1px solid var(--rule); color: var(--foreground); max-width: min(560px, calc(100% - 32px)); padding: 24px; }
@@ -113,6 +120,7 @@ dialog > button:disabled { cursor: not-allowed; opacity: .5; }
   .mobile-work-row { border-bottom: 1px solid var(--rule); padding: 16px 0; }
   .mobile-work-title { align-items: baseline; background: transparent; border: 0; color: var(--foreground); display: grid; gap: 10px; grid-template-columns: 3rem 1fr auto; padding: 0; text-align: left; width: 100%; }
   .mobile-work-title span { color: var(--muted); font: .78rem var(--font-mono), monospace; }
+  .mobile-work-row > .progress-status { margin: 10px 0 0 3.6rem; }
   .ranking-mobile-list summary { color: var(--accent); cursor: pointer; font-size: .82rem; margin: 12px 0 0 3.6rem; }
   .ranking-mobile-list summary::-webkit-details-marker { display: none; }
   .ranking-mobile-list summary span { color: var(--muted); font: .78rem var(--font-mono), monospace; }

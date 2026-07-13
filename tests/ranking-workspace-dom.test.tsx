@@ -131,6 +131,37 @@ test("workspace renders private progress controls and saves a normalized recomme
   }
 });
 
+test("workspace shows saved short private statuses before opening work details", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const repository = new ProgressRepository(new IDBFactory());
+  await repository.save({
+    workId: work.workId,
+    watched: true,
+    reviewed: true,
+    recommended: true,
+    notInterested: false,
+    updatedAt: "2026-07-13T00:00:00.000Z",
+    revision: 1,
+  });
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} progressRepository={repository} />));
+    await act(async () => { await flush(); });
+
+    const status = document.querySelector('[aria-label="个人状态"]');
+    assert.ok(status);
+    assert.match(status.textContent ?? "", /已看/);
+    assert.match(status.textContent ?? "", /已评价/);
+    assert.match(status.textContent ?? "", /推荐/);
+    assert.equal(document.querySelector("dialog"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
 test("workspace preserves rapid private progress patches for the same work", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
