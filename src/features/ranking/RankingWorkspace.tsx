@@ -11,6 +11,9 @@ import { createRankingWorkspaceState, reduceRankingWorkspaceState, visibleRankin
 import type { PrivateStatusFilter, RankingSortField, SortDirection } from "./query.ts";
 
 type ProgressStore = Pick<ProgressRepository, "loadAll" | "save" | "replaceAll">;
+type Theme = "light" | "dark";
+
+const THEME_STORAGE_KEY = "ai-anim-rank-theme";
 
 interface RankingWorkspaceProps {
   works: readonly RankedWork[];
@@ -41,6 +44,7 @@ function EmptyRankingWorkspace() {
 function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
+  const [theme, setTheme] = useState<Theme>("light");
   const [saveStatus, setSaveStatus] = useState("");
   const [pendingBackup, setPendingBackup] = useState<ProgressBackup | null>(null);
   const detailTriggerRef = useRef<HTMLElement | null>(null);
@@ -61,6 +65,17 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
     );
     return () => { active = false; };
   }, [repository]);
+
+  useEffect(() => {
+    if (readThemePreference() !== "dark") return;
+    const timer = window.setTimeout(() => setTheme("dark"), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    saveThemePreference(theme);
+  }, [theme]);
 
   const visibleWorks = useMemo(() => visibleRankingWorks(works, records, state), [works, records, state]);
   const selectedWork = works.find((work) => work.workId === state.selectedWorkId) ?? null;
@@ -123,7 +138,7 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
   const closeDetail = () => { dispatch({ type: "closeDetail" }); detailTriggerRef.current?.focus(); };
 
   return <section className="ranking-workspace" aria-label="AI Anim Rank">
-    <header className="ranking-masthead"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
+    <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} />
     <section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section>
     <SyncSettings />
@@ -135,7 +150,7 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
       <label htmlFor="sort-field">排序</label><select id="sort-field" value={state.sortField} onChange={(event) => dispatch({ type: "sortField", value: event.target.value as RankingSortField })}>{sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select>
       <label htmlFor="sort-direction">方向</label><select id="sort-direction" value={state.sortDirection} onChange={(event) => dispatch({ type: "sortDirection", value: event.target.value as SortDirection })}><option value="asc">升序</option><option value="desc">降序</option></select><button type="button" className="text-button" onClick={() => dispatch({ type: "reset" })}>重置筛选</button>
     </form>
-    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的状态</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>
+    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的标记</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>
     {selectedWork && <WorkDialog work={selectedWork} record={selectedRecord} onPatch={savePatch} onClose={closeDetail} />}
   </section>;
 }
@@ -149,18 +164,14 @@ function PrivateSummary({ works, records }: { works: readonly RankedWork[]; reco
   return <section className="private-summary" aria-label="我的进度"><h2>我的进度</h2><p>共 {works.length} 部 · 已看 {watched} · 完成 {completion}% · 已评价 {reviewed} · 推荐 {recommended} · 不感兴趣 {notInterested}</p></section>;
 }
 
-function DesktopRow({ work, record, onOpen }: { work: RankedWork; record?: ProgressRecord; onOpen: (trigger: HTMLElement) => void }) { return <tr tabIndex={0} onClick={(event) => onOpen(event.currentTarget)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(event.currentTarget); } }}><td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(event.currentTarget); }}>{work.titleZh}<span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td>{work.genres.join(" · ")}</td><td>{work.compositeScore.toFixed(1)}</td><td><ProgressStatus record={record} /></td></tr>; }
-function MobileRow({ work, record, onOpen }: { work: RankedWork; record?: ProgressRecord; onOpen: (trigger: HTMLElement) => void }) { return <div className="mobile-work-row"><button type="button" className="mobile-work-title" onClick={(event) => onOpen(event.currentTarget)}><span>#{work.rank}</span><strong>{work.titleZh}</strong><span>{work.year}</span></button><ProgressStatus record={record} /><details><summary>展开公开资料</summary><div className="mobile-work-detail"><p>{work.titleOriginal}</p><p>{work.genres.join(" · ")} · {work.compositeScore.toFixed(1)}</p></div></details></div>; }
+function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) { return <button type="button" className="theme-toggle" data-theme-toggle aria-label={theme === "light" ? "切换至深色模式" : "切换至浅色模式"} onClick={onToggle}>{theme === "light" ? "Dark" : "Light"}</button>; }
 
-function ProgressStatus({ record }: { record?: ProgressRecord }) {
-  const statuses = [
-    record?.watched && ["watched", "已看"],
-    record?.reviewed && ["reviewed", "已评价"],
-    record?.recommended && ["recommended", "推荐"],
-    record?.notInterested && ["not-interested", "不感兴趣"],
-  ].filter((status): status is [string, string] => Boolean(status));
+function DesktopRow({ work, record, onPatch, onOpen }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onOpen: (trigger: HTMLElement) => void }) { return <tr tabIndex={0} onClick={(event) => onOpen(event.currentTarget)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(event.currentTarget); } }}><td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(event.currentTarget); }}>{work.titleZh}<span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td>{work.genres.join(" · ")}</td><td>{work.compositeScore.toFixed(1)}</td><td><ProgressControls workId={work.workId} record={record} onPatch={onPatch} /></td></tr>; }
+function MobileRow({ work, record, onPatch, onOpen }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onOpen: (trigger: HTMLElement) => void }) { return <div className="mobile-work-row"><button type="button" className="mobile-work-title" onClick={(event) => onOpen(event.currentTarget)}><span>#{work.rank}</span><strong>{work.titleZh}</strong><span>{work.year}</span></button><ProgressControls workId={work.workId} record={record} onPatch={onPatch} /><details><summary>展开公开资料</summary><div className="mobile-work-detail"><p>{work.titleOriginal}</p><p>{work.genres.join(" · ")} · {work.compositeScore.toFixed(1)}</p></div></details></div>; }
 
-  return <span className="progress-status" aria-label="个人状态">{statuses.length > 0 ? statuses.map(([key, label]) => <span key={key} className={`progress-status-${key}`}>{label}</span>) : <span className="progress-status-empty">未标记</span>}</span>;
+function ProgressControls({ workId, record, onPatch }: { workId: string; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void> }) {
+  const progress = record ?? emptyProgress(workId);
+  return <span className="progress-controls" aria-label="个人标记">{([['watched', '已看'], ['reviewed', '已评价'], ['recommended', '推荐'], ['notInterested', '不感兴趣']] as const).map(([key, label]) => <button key={key} type="button" className={progress[key] ? `progress-control is-active progress-control-${key}` : "progress-control"} data-progress-action={key} aria-pressed={progress[key]} onClick={(event) => { event.stopPropagation(); void onPatch(workId, { [key]: !progress[key] }); }}>{label}</button>)}</span>;
 }
 
 function WorkDialog({ work, record, onPatch, onClose }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onClose: () => void }) {
@@ -172,3 +183,11 @@ function WorkDialog({ work, record, onPatch, onClose }: { work: RankedWork; reco
 }
 
 function emptyProgress(workId: string): ProgressRecord { return { workId, watched: false, reviewed: false, recommended: false, notInterested: false, updatedAt: "", revision: 0 }; }
+
+function readThemePreference(): Theme {
+  try { return window.localStorage.getItem(THEME_STORAGE_KEY) === "dark" ? "dark" : "light"; } catch { return "light"; }
+}
+
+function saveThemePreference(theme: Theme) {
+  try { window.localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
+}

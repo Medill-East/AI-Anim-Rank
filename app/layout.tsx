@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "AI Anim Rank", statusBarStyle: "black-translucent" },
 };
 
-export const viewport: Viewport = { colorScheme: "dark", themeColor: "#10100f" };
+export const viewport: Viewport = { colorScheme: "light dark", themeColor: "#f5f1e8" };
 
 export default function RootLayout({
   children,

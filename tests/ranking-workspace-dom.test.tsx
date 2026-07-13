@@ -131,7 +131,7 @@ test("workspace renders private progress controls and saves a normalized recomme
   }
 });
 
-test("workspace shows saved short private statuses before opening work details", async () => {
+test("workspace shows saved private statuses as row controls before opening work details", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
   const repository = new ProgressRepository(new IDBFactory());
@@ -150,12 +150,59 @@ test("workspace shows saved short private statuses before opening work details",
     await act(async () => root.render(<RankingWorkspace works={[work]} progressRepository={repository} />));
     await act(async () => { await flush(); });
 
-    const status = document.querySelector('[aria-label="个人状态"]');
-    assert.ok(status);
-    assert.match(status.textContent ?? "", /已看/);
-    assert.match(status.textContent ?? "", /已评价/);
-    assert.match(status.textContent ?? "", /推荐/);
+    const controls = document.querySelector('[aria-label="个人标记"]');
+    assert.ok(controls);
+    assert.equal(document.querySelector('[data-progress-action="watched"]')?.getAttribute("aria-pressed"), "true");
+    assert.equal(document.querySelector('[data-progress-action="reviewed"]')?.getAttribute("aria-pressed"), "true");
+    assert.equal(document.querySelector('[data-progress-action="recommended"]')?.getAttribute("aria-pressed"), "true");
     assert.equal(document.querySelector("dialog"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace lets people update private statuses directly from a ranking row", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const repository = new ProgressRepository(new IDBFactory());
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} progressRepository={repository} />));
+    const recommend = document.querySelector<HTMLButtonElement>('[data-progress-action="recommended"]');
+    assert.ok(recommend);
+    assert.equal(recommend.getAttribute("aria-pressed"), "false");
+
+    await act(async () => {
+      recommend.click();
+      await flush();
+    });
+
+    assert.equal((await repository.loadAll())[0]?.recommended, true);
+    assert.equal((await repository.loadAll())[0]?.watched, true);
+    assert.equal(document.querySelector("dialog"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace toggles the saved light and dark theme preference", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} />));
+    const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+    assert.ok(themeToggle);
+    assert.equal(document.documentElement.dataset.theme, "light");
+
+    await act(async () => themeToggle.click());
+
+    assert.equal(document.documentElement.dataset.theme, "dark");
+    assert.equal(window.localStorage.getItem("ai-anim-rank-theme"), "dark");
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
