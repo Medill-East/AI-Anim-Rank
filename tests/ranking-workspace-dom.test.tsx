@@ -93,6 +93,43 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
   );
 });
 
+test("workspace offers floating jumps to the page start and current result end", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
+  const dom = new JSDOM(html);
+
+  const jumpControls = dom.window.document.querySelector(".page-jump-controls");
+  assert.ok(jumpControls);
+  assert.match(jumpControls.textContent ?? "", /回到页首/);
+  assert.match(jumpControls.textContent ?? "", /当前结果末尾/);
+});
+
+test("workspace scrolls to the requested page boundary from floating jumps", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const scrollTargets: Array<{ target: string | null; block: string }> = [];
+  Object.defineProperty(dom.window.HTMLElement.prototype, "scrollIntoView", {
+    configurable: true,
+    value(this: HTMLElement, options: ScrollIntoViewOptions) { scrollTargets.push({ target: this.dataset.pageJumpTarget ?? null, block: String(options.block) }); },
+  });
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} />));
+    const topButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "回到页首");
+    const endButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "当前结果末尾");
+    assert.ok(topButton);
+    assert.ok(endButton);
+
+    await act(async () => topButton.click());
+    await act(async () => endButton.click());
+
+    assert.deepEqual(scrollTargets, [{ target: "page-start", block: "start" }, { target: "results-end", block: "end" }]);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
@@ -130,6 +167,32 @@ test("workspace opens a named modal from a Chinese title and restores focus on c
     const closeButton = dialog?.querySelector<HTMLButtonElement>('button[aria-label="关闭详情"]');
     assert.ok(closeButton);
     await act(async () => closeButton.click());
+
+    assert.equal(document.querySelector("dialog"), null);
+    assert.equal(document.activeElement, trigger);
+
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace closes a work dialog when its backdrop is clicked", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  installDialogStub(dom);
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} />));
+    await act(async () => { await flush(); });
+    const trigger = [...document.querySelectorAll("button")].find((button) => button.textContent?.includes(work.titleZh));
+    assert.ok(trigger);
+    await act(async () => trigger.click());
+
+    const dialog = document.querySelector<HTMLDialogElement>("dialog");
+    assert.ok(dialog);
+    await act(async () => dialog.dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true })));
 
     assert.equal(document.querySelector("dialog"), null);
     assert.equal(document.activeElement, trigger);

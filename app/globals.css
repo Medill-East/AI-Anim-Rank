@@ -174,7 +174,11 @@ button.summary-stat:hover { background: var(--surface-hover); color: var(--accen
 :root[data-theme="dark"] .progress-control-notInterested.is-active { background: #718196; border-color: #718196; }
 
 .ranking-mobile-list { display: none; }
-dialog { background: var(--surface); border: 1px solid var(--rule); color: var(--foreground); max-width: min(560px, calc(100% - 32px)); padding: 24px; }
+.page-jump-controls { bottom: 20px; display: grid; gap: 7px; position: fixed; right: 20px; z-index: 1; }
+.page-jump-controls button { background: var(--surface); border: 1px solid var(--rule); box-shadow: 0 8px 20px rgb(0 0 0 / 12%); color: var(--foreground); font-size: .74rem; padding: 8px 10px; }
+.page-jump-controls button:hover { background: var(--surface-hover); border-color: var(--accent); color: var(--accent); }
+.page-jump-controls button:active { transform: translateY(1px); }
+dialog { background: var(--surface); border: 1px solid var(--rule); color: var(--foreground); inset: 0; margin: auto; max-height: calc(100dvh - 48px); overflow-y: auto; padding: 24px; width: min(560px, calc(100% - 32px)); }
 dialog::backdrop { background: rgb(0 0 0 / 72%); }
 .dialog-heading { align-items: start; display: flex; justify-content: space-between; gap: 24px; }
 .dialog-heading h2 { font-size: 1.8rem; font-weight: 500; margin: 0; }
@@ -200,6 +204,7 @@ dialog > button:disabled { cursor: not-allowed; opacity: .5; }
 
 @media (max-width: 700px) {
   .ranking-workspace { width: min(100% - 28px, 1180px); padding-top: 36px; }
+  .page-jump-controls { bottom: 14px; right: 14px; }
   .data-tools-grid { grid-template-columns: 1fr; }
   .data-tool + .data-tool { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
   .progress-insights { grid-template-columns: 1fr; }
