@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  applicationName: "AI Anim Rank",
+  applicationName: "AnimeRank",
   title: {
-    default: "AI Anim Rank",
-    template: "%s · AI Anim Rank",
+    default: "AnimeRank",
+    template: "%s · AnimeRank",
   },
-  description: "可复核排序的 AI 动画作品排行榜，个人进度保存在本机。",
+  description: "可复核排序的动画作品排行榜，个人进度保存在本机。",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     ],
     apple: "/app-icon-192.png",
   },
-  appleWebApp: { capable: true, title: "AI Anim Rank", statusBarStyle: "black-translucent" },
+  appleWebApp: { capable: true, title: "AnimeRank", statusBarStyle: "black-translucent" },
 };
 
 export const viewport: Viewport = { colorScheme: "light dark", themeColor: "#f5f1e8" };

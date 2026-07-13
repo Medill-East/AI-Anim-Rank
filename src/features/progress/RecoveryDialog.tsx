@@ -44,11 +44,11 @@ export function RecoveryDialog({ onClose, onContinue, createVault = createRecove
   };
   const downloadPhrase = () => {
     if (!vault) return;
-    const blob = new Blob([`AI Anim Rank 恢复短语\n\n${vault.phrase}\n`], { type: "text/plain" });
+    const blob = new Blob([`AnimeRank 恢复短语\n\n${vault.phrase}\n`], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "ai-anim-rank-recovery.txt";
+    anchor.download = "anime-rank-recovery.txt";
     anchor.click();
     URL.revokeObjectURL(url);
   };

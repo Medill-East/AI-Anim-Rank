@@ -36,8 +36,8 @@ export function RankingWorkspace({ works, methodologyVersion, progressRepository
 }
 
 function EmptyRankingWorkspace() {
-  return <section className="ranking-workspace" aria-label="AI Anim Rank">
-    <header className="ranking-masthead"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
+  return <section className="ranking-workspace" aria-label="AnimeRank">
+    <header className="ranking-masthead"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <p className="ranking-empty" role="status">榜单数据准备中</p>
   </section>;
 }
@@ -138,12 +138,13 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   const openDetail = (workId: string, trigger: HTMLElement) => { detailTriggerRef.current = trigger; dispatch({ type: "openDetail", workId }); };
   const closeDetail = () => { dispatch({ type: "closeDetail" }); detailTriggerRef.current?.focus(); };
 
-  return <section className="ranking-workspace" aria-label="AI Anim Rank">
-    <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
+  return <section className="ranking-workspace" aria-label="AnimeRank">
+    <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} />
-    <details className="ranking-utilities"><summary>数据与同步 <span>备份 · 私密同步</span></summary><div><section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section><SyncSettings /></div></details>
+    <section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section>
+    <details className="ranking-utilities"><summary>私密同步 <span>可选 · 端到端加密</span></summary><SyncSettings /></details>
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
-    <details className="ranking-methodology"><summary>排名依据 <span>三个来源等权 · 可复核快照</span></summary><div><p>本榜单汇总 AniList、MyAnimeList（MAL）与 Bangumi 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></details>
+    <section className="ranking-methodology" aria-label="排名依据"><div className="section-heading"><h2>排名依据</h2><span>三个来源等权 · 可复核快照</span></div><div><p>本榜单汇总 AniList、MyAnimeList（MAL）与 Bangumi 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></section>
     <form className="ranking-controls" role="search" onSubmit={(event) => event.preventDefault()}>
       <label className="filter-field filter-search" htmlFor="work-search"><span>搜索作品</span><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" /></label>
       <label className="filter-field" htmlFor="genre-filter"><span>类型</span><select id="genre-filter" value={state.genre} onChange={(event) => dispatch({ type: "genre", value: event.target.value })}><option value="">全部类型</option>{genres.map((genre) => <option key={genre} value={genre}>{genre}</option>)}</select></label>

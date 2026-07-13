@@ -4,11 +4,17 @@ import test from "node:test";
 
 const publicFile = (name) => new URL(`../public/${name}`, import.meta.url);
 
-test("PWA manifest identifies AI Anim Rank as a standalone app with branded PNG icons", async () => {
+test("PWA manifest identifies AnimeRank as a standalone app with branded PNG icons", async () => {
   const manifest = JSON.parse(await readFile(publicFile("manifest.webmanifest"), "utf8"));
+  const [offlinePage, icon] = await Promise.all([
+    readFile(publicFile("offline.html"), "utf8"),
+    readFile(publicFile("app-icon.svg"), "utf8"),
+  ]);
 
-  assert.equal(manifest.name, "AI Anim Rank");
-  assert.equal(manifest.short_name, "AI Anim Rank");
+  assert.equal(manifest.name, "AnimeRank");
+  assert.equal(manifest.short_name, "AnimeRank");
+  assert.match(offlinePage, /AnimeRank/);
+  assert.match(icon, /aria-label="AnimeRank"/);
   assert.equal(manifest.display, "standalone");
   assert.deepEqual(
     manifest.icons.map(({ src, sizes, type }) => ({ src, sizes, type })),
