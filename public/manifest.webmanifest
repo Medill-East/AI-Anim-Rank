@@ -1,7 +1,7 @@
 {
-  "name": "AI Anim Rank",
-  "short_name": "AI Anim Rank",
-  "description": "可安装的 AI 动画作品排行榜。",
+  "name": "AnimeRank",
+  "short_name": "AnimeRank",
+  "description": "可安装的动画作品排行榜。",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

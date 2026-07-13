@@ -62,6 +62,16 @@ test("workspace groups filters and declares stable table columns", () => {
   assert.equal(dom.window.document.querySelectorAll(".progress-controls button").length, 8);
 });
 
+test("workspace keeps backup actions and ranking methodology in the primary flow", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
+  const dom = new JSDOM(html);
+
+  assert.ok(dom.window.document.querySelector("section.private-backup"));
+  assert.ok(dom.window.document.querySelector("section.ranking-methodology"));
+  assert.equal(dom.window.document.querySelector("details.ranking-methodology"), null);
+  assert.equal(dom.window.document.querySelector("details.ranking-utilities section.private-backup"), null);
+});
+
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
