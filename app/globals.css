@@ -178,6 +178,7 @@ button.summary-stat:hover { background: var(--surface-hover); color: var(--accen
 .page-jump-controls button { background: var(--surface); border: 1px solid var(--rule); box-shadow: 0 8px 20px rgb(0 0 0 / 12%); color: var(--foreground); font-size: .74rem; padding: 8px 10px; }
 .page-jump-controls button:hover { background: var(--surface-hover); border-color: var(--accent); color: var(--accent); }
 .page-jump-controls button:active { transform: translateY(1px); }
+.page-jump-controls button:disabled { cursor: not-allowed; opacity: .55; }
 dialog { background: var(--surface); border: 1px solid var(--rule); color: var(--foreground); inset: 0; margin: auto; max-height: calc(100dvh - 48px); overflow-y: auto; padding: 24px; width: min(560px, calc(100% - 32px)); }
 dialog::backdrop { background: rgb(0 0 0 / 72%); }
 .dialog-heading { align-items: start; display: flex; justify-content: space-between; gap: 24px; }

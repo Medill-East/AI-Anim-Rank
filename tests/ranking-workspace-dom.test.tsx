@@ -93,14 +93,15 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
   );
 });
 
-test("workspace offers floating jumps to the page start and current result end", () => {
+test("workspace offers floating jumps to the page start, end, and last reviewed work", () => {
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
   const jumpControls = dom.window.document.querySelector(".page-jump-controls");
   assert.ok(jumpControls);
   assert.match(jumpControls.textContent ?? "", /回到页首/);
-  assert.match(jumpControls.textContent ?? "", /当前结果末尾/);
+  assert.match(jumpControls.textContent ?? "", /跳到页尾/);
+  assert.match(jumpControls.textContent ?? "", /最后已评价/);
 });
 
 test("workspace scrolls to the requested page boundary from floating jumps", async () => {
@@ -116,14 +117,46 @@ test("workspace scrolls to the requested page boundary from floating jumps", asy
   try {
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
     const topButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "回到页首");
-    const endButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "当前结果末尾");
+    const endButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "跳到页尾");
+    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后已评价");
     assert.ok(topButton);
     assert.ok(endButton);
+    assert.ok(reviewedButton);
+    assert.equal(reviewedButton.disabled, true);
 
     await act(async () => topButton.click());
     await act(async () => endButton.click());
 
     assert.deepEqual(scrollTargets, [{ target: "page-start", block: "start" }, { target: "results-end", block: "end" }]);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace jumps to the final reviewed work in the current ranking", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const repository = new ProgressRepository(new IDBFactory());
+  const reviewedWork = { ...work, workId: "reviewed-work", rank: 2, titleZh: "已评价作品" };
+  await repository.save({ workId: reviewedWork.workId, watched: true, reviewed: true, recommended: false, notInterested: false, updatedAt: "2026-07-14T00:00:00.000Z", revision: 1 });
+  const scrollTargets: string[] = [];
+  Object.defineProperty(dom.window.HTMLElement.prototype, "scrollIntoView", {
+    configurable: true,
+    value(this: HTMLElement) { scrollTargets.push(this.dataset.pageJumpTarget ?? ""); },
+  });
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work, reviewedWork]} progressRepository={repository} />));
+    await act(async () => { await flush(); });
+    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后已评价");
+    assert.ok(reviewedButton);
+    assert.equal(reviewedButton.disabled, false);
+
+    await act(async () => reviewedButton.click());
+
+    assert.deepEqual(scrollTargets, ["reviewed-work"]);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
