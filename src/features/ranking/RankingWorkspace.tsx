@@ -7,6 +7,7 @@ import { applyProgressPatch, type ProgressPatch, type ProgressRecord } from "../
 import { applyProgressBackup, exportProgressBackup, parseProgressBackup, type ProgressBackup } from "../../storage/backup.ts";
 import { ProgressRepository } from "../../storage/progress-db.ts";
 import { SyncSettings } from "../progress/SyncSettings.tsx";
+import { deriveProgressInsights } from "./insights.ts";
 import { createRankingWorkspaceState, reduceRankingWorkspaceState, visibleRankingWorks } from "./workspace.ts";
 import type { PrivateStatusFilter, RankingSortField, SortDirection } from "./query.ts";
 
@@ -141,7 +142,7 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
 
   return <section className="ranking-workspace" aria-label="AnimeRank">
     <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
-    <PrivateSummary works={works} records={records} />
+    <PrivateSummary works={works} records={records} onStatusSelect={(status) => dispatch({ type: "status", value: status })} onGenreSelect={(genre) => dispatch({ type: "genre", value: genre })} />
     <section className="data-tools" aria-label="备份与同步"><div className="section-heading"><div><h2>备份与同步</h2><p>个人标记默认仅保存在此浏览器。</p></div><span>数据由你掌握</span></div><div className="data-tools-grid"><section className="data-tool data-tool-backup" aria-label="本地备份"><div className="data-tool-copy"><h3>本地备份</h3><p>导出或恢复 JSON 个人标记。</p></div><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出备份</button><label>导入备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，选择导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换现有数据</button></div>}</section><section className="data-tool data-tool-sync" aria-label="私密同步"><div className="data-tool-copy"><h3>私密同步 <small>可选 · 端到端加密</small></h3></div><SyncSettings heading={false} /></section></div></section>
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
     <section className="ranking-methodology" aria-label="排名依据"><div className="section-heading"><h2>排名依据</h2><span>三个来源等权 · 可复核快照</span></div><div><p>本榜单汇总 <a href="https://anilist.co/" target="_blank" rel="noreferrer">AniList</a>、<a href="https://myanimelist.net/" target="_blank" rel="noreferrer">MyAnimeList（MAL）</a> 与 <a href="https://bgm.tv/" target="_blank" rel="noreferrer">Bangumi</a> 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据快照日期：{sourceSnapshotVersion} · 数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></section>
@@ -157,13 +158,14 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   </section>;
 }
 
-function PrivateSummary({ works, records }: { works: readonly RankedWork[]; records: readonly ProgressRecord[] }) {
+function PrivateSummary({ works, records, onStatusSelect, onGenreSelect }: { works: readonly RankedWork[]; records: readonly ProgressRecord[]; onStatusSelect: (status: PrivateStatusFilter) => void; onGenreSelect: (genre: string) => void }) {
   const watched = records.filter((record) => record.watched).length;
   const reviewed = records.filter((record) => record.reviewed).length;
   const recommended = records.filter((record) => record.recommended).length;
   const notInterested = records.filter((record) => record.notInterested).length;
   const completion = works.length === 0 ? 0 : Math.round(watched / works.length * 100);
-  return <section className="private-summary" aria-label="我的进度"><h2>我的进度</h2><p>共 {works.length} 部 · 已看 {watched} · 完成 {completion}% · 已评价 {reviewed} · 推荐 {recommended} · 不感兴趣 {notInterested}</p></section>;
+  const insights = deriveProgressInsights(works, records);
+  return <section className="private-summary" aria-label="我的进度"><h2>我的进度</h2><p>共 {works.length} 部 · 已看 {watched} · 完成 {completion}% · 已评价 {reviewed} · 推荐 {recommended} · 不感兴趣 {notInterested}</p><section className="progress-insights" aria-label="进度洞察"><section className="completion-insight" data-progress-insight="completion"><button type="button" className="completion-ring" aria-label={`查看 ${works.length - watched} 部未看作品`} onClick={() => onStatusSelect("unwatched")} style={{ background: `conic-gradient(var(--accent) ${insights.completion * 3.6}deg, var(--surface-hover) 0deg)` }}><span>{insights.completion}%</span><small>完成</small></button><div><h3>完成度</h3><p>已看 {insights.watchedCount} / {works.length} 部</p><button type="button" className="insight-link" onClick={() => onStatusSelect("unwatched")}>查看未看作品</button></div></section><section className="preference-insight" data-progress-insight="genres"><div className="insight-heading"><h3>观看偏好</h3><span>{insights.watchedCount === 0 ? "开始标记后解锁" : "按已看作品统计"}</span></div>{insights.topGenres.length > 0 ? <div className="genre-insights">{insights.topGenres.map((genre) => <button key={genre.label} type="button" className="genre-insight" onClick={() => onGenreSelect(genre.label)}><span>{genre.label}</span><i><b style={{ width: `${genre.percentage}%` }} /></i><em>{genre.count} 部</em></button>)}</div> : <p className="insight-empty">还没有已看作品，先从榜单里标记一部吧。</p>}<div className="insight-footer"><span>常看制作</span><strong>{insights.topStudio ? `${insights.topStudio.label} · ${insights.topStudio.count} 部` : "—"}</strong><span>推荐</span><strong>{insights.recommendedCount} 部</strong></div></section></section></section>;
 }
 
 function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) { return <button type="button" className="theme-toggle" data-theme-toggle aria-label={theme === "light" ? "切换至深色模式" : "切换至浅色模式"} onClick={onToggle}>{theme === "light" ? "深色模式" : "浅色模式"}</button>; }
