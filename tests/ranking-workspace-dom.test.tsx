@@ -53,6 +53,15 @@ test("workspace explains the auditable three-source ranking methodology", () => 
   assert.match(html, /v1-auditable-three-source/);
 });
 
+test("workspace groups filters and declares stable table columns", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
+  const dom = new JSDOM(html);
+
+  assert.equal(dom.window.document.querySelectorAll(".ranking-controls .filter-field").length, 5);
+  assert.ok(dom.window.document.querySelector(".ranking-table-region colgroup"));
+  assert.equal(dom.window.document.querySelectorAll(".progress-controls button").length, 8);
+});
+
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
