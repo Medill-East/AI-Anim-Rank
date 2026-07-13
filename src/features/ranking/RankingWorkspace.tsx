@@ -18,6 +18,7 @@ const THEME_STORAGE_KEY = "ai-anim-rank-theme";
 interface RankingWorkspaceProps {
   works: readonly RankedWork[];
   methodologyVersion?: string;
+  sourceSnapshotVersion?: string;
   progressRepository?: ProgressStore;
 }
 
@@ -29,10 +30,10 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
   { value: "rank", label: "排名" }, { value: "compositeScore", label: "综合分" }, { value: "year", label: "年份" },
 ];
 
-export function RankingWorkspace({ works, methodologyVersion, progressRepository }: RankingWorkspaceProps) {
+export function RankingWorkspace({ works, methodologyVersion, sourceSnapshotVersion, progressRepository }: RankingWorkspaceProps) {
   if (works.length === 0) return <EmptyRankingWorkspace />;
 
-  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} progressRepository={progressRepository} />;
+  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} sourceSnapshotVersion={sourceSnapshotVersion} progressRepository={progressRepository} />;
 }
 
 function EmptyRankingWorkspace() {
@@ -42,7 +43,7 @@ function EmptyRankingWorkspace() {
   </section>;
 }
 
-function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", progressRepository }: RankingWorkspaceProps) {
+function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", sourceSnapshotVersion = "2026-07-12", progressRepository }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
   const [theme, setTheme] = useState<Theme>("light");
@@ -141,9 +142,9 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   return <section className="ranking-workspace" aria-label="AnimeRank">
     <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} />
-    <section className="data-tools" aria-label="数据与恢复"><div className="section-heading"><div><h2>数据与恢复</h2><p>个人标记默认仅保存在此浏览器。</p></div><span>你掌握数据与恢复凭证</span></div><div className="data-tools-grid"><section className="data-tool data-tool-backup" aria-label="本地备份"><div><h3>本地备份</h3><p>用 JSON 保存或恢复个人标记。</p></div><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出备份</button><label>导入备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，选择导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换现有数据</button></div>}</section><details className="data-tool data-tool-sync"><summary><span><strong>跨设备同步</strong><small>可选 · 端到端加密</small></span><span className="details-action">设置</span></summary><SyncSettings heading={false} /></details></div></section>
+    <section className="data-tools" aria-label="备份与同步"><div className="section-heading"><div><h2>备份与同步</h2><p>个人标记默认仅保存在此浏览器。</p></div><span>数据由你掌握</span></div><div className="data-tools-grid"><section className="data-tool data-tool-backup" aria-label="本地备份"><div className="data-tool-copy"><h3>本地备份</h3><p>导出或恢复 JSON 个人标记。</p></div><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出备份</button><label>导入备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，选择导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换现有数据</button></div>}</section><section className="data-tool data-tool-sync" aria-label="私密同步"><div className="data-tool-copy"><h3>私密同步 <small>可选 · 端到端加密</small></h3></div><SyncSettings heading={false} /></section></div></section>
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
-    <section className="ranking-methodology" aria-label="排名依据"><div className="section-heading"><h2>排名依据</h2><span>三个来源等权 · 可复核快照</span></div><div><p>本榜单汇总 <a href="https://anilist.co/" target="_blank" rel="noreferrer">AniList</a>、<a href="https://myanimelist.net/" target="_blank" rel="noreferrer">MyAnimeList（MAL）</a> 与 <a href="https://bgm.tv/" target="_blank" rel="noreferrer">Bangumi</a> 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></section>
+    <section className="ranking-methodology" aria-label="排名依据"><div className="section-heading"><h2>排名依据</h2><span>三个来源等权 · 可复核快照</span></div><div><p>本榜单汇总 <a href="https://anilist.co/" target="_blank" rel="noreferrer">AniList</a>、<a href="https://myanimelist.net/" target="_blank" rel="noreferrer">MyAnimeList（MAL）</a> 与 <a href="https://bgm.tv/" target="_blank" rel="noreferrer">Bangumi</a> 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据快照日期：{sourceSnapshotVersion} · 数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></section>
     <form className="ranking-controls" role="search" onSubmit={(event) => event.preventDefault()}>
       <label className="filter-field filter-search" htmlFor="work-search"><span>搜索作品</span><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" /></label>
       <label className="filter-field" htmlFor="genre-filter"><span>类型</span><select id="genre-filter" value={state.genre} onChange={(event) => dispatch({ type: "genre", value: event.target.value })}><option value="">全部类型</option>{genres.map((genre) => <option key={genre} value={genre}>{genre}</option>)}</select></label>

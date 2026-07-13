@@ -41,8 +41,8 @@ test("app status explains offline availability without claiming unconfigured rem
   assert.doesNotMatch(html, /已同步/);
 });
 
-test("workspace explains the auditable three-source ranking methodology", () => {
-  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} methodologyVersion="v1-auditable-three-source" />);
+test("workspace explains the auditable three-source ranking methodology and source snapshot date", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} methodologyVersion="v1-auditable-three-source" sourceSnapshotVersion="2026-07-12" />);
 
   assert.match(html, /排名依据/);
   assert.match(html, /AniList/);
@@ -51,6 +51,7 @@ test("workspace explains the auditable three-source ranking methodology", () => 
   assert.match(html, /统一换算为 0–100/);
   assert.match(html, /三个来源等权/);
   assert.match(html, /v1-auditable-three-source/);
+  assert.match(html, /数据快照日期：2026-07-12/);
 });
 
 test("workspace groups filters and declares stable table columns", () => {
@@ -68,12 +69,13 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
 
   assert.ok(dom.window.document.querySelector("section.data-tools"));
   assert.ok(dom.window.document.querySelector("section.data-tool-backup"));
-  const syncPanel = dom.window.document.querySelector("details.data-tool-sync");
+  const syncPanel = dom.window.document.querySelector("section.data-tool-sync");
   assert.ok(syncPanel);
   assert.equal(syncPanel?.querySelector(".sync-settings h2"), null);
+  assert.match(syncPanel?.textContent ?? "", /正在检查本地保险库/);
   assert.ok(dom.window.document.querySelector("section.ranking-methodology"));
   assert.equal(dom.window.document.querySelector("details.ranking-methodology"), null);
-  assert.equal(dom.window.document.querySelector("details.ranking-utilities"), null);
+  assert.equal(dom.window.document.querySelector(".data-tools details"), null);
   assert.deepEqual(
     [...dom.window.document.querySelectorAll(".ranking-methodology a")].map((link) => link.getAttribute("href")),
     ["https://anilist.co/", "https://myanimelist.net/", "https://bgm.tv/"],

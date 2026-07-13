@@ -40,12 +40,13 @@ test("server-renders the published ranking app shell", async () => {
   assert.match(html, new RegExp(topWork.titleZh));
   assert.doesNotMatch(html, /榜单数据准备中/i);
   assert.match(html, /<form class="ranking-controls" role="search">/i);
-  assert.match(html, /<section class="data-tools" aria-label="数据与恢复">/i);
+  assert.match(html, /<section class="data-tools" aria-label="备份与同步">/i);
   assert.match(html, /<section class="data-tool data-tool-backup" aria-label="本地备份">/i);
   assert.match(html, /<section class="ranking-methodology" aria-label="排名依据">/i);
   assert.match(html, /href="https:\/\/anilist\.co\/"/i);
   assert.match(html, /href="https:\/\/myanimelist\.net\/"/i);
   assert.match(html, /href="https:\/\/bgm\.tv\/"/i);
+  assert.match(html, new RegExp(`数据快照日期：<!--\\s*-->${rankingSnapshot.version}`));
   assert.doesNotMatch(html, /<details class="ranking-methodology"/i);
   assert.match(html, /未配置远程同步端点；个人进度仅本机保存。/i);
 });
