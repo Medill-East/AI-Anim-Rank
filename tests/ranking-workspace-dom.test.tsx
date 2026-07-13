@@ -93,7 +93,7 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
   );
 });
 
-test("workspace offers floating jumps to the page start, end, and last reviewed work", () => {
+test("workspace offers floating jumps to the page start, end, and last private operation", () => {
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
@@ -101,7 +101,7 @@ test("workspace offers floating jumps to the page start, end, and last reviewed 
   assert.ok(jumpControls);
   assert.match(jumpControls.textContent ?? "", /回到页首/);
   assert.match(jumpControls.textContent ?? "", /跳到页尾/);
-  assert.match(jumpControls.textContent ?? "", /最后已评价/);
+  assert.match(jumpControls.textContent ?? "", /最后操作/);
 });
 
 test("workspace scrolls to the requested page boundary from floating jumps", async () => {
@@ -118,7 +118,7 @@ test("workspace scrolls to the requested page boundary from floating jumps", asy
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
     const topButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "回到页首");
     const endButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "跳到页尾");
-    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后已评价");
+    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后操作");
     assert.ok(topButton);
     assert.ok(endButton);
     assert.ok(reviewedButton);
@@ -134,12 +134,13 @@ test("workspace scrolls to the requested page boundary from floating jumps", asy
   }
 });
 
-test("workspace jumps to the final reviewed work in the current ranking", async () => {
+test("workspace jumps to the work with the latest private operation", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
   const repository = new ProgressRepository(new IDBFactory());
-  const reviewedWork = { ...work, workId: "reviewed-work", rank: 2, titleZh: "已评价作品" };
-  await repository.save({ workId: reviewedWork.workId, watched: true, reviewed: true, recommended: false, notInterested: false, updatedAt: "2026-07-14T00:00:00.000Z", revision: 1 });
+  const latestWork = { ...work, workId: "latest-work", rank: 2, titleZh: "最后操作作品" };
+  await repository.save({ workId: work.workId, watched: true, reviewed: false, recommended: false, notInterested: false, updatedAt: "2026-07-14T00:00:00.000Z", revision: 1 });
+  await repository.save({ workId: latestWork.workId, watched: false, reviewed: false, recommended: false, notInterested: true, updatedAt: "2026-07-14T00:01:00.000Z", revision: 1 });
   const scrollTargets: string[] = [];
   Object.defineProperty(dom.window.HTMLElement.prototype, "scrollIntoView", {
     configurable: true,
@@ -148,15 +149,52 @@ test("workspace jumps to the final reviewed work in the current ranking", async 
   const root = createRoot(document.getElementById("root")!);
 
   try {
-    await act(async () => root.render(<RankingWorkspace works={[work, reviewedWork]} progressRepository={repository} />));
+    await act(async () => root.render(<RankingWorkspace works={[work, latestWork]} progressRepository={repository} />));
     await act(async () => { await flush(); });
-    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后已评价");
+    const reviewedButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后操作");
     assert.ok(reviewedButton);
     assert.equal(reviewedButton.disabled, false);
 
     await act(async () => reviewedButton.click());
 
-    assert.deepEqual(scrollTargets, ["reviewed-work"]);
+    assert.deepEqual(scrollTargets, ["latest-work"]);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace resets hidden filters before jumping to the last private operation", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const repository = new ProgressRepository(new IDBFactory());
+  await repository.save({ workId: work.workId, watched: true, reviewed: false, recommended: false, notInterested: false, updatedAt: "2026-07-14T00:00:00.000Z", revision: 1 });
+  const scrollTargets: string[] = [];
+  Object.defineProperty(dom.window.HTMLElement.prototype, "scrollIntoView", {
+    configurable: true,
+    value(this: HTMLElement) { scrollTargets.push(this.dataset.pageJumpTarget ?? ""); },
+  });
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} progressRepository={repository} />));
+    await act(async () => { await flush(); });
+    const statusFilter = document.getElementById("status-filter") as unknown as { value: string; dispatchEvent(event: unknown): boolean } | null;
+    assert.ok(statusFilter);
+    await act(async () => {
+      statusFilter.value = "unwatched";
+      statusFilter.dispatchEvent(new dom.window.Event("change", { bubbles: true }));
+    });
+    const lastOperationButton = [...document.querySelectorAll<HTMLButtonElement>(".page-jump-controls button")].find((button) => button.textContent === "最后操作");
+    assert.ok(lastOperationButton);
+    assert.equal(lastOperationButton.disabled, false);
+
+    await act(async () => lastOperationButton.click());
+    await act(async () => { await flush(); });
+
+    assert.equal(statusFilter.value, "all");
+    assert.match(document.querySelector(".filter-status")?.textContent ?? "", /已重置筛选，定位最后操作/);
+    assert.deepEqual(scrollTargets, [work.workId]);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();

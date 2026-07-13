@@ -55,8 +55,9 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   const rankingControlsRef = useRef<HTMLFormElement>(null);
   const workspaceRef = useRef<HTMLElement>(null);
   const resultsEndRef = useRef<HTMLDivElement>(null);
-  const reviewedDesktopRef = useRef<HTMLTableRowElement>(null);
-  const reviewedMobileRef = useRef<HTMLDivElement>(null);
+  const lastOperationDesktopRef = useRef<HTMLTableRowElement>(null);
+  const lastOperationMobileRef = useRef<HTMLDivElement>(null);
+  const pendingLastOperationWorkIdRef = useRef<string | null>(null);
   const recordsRef = useRef<ProgressRecord[]>([]);
   const pendingSavesRef = useRef<Promise<void>>(Promise.resolve());
   const repository = useMemo<ProgressStore>(() => progressRepository ?? new ProgressRepository(), [progressRepository]);
@@ -87,10 +88,10 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   }, [theme]);
 
   const visibleWorks = useMemo(() => visibleRankingWorks(works, records, state), [works, records, state]);
-  const lastReviewedWorkId = useMemo(() => {
-    const reviewedWorkIds = new Set(records.filter((record) => record.reviewed).map((record) => record.workId));
-    return [...visibleWorks].reverse().find((work) => reviewedWorkIds.has(work.workId))?.workId;
-  }, [records, visibleWorks]);
+  const lastOperationWorkId = useMemo(() => records.reduce<ProgressRecord | undefined>((latest, record) => {
+    if (!latest || record.updatedAt > latest.updatedAt || record.updatedAt === latest.updatedAt && record.revision > latest.revision) return record;
+    return latest;
+  }, undefined)?.workId, [records]);
   const selectedWork = works.find((work) => work.workId === state.selectedWorkId) ?? null;
   const selectedRecord = selectedWork ? records.find((record) => record.workId === selectedWork.workId) : undefined;
   const genres = useMemo(() => [...new Set(works.flatMap((work) => work.genres))].sort((a, b) => a.localeCompare(b, "zh-CN")), [works]);
@@ -162,6 +163,31 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   const scrollTo = (element: HTMLElement | null, block: ScrollLogicalPosition) => {
     element?.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block });
   };
+  const isMobileViewport = () => window.matchMedia?.("(max-width: 700px)").matches ?? false;
+  const scrollToLastOperation = () => scrollTo(isMobileViewport() ? lastOperationMobileRef.current : lastOperationDesktopRef.current, "center");
+  const settleLastOperationTarget = (element: HTMLElement | null, mobile: boolean) => {
+    if (!element || pendingLastOperationWorkIdRef.current !== element.dataset.pageJumpTarget || isMobileViewport() !== mobile) return;
+    scrollTo(element, "center");
+    pendingLastOperationWorkIdRef.current = null;
+  };
+  const setLastOperationDesktopRef = (element: HTMLTableRowElement | null) => {
+    lastOperationDesktopRef.current = element;
+    settleLastOperationTarget(element, false);
+  };
+  const setLastOperationMobileRef = (element: HTMLDivElement | null) => {
+    lastOperationMobileRef.current = element;
+    settleLastOperationTarget(element, true);
+  };
+  const jumpToLastOperation = () => {
+    if (!lastOperationWorkId) return;
+    if (!visibleWorks.some((work) => work.workId === lastOperationWorkId)) {
+      setFilterNotice("已重置筛选，定位最后操作");
+      pendingLastOperationWorkIdRef.current = lastOperationWorkId;
+      dispatch({ type: "reset" });
+      return;
+    }
+    scrollToLastOperation();
+  };
 
   return <section ref={workspaceRef} className="ranking-workspace" data-page-jump-target="page-start" aria-label="AnimeRank">
     <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
@@ -177,8 +203,8 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
       <label className="filter-field" htmlFor="sort-field"><span>排序</span><select id="sort-field" value={state.sortField} onChange={(event) => { setFilterNotice(""); dispatch({ type: "sortField", value: event.target.value as RankingSortField }); }}>{sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
       <label className="filter-field" htmlFor="sort-direction"><span>方向</span><select id="sort-direction" value={state.sortDirection} onChange={(event) => { setFilterNotice(""); dispatch({ type: "sortDirection", value: event.target.value as SortDirection }); }}><option value="asc">升序</option><option value="desc">降序</option></select></label><button type="button" className="text-button" onClick={() => { setFilterNotice(""); dispatch({ type: "reset" }); }}>重置筛选</button>
     </form>
-    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><colgroup><col className="rank-column" /><col className="work-column" /><col className="year-column" /><col className="genre-column" /><col className="score-column" /><col className="marks-column" /></colgroup><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的标记</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} jumpTargetRef={work.workId === lastReviewedWorkId ? reviewedDesktopRef : undefined} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} jumpTargetRef={work.workId === lastReviewedWorkId ? reviewedMobileRef : undefined} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}<div ref={resultsEndRef} data-page-jump-target="results-end" /></>
-    <nav className="page-jump-controls" aria-label="页面导航"><button type="button" onClick={() => scrollTo(workspaceRef.current, "start")}>回到页首</button><button type="button" onClick={() => scrollTo(resultsEndRef.current, "end")}>跳到页尾</button><button type="button" disabled={!lastReviewedWorkId} title={lastReviewedWorkId ? "跳到当前列表的最后一条已评价作品" : "当前列表没有已评价作品"} onClick={() => scrollTo(window.matchMedia?.("(max-width: 700px)").matches ? reviewedMobileRef.current : reviewedDesktopRef.current, "center")}>最后已评价</button></nav>
+    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><colgroup><col className="rank-column" /><col className="work-column" /><col className="year-column" /><col className="genre-column" /><col className="score-column" /><col className="marks-column" /></colgroup><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的标记</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} jumpTargetRef={work.workId === lastOperationWorkId ? setLastOperationDesktopRef : undefined} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} jumpTargetRef={work.workId === lastOperationWorkId ? setLastOperationMobileRef : undefined} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}<div ref={resultsEndRef} data-page-jump-target="results-end" /></>
+    <nav className="page-jump-controls" aria-label="页面导航"><button type="button" onClick={() => scrollTo(workspaceRef.current, "start")}>回到页首</button><button type="button" onClick={() => scrollTo(resultsEndRef.current, "end")}>跳到页尾</button><button type="button" disabled={!lastOperationWorkId} title={lastOperationWorkId ? "跳到最后一次个人操作的作品" : "还没有个人操作记录"} onClick={jumpToLastOperation}>最后操作</button></nav>
     {selectedWork && <WorkDialog work={selectedWork} record={selectedRecord} onPatch={savePatch} onClose={closeDetail} />}
   </section>;
 }
