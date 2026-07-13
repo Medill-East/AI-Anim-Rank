@@ -67,6 +67,8 @@ test("workspace reserves a compact interactive insights area for private progres
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
+  assert.equal(dom.window.document.querySelectorAll(".summary-stat").length, 4);
+  assert.ok(dom.window.document.querySelector("[data-progress-insight='favorite-studio']"));
   assert.ok(dom.window.document.querySelector("section.progress-insights"));
   assert.ok(dom.window.document.querySelector("[data-progress-insight='completion']"));
   assert.ok(dom.window.document.querySelector("[data-progress-insight='genres']"));
@@ -318,7 +320,7 @@ test("workspace shows private progress summary counts", async () => {
 
   try {
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
-    assert.match(document.body.textContent ?? "", /我的进度[\s\S]*共 1 部[\s\S]*已看 0[\s\S]*完成 0%[\s\S]*已评价 0[\s\S]*推荐 0[\s\S]*不感兴趣 0/);
+    assert.match(document.body.textContent ?? "", /我的进度[\s\S]*总收录[\s\S]*1 部[\s\S]*已看[\s\S]*0 部[\s\S]*当前完成度[\s\S]*0%[\s\S]*常看制作/);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
@@ -329,6 +331,11 @@ test("progress insights filter the ranking from completion and genre controls", 
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
   const repository = new ProgressRepository(new IDBFactory());
+  let scrollCalls = 0;
+  Object.defineProperty(dom.window.HTMLElement.prototype, "scrollIntoView", {
+    configurable: true,
+    value() { scrollCalls += 1; },
+  });
   const secondWork = { ...work, workId: "music-work", rank: 2, titleZh: "音乐作品", genres: ["音乐"] };
   await repository.save({ workId: work.workId, watched: true, reviewed: false, recommended: false, notInterested: false, updatedAt: "2026-07-13T00:00:00.000Z", revision: 1 });
   const root = createRoot(document.getElementById("root")!);
@@ -340,11 +347,14 @@ test("progress insights filter the ranking from completion and genre controls", 
     assert.ok(genre);
     await act(async () => genre.click());
     assert.equal((document.querySelector("#genre-filter") as HTMLSelectElement | null)?.value, "冒险");
+    assert.match(document.querySelector('.filter-status')?.textContent ?? "", /已筛选：冒险/);
 
     const completion = document.querySelector<HTMLButtonElement>(".completion-ring");
     assert.ok(completion);
     await act(async () => completion.click());
     assert.equal((document.querySelector("#status-filter") as HTMLSelectElement | null)?.value, "unwatched");
+    assert.match(document.querySelector('.filter-status')?.textContent ?? "", /已筛选：未看作品/);
+    assert.equal(scrollCalls, 2);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
