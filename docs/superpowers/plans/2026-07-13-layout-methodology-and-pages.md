@@ -1,10 +1,10 @@
-# AI Anim Rank Layout, Methodology, and Pages Implementation Plan
+# AI Anim Rank Layout, Methodology, and Neutral Worker Deployment Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Improve the ranking workspace's scanability, add an honest ranking-methodology disclosure, and publish the static release through a neutral Cloudflare Pages URL.
+**Goal:** Improve the ranking workspace's scanability, add an honest ranking-methodology disclosure, and publish the release through a neutral Cloudflare Workers URL.
 
-**Architecture:** Keep the existing single workspace component and local-progress model. Pass the parsed snapshot's methodology version into that component, render a native disclosure before filtering, and use CSS grid/table constraints to prevent unrelated labels and action buttons from wrapping each other. Publish the already-built client asset directory to Pages; do not move or configure the optional sync API.
+**Architecture:** Keep the existing single workspace component and local-progress model. Pass the parsed snapshot's methodology version into that component, render a native disclosure before filtering, and use CSS grid/table constraints to prevent unrelated labels and action buttons from wrapping each other. Deploy the existing Vinext Worker to a renamed, neutral account `workers.dev` subdomain; do not move or configure the optional sync API.
 
 **Tech Stack:** React 19, TypeScript, CSS, node:test + JSDOM, Vinext/Vite, Wrangler/Cloudflare Pages.
 
@@ -115,7 +115,7 @@ git add app/globals.css src/features/ranking/RankingWorkspace.tsx tests/ranking-
 git commit -m "feat: stabilize ranking workspace layout"
 ```
 
-### Task 3: Validate a neutral static Pages release
+### Task 3: Validate a neutral Worker release
 
 **Files:**
 - Modify: `README.md`
@@ -124,23 +124,23 @@ git commit -m "feat: stabilize ranking workspace layout"
 
 - [ ] **Step 1: Write the failing release-command test**
 
-Extend `tests/release-build.test.mjs` to assert the package scripts include `pages:deploy` and that README documents `ai-anim-rank.pages.dev` as the intended neutral public URL.
+Extend `tests/release-build.test.mjs` to assert the package scripts include `site:deploy` and that README documents `ai-anim-rank.play-with-experiences.workers.dev` as the intended neutral public URL.
 
 - [ ] **Step 2: Run the test and verify it fails**
 
 Run: `node --test tests/release-build.test.mjs`
 
-Expected: failure because neither deployment command nor Pages documentation exists.
+Expected: failure because neither deployment command nor neutral Worker documentation exists.
 
 - [ ] **Step 3: Implement the release entry point**
 
 Add this package script:
 
 ```json
-"pages:deploy": "VITE_RELEASE_BUILD=true npm run build && wrangler pages deploy dist/client --project-name ai-anim-rank"
+"site:deploy": "VITE_RELEASE_BUILD=true vinext deploy --name ai-anim-rank"
 ```
 
-Replace the obsolete Sites hosting section in `README.md` with Pages build and deployment instructions, stating that the generated Pages URL is neutral and that optional sync remains a separate Worker.
+Replace the obsolete Sites hosting section in `README.md` with Worker build and deployment instructions, stating that the configured `workers.dev` URL is neutral and that optional sync remains a separate Worker.
 
 - [ ] **Step 4: Re-run the test and verify it passes**
 
@@ -148,23 +148,23 @@ Run: `node --test tests/release-build.test.mjs`
 
 Expected: 0 failures.
 
-- [ ] **Step 5: Run the release build and inspect static output**
+- [ ] **Step 5: Run the release build**
 
-Run: `VITE_RELEASE_BUILD=true npm run build && test -f dist/client/index.html`
+Run: `VITE_RELEASE_BUILD=true npm run build`
 
-Expected: exit 0 and `dist/client/index.html` exists.
+Expected: exit 0 and the Vinext Worker build completes.
 
-- [ ] **Step 6: Deploy Pages and verify the neutral public URL**
+- [ ] **Step 6: Deploy the Worker and verify the neutral public URL**
 
-Run: `npm run pages:deploy`
+Run: `npm run site:deploy`
 
-Expected: Wrangler reports an `https://ai-anim-rank.pages.dev` deployment URL. If Cloudflare indicates a project-name collision or needs a project setup decision, stop and ask the user rather than selecting a different public name.
+Expected: Vinext reports `https://ai-anim-rank.play-with-experiences.workers.dev`. If the renamed account subdomain has not finished propagating, stop before claiming the public deployment is available.
 
 - [ ] **Step 7: Commit the release documentation**
 
 ```bash
 git add README.md package.json tests/release-build.test.mjs
-git commit -m "chore: add neutral Pages deployment"
+git commit -m "chore: add neutral Worker deployment"
 ```
 
 ### Task 4: Final verification and visual audit
@@ -172,7 +172,7 @@ git commit -m "chore: add neutral Pages deployment"
 **Files:**
 - Verify: `tests/ranking-workspace-dom.test.tsx`
 - Verify: `app/globals.css`
-- Verify: deployed Pages URL
+- Verify: deployed Worker URL
 
 - [ ] **Step 1: Run the complete test suite**
 
@@ -186,9 +186,9 @@ Run: `npm run lint && npx tsc --noEmit`
 
 Expected: both commands exit 0.
 
-- [ ] **Step 3: Inspect the live Pages desktop layout**
+- [ ] **Step 3: Inspect the live Worker desktop layout**
 
-Use the browser session to capture a desktop viewport at the Pages URL. Confirm the methodology disclosure is present, filter labels remain paired with their controls, score/mark columns do not wrap unexpectedly, and the four marks form two rows of two buttons.
+Use the browser session to capture a desktop viewport at the neutral Worker URL. Confirm the methodology disclosure is present, filter labels remain paired with their controls, score/mark columns do not wrap unexpectedly, and the four marks form two rows of two buttons.
 
 - [ ] **Step 4: Commit the accepted design document update**
 
@@ -196,4 +196,3 @@ Use the browser session to capture a desktop viewport at the Pages URL. Confirm 
 git add docs/superpowers/specs/2026-07-13-layout-and-pages.md docs/superpowers/plans/2026-07-13-layout-methodology-and-pages.md
 git commit -m "docs: record ranking methodology presentation"
 ```
-
