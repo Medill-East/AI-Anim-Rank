@@ -91,7 +91,7 @@ function isValidRecord(record: ProgressRecord): boolean {
   return typeof record.workId === "string" && record.workId !== "" &&
     typeof record.watched === "boolean" && typeof record.reviewed === "boolean" &&
     typeof record.recommended === "boolean" && typeof record.notInterested === "boolean" &&
-    (!record.reviewed && !record.recommended && !record.notInterested || record.watched) &&
+    (!record.reviewed && !record.recommended || record.watched) &&
     !(record.recommended && record.notInterested) &&
     typeof record.updatedAt === "string" && !Number.isNaN(Date.parse(record.updatedAt)) &&
     Number.isInteger(record.revision) && record.revision >= 0 &&

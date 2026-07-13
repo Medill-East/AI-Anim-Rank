@@ -72,6 +72,17 @@ test("applyProgressPatch clears the opposite interest choice", () => {
   assert.equal(notInterested.revision, 3);
 });
 
+test("applyProgressPatch permits an unseen work to be marked not interested", () => {
+  const updated = applyProgressPatch(
+    initial,
+    { notInterested: true },
+    "2026-07-12T01:00:00.000Z",
+  );
+
+  assert.equal(updated.watched, false);
+  assert.equal(updated.notInterested, true);
+});
+
 test("ProgressRepository is SSR-safe when IndexedDB is unavailable", async () => {
   const repository = new ProgressRepository(undefined);
 
@@ -133,11 +144,17 @@ test("progress backup requires real UTC ISO timestamps", () => {
   }
 });
 
-test("progress backup rejects contradictory progress records", () => {
+test("progress backup permits unseen works marked not interested and rejects contradictory progress records", () => {
+  const unseenNotInterested = JSON.stringify({
+    version: 1,
+    exportedAt: "2026-07-12T02:00:00.000Z",
+    records: [{ ...initial, notInterested: true }],
+  });
+  assert.deepEqual(parseProgressBackup(unseenNotInterested, new Set(["work-1"])).records, [{ ...initial, notInterested: true }]);
+
   const contradictoryRecords = [
     { ...initial, reviewed: true },
     { ...initial, recommended: true },
-    { ...initial, notInterested: true },
     { ...initial, watched: true, recommended: true, notInterested: true },
   ];
 

@@ -66,10 +66,18 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
-  assert.ok(dom.window.document.querySelector("section.private-backup"));
+  assert.ok(dom.window.document.querySelector("section.data-tools"));
+  assert.ok(dom.window.document.querySelector("section.data-tool-backup"));
+  const syncPanel = dom.window.document.querySelector("details.data-tool-sync");
+  assert.ok(syncPanel);
+  assert.equal(syncPanel?.querySelector(".sync-settings h2"), null);
   assert.ok(dom.window.document.querySelector("section.ranking-methodology"));
   assert.equal(dom.window.document.querySelector("details.ranking-methodology"), null);
-  assert.equal(dom.window.document.querySelector("details.ranking-utilities section.private-backup"), null);
+  assert.equal(dom.window.document.querySelector("details.ranking-utilities"), null);
+  assert.deepEqual(
+    [...dom.window.document.querySelectorAll(".ranking-methodology a")].map((link) => link.getAttribute("href")),
+    ["https://anilist.co/", "https://myanimelist.net/", "https://bgm.tv/"],
+  );
 });
 
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {

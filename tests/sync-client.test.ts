@@ -24,6 +24,12 @@ test("mergeRecords keeps the latest record per work and keeps local on a timesta
   assert.deepEqual(mergeRecords([base, localTie], [newerRemote, remoteTie]), [localTie, newerRemote]);
 });
 
+test("mergeRecords retains an unseen work marked not interested", () => {
+  const unseenNotInterested = { ...base, watched: false, notInterested: true };
+
+  assert.deepEqual(mergeRecords([unseenNotInterested], []), [unseenNotInterested]);
+});
+
 test("SyncClient fetches, merges, and retries once after a version conflict", async () => {
   const vault = await createRecoveryVault();
   const remote = { ...base, reviewed: true, updatedAt: "2026-07-12T01:00:00.000Z", revision: 2 };

@@ -10,9 +10,10 @@ import { RecoveryDialog } from "./RecoveryDialog.tsx";
 interface SyncSettingsProps {
   vaultStore?: SyncVaultStore;
   createVault?: () => Promise<RecoveryVault>;
+  heading?: boolean;
 }
 
-export function SyncSettings({ vaultStore: providedVaultStore, createVault }: SyncSettingsProps) {
+export function SyncSettings({ vaultStore: providedVaultStore, createVault, heading = true }: SyncSettingsProps) {
   const vaultStore = useMemo(() => providedVaultStore ?? new SyncVaultStore(), [providedVaultStore]);
   const [showRecovery, setShowRecovery] = useState(false);
   const [localVault, setLocalVault] = useState<RecoveryVault | null>(null);
@@ -44,7 +45,7 @@ export function SyncSettings({ vaultStore: providedVaultStore, createVault }: Sy
   };
 
   return <section className="sync-settings" aria-label="私密同步设置">
-    <h2>私密同步</h2>
+    {heading && <h2>私密同步</h2>}
     {hydrationState === "loading" ? <p role="status">正在检查本地保险库…</p> : localVault ? <>
       <p>本地保险库已启用。恢复短语仅保存在此浏览器的本地存储中；持有恢复短语的人可以读取和更改这些数据。</p>
       <PairingExport vault={localVault} />

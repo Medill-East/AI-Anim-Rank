@@ -24,7 +24,7 @@ export function applyProgressPatch(
     ...patch,
   };
 
-  if (next.reviewed || next.recommended || next.notInterested) {
+  if (next.reviewed || next.recommended) {
     next.watched = true;
   }
 

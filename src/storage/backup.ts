@@ -98,7 +98,7 @@ function parseProgressRecord(value: unknown, index: number): ProgressRecord {
   }
 
   if (
-    (!value.watched && (value.reviewed || value.recommended || value.notInterested)) ||
+    (!value.watched && (value.reviewed || value.recommended)) ||
     (value.recommended && value.notInterested)
   ) {
     throw new Error(`${path} 格式无效`);
