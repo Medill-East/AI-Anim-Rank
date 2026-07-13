@@ -17,6 +17,7 @@ const THEME_STORAGE_KEY = "ai-anim-rank-theme";
 
 interface RankingWorkspaceProps {
   works: readonly RankedWork[];
+  methodologyVersion?: string;
   progressRepository?: ProgressStore;
 }
 
@@ -28,10 +29,10 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
   { value: "rank", label: "排名" }, { value: "compositeScore", label: "综合分" }, { value: "year", label: "年份" },
 ];
 
-export function RankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
+export function RankingWorkspace({ works, methodologyVersion, progressRepository }: RankingWorkspaceProps) {
   if (works.length === 0) return <EmptyRankingWorkspace />;
 
-  return <PopulatedRankingWorkspace works={works} progressRepository={progressRepository} />;
+  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} progressRepository={progressRepository} />;
 }
 
 function EmptyRankingWorkspace() {
@@ -41,7 +42,7 @@ function EmptyRankingWorkspace() {
   </section>;
 }
 
-function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
+function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", progressRepository }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
   const [theme, setTheme] = useState<Theme>("light");
@@ -140,17 +141,17 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
   return <section className="ranking-workspace" aria-label="AI Anim Rank">
     <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AI Anim Rank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} />
-    <section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section>
-    <SyncSettings />
+    <details className="ranking-utilities"><summary>数据与同步 <span>备份 · 私密同步</span></summary><div><section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section><SyncSettings /></div></details>
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
+    <details className="ranking-methodology"><summary>排名依据 <span>三个来源等权 · 可复核快照</span></summary><div><p>本榜单汇总 AniList、MyAnimeList（MAL）与 Bangumi 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></details>
     <form className="ranking-controls" role="search" onSubmit={(event) => event.preventDefault()}>
-      <label htmlFor="work-search">搜索作品</label><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" />
-      <label htmlFor="genre-filter">类型</label><select id="genre-filter" value={state.genre} onChange={(event) => dispatch({ type: "genre", value: event.target.value })}><option value="">全部类型</option>{genres.map((genre) => <option key={genre} value={genre}>{genre}</option>)}</select>
-      <label htmlFor="status-filter">本地状态</label><select id="status-filter" value={state.status} onChange={(event) => dispatch({ type: "status", value: event.target.value as PrivateStatusFilter })}>{statusOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select>
-      <label htmlFor="sort-field">排序</label><select id="sort-field" value={state.sortField} onChange={(event) => dispatch({ type: "sortField", value: event.target.value as RankingSortField })}>{sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select>
-      <label htmlFor="sort-direction">方向</label><select id="sort-direction" value={state.sortDirection} onChange={(event) => dispatch({ type: "sortDirection", value: event.target.value as SortDirection })}><option value="asc">升序</option><option value="desc">降序</option></select><button type="button" className="text-button" onClick={() => dispatch({ type: "reset" })}>重置筛选</button>
+      <label className="filter-field filter-search" htmlFor="work-search"><span>搜索作品</span><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" /></label>
+      <label className="filter-field" htmlFor="genre-filter"><span>类型</span><select id="genre-filter" value={state.genre} onChange={(event) => dispatch({ type: "genre", value: event.target.value })}><option value="">全部类型</option>{genres.map((genre) => <option key={genre} value={genre}>{genre}</option>)}</select></label>
+      <label className="filter-field" htmlFor="status-filter"><span>本地状态</span><select id="status-filter" value={state.status} onChange={(event) => dispatch({ type: "status", value: event.target.value as PrivateStatusFilter })}>{statusOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
+      <label className="filter-field" htmlFor="sort-field"><span>排序</span><select id="sort-field" value={state.sortField} onChange={(event) => dispatch({ type: "sortField", value: event.target.value as RankingSortField })}>{sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
+      <label className="filter-field" htmlFor="sort-direction"><span>方向</span><select id="sort-direction" value={state.sortDirection} onChange={(event) => dispatch({ type: "sortDirection", value: event.target.value as SortDirection })}><option value="asc">升序</option><option value="desc">降序</option></select></label><button type="button" className="text-button" onClick={() => dispatch({ type: "reset" })}>重置筛选</button>
     </form>
-    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的标记</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>
+    <><p className="ranking-result" aria-live="polite">显示 {visibleWorks.length} 部作品</p><div className="ranking-table-region" aria-label="榜单结果"><table><colgroup><col className="rank-column" /><col className="work-column" /><col className="year-column" /><col className="genre-column" /><col className="score-column" /><col className="marks-column" /></colgroup><thead><tr><th>排名</th><th>作品</th><th>年份</th><th>类型</th><th>综合分</th><th>我的标记</th></tr></thead><tbody>{visibleWorks.map((work) => <DesktopRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</tbody></table></div><div className="ranking-mobile-list" aria-label="榜单结果（紧凑视图）">{visibleWorks.map((work) => <MobileRow key={work.workId} work={work} record={records.find((record) => record.workId === work.workId)} onPatch={savePatch} onOpen={(trigger) => openDetail(work.workId, trigger)} />)}</div>{visibleWorks.length === 0 && <p className="ranking-empty">没有符合条件的作品。</p>}</>
     {selectedWork && <WorkDialog work={selectedWork} record={selectedRecord} onPatch={savePatch} onClose={closeDetail} />}
   </section>;
 }
@@ -166,7 +167,7 @@ function PrivateSummary({ works, records }: { works: readonly RankedWork[]; reco
 
 function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) { return <button type="button" className="theme-toggle" data-theme-toggle aria-label={theme === "light" ? "切换至深色模式" : "切换至浅色模式"} onClick={onToggle}>{theme === "light" ? "Dark" : "Light"}</button>; }
 
-function DesktopRow({ work, record, onPatch, onOpen }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onOpen: (trigger: HTMLElement) => void }) { return <tr tabIndex={0} onClick={(event) => onOpen(event.currentTarget)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(event.currentTarget); } }}><td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(event.currentTarget); }}>{work.titleZh}<span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td>{work.genres.join(" · ")}</td><td>{work.compositeScore.toFixed(1)}</td><td><ProgressControls workId={work.workId} record={record} onPatch={onPatch} /></td></tr>; }
+function DesktopRow({ work, record, onPatch, onOpen }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onOpen: (trigger: HTMLElement) => void }) { return <tr tabIndex={0} onClick={(event) => onOpen(event.currentTarget)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onOpen(event.currentTarget); } }}><td>{work.rank}</td><td><button type="button" className="work-title" onClick={(event) => { event.stopPropagation(); onOpen(event.currentTarget); }}><strong>{work.titleZh}</strong><span>{work.titleOriginal}</span></button></td><td>{work.year}</td><td><span className="genre-cell">{work.genres.join(" · ")}</span></td><td>{work.compositeScore.toFixed(1)}</td><td><ProgressControls workId={work.workId} record={record} onPatch={onPatch} /></td></tr>; }
 function MobileRow({ work, record, onPatch, onOpen }: { work: RankedWork; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void>; onOpen: (trigger: HTMLElement) => void }) { return <div className="mobile-work-row"><button type="button" className="mobile-work-title" onClick={(event) => onOpen(event.currentTarget)}><span>#{work.rank}</span><strong>{work.titleZh}</strong><span>{work.year}</span></button><ProgressControls workId={work.workId} record={record} onPatch={onPatch} /><details><summary>展开公开资料</summary><div className="mobile-work-detail"><p>{work.titleOriginal}</p><p>{work.genres.join(" · ")} · {work.compositeScore.toFixed(1)}</p></div></details></div>; }
 
 function ProgressControls({ workId, record, onPatch }: { workId: string; record?: ProgressRecord; onPatch: (workId: string, patch: ProgressPatch) => Promise<void> }) {

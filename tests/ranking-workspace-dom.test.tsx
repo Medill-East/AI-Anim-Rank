@@ -41,6 +41,27 @@ test("app status explains offline availability without claiming unconfigured rem
   assert.doesNotMatch(html, /已同步/);
 });
 
+test("workspace explains the auditable three-source ranking methodology", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} methodologyVersion="v1-auditable-three-source" />);
+
+  assert.match(html, /排名依据/);
+  assert.match(html, /AniList/);
+  assert.match(html, /MyAnimeList/);
+  assert.match(html, /Bangumi/);
+  assert.match(html, /统一换算为 0–100/);
+  assert.match(html, /三个来源等权/);
+  assert.match(html, /v1-auditable-three-source/);
+});
+
+test("workspace groups filters and declares stable table columns", () => {
+  const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
+  const dom = new JSDOM(html);
+
+  assert.equal(dom.window.document.querySelectorAll(".ranking-controls .filter-field").length, 5);
+  assert.ok(dom.window.document.querySelector(".ranking-table-region colgroup"));
+  assert.equal(dom.window.document.querySelectorAll(".progress-controls button").length, 8);
+});
+
 test("workspace opens a named modal from a Chinese title and restores focus on close", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
