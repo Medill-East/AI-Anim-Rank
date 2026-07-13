@@ -17,6 +17,7 @@ const THEME_STORAGE_KEY = "ai-anim-rank-theme";
 
 interface RankingWorkspaceProps {
   works: readonly RankedWork[];
+  methodologyVersion?: string;
   progressRepository?: ProgressStore;
 }
 
@@ -28,10 +29,10 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
   { value: "rank", label: "排名" }, { value: "compositeScore", label: "综合分" }, { value: "year", label: "年份" },
 ];
 
-export function RankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
+export function RankingWorkspace({ works, methodologyVersion, progressRepository }: RankingWorkspaceProps) {
   if (works.length === 0) return <EmptyRankingWorkspace />;
 
-  return <PopulatedRankingWorkspace works={works} progressRepository={progressRepository} />;
+  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} progressRepository={progressRepository} />;
 }
 
 function EmptyRankingWorkspace() {
@@ -41,7 +42,7 @@ function EmptyRankingWorkspace() {
   </section>;
 }
 
-function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspaceProps) {
+function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", progressRepository }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
   const [theme, setTheme] = useState<Theme>("light");
@@ -143,6 +144,7 @@ function PopulatedRankingWorkspace({ works, progressRepository }: RankingWorkspa
     <section className="private-backup" aria-label="本地备份"><h2>本地备份</h2><button type="button" onClick={downloadBackup}>导出 JSON 备份</button><label>导入 JSON 备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，确认导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换导入</button></div>}</section>
     <SyncSettings />
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
+    <details className="ranking-methodology"><summary>排名依据 <span>三个来源等权 · 可复核快照</span></summary><div><p>本榜单汇总 AniList、MyAnimeList（MAL）与 Bangumi 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></details>
     <form className="ranking-controls" role="search" onSubmit={(event) => event.preventDefault()}>
       <label htmlFor="work-search">搜索作品</label><input id="work-search" type="search" value={state.search} onChange={(event) => dispatch({ type: "search", value: event.target.value })} placeholder="中文或原文标题" />
       <label htmlFor="genre-filter">类型</label><select id="genre-filter" value={state.genre} onChange={(event) => dispatch({ type: "genre", value: event.target.value })}><option value="">全部类型</option>{genres.map((genre) => <option key={genre} value={genre}>{genre}</option>)}</select>
