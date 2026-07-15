@@ -16,6 +16,7 @@ export type SortDirection = "asc" | "desc";
 export interface RankingQuery {
   search?: string;
   genre?: string;
+  studio?: string;
   status?: PrivateStatusFilter;
   sort?: {
     field: RankingSortField;
@@ -31,11 +32,13 @@ export function queryRankedWorks(
   const progressByWorkId = new Map(progressRecords.map((record) => [record.workId, record]));
   const search = query.search?.trim().toLocaleLowerCase();
   const genre = query.genre?.trim().toLocaleLowerCase();
+  const studio = query.studio?.trim().toLocaleLowerCase();
   const sort = query.sort ?? { field: "rank", direction: "asc" as const };
 
   return works
     .filter((work) => matchesSearch(work, search))
     .filter((work) => matchesGenre(work, genre))
+    .filter((work) => matchesStudio(work, studio))
     .filter((work) => matchesStatus(progressByWorkId.get(work.workId), query.status ?? "all"))
     .slice()
     .sort((left, right) => compareWorks(left, right, sort.field, sort.direction));
@@ -49,6 +52,10 @@ function matchesSearch(work: RankedWork, search: string | undefined): boolean {
 
 function matchesGenre(work: RankedWork, genre: string | undefined): boolean {
   return !genre || work.genres.some((workGenre) => workGenre.toLocaleLowerCase() === genre);
+}
+
+function matchesStudio(work: RankedWork, studio: string | undefined): boolean {
+  return !studio || work.studios.some((workStudio) => workStudio.toLocaleLowerCase() === studio);
 }
 
 function matchesStatus(record: ProgressRecord | undefined, status: PrivateStatusFilter): boolean {

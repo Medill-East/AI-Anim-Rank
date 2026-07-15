@@ -81,8 +81,8 @@ test("rejects source scores outside their published scales", () => {
 
 const queryWorks = [
   { ...validSnapshot.works[0], workId: "anime-1", rank: 2, titleZh: "葬送的芙莉莲", titleOriginal: "Sousou no Frieren", year: 2023, genres: ["冒险"], compositeScore: 91 },
-  { ...validSnapshot.works[0], workId: "anime-2", rank: 1, titleZh: "孤独摇滚！", titleOriginal: "Bocchi the Rock!", year: 2022, genres: ["音乐"], compositeScore: 89 },
-  { ...validSnapshot.works[0], workId: "anime-3", rank: 3, titleZh: "赛博朋克：边缘行者", titleOriginal: "Cyberpunk: Edgerunners", year: 2022, genres: ["科幻"], compositeScore: 90 },
+  { ...validSnapshot.works[0], workId: "anime-2", rank: 1, titleZh: "孤独摇滚！", titleOriginal: "Bocchi the Rock!", year: 2022, studios: ["CloverWorks"], genres: ["音乐"], compositeScore: 89 },
+  { ...validSnapshot.works[0], workId: "anime-3", rank: 3, titleZh: "赛博朋克：边缘行者", titleOriginal: "Cyberpunk: Edgerunners", year: 2022, studios: ["Trigger"], genres: ["科幻"], compositeScore: 90 },
 ];
 
 test("ranking query searches titles and sorts deterministically", () => {
@@ -99,6 +99,13 @@ test("ranking query searches titles and sorts deterministically", () => {
       sort: { field: "compositeScore", direction: "asc" },
     }).map((work) => work.workId),
     ["anime-3"],
+  );
+  assert.deepEqual(
+    queryRankedWorks(queryWorks, [], {
+      studio: "Example Studio",
+      sort: { field: "rank", direction: "asc" },
+    }).map((work) => work.workId),
+    ["anime-1"],
   );
   assert.deepEqual(
     queryRankedWorks(queryWorks, [], {

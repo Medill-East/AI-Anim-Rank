@@ -11,6 +11,7 @@ import {
 export interface RankingWorkspaceState {
   search: string;
   genre: string;
+  studio: string;
   status: PrivateStatusFilter;
   sortField: RankingSortField;
   sortDirection: SortDirection;
@@ -20,6 +21,7 @@ export interface RankingWorkspaceState {
 export type RankingWorkspaceAction =
   | { type: "search"; value: string }
   | { type: "genre"; value: string }
+  | { type: "studio"; value: string }
   | { type: "status"; value: PrivateStatusFilter }
   | { type: "sortField"; value: RankingSortField }
   | { type: "sortDirection"; value: SortDirection }
@@ -31,6 +33,7 @@ export function createRankingWorkspaceState(): RankingWorkspaceState {
   return {
     search: "",
     genre: "",
+    studio: "",
     status: "all",
     sortField: "rank",
     sortDirection: "asc",
@@ -45,6 +48,7 @@ export function reduceRankingWorkspaceState(
   switch (action.type) {
     case "search": return { ...state, search: action.value };
     case "genre": return { ...state, genre: action.value };
+    case "studio": return { ...state, studio: action.value };
     case "status": return { ...state, status: action.value };
     case "sortField": return { ...state, sortField: action.value };
     case "sortDirection": return { ...state, sortDirection: action.value };
@@ -62,6 +66,7 @@ export function visibleRankingWorks(
   const query: RankingQuery = {
     search: state.search,
     genre: state.genre,
+    studio: state.studio,
     status: state.status,
     sort: { field: state.sortField, direction: state.sortDirection },
   };

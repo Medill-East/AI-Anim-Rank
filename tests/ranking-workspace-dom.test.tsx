@@ -58,7 +58,7 @@ test("workspace groups filters and declares stable table columns", () => {
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
-  assert.equal(dom.window.document.querySelectorAll(".ranking-controls .filter-field").length, 5);
+  assert.equal(dom.window.document.querySelectorAll(".ranking-controls .filter-field").length, 6);
   assert.ok(dom.window.document.querySelector(".ranking-table-region colgroup"));
   assert.equal(dom.window.document.querySelectorAll(".progress-controls button").length, 8);
 });
@@ -67,11 +67,12 @@ test("workspace reserves a compact interactive insights area for private progres
   const html = renderToStaticMarkup(<RankingWorkspace works={[work]} />);
   const dom = new JSDOM(html);
 
-  assert.equal(dom.window.document.querySelectorAll(".summary-stat").length, 4);
+  assert.equal(dom.window.document.querySelectorAll(".summary-stat").length, 5);
   assert.ok(dom.window.document.querySelector("[data-progress-insight='favorite-studio']"));
   assert.ok(dom.window.document.querySelector("section.progress-insights"));
   assert.ok(dom.window.document.querySelector("[data-progress-insight='completion']"));
   assert.ok(dom.window.document.querySelector("[data-progress-insight='genres']"));
+  assert.ok(dom.window.document.querySelector("[data-progress-insight='favorite-studio']"));
 });
 
 test("workspace keeps backup actions and ranking methodology in the primary flow", () => {
@@ -440,7 +441,9 @@ test("workspace preserves rapid private progress patches for the same work", asy
       await flush();
     });
 
-    assert.match(document.body.textContent ?? "", /已评价 1[\s\S]*推荐 1/);
+    const stats = document.querySelector(".summary-stats")?.textContent ?? "";
+    assert.match(stats, /已评价1 部/);
+    assert.match(stats, /推荐1 部/);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
@@ -454,7 +457,9 @@ test("workspace shows private progress summary counts", async () => {
 
   try {
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
-    assert.match(document.body.textContent ?? "", /我的进度[\s\S]*总收录[\s\S]*1 部[\s\S]*已看[\s\S]*0 部[\s\S]*当前完成度[\s\S]*0%[\s\S]*常看制作/);
+    const summary = document.querySelector(".private-summary")?.textContent ?? "";
+    assert.match(summary, /总收录1 部[\s\S]*已看0 部[\s\S]*已评价0 部[\s\S]*推荐0 部[\s\S]*不感兴趣0 部/);
+    assert.match(summary, /0%完成[\s\S]*常看制作/);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
@@ -489,6 +494,28 @@ test("progress insights filter the ranking from completion and genre controls", 
     assert.equal((document.querySelector("#status-filter") as HTMLSelectElement | null)?.value, "unwatched");
     assert.match(document.querySelector('.filter-status')?.textContent ?? "", /已筛选：未看作品/);
     assert.equal(scrollCalls, 2);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("workspace filters the ranking when a listed studio is selected", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const otherStudioWork = { ...work, workId: "other-studio", rank: 2, titleZh: "另一部作品", studios: ["CloverWorks"] };
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work, otherStudioWork]} />));
+    const studio = [...document.querySelectorAll<HTMLButtonElement>(".studio-links button")].find((button) => button.textContent === "Madhouse");
+    assert.ok(studio);
+
+    await act(async () => studio.click());
+
+    assert.equal((document.querySelector("#studio-filter") as HTMLSelectElement | null)?.value, "Madhouse");
+    assert.equal(document.querySelectorAll(".ranking-table-region tbody tr").length, 1);
+    assert.match(document.querySelector(".filter-status")?.textContent ?? "", /已筛选制作：Madhouse/);
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
