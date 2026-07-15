@@ -61,6 +61,7 @@ test("workspace groups filters and declares stable table columns", () => {
   assert.equal(dom.window.document.querySelectorAll(".ranking-controls .filter-field").length, 6);
   assert.ok(dom.window.document.querySelector(".ranking-table-region colgroup"));
   assert.equal(dom.window.document.querySelectorAll(".progress-controls button").length, 8);
+  assert.equal(dom.window.document.querySelectorAll(".score-breakdown small span").length, 6);
 });
 
 test("workspace reserves a compact interactive insights area for private progress", () => {

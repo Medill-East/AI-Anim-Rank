@@ -154,6 +154,7 @@ button.summary-stat:hover { background: var(--surface-hover); color: var(--accen
 .ranking-table-region th { background: var(--surface); color: var(--muted); font-size: .72rem; font-weight: 500; letter-spacing: .06em; position: sticky; text-align: left; text-transform: uppercase; top: 0; z-index: 1; }
 .ranking-table-region th, .ranking-table-region td { border-bottom: 1px solid var(--rule); padding: 13px 10px; vertical-align: top; }
 .ranking-table-region th:first-child, .ranking-table-region td:first-child { padding-left: 0; }
+.ranking-table-region td:nth-child(5) { overflow: hidden; }
 .ranking-table-region tbody tr { outline-offset: -2px; }
 .ranking-table-region tbody tr:hover, .ranking-table-region tbody tr:focus { background: var(--surface-hover); }
 .work-title { background: transparent; border: 0; color: var(--foreground); display: block; min-width: 0; padding: 0; text-align: left; width: 100%; }
@@ -165,9 +166,10 @@ button.summary-stat:hover { background: var(--surface-hover); color: var(--accen
 .genre-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .genre-tags button { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--rule)); border-radius: 999px; color: var(--foreground); font-size: .68rem; line-height: 1.1; padding: 4px 7px; }
 .genre-tags button:hover, .genre-tags button:focus-visible { border-color: var(--accent); color: var(--accent); }
-.score-breakdown { display: grid; gap: 4px; min-width: max-content; }
+.score-breakdown { display: grid; gap: 4px; max-width: 100%; min-width: 0; width: 100%; }
 .score-breakdown strong { font-size: 1rem; line-height: 1; }
-.score-breakdown small { color: var(--muted); font: .62rem/1.25 var(--font-mono), monospace; white-space: nowrap; }
+.score-breakdown small { color: var(--muted); display: flex; flex-wrap: wrap; font: .62rem/1.25 var(--font-mono), monospace; gap: 2px 6px; min-width: 0; }
+.score-breakdown small span { white-space: nowrap; }
 .progress-controls { display: grid; gap: 5px; grid-template-columns: repeat(2, minmax(0, 1fr)); min-width: 10.5rem; }
 .progress-control { background: var(--surface); border: 1px solid var(--rule); color: var(--muted); font-size: .72rem; line-height: 1; overflow: hidden; padding: 6px; text-overflow: ellipsis; transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease; white-space: nowrap; width: 100%; }
 .progress-control:hover { background: var(--surface-hover); color: var(--foreground); }
