@@ -29,7 +29,7 @@ VITE_RELEASE_BUILD=true npm run build
 3. 用 `npx wrangler secret put ALLOWED_ORIGIN` 设置唯一的应用 origin；不要使用 `*`。
 4. 执行 `npm run worker:deploy` 部署 Worker。
 
-应用构建时通过 `VITE_SYNC_BASE_URL` 指向同步 Worker。保险库启用或导入后，客户端会先拉取并合并远端密文；之后每次本地标记都会异步上传，页面也提供“立即同步”入口。没有配置端点时，二维码只迁移恢复凭证，个人进度仍仅保存在本机。
+应用构建时通过 `VITE_SYNC_BASE_URL` 指向同步 Worker。创建或连接保险库后，客户端会先拉取并合并远端密文；之后每次本地标记都会异步上传，页面也提供“立即同步”入口。跨设备连接默认使用可复制的连接密钥，二维码只是可选的传递方式。连接密钥包含恢复凭证，不是云端密文；单独拿到密文本身无法解密。没有配置端点时，个人进度仍仅保存在本机。
 
 当前同步端点为 `https://ai-anim-rank-sync.play-with-experiences.workers.dev`。`npm run site:deploy` 已包含该地址，会在主站发布时一起启用跨设备同步。
 

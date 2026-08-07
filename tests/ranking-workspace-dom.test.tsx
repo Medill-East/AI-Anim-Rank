@@ -602,7 +602,7 @@ test("sync onboarding requires recovery acknowledgement and removes the phrase w
   try {
     await act(async () => root.render(<RankingWorkspace works={[work]} />));
     const enable = [...document.querySelectorAll<HTMLButtonElement>("button")]
-      .find((button) => button.textContent === "启用私密同步");
+      .find((button) => button.textContent === "创建私密保险库");
     assert.ok(enable);
 
     await act(async () => enable.click());
@@ -650,7 +650,7 @@ test("sync vault survives remount in browser storage and disconnect removes the 
   try {
     await act(async () => root.render(<SyncSettings vaultStore={vaultStore} createVault={createVault} />));
     await act(async () => { await flush(); });
-    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "启用私密同步")?.click());
+    await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "创建私密保险库")?.click());
     await act(async () => { await flush(); });
     const acknowledgement = [...document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
       .find((input) => input.parentElement?.textContent === "我已保存恢复短语");
@@ -690,7 +690,7 @@ test("sync settings does not read browser storage during server render and hydra
   const markup = renderToStaticMarkup(<SyncSettings vaultStore={blockedStore} />);
   assert.equal(getItemCalls, 0);
   assert.match(markup, /正在检查本地保险库/);
-  assert.doesNotMatch(markup, /启用私密同步|导入配对二维码|断开本地保险库/);
+  assert.doesNotMatch(markup, /创建私密保险库|连接已有保险库|断开本地保险库/);
   assert.doesNotMatch(markup, /data-recovery-phrase/);
 
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
@@ -699,7 +699,7 @@ test("sync settings does not read browser storage during server render and hydra
   try {
     await act(async () => { root.render(<SyncSettings vaultStore={blockedStore} />); await flush(); });
     assert.equal(getItemCalls, 1);
-    assert.equal(document.body.textContent?.includes("启用私密同步"), true);
+    assert.equal(document.body.textContent?.includes("创建私密保险库"), true);
     assert.equal(document.querySelector("[data-recovery-phrase]"), null);
   } finally {
     await act(async () => root.unmount());
@@ -707,35 +707,58 @@ test("sync settings does not read browser storage during server render and hydra
   }
 });
 
-test("pairing import validates a QR recovery payload before saving it locally", async () => {
+test("sync settings connects an existing vault with a pasted sync key", async () => {
   const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
   const originalGlobals = installDom(dom);
   const vaultStore = new SyncVaultStore(dom.window.localStorage);
   const vault = await createRecoveryVault();
   const root = createRoot(document.getElementById("root")!);
   try {
-    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} />));
+    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} syncBaseUrl="https://sync.example" />));
     await act(async () => { await flush(); });
     const importButton = [...document.querySelectorAll<HTMLButtonElement>("button")]
-      .find((button) => button.textContent === "导入配对二维码");
+      .find((button) => button.textContent === "连接已有保险库");
     assert.ok(importButton);
     await act(async () => importButton.click());
-    const input = document.querySelector<HTMLTextAreaElement>("#pairing-payload");
+    const input = document.querySelector<HTMLTextAreaElement>("#sync-key-payload");
     assert.ok(input);
     setTextAreaValue(dom, input, "invalid");
     await act(async () => input.dispatchEvent(new dom.window.Event("input", { bubbles: true })));
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
-      .find((button) => button.textContent === "确认导入")?.click());
+      .find((button) => button.textContent === "连接保险库")?.click());
     assert.equal(await vaultStore.load(), null);
 
     setTextAreaValue(dom, input, serializeRecoveryPayload(vault));
     await act(async () => input.dispatchEvent(new dom.window.Event("input", { bubbles: true })));
     await act(async () => [...document.querySelectorAll<HTMLButtonElement>("button")]
-      .find((button) => button.textContent === "确认导入")?.click());
+      .find((button) => button.textContent === "连接保险库")?.click());
     await act(async () => { await flush(700); });
     assert.equal((await vaultStore.load())?.vaultId, vault.vaultId);
     assert.equal(document.location.href.includes(vault.phrase), false);
     assert.equal(document.querySelector("[data-recovery-phrase]"), null);
+  } finally {
+    await act(async () => root.unmount());
+    originalGlobals.restore();
+  }
+});
+
+test("sync settings keeps the QR as an optional fallback for an existing vault", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const vault = await createRecoveryVault();
+  const vaultStore = new SyncVaultStore(dom.window.localStorage);
+  vaultStore.save(vault);
+  const root = createRoot(document.getElementById("root")!);
+  try {
+    await act(async () => root.render(<SyncSettings vaultStore={vaultStore} syncBaseUrl="https://sync.example" />));
+    await act(async () => { await flush(700); });
+    assert.ok(document.querySelector("#sync-key"));
+    assert.equal(document.querySelector(".pairing-panel"), null);
+    const qrButton = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((button) => button.textContent === "显示二维码");
+    assert.ok(qrButton);
+    await act(async () => qrButton.click());
+    assert.ok(document.querySelector(".pairing-panel"));
   } finally {
     await act(async () => root.unmount());
     originalGlobals.restore();
@@ -759,7 +782,7 @@ test("sync settings keeps controls unavailable until deferred vault hydration pr
   try {
     await act(async () => root.render(<SyncSettings vaultStore={deferredStore} />));
     assert.match(document.body.textContent ?? "", /正在检查本地保险库/);
-    assert.equal([...document.querySelectorAll("button")].some((button) => /启用私密同步|导入配对二维码|断开本地保险库/.test(button.textContent ?? "")), false);
+    assert.equal([...document.querySelectorAll("button")].some((button) => /创建私密保险库|连接已有保险库|断开本地保险库/.test(button.textContent ?? "")), false);
 
     await act(async () => { resolveLoad(existingVault); await flush(); });
     assert.equal(document.body.textContent?.includes("本地保险库已启用"), true);
