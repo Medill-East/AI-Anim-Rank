@@ -1,6 +1,6 @@
 # Ranking data maintenance
 
-The checked-in `src/data/ranking.json` is currently a development sample. This pipeline does not manufacture a Top 300 and never replaces it unless a real, fully validated 300-work release is available.
+The checked-in `src/data/ranking.json` is a validated Top 300 release; the current snapshot version is `2026-08-07`. This pipeline does not manufacture a Top 300 and never replaces it unless a real, fully validated 300-work release is available.
 
 ## Inputs and matching
 
@@ -33,7 +33,7 @@ Run these from the repository root. The first command makes external public requ
 ```bash
 npx tsx scripts/ranking-pipeline.ts fetch --pages 12
 npx tsx scripts/ranking-pipeline.ts review
-npx tsx scripts/ranking-pipeline.ts release --version 2026-07-12
+npx tsx scripts/ranking-pipeline.ts release --version YYYY-MM-DD
 ```
 
 `fetch` requires `--pages` to be a positive integer. AniList pages may be fetched concurrently, but Jikan pages are deliberately single-flight and wait 1 second after each successful page before requesting the next one (never before the first or after the last). A retryable Jikan `429` or `5xx` response retries at most three times: `429` honors `Retry-After` (or its existing bounded delay), while gateway/server `5xx` responses use capped exponential delays of 2, 4, then 8 seconds. Other `4xx` responses fail immediately. Failure errors include the Jikan page number and status for diagnosis. It validates every HTTP/payload response in memory, writes both files to an immutable `data/ranking/captured/generations/<generation>/` directory, then atomically swaps the single `data/ranking/captured/current.json` pointer. Default `review` and `release` resolve that pointer before reading either source, so they always consume one complete generation; a failed capture leaves readers on the prior generation. Old flat `anilist.json`/`jikan.json` files are read only when no pointer exists, for migration compatibility. `review` writes the complete candidate review JSON and a readable `data/ranking/unmatched-report.md`; review that report and add only deliberate mappings. Captures and review output are operational artifacts and are ignored by Git.

@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-12",
+  "version": "2026-08-07",
   "methodologyVersion": "v1-auditable-three-source",
   "sample": false,
   "works": [
@@ -22,11 +22,11 @@
       "sourceScores": {
         "anilist": {
           "score": 90,
-          "votes": 710505
+          "votes": 718836
         },
         "mal": {
           "score": 9.11,
-          "votes": 2326660
+          "votes": 2331121
         },
         "bangumi": {
           "score": 8.8,
@@ -48,15 +48,15 @@
         "Drama",
         "Fantasy"
       ],
-      "compositeScore": 89.5333,
+      "compositeScore": 89.5,
       "sourceScores": {
         "anilist": {
           "score": 91,
-          "votes": 456473
+          "votes": 467769
         },
         "mal": {
-          "score": 9.26,
-          "votes": 911197
+          "score": 9.25,
+          "votes": 918577
         },
         "bangumi": {
           "score": 8.5,
@@ -83,11 +83,11 @@
       "sourceScores": {
         "anilist": {
           "score": 90,
-          "votes": 596853
+          "votes": 603463
         },
         "mal": {
           "score": 9.05,
-          "votes": 1809509
+          "votes": 1810267
         },
         "bangumi": {
           "score": 8.7,
@@ -113,7 +113,7 @@
       "sourceScores": {
         "anilist": {
           "score": 90,
-          "votes": 55333
+          "votes": 56688
         },
         "mal": {
           "score": 9.01,
@@ -142,11 +142,11 @@
       "sourceScores": {
         "anilist": {
           "score": 89,
-          "votes": 128536
+          "votes": 129272
         },
         "mal": {
           "score": 8.9,
-          "votes": 216514
+          "votes": 216999
         },
         "bangumi": {
           "score": 8.8,
@@ -171,7 +171,7 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 83170
+          "votes": 84039
         },
         "mal": {
           "score": 9.02,
@@ -202,11 +202,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 457201
+          "votes": 461928
         },
         "mal": {
           "score": 8.75,
-          "votes": 1068268
+          "votes": 1070577
         },
         "bangumi": {
           "score": 9.1,
@@ -233,11 +233,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 21262
+          "votes": 21518
         },
         "mal": {
           "score": 8.81,
-          "votes": 26756
+          "votes": 27003
         },
         "bangumi": {
           "score": 8.7,
@@ -264,7 +264,7 @@
       "sourceScores": {
         "anilist": {
           "score": 89,
-          "votes": 83104
+          "votes": 83680
         },
         "mal": {
           "score": 9.02,
@@ -295,7 +295,7 @@
       "sourceScores": {
         "anilist": {
           "score": 89,
-          "votes": 284563
+          "votes": 288250
         },
         "mal": {
           "score": 8.95,
@@ -326,11 +326,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 289232
+          "votes": 292180
         },
         "mal": {
           "score": 8.93,
-          "votes": 426569
+          "votes": 426704
         },
         "bangumi": {
           "score": 8.7,
@@ -357,7 +357,7 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 43781
+          "votes": 44238
         },
         "mal": {
           "score": 8.51,
@@ -387,7 +387,7 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 46693
+          "votes": 46941
         },
         "mal": {
           "score": 8.69,
@@ -418,11 +418,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 469752
+          "votes": 474672
         },
         "mal": {
           "score": 8.77,
-          "votes": 1420609
+          "votes": 1421167
         },
         "bangumi": {
           "score": 8.6,
@@ -448,11 +448,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 122617
+          "votes": 123656
         },
         "mal": {
           "score": 8.63,
-          "votes": 205855
+          "votes": 206612
         },
         "bangumi": {
           "score": 8.7,
@@ -480,7 +480,7 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 354460
+          "votes": 358334
         },
         "mal": {
           "score": 8.92,
@@ -512,11 +512,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 331111
+          "votes": 335880
         },
         "mal": {
           "score": 8.89,
-          "votes": 518589
+          "votes": 519028
         },
         "bangumi": {
           "score": 8.2,
@@ -543,11 +543,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 145594
+          "votes": 146819
         },
         "mal": {
           "score": 8.59,
-          "votes": 330733
+          "votes": 331485
         },
         "bangumi": {
           "score": 8.7,
@@ -573,11 +573,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 355791
+          "votes": 358738
         },
         "mal": {
           "score": 8.77,
-          "votes": 879850
+          "votes": 881507
         },
         "bangumi": {
           "score": 8.4,
@@ -605,11 +605,11 @@
       "sourceScores": {
         "anilist": {
           "score": 89,
-          "votes": 121915
+          "votes": 122722
         },
         "mal": {
           "score": 8.86,
-          "votes": 211628
+          "votes": 211646
         },
         "bangumi": {
           "score": 8.1,
@@ -638,11 +638,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 190132
+          "votes": 192002
         },
         "mal": {
           "score": 8.65,
-          "votes": 299249
+          "votes": 299269
         },
         "bangumi": {
           "score": 8.7,
@@ -668,11 +668,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 255997
+          "votes": 260564
         },
         "mal": {
           "score": 8.73,
-          "votes": 488005
+          "votes": 488164
         },
         "bangumi": {
           "score": 8.4,
@@ -693,15 +693,15 @@
         "Drama",
         "Slice of Life"
       ],
-      "compositeScore": 86.1,
+      "compositeScore": 86.0667,
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 46767
+          "votes": 48619
         },
         "mal": {
-          "score": 8.73,
-          "votes": 42837
+          "score": 8.72,
+          "votes": 44819
         },
         "bangumi": {
           "score": 8.4,
@@ -727,11 +727,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 528503
+          "votes": 536797
         },
         "mal": {
           "score": 8.78,
-          "votes": 1077424
+          "votes": 1078417
         },
         "bangumi": {
           "score": 8.3,
@@ -758,7 +758,7 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 238639
+          "votes": 241527
         },
         "mal": {
           "score": 8.56,
@@ -791,11 +791,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 169177
+          "votes": 170325
         },
         "mal": {
           "score": 8.76,
-          "votes": 382118
+          "votes": 382870
         },
         "bangumi": {
           "score": 8.2,
@@ -823,11 +823,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 727528
+          "votes": 738348
         },
         "mal": {
           "score": 8.73,
-          "votes": 1544161
+          "votes": 1548458
         },
         "bangumi": {
           "score": 8.3,
@@ -853,11 +853,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 264902
+          "votes": 269817
         },
         "mal": {
           "score": 8.83,
-          "votes": 496466
+          "votes": 496686
         },
         "bangumi": {
           "score": 8.1,
@@ -884,11 +884,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 80387
+          "votes": 81446
         },
         "mal": {
           "score": 8.42,
-          "votes": 173240
+          "votes": 173639
         },
         "bangumi": {
           "score": 9.1,
@@ -915,11 +915,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 20521
+          "votes": 20788
         },
         "mal": {
           "score": 8.52,
-          "votes": 11338
+          "votes": 11431
         },
         "bangumi": {
           "score": 8.5,
@@ -948,11 +948,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 145011
+          "votes": 146255
         },
         "mal": {
           "score": 8.78,
-          "votes": 300959
+          "votes": 301019
         },
         "bangumi": {
           "score": 8.2,
@@ -978,11 +978,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 197388
+          "votes": 201693
         },
         "mal": {
           "score": 8.98,
-          "votes": 389085
+          "votes": 389449
         },
         "bangumi": {
           "score": 7.9,
@@ -1011,11 +1011,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 369526
+          "votes": 374098
         },
         "mal": {
           "score": 8.65,
-          "votes": 983465
+          "votes": 983836
         },
         "bangumi": {
           "score": 8.5,
@@ -1042,11 +1042,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 146005
+          "votes": 147168
         },
         "mal": {
           "score": 8.55,
-          "votes": 157614
+          "votes": 158020
         },
         "bangumi": {
           "score": 8.6,
@@ -1073,11 +1073,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 146713
+          "votes": 148452
         },
         "mal": {
           "score": 8.63,
-          "votes": 253283
+          "votes": 253333
         },
         "bangumi": {
           "score": 8.5,
@@ -1106,11 +1106,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 256357
+          "votes": 260212
         },
         "mal": {
           "score": 8.72,
-          "votes": 454750
+          "votes": 455078
         },
         "bangumi": {
           "score": 8.2,
@@ -1139,11 +1139,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 439488
+          "votes": 444052
         },
         "mal": {
           "score": 8.78,
-          "votes": 1099047
+          "votes": 1103040
         },
         "bangumi": {
           "score": 8.1,
@@ -1169,7 +1169,7 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 100159
+          "votes": 102626
         },
         "mal": {
           "score": 8.68,
@@ -1200,11 +1200,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 295243
+          "votes": 298376
         },
         "mal": {
           "score": 8.67,
-          "votes": 893418
+          "votes": 893564
         },
         "bangumi": {
           "score": 8.4,
@@ -1213,39 +1213,8 @@
       }
     },
     {
-      "workId": "anilist:178789",
-      "rank": 40,
-      "titleZh": "无职转生 第三季 ～到了异世界就拿出真本事～",
-      "titleOriginal": "Mushoku Tensei III: Isekai Ittara Honki Dasu",
-      "year": 2026,
-      "studios": [
-        "Studio Bind"
-      ],
-      "genres": [
-        "Adventure",
-        "Drama",
-        "Ecchi",
-        "Fantasy"
-      ],
-      "compositeScore": 85.2,
-      "sourceScores": {
-        "anilist": {
-          "score": 86,
-          "votes": 114960
-        },
-        "mal": {
-          "score": 8.96,
-          "votes": 22428
-        },
-        "bangumi": {
-          "score": 8,
-          "votes": 1925
-        }
-      }
-    },
-    {
       "workId": "anilist:99147",
-      "rank": 41,
+      "rank": 40,
       "titleZh": "进击的巨人 第三季",
       "titleOriginal": "Shingeki no Kyojin Season 3",
       "year": 2018,
@@ -1262,11 +1231,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 670244
+          "votes": 677896
         },
         "mal": {
           "score": 8.65,
-          "votes": 1826739
+          "votes": 1826988
         },
         "bangumi": {
           "score": 8.3,
@@ -1276,7 +1245,7 @@
     },
     {
       "workId": "anilist:21519",
-      "rank": 42,
+      "rank": 41,
       "titleZh": "你的名字。",
       "titleOriginal": "Kimi no Na wa.",
       "year": 2016,
@@ -1292,11 +1261,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 696083
+          "votes": 704210
         },
         "mal": {
           "score": 8.82,
-          "votes": 2096751
+          "votes": 2097543
         },
         "bangumi": {
           "score": 8.1,
@@ -1306,7 +1275,7 @@
     },
     {
       "workId": "anilist:1575",
-      "rank": 43,
+      "rank": 42,
       "titleZh": "Code Geass 反叛的鲁路修",
       "titleOriginal": "Code Geass: Hangyaku no Lelouch",
       "year": 2006,
@@ -1324,11 +1293,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 486185
+          "votes": 492597
         },
         "mal": {
           "score": 8.71,
-          "votes": 1533220
+          "votes": 1533830
         },
         "bangumi": {
           "score": 8.3,
@@ -1338,7 +1307,7 @@
     },
     {
       "workId": "anilist:15335",
-      "rank": 44,
+      "rank": 43,
       "titleZh": "银魂剧场版 完结篇 万事屋永不落",
       "titleOriginal": "Gintama: Kanketsu-hen - Yorozuya yo Eien Nare",
       "year": 2013,
@@ -1354,11 +1323,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 54705
+          "votes": 55073
         },
         "mal": {
           "score": 8.89,
-          "votes": 145339
+          "votes": 145607
         },
         "bangumi": {
           "score": 7.9,
@@ -1368,7 +1337,7 @@
     },
     {
       "workId": "anilist:3786",
-      "rank": 45,
+      "rank": 44,
       "titleZh": "新・福音战士剧场版：终",
       "titleOriginal": "Shin Evangelion Movie:||",
       "year": 2021,
@@ -1386,11 +1355,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 114865
+          "votes": 116167
         },
         "mal": {
           "score": 8.58,
-          "votes": 195125
+          "votes": 195187
         },
         "bangumi": {
           "score": 8.4,
@@ -1400,7 +1369,7 @@
     },
     {
       "workId": "anilist:131586",
-      "rank": 46,
+      "rank": 45,
       "titleZh": "86 -不存在的战区- 第2部分",
       "titleOriginal": "86: Eighty Six Part 2",
       "year": 2021,
@@ -1417,11 +1386,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 189744
+          "votes": 192888
         },
         "mal": {
           "score": 8.73,
-          "votes": 381962
+          "votes": 382080
         },
         "bangumi": {
           "score": 8,
@@ -1431,7 +1400,7 @@
     },
     {
       "workId": "anilist:205",
-      "rank": 47,
+      "rank": 46,
       "titleZh": "混沌武士",
       "titleOriginal": "Samurai Champloo",
       "year": 2004,
@@ -1447,7 +1416,7 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 274177
+          "votes": 276944
         },
         "mal": {
           "score": 8.52,
@@ -1461,7 +1430,7 @@
     },
     {
       "workId": "anilist:1535",
-      "rank": 48,
+      "rank": 47,
       "titleZh": "死亡笔记",
       "titleOriginal": "DEATH NOTE",
       "year": 2006,
@@ -1478,11 +1447,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 935682
+          "votes": 947478
         },
         "mal": {
           "score": 8.62,
-          "votes": 3027344
+          "votes": 3034519
         },
         "bangumi": {
           "score": 8.4,
@@ -1492,7 +1461,7 @@
     },
     {
       "workId": "anilist:20992",
-      "rank": 49,
+      "rank": 48,
       "titleZh": "排球少年 第二季",
       "titleOriginal": "Haikyuu!! 2nd Season",
       "year": 2015,
@@ -1508,15 +1477,46 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 391451
+          "votes": 394720
         },
         "mal": {
           "score": 8.61,
-          "votes": 1033959
+          "votes": 1034147
         },
         "bangumi": {
           "score": 8.2,
           "votes": 7202
+        }
+      }
+    },
+    {
+      "workId": "anilist:178789",
+      "rank": 49,
+      "titleZh": "无职转生 第三季 ～到了异世界就拿出真本事～",
+      "titleOriginal": "Mushoku Tensei III: Isekai Ittara Honki Dasu",
+      "year": 2026,
+      "studios": [
+        "Studio Bind"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Ecchi",
+        "Fantasy"
+      ],
+      "compositeScore": 84.7,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 138715
+        },
+        "mal": {
+          "score": 8.91,
+          "votes": 25349
+        },
+        "bangumi": {
+          "score": 8,
+          "votes": 1925
         }
       }
     },
@@ -1541,11 +1541,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 152021
+          "votes": 153944
         },
         "mal": {
           "score": 8.59,
-          "votes": 264745
+          "votes": 266360
         },
         "bangumi": {
           "score": 8.3,
@@ -1574,11 +1574,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 480863
+          "votes": 487412
         },
         "mal": {
           "score": 8.37,
-          "votes": 1224246
+          "votes": 1224628
         },
         "bangumi": {
           "score": 8.7,
@@ -1605,11 +1605,11 @@
       "sourceScores": {
         "anilist": {
           "score": 91,
-          "votes": 54075
+          "votes": 54787
         },
         "mal": {
           "score": 9.05,
-          "votes": 88047
+          "votes": 88338
         },
         "bangumi": {
           "score": 7.2,
@@ -1638,11 +1638,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 318553
+          "votes": 322003
         },
         "mal": {
           "score": 8.39,
-          "votes": 823213
+          "votes": 823328
         },
         "bangumi": {
           "score": 8.6,
@@ -1667,7 +1667,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 236305
+          "votes": 238392
         },
         "mal": {
           "score": 8.47,
@@ -1698,11 +1698,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 1026381
+          "votes": 1039137
         },
         "mal": {
           "score": 8.57,
-          "votes": 3089065
+          "votes": 3090314
         },
         "bangumi": {
           "score": 8.2,
@@ -1731,11 +1731,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 396423
+          "votes": 400528
         },
         "mal": {
           "score": 8.62,
-          "votes": 843150
+          "votes": 843216
         },
         "bangumi": {
           "score": 8.2,
@@ -1760,7 +1760,7 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 191347
+          "votes": 197140
         },
         "mal": {
           "score": 8.91,
@@ -1789,11 +1789,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 77715
+          "votes": 78267
         },
         "mal": {
           "score": 8.5,
-          "votes": 114369
+          "votes": 114776
         },
         "bangumi": {
           "score": 8.3,
@@ -1820,11 +1820,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 627230
+          "votes": 634541
         },
         "mal": {
           "score": 8.79,
-          "votes": 1537699
+          "votes": 1538529
         },
         "bangumi": {
           "score": 7.7,
@@ -1853,11 +1853,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 31674
+          "votes": 31894
         },
         "mal": {
           "score": 8.58,
-          "votes": 56412
+          "votes": 56410
         },
         "bangumi": {
           "score": 8.2,
@@ -1866,8 +1866,40 @@
       }
     },
     {
-      "workId": "anilist:9617",
+      "workId": "anilist:131681",
       "rank": 61,
+      "titleZh": "进击的巨人 最终季 Part.2",
+      "titleOriginal": "Shingeki no Kyojin: The Final Season Part 2",
+      "year": 2022,
+      "studios": [
+        "MAPPA"
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery",
+        "Psychological"
+      ],
+      "compositeScore": 83.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 87,
+          "votes": 433656
+        },
+        "mal": {
+          "score": 8.77,
+          "votes": 948164
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 13073
+        }
+      }
+    },
+    {
+      "workId": "anilist:9617",
+      "rank": 62,
       "titleZh": "轻音少女 剧场版",
       "titleOriginal": "K-ON! Movie",
       "year": 2011,
@@ -1883,11 +1915,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 88134
+          "votes": 88860
         },
         "mal": {
           "score": 8.36,
-          "votes": 210654
+          "votes": 211150
         },
         "bangumi": {
           "score": 8.4,
@@ -1897,7 +1929,7 @@
     },
     {
       "workId": "anilist:182255",
-      "rank": 62,
+      "rank": 63,
       "titleZh": "葬送的芙莉莲 第二季",
       "titleOriginal": "Sousou no Frieren 2nd Season",
       "year": 2026,
@@ -1913,11 +1945,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 208758
+          "votes": 216418
         },
         "mal": {
           "score": 8.86,
-          "votes": 265935
+          "votes": 268235
         },
         "bangumi": {
           "score": 7.5,
@@ -1927,7 +1959,7 @@
     },
     {
       "workId": "anilist:21460",
-      "rank": 63,
+      "rank": 64,
       "titleZh": "吹响吧！上低音号 第二季",
       "titleOriginal": "Hibike! Euphonium 2",
       "year": 2016,
@@ -1943,11 +1975,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 76487
+          "votes": 76997
         },
         "mal": {
           "score": 8.35,
-          "votes": 137195
+          "votes": 137596
         },
         "bangumi": {
           "score": 8.5,
@@ -1957,7 +1989,7 @@
     },
     {
       "workId": "anilist:113108",
-      "rank": 64,
+      "rank": 65,
       "titleZh": "王者天下 第三季",
       "titleOriginal": "Kingdom 3rd Season",
       "year": 2020,
@@ -1971,11 +2003,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 25983
+          "votes": 26415
         },
         "mal": {
           "score": 8.85,
-          "votes": 56632
+          "votes": 56653
         },
         "bangumi": {
           "score": 7.7,
@@ -1985,7 +2017,7 @@
     },
     {
       "workId": "anilist:161645",
-      "rank": 65,
+      "rank": 66,
       "titleZh": "药屋少女的呢喃",
       "titleOriginal": "Kusuriya no Hitorigoto",
       "year": 2023,
@@ -2000,11 +2032,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 306838
+          "votes": 315338
         },
         "mal": {
           "score": 8.85,
-          "votes": 491126
+          "votes": 492242
         },
         "bangumi": {
           "score": 7.5,
@@ -2014,7 +2046,7 @@
     },
     {
       "workId": "anilist:136",
-      "rank": 66,
+      "rank": 67,
       "titleZh": "猎人",
       "titleOriginal": "HUNTER×HUNTER",
       "year": 1999,
@@ -2030,7 +2062,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 131247
+          "votes": 132753
         },
         "mal": {
           "score": 8.44,
@@ -2044,7 +2076,7 @@
     },
     {
       "workId": "anilist:20958",
-      "rank": 67,
+      "rank": 68,
       "titleZh": "进击的巨人 第二季",
       "titleOriginal": "Shingeki no Kyojin Season 2",
       "year": 2017,
@@ -2061,11 +2093,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 716788
+          "votes": 724480
         },
         "mal": {
           "score": 8.54,
-          "votes": 2080826
+          "votes": 2085614
         },
         "bangumi": {
           "score": 8.1,
@@ -2075,7 +2107,7 @@
     },
     {
       "workId": "anilist:11665",
-      "rank": 68,
+      "rank": 69,
       "titleZh": "夏目友人帐 肆",
       "titleOriginal": "Natsume Yuujinchou Shi",
       "year": 2012,
@@ -2092,11 +2124,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 48404
+          "votes": 48698
         },
         "mal": {
           "score": 8.63,
-          "votes": 118074
+          "votes": 118085
         },
         "bangumi": {
           "score": 8,
@@ -2106,7 +2138,7 @@
     },
     {
       "workId": "anilist:100178",
-      "rank": 69,
+      "rank": 70,
       "titleZh": "莉兹与青鸟",
       "titleOriginal": "Liz to Aoi Tori",
       "year": 2018,
@@ -2122,11 +2154,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 71123
+          "votes": 71781
         },
         "mal": {
           "score": 8.23,
-          "votes": 67538
+          "votes": 67813
         },
         "bangumi": {
           "score": 8.6,
@@ -2136,7 +2168,7 @@
     },
     {
       "workId": "anilist:103047",
-      "rank": 70,
+      "rank": 71,
       "titleZh": "剧场版 紫罗兰永恒花园",
       "titleOriginal": "Violet Evergarden Movie",
       "year": 2020,
@@ -2152,11 +2184,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 195768
+          "votes": 198222
         },
         "mal": {
           "score": 8.83,
-          "votes": 345849
+          "votes": 345897
         },
         "bangumi": {
           "score": 7.6,
@@ -2166,7 +2198,7 @@
     },
     {
       "workId": "anilist:12365",
-      "rank": 71,
+      "rank": 72,
       "titleZh": "爆漫王。3",
       "titleOriginal": "Bakuman. 3",
       "year": 2012,
@@ -2183,11 +2215,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 58128
+          "votes": 58424
         },
         "mal": {
           "score": 8.52,
-          "votes": 204190
+          "votes": 204181
         },
         "bangumi": {
           "score": 8.3,
@@ -2197,7 +2229,7 @@
     },
     {
       "workId": "anilist:33",
-      "rank": 72,
+      "rank": 73,
       "titleZh": "剑风传奇",
       "titleOriginal": "Kenpuu Denki Berserk",
       "year": 1997,
@@ -2216,11 +2248,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 178582
+          "votes": 181386
         },
         "mal": {
           "score": 8.61,
-          "votes": 417256
+          "votes": 417335
         },
         "bangumi": {
           "score": 8.1,
@@ -2230,7 +2262,7 @@
     },
     {
       "workId": "anilist:172463",
-      "rank": 73,
+      "rank": 74,
       "titleZh": "咒术回战 死灭回游 前篇",
       "titleOriginal": "Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen",
       "year": 2026,
@@ -2246,11 +2278,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 238960
+          "votes": 248476
         },
         "mal": {
           "score": 8.61,
-          "votes": 268383
+          "votes": 270242
         },
         "bangumi": {
           "score": 7.9,
@@ -2260,7 +2292,7 @@
     },
     {
       "workId": "anilist:99426",
-      "rank": 74,
+      "rank": 75,
       "titleZh": "比宇宙更远的地方",
       "titleOriginal": "Sora yori mo Tooi Basho",
       "year": 2018,
@@ -2276,7 +2308,7 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 164042
+          "votes": 165232
         },
         "mal": {
           "score": 8.5,
@@ -2290,7 +2322,7 @@
     },
     {
       "workId": "anilist:128207",
-      "rank": 75,
+      "rank": 76,
       "titleZh": "灌篮高手",
       "titleOriginal": "THE FIRST SLAM DUNK",
       "year": 2022,
@@ -2304,7 +2336,7 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 31269
+          "votes": 31788
         },
         "mal": {
           "score": 8.7,
@@ -2318,7 +2350,7 @@
     },
     {
       "workId": "anilist:101903",
-      "rank": 76,
+      "rank": 77,
       "titleZh": "强风吹拂",
       "titleOriginal": "Kaze ga Tsuyoku Fuiteiru",
       "year": 2018,
@@ -2333,11 +2365,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 96327
+          "votes": 97064
         },
         "mal": {
           "score": 8.38,
-          "votes": 152104
+          "votes": 152431
         },
         "bangumi": {
           "score": 8.4,
@@ -2347,7 +2379,7 @@
     },
     {
       "workId": "anilist:102883",
-      "rank": 77,
+      "rank": 78,
       "titleZh": "JOJO的奇妙冒险 黄金之风",
       "titleOriginal": "JoJo no Kimyou na Bouken: Ougon no Kaze",
       "year": 2018,
@@ -2365,7 +2397,7 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 292993
+          "votes": 296293
         },
         "mal": {
           "score": 8.58,
@@ -2379,7 +2411,7 @@
     },
     {
       "workId": "anilist:43",
-      "rank": 78,
+      "rank": 79,
       "titleZh": "攻壳机动队",
       "titleOriginal": "GHOST IN THE SHELL: Koukaku Kidoutai",
       "year": 1995,
@@ -2395,47 +2427,15 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 170900
+          "votes": 173636
         },
         "mal": {
           "score": 8.27,
-          "votes": 365178
+          "votes": 365328
         },
         "bangumi": {
           "score": 8.8,
           "votes": 12731
-        }
-      }
-    },
-    {
-      "workId": "anilist:131681",
-      "rank": 79,
-      "titleZh": "进击的巨人 最终季 Part.2",
-      "titleOriginal": "Shingeki no Kyojin: The Final Season Part 2",
-      "year": 2022,
-      "studios": [
-        "MAPPA"
-      ],
-      "genres": [
-        "Action",
-        "Drama",
-        "Fantasy",
-        "Mystery",
-        "Psychological"
-      ],
-      "compositeScore": 83.5667,
-      "sourceScores": {
-        "anilist": {
-          "score": 86,
-          "votes": 427490
-        },
-        "mal": {
-          "score": 8.77,
-          "votes": 947921
-        },
-        "bangumi": {
-          "score": 7.7,
-          "votes": 13073
         }
       }
     },
@@ -2458,11 +2458,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 48447
+          "votes": 48746
         },
         "mal": {
           "score": 8.56,
-          "votes": 127418
+          "votes": 127622
         },
         "bangumi": {
           "score": 8.1,
@@ -2488,7 +2488,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 111217
+          "votes": 111722
         },
         "mal": {
           "score": 8.26,
@@ -2521,7 +2521,7 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 140854
+          "votes": 141931
         },
         "mal": {
           "score": 8.56,
@@ -2551,7 +2551,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 63671
+          "votes": 64215
         },
         "mal": {
           "score": 8.25,
@@ -2582,11 +2582,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 599273
+          "votes": 605726
         },
         "mal": {
           "score": 8.64,
-          "votes": 1482163
+          "votes": 1482352
         },
         "bangumi": {
           "score": 8,
@@ -2610,11 +2610,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 81429
+          "votes": 81899
         },
         "mal": {
           "score": 8.54,
-          "votes": 99943
+          "votes": 100106
         },
         "bangumi": {
           "score": 8.1,
@@ -2643,11 +2643,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 34578
+          "votes": 34809
         },
         "mal": {
           "score": 8.53,
-          "votes": 73630
+          "votes": 73777
         },
         "bangumi": {
           "score": 8.2,
@@ -2673,11 +2673,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 45336
+          "votes": 46184
         },
         "mal": {
           "score": 8.32,
-          "votes": 61728
+          "votes": 62763
         },
         "bangumi": {
           "score": 8.4,
@@ -2704,7 +2704,7 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 425592
+          "votes": 429789
         },
         "mal": {
           "score": 8.61,
@@ -2733,11 +2733,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 118297
+          "votes": 121164
         },
         "mal": {
           "score": 8.61,
-          "votes": 145703
+          "votes": 145803
         },
         "bangumi": {
           "score": 7.8,
@@ -2768,11 +2768,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 159691
+          "votes": 161314
         },
         "mal": {
           "score": 8.6,
-          "votes": 308179
+          "votes": 309185
         },
         "bangumi": {
           "score": 7.9,
@@ -2798,11 +2798,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 171720
+          "votes": 173645
         },
         "mal": {
           "score": 8.68,
-          "votes": 452608
+          "votes": 452654
         },
         "bangumi": {
           "score": 7.9,
@@ -2829,11 +2829,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 354634
+          "votes": 358586
         },
         "mal": {
           "score": 8.67,
-          "votes": 1033105
+          "votes": 1033240
         },
         "bangumi": {
           "score": 7.8,
@@ -2859,11 +2859,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 59805
+          "votes": 60532
         },
         "mal": {
           "score": 8.67,
-          "votes": 190956
+          "votes": 190980
         },
         "bangumi": {
           "score": 7.8,
@@ -2888,11 +2888,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 210309
+          "votes": 211999
         },
         "mal": {
           "score": 8.37,
-          "votes": 302752
+          "votes": 303491
         },
         "bangumi": {
           "score": 8.3,
@@ -2921,11 +2921,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 54752
+          "votes": 57658
         },
         "mal": {
           "score": 8.46,
-          "votes": 50662
+          "votes": 53154
         },
         "bangumi": {
           "score": 8.1,
@@ -2954,11 +2954,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 78905
+          "votes": 79819
         },
         "mal": {
           "score": 8.25,
-          "votes": 72630
+          "votes": 72987
         },
         "bangumi": {
           "score": 8.4,
@@ -2985,11 +2985,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 284708
+          "votes": 287670
         },
         "mal": {
           "score": 8.44,
-          "votes": 893580
+          "votes": 897020
         },
         "bangumi": {
           "score": 8.2,
@@ -3015,11 +3015,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 571187
+          "votes": 576556
         },
         "mal": {
           "score": 8.43,
-          "votes": 1356597
+          "votes": 1356743
         },
         "bangumi": {
           "score": 8.1,
@@ -3048,7 +3048,7 @@
       "sourceScores": {
         "anilist": {
           "score": 89,
-          "votes": 173168
+          "votes": 174931
         },
         "mal": {
           "score": 8.93,
@@ -3081,11 +3081,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 335425
+          "votes": 338413
         },
         "mal": {
           "score": 8.32,
-          "votes": 775269
+          "votes": 775320
         },
         "bangumi": {
           "score": 8.4,
@@ -3111,11 +3111,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 48596
+          "votes": 48892
         },
         "mal": {
           "score": 8.48,
-          "votes": 56068
+          "votes": 56145
         },
         "bangumi": {
           "score": 8.1,
@@ -3141,11 +3141,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 216655
+          "votes": 220947
         },
         "mal": {
           "score": 8.58,
-          "votes": 308917
+          "votes": 309061
         },
         "bangumi": {
           "score": 7.8,
@@ -3172,11 +3172,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 56492
+          "votes": 56818
         },
         "mal": {
           "score": 8.37,
-          "votes": 138891
+          "votes": 139147
         },
         "bangumi": {
           "score": 8.2,
@@ -3203,11 +3203,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 190867
+          "votes": 192277
         },
         "mal": {
           "score": 8.56,
-          "votes": 488117
+          "votes": 488082
         },
         "bangumi": {
           "score": 8,
@@ -3216,8 +3216,38 @@
       }
     },
     {
-      "workId": "anilist:109403",
+      "workId": "anilist:166475",
       "rank": 105,
+      "titleZh": "罗小黑战记2",
+      "titleOriginal": "Luo Xiaohei Zhan Ji 2",
+      "year": 1,
+      "studios": [
+        "HMCH"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "compositeScore": 82.8667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 6293
+        },
+        "mal": {
+          "score": 8.66,
+          "votes": 3607
+        },
+        "bangumi": {
+          "score": 7.7,
+          "votes": 3277
+        }
+      }
+    },
+    {
+      "workId": "anilist:109403",
+      "rank": 106,
       "titleZh": "悠哉日常大王 Nonstop",
       "titleOriginal": "Non Non Biyori: Nonstop",
       "year": 2021,
@@ -3232,45 +3262,15 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 40343
+          "votes": 40604
         },
         "mal": {
           "score": 8.35,
-          "votes": 54352
+          "votes": 54524
         },
         "bangumi": {
           "score": 8.2,
           "votes": 6293
-        }
-      }
-    },
-    {
-      "workId": "anilist:166475",
-      "rank": 106,
-      "titleZh": "罗小黑战记2",
-      "titleOriginal": "Luo Xiaohei Zhan Ji 2",
-      "year": 1,
-      "studios": [
-        "HMCH"
-      ],
-      "genres": [
-        "Action",
-        "Adventure",
-        "Fantasy"
-      ],
-      "compositeScore": 82.8333,
-      "sourceScores": {
-        "anilist": {
-          "score": 85,
-          "votes": 5872
-        },
-        "mal": {
-          "score": 8.65,
-          "votes": 3368
-        },
-        "bangumi": {
-          "score": 7.7,
-          "votes": 3277
         }
       }
     },
@@ -3293,11 +3293,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 30291
+          "votes": 31393
         },
         "mal": {
           "score": 8.64,
-          "votes": 38450
+          "votes": 39698
         },
         "bangumi": {
           "score": 7.5,
@@ -3324,11 +3324,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 50789
+          "votes": 51107
         },
         "mal": {
           "score": 8.53,
-          "votes": 134844
+          "votes": 135053
         },
         "bangumi": {
           "score": 8,
@@ -3354,11 +3354,11 @@
       "sourceScores": {
         "anilist": {
           "score": 88,
-          "votes": 695928
+          "votes": 705389
         },
         "mal": {
           "score": 8.93,
-          "votes": 1815079
+          "votes": 1816415
         },
         "bangumi": {
           "score": 7.1,
@@ -3386,11 +3386,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 90870
+          "votes": 91768
         },
         "mal": {
           "score": 8.41,
-          "votes": 106698
+          "votes": 107085
         },
         "bangumi": {
           "score": 8.2,
@@ -3416,11 +3416,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 58492
+          "votes": 59197
         },
         "mal": {
           "score": 8.61,
-          "votes": 165376
+          "votes": 165413
         },
         "bangumi": {
           "score": 7.7,
@@ -3447,11 +3447,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 39579
+          "votes": 39867
         },
         "mal": {
           "score": 8.61,
-          "votes": 76857
+          "votes": 77040
         },
         "bangumi": {
           "score": 7.7,
@@ -3477,11 +3477,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 134930
+          "votes": 138584
         },
         "mal": {
           "score": 8.7,
-          "votes": 241606
+          "votes": 241957
         },
         "bangumi": {
           "score": 7.5,
@@ -3509,11 +3509,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 131405
+          "votes": 132752
         },
         "mal": {
           "score": 8.29,
-          "votes": 368235
+          "votes": 369358
         },
         "bangumi": {
           "score": 8.4,
@@ -3539,11 +3539,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 534822
+          "votes": 540637
         },
         "mal": {
           "score": 8.69,
-          "votes": 1099666
+          "votes": 1099743
         },
         "bangumi": {
           "score": 7.6,
@@ -3570,11 +3570,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 82934
+          "votes": 83618
         },
         "mal": {
           "score": 8.38,
-          "votes": 233133
+          "votes": 233165
         },
         "bangumi": {
           "score": 8.2,
@@ -3601,11 +3601,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 751701
+          "votes": 758659
         },
         "mal": {
           "score": 8.47,
-          "votes": 2435163
+          "votes": 2435395
         },
         "bangumi": {
           "score": 8,
@@ -3632,11 +3632,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 15432
+          "votes": 15697
         },
         "mal": {
           "score": 8.57,
-          "votes": 19092
+          "votes": 19323
         },
         "bangumi": {
           "score": 7.8,
@@ -3662,11 +3662,11 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 130412
+          "votes": 131614
         },
         "mal": {
           "score": 8.26,
-          "votes": 336819
+          "votes": 337704
         },
         "bangumi": {
           "score": 8.5,
@@ -3694,11 +3694,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 105939
+          "votes": 106959
         },
         "mal": {
           "score": 8.36,
-          "votes": 259463
+          "votes": 259503
         },
         "bangumi": {
           "score": 8.3,
@@ -3724,11 +3724,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 84686
+          "votes": 85294
         },
         "mal": {
           "score": 8.44,
-          "votes": 122535
+          "votes": 122976
         },
         "bangumi": {
           "score": 7.9,
@@ -3752,11 +3752,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 18768
+          "votes": 19151
         },
         "mal": {
           "score": 8.73,
-          "votes": 41871
+          "votes": 41874
         },
         "bangumi": {
           "score": 7.5,
@@ -3784,11 +3784,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 196740
+          "votes": 199623
         },
         "mal": {
           "score": 8.32,
-          "votes": 376205
+          "votes": 376272
         },
         "bangumi": {
           "score": 8.2,
@@ -3816,11 +3816,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 308088
+          "votes": 311450
         },
         "mal": {
           "score": 8.51,
-          "votes": 887943
+          "votes": 888109
         },
         "bangumi": {
           "score": 7.8,
@@ -3847,11 +3847,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 59579
+          "votes": 60033
         },
         "mal": {
           "score": 8.81,
-          "votes": 116842
+          "votes": 117181
         },
         "bangumi": {
           "score": 7.3,
@@ -3877,11 +3877,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 88564
+          "votes": 89294
         },
         "mal": {
           "score": 8.29,
-          "votes": 166311
+          "votes": 166760
         },
         "bangumi": {
           "score": 8.3,
@@ -3910,11 +3910,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 610706
+          "votes": 617849
         },
         "mal": {
           "score": 8.49,
-          "votes": 1432682
+          "votes": 1433392
         },
         "bangumi": {
           "score": 7.8,
@@ -3940,11 +3940,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 39490
+          "votes": 40260
         },
         "mal": {
           "score": 8.38,
-          "votes": 40321
+          "votes": 40899
         },
         "bangumi": {
           "score": 8,
@@ -3970,11 +3970,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 108620
+          "votes": 112526
         },
         "mal": {
           "score": 8.68,
-          "votes": 164911
+          "votes": 165011
         },
         "bangumi": {
           "score": 7.4,
@@ -4001,11 +4001,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 39531
+          "votes": 39816
         },
         "mal": {
           "score": 8.56,
-          "votes": 84149
+          "votes": 84348
         },
         "bangumi": {
           "score": 7.7,
@@ -4033,11 +4033,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 180093
+          "votes": 188783
         },
         "mal": {
           "score": 8.66,
-          "votes": 205648
+          "votes": 206509
         },
         "bangumi": {
           "score": 7.4,
@@ -4063,11 +4063,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 181305
+          "votes": 183373
         },
         "mal": {
           "score": 8.34,
-          "votes": 528830
+          "votes": 528894
         },
         "bangumi": {
           "score": 8.2,
@@ -4091,11 +4091,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 14825
+          "votes": 15188
         },
         "mal": {
           "score": 8.72,
-          "votes": 29720
+          "votes": 30091
         },
         "bangumi": {
           "score": 7.4,
@@ -4120,11 +4120,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 31607
+          "votes": 31889
         },
         "mal": {
           "score": 8.2,
-          "votes": 65293
+          "votes": 65544
         },
         "bangumi": {
           "score": 8.3,
@@ -4151,11 +4151,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 169006
+          "votes": 171618
         },
         "mal": {
           "score": 8.7,
-          "votes": 192360
+          "votes": 192422
         },
         "bangumi": {
           "score": 7.3,
@@ -4182,11 +4182,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 469983
+          "votes": 476637
         },
         "mal": {
           "score": 8.69,
-          "votes": 1130583
+          "votes": 1130699
         },
         "bangumi": {
           "score": 7.3,
@@ -4213,7 +4213,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 38709
+          "votes": 39253
         },
         "mal": {
           "score": 8.38,
@@ -4244,11 +4244,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 28866
+          "votes": 28988
         },
         "mal": {
           "score": 8.37,
-          "votes": 53761
+          "votes": 53829
         },
         "bangumi": {
           "score": 8.1,
@@ -4273,11 +4273,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 44646
+          "votes": 45813
         },
         "mal": {
           "score": 8.57,
-          "votes": 54392
+          "votes": 54446
         },
         "bangumi": {
           "score": 7.5,
@@ -4306,11 +4306,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 163903
+          "votes": 165169
         },
         "mal": {
           "score": 8.36,
-          "votes": 315015
+          "votes": 315984
         },
         "bangumi": {
           "score": 7.9,
@@ -4335,11 +4335,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 163736
+          "votes": 164954
         },
         "mal": {
           "score": 8.26,
-          "votes": 241137
+          "votes": 241760
         },
         "bangumi": {
           "score": 8.2,
@@ -4365,11 +4365,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 55477
+          "votes": 56000
         },
         "mal": {
           "score": 8.36,
-          "votes": 97382
+          "votes": 97748
         },
         "bangumi": {
           "score": 8,
@@ -4396,11 +4396,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 274481
+          "votes": 277284
         },
         "mal": {
           "score": 8.25,
-          "votes": 761203
+          "votes": 763395
         },
         "bangumi": {
           "score": 8.2,
@@ -4426,11 +4426,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 227705
+          "votes": 231489
         },
         "mal": {
           "score": 8.45,
-          "votes": 488531
+          "votes": 488979
         },
         "bangumi": {
           "score": 7.9,
@@ -4457,11 +4457,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 62126
+          "votes": 62437
         },
         "mal": {
           "score": 8.33,
-          "votes": 222728
+          "votes": 222962
         },
         "bangumi": {
           "score": 8.1,
@@ -4488,11 +4488,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 545035
+          "votes": 551512
         },
         "mal": {
           "score": 8.4,
-          "votes": 1222708
+          "votes": 1223029
         },
         "bangumi": {
           "score": 7.8,
@@ -4520,11 +4520,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 101034
+          "votes": 101937
         },
         "mal": {
           "score": 8.19,
-          "votes": 235095
+          "votes": 235113
         },
         "bangumi": {
           "score": 8.2,
@@ -4551,11 +4551,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 102758
+          "votes": 105985
         },
         "mal": {
           "score": 8.69,
-          "votes": 122094
+          "votes": 122344
         },
         "bangumi": {
           "score": 7.2,
@@ -4582,11 +4582,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 362253
+          "votes": 365715
         },
         "mal": {
           "score": 8.47,
-          "votes": 979800
+          "votes": 979917
         },
         "bangumi": {
           "score": 7.7,
@@ -4595,36 +4595,8 @@
       }
     },
     {
-      "workId": "anilist:190840",
-      "rank": 150,
-      "titleZh": "王者天下 第六季",
-      "titleOriginal": "Kingdom 6th Season",
-      "year": 2025,
-      "studios": [
-        "Studio Pierrot"
-      ],
-      "genres": [
-        "Action"
-      ],
-      "compositeScore": 81.5667,
-      "sourceScores": {
-        "anilist": {
-          "score": 84,
-          "votes": 9646
-        },
-        "mal": {
-          "score": 8.67,
-          "votes": 18580
-        },
-        "bangumi": {
-          "score": 7.4,
-          "votes": 252
-        }
-      }
-    },
-    {
       "workId": "anilist:392",
-      "rank": 151,
+      "rank": 150,
       "titleZh": "幽游白书",
       "titleOriginal": "Yuu☆Yuu☆Hakusho",
       "year": 1992,
@@ -4641,15 +4613,43 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 155740
+          "votes": 157116
         },
         "mal": {
           "score": 8.46,
-          "votes": 359868
+          "votes": 359911
         },
         "bangumi": {
           "score": 7.7,
           "votes": 1986
+        }
+      }
+    },
+    {
+      "workId": "anilist:190840",
+      "rank": 151,
+      "titleZh": "王者天下 第六季",
+      "titleOriginal": "Kingdom 6th Season",
+      "year": 2025,
+      "studios": [
+        "Studio Pierrot"
+      ],
+      "genres": [
+        "Action"
+      ],
+      "compositeScore": 81.5333,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 10015
+        },
+        "mal": {
+          "score": 8.66,
+          "votes": 19087
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 252
         }
       }
     },
@@ -4671,7 +4671,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 133967
+          "votes": 135569
         },
         "mal": {
           "score": 8.25,
@@ -4700,11 +4700,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 35876
+          "votes": 36338
         },
         "mal": {
           "score": 8.24,
-          "votes": 55945
+          "votes": 56217
         },
         "bangumi": {
           "score": 8,
@@ -4732,11 +4732,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 96785
+          "votes": 99779
         },
         "mal": {
           "score": 8.34,
-          "votes": 100165
+          "votes": 100282
         },
         "bangumi": {
           "score": 7.7,
@@ -4762,11 +4762,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 18522
+          "votes": 18968
         },
         "mal": {
           "score": 8.44,
-          "votes": 20696
+          "votes": 21495
         },
         "bangumi": {
           "score": 7.7,
@@ -4792,11 +4792,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 71618
+          "votes": 72312
         },
         "mal": {
           "score": 8.22,
-          "votes": 137424
+          "votes": 137907
         },
         "bangumi": {
           "score": 8.1,
@@ -4824,11 +4824,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 490437
+          "votes": 495179
         },
         "mal": {
           "score": 8.32,
-          "votes": 1258964
+          "votes": 1259069
         },
         "bangumi": {
           "score": 8,
@@ -4854,11 +4854,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 58163
+          "votes": 58615
         },
         "mal": {
           "score": 8.42,
-          "votes": 95443
+          "votes": 95735
         },
         "bangumi": {
           "score": 7.7,
@@ -4885,11 +4885,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 438985
+          "votes": 448492
         },
         "mal": {
           "score": 8.32,
-          "votes": 987051
+          "votes": 988402
         },
         "bangumi": {
           "score": 7.9,
@@ -4913,11 +4913,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 11532
+          "votes": 11564
         },
         "mal": {
           "score": 8.32,
-          "votes": 20295
+          "votes": 20301
         },
         "bangumi": {
           "score": 7.9,
@@ -4945,11 +4945,11 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 252952
+          "votes": 255801
         },
         "mal": {
           "score": 8.21,
-          "votes": 910766
+          "votes": 910914
         },
         "bangumi": {
           "score": 8.2,
@@ -4973,7 +4973,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 100467
+          "votes": 100992
         },
         "mal": {
           "score": 8.31,
@@ -4986,38 +4986,8 @@
       }
     },
     {
-      "workId": "anilist:140337",
-      "rank": 163,
-      "titleZh": "佐贺偶像是传奇 梦想银河乐园",
-      "titleOriginal": "Zombie Land Saga: Yume Ginga Paradise",
-      "year": 2025,
-      "studios": [
-        "Avex Pictures"
-      ],
-      "genres": [
-        "Comedy",
-        "Music",
-        "Supernatural"
-      ],
-      "compositeScore": 81.3667,
-      "sourceScores": {
-        "anilist": {
-          "score": 82,
-          "votes": 17919
-        },
-        "mal": {
-          "score": 8.31,
-          "votes": 4200
-        },
-        "bangumi": {
-          "score": 7.9,
-          "votes": 2112
-        }
-      }
-    },
-    {
       "workId": "anilist:138425",
-      "rank": 164,
+      "rank": 163,
       "titleZh": "擅长捉弄的高木同学 剧场版",
       "titleOriginal": "Karakai Jouzu no Takagi-san Movie",
       "year": 2022,
@@ -5033,11 +5003,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 29994
+          "votes": 30383
         },
         "mal": {
           "score": 8.4,
-          "votes": 44569
+          "votes": 44870
         },
         "bangumi": {
           "score": 7.7,
@@ -5047,7 +5017,7 @@
     },
     {
       "workId": "anilist:104157",
-      "rank": 165,
+      "rank": 164,
       "titleZh": "青春猪头少年不会梦到怀梦美少女",
       "titleOriginal": "Seishun Buta Yarou wa Yumemiru Shoujo no Yume wo Minai",
       "year": 2019,
@@ -5064,11 +5034,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 253779
+          "votes": 256912
         },
         "mal": {
           "score": 8.59,
-          "votes": 525057
+          "votes": 527299
         },
         "bangumi": {
           "score": 7.4,
@@ -5078,7 +5048,7 @@
     },
     {
       "workId": "anilist:132420",
-      "rank": 166,
+      "rank": 165,
       "titleZh": "少女与战车 最终章 第4话",
       "titleOriginal": "Girls und Panzer: Saishuushou 4",
       "year": 2023,
@@ -5093,15 +5063,45 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 9787
+          "votes": 9990
         },
         "mal": {
           "score": 8.39,
-          "votes": 10105
+          "votes": 10302
         },
         "bangumi": {
           "score": 7.8,
           "votes": 1812
+        }
+      }
+    },
+    {
+      "workId": "anilist:140337",
+      "rank": 166,
+      "titleZh": "佐贺偶像是传奇 梦想银河乐园",
+      "titleOriginal": "Zombie Land Saga: Yume Ginga Paradise",
+      "year": 2025,
+      "studios": [
+        "Avex Pictures"
+      ],
+      "genres": [
+        "Comedy",
+        "Music",
+        "Supernatural"
+      ],
+      "compositeScore": 81.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 18335
+        },
+        "mal": {
+          "score": 8.29,
+          "votes": 5172
+        },
+        "bangumi": {
+          "score": 7.9,
+          "votes": 2112
         }
       }
     },
@@ -5126,11 +5126,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 621297
+          "votes": 626963
         },
         "mal": {
           "score": 8.47,
-          "votes": 1406136
+          "votes": 1406628
         },
         "bangumi": {
           "score": 7.6,
@@ -5159,11 +5159,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 40932
+          "votes": 42616
         },
         "mal": {
           "score": 8.47,
-          "votes": 28617
+          "votes": 29022
         },
         "bangumi": {
           "score": 7.6,
@@ -5172,8 +5172,38 @@
       }
     },
     {
-      "workId": "anilist:101215",
+      "workId": "anilist:338",
       "rank": 169,
+      "titleZh": "凡尔赛玫瑰",
+      "titleOriginal": "Versailles no Bara",
+      "year": 1979,
+      "studios": [
+        "Tokyo Movie Shinsha"
+      ],
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 81.2,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 34055
+        },
+        "mal": {
+          "score": 8.36,
+          "votes": 34502
+        },
+        "bangumi": {
+          "score": 7.8,
+          "votes": 512
+        }
+      }
+    },
+    {
+      "workId": "anilist:101215",
+      "rank": 170,
       "titleZh": "歌牌情缘 第三季",
       "titleOriginal": "Chihayafuru 3",
       "year": 2019,
@@ -5190,11 +5220,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 44521
+          "votes": 44827
         },
         "mal": {
           "score": 8.46,
-          "votes": 71483
+          "votes": 71714
         },
         "bangumi": {
           "score": 7.4,
@@ -5204,7 +5234,7 @@
     },
     {
       "workId": "anilist:3002",
-      "rank": 170,
+      "rank": 171,
       "titleZh": "赌博默示录",
       "titleOriginal": "Gyakkyou Burai Kaiji: Ultimate Survivor",
       "year": 2007,
@@ -5219,11 +5249,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 96553
+          "votes": 97361
         },
         "mal": {
           "score": 8.25,
-          "votes": 179406
+          "votes": 179896
         },
         "bangumi": {
           "score": 7.9,
@@ -5233,7 +5263,7 @@
     },
     {
       "workId": "anilist:578",
-      "rank": 171,
+      "rank": 172,
       "titleZh": "萤火虫之墓",
       "titleOriginal": "Hotaru no Haka",
       "year": 1988,
@@ -5247,7 +5277,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 197503
+          "votes": 199750
         },
         "mal": {
           "score": 8.54,
@@ -5261,7 +5291,7 @@
     },
     {
       "workId": "anilist:98779",
-      "rank": 172,
+      "rank": 173,
       "titleZh": "剧场版 悠哉日常大王 Vacation",
       "titleOriginal": "Non Non Biyori: Vacation",
       "year": 2018,
@@ -5276,7 +5306,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 27305
+          "votes": 27465
         },
         "mal": {
           "score": 8.24,
@@ -5290,7 +5320,7 @@
     },
     {
       "workId": "anilist:163571",
-      "rank": 173,
+      "rank": 174,
       "titleZh": "BanG Dream! It's MyGO!!!!!",
       "titleOriginal": "BanG Dream! It's MyGO!!!!!",
       "year": 2023,
@@ -5306,11 +5336,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 21262
+          "votes": 21693
         },
         "mal": {
           "score": 8.24,
-          "votes": 20951
+          "votes": 21229
         },
         "bangumi": {
           "score": 7.9,
@@ -5320,7 +5350,7 @@
     },
     {
       "workId": "anilist:10937",
-      "rank": 174,
+      "rank": 175,
       "titleZh": "机动战士高达 THE ORIGIN",
       "titleOriginal": "Kidou Senshi Gundam: THE ORIGIN",
       "year": 2015,
@@ -5336,11 +5366,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 24411
+          "votes": 24621
         },
         "mal": {
           "score": 8.33,
-          "votes": 36594
+          "votes": 36726
         },
         "bangumi": {
           "score": 7.9,
@@ -5349,8 +5379,38 @@
       }
     },
     {
+      "workId": "anilist:109190",
+      "rank": 176,
+      "titleZh": "紫罗兰永恒花园 外传 - 永远与自动手记人偶 -",
+      "titleOriginal": "Violet Evergarden Gaiden: Eien to Jidou Shuki Ningyou",
+      "year": 2019,
+      "studios": [
+        "Kyoto Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life"
+      ],
+      "compositeScore": 81.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 143664
+        },
+        "mal": {
+          "score": 8.43,
+          "votes": 287679
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 10745
+        }
+      }
+    },
+    {
       "workId": "anilist:150672",
-      "rank": 175,
+      "rank": 177,
       "titleZh": "【我推的孩子】",
       "titleOriginal": "[Oshi no Ko]",
       "year": 2023,
@@ -5367,11 +5427,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 318731
+          "votes": 323766
         },
         "mal": {
           "score": 8.53,
-          "votes": 630253
+          "votes": 630342
         },
         "bangumi": {
           "score": 7.4,
@@ -5381,7 +5441,7 @@
     },
     {
       "workId": "anilist:13601",
-      "rank": 176,
+      "rank": 178,
       "titleZh": "心理测量者",
       "titleOriginal": "PSYCHO-PASS",
       "year": 2012,
@@ -5398,11 +5458,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 349651
+          "votes": 352714
         },
         "mal": {
           "score": 8.32,
-          "votes": 833754
+          "votes": 833894
         },
         "bangumi": {
           "score": 7.9,
@@ -5412,7 +5472,7 @@
     },
     {
       "workId": "anilist:4081",
-      "rank": 177,
+      "rank": 179,
       "titleZh": "夏目友人帐",
       "titleOriginal": "Natsume Yuujinchou",
       "year": 2008,
@@ -5429,11 +5489,11 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 125878
+          "votes": 126799
         },
         "mal": {
           "score": 8.3,
-          "votes": 200753
+          "votes": 201101
         },
         "bangumi": {
           "score": 8,
@@ -5443,7 +5503,7 @@
     },
     {
       "workId": "anilist:6675",
-      "rank": 178,
+      "rank": 180,
       "titleZh": "红线",
       "titleOriginal": "REDLINE",
       "year": 2009,
@@ -5460,11 +5520,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 110642
+          "votes": 111671
         },
         "mal": {
           "score": 8.29,
-          "votes": 227738
+          "votes": 228395
         },
         "bangumi": {
           "score": 7.9,
@@ -5474,7 +5534,7 @@
     },
     {
       "workId": "anilist:98707",
-      "rank": 179,
+      "rank": 181,
       "titleZh": "宝石之国",
       "titleOriginal": "Houseki no Kuni",
       "year": 2017,
@@ -5492,11 +5552,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 157134
+          "votes": 158652
         },
         "mal": {
           "score": 8.39,
-          "votes": 221523
+          "votes": 221577
         },
         "bangumi": {
           "score": 7.6,
@@ -5506,7 +5566,7 @@
     },
     {
       "workId": "anilist:20694",
-      "rank": 180,
+      "rank": 182,
       "titleZh": "悠哉日常大王 Repeat",
       "titleOriginal": "Non Non Biyori: Repeat",
       "year": 2015,
@@ -5520,11 +5580,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 54958
+          "votes": 55219
         },
         "mal": {
           "score": 8.18,
-          "votes": 107720
+          "votes": 107715
         },
         "bangumi": {
           "score": 8,
@@ -5534,7 +5594,7 @@
     },
     {
       "workId": "anilist:113359",
-      "rank": 181,
+      "rank": 183,
       "titleZh": "NOMAD MEGALO BOX 2",
       "titleOriginal": "NOMAD: Megalo Box 2",
       "year": 2021,
@@ -5551,11 +5611,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 57673
+          "votes": 58045
         },
         "mal": {
           "score": 8.18,
-          "votes": 92552
+          "votes": 92805
         },
         "bangumi": {
           "score": 8,
@@ -5565,7 +5625,7 @@
     },
     {
       "workId": "anilist:184951",
-      "rank": 182,
+      "rank": 184,
       "titleZh": "相反的你和我",
       "titleOriginal": "Seihantai na Kimi to Boku",
       "year": 2026,
@@ -5581,11 +5641,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 106773
+          "votes": 114857
         },
         "mal": {
           "score": 8.28,
-          "votes": 106136
+          "votes": 106536
         },
         "bangumi": {
           "score": 7.7,
@@ -5594,38 +5654,8 @@
       }
     },
     {
-      "workId": "anilist:338",
-      "rank": 183,
-      "titleZh": "凡尔赛玫瑰",
-      "titleOriginal": "Versailles no Bara",
-      "year": 1979,
-      "studios": [
-        "Tokyo Movie Shinsha"
-      ],
-      "genres": [
-        "Adventure",
-        "Drama",
-        "Romance"
-      ],
-      "compositeScore": 80.8667,
-      "sourceScores": {
-        "anilist": {
-          "score": 81,
-          "votes": 33764
-        },
-        "mal": {
-          "score": 8.36,
-          "votes": 34363
-        },
-        "bangumi": {
-          "score": 7.8,
-          "votes": 512
-        }
-      }
-    },
-    {
       "workId": "anilist:20722",
-      "rank": 184,
+      "rank": 185,
       "titleZh": "元气囝仔",
       "titleOriginal": "Barakamon",
       "year": 2014,
@@ -5639,11 +5669,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 150759
+          "votes": 151851
         },
         "mal": {
           "score": 8.36,
-          "votes": 363627
+          "votes": 364336
         },
         "bangumi": {
           "score": 7.7,
@@ -5653,7 +5683,7 @@
     },
     {
       "workId": "anilist:129201",
-      "rank": 185,
+      "rank": 186,
       "titleZh": "夏日重现",
       "titleOriginal": "Summer Time Render",
       "year": 2022,
@@ -5671,45 +5701,15 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 218756
+          "votes": 222078
         },
         "mal": {
           "score": 8.46,
-          "votes": 295491
+          "votes": 297537
         },
         "bangumi": {
           "score": 7.5,
           "votes": 20258
-        }
-      }
-    },
-    {
-      "workId": "anilist:164212",
-      "rank": 186,
-      "titleZh": "少女乐队的呐喊",
-      "titleOriginal": "GIRLS BAND CRY",
-      "year": 2024,
-      "studios": [
-        "Toei Animation"
-      ],
-      "genres": [
-        "Drama",
-        "Music",
-        "Slice of Life"
-      ],
-      "compositeScore": 80.8667,
-      "sourceScores": {
-        "anilist": {
-          "score": 83,
-          "votes": 64726
-        },
-        "mal": {
-          "score": 8.36,
-          "votes": 56111
-        },
-        "bangumi": {
-          "score": 7.6,
-          "votes": 24184
         }
       }
     },
@@ -5732,11 +5732,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 311648
+          "votes": 317154
         },
         "mal": {
           "score": 8.35,
-          "votes": 517665
+          "votes": 517948
         },
         "bangumi": {
           "score": 7.6,
@@ -5745,8 +5745,38 @@
       }
     },
     {
-      "workId": "anilist:10271",
+      "workId": "anilist:164212",
       "rank": 188,
+      "titleZh": "少女乐队的呐喊",
+      "titleOriginal": "GIRLS BAND CRY",
+      "year": 2024,
+      "studios": [
+        "Toei Animation"
+      ],
+      "genres": [
+        "Drama",
+        "Music",
+        "Slice of Life"
+      ],
+      "compositeScore": 80.8333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 65733
+        },
+        "mal": {
+          "score": 8.35,
+          "votes": 56749
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 24184
+        }
+      }
+    },
+    {
+      "workId": "anilist:10271",
+      "rank": 189,
       "titleZh": "赌博默示录 破戒录篇",
       "titleOriginal": "Gyakkyou Burai Kaiji: Hakairoku-hen",
       "year": 2011,
@@ -5761,11 +5791,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 53164
+          "votes": 53535
         },
         "mal": {
           "score": 8.24,
-          "votes": 118205
+          "votes": 118558
         },
         "bangumi": {
           "score": 7.8,
@@ -5775,7 +5805,7 @@
     },
     {
       "workId": "anilist:585",
-      "rank": 189,
+      "rank": 190,
       "titleZh": "侧耳倾听",
       "titleOriginal": "Mimi wo Sumaseba",
       "year": 1995,
@@ -5792,45 +5822,15 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 107418
+          "votes": 108445
         },
         "mal": {
           "score": 8.23,
-          "votes": 231122
+          "votes": 231815
         },
         "bangumi": {
           "score": 7.9,
           "votes": 4692
-        }
-      }
-    },
-    {
-      "workId": "anilist:109190",
-      "rank": 190,
-      "titleZh": "紫罗兰永恒花园 外传 - 永远与自动手记人偶 -",
-      "titleOriginal": "Violet Evergarden Gaiden: Eien to Jidou Shuki Ningyou",
-      "year": 2019,
-      "studios": [
-        "Kyoto Animation"
-      ],
-      "genres": [
-        "Drama",
-        "Fantasy",
-        "Slice of Life"
-      ],
-      "compositeScore": 80.7667,
-      "sourceScores": {
-        "anilist": {
-          "score": 83,
-          "votes": 142004
-        },
-        "mal": {
-          "score": 8.43,
-          "votes": 286510
-        },
-        "bangumi": {
-          "score": 7.5,
-          "votes": 10745
         }
       }
     },
@@ -5854,11 +5854,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 173292
+          "votes": 176420
         },
         "mal": {
           "score": 8.33,
-          "votes": 246857
+          "votes": 246964
         },
         "bangumi": {
           "score": 7.7,
@@ -5885,11 +5885,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 24887
+          "votes": 25068
         },
         "mal": {
           "score": 8.22,
-          "votes": 70980
+          "votes": 71104
         },
         "bangumi": {
           "score": 7.9,
@@ -5915,11 +5915,11 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 30710
+          "votes": 30905
         },
         "mal": {
           "score": 8.32,
-          "votes": 41947
+          "votes": 42036
         },
         "bangumi": {
           "score": 7.9,
@@ -5928,39 +5928,8 @@
       }
     },
     {
-      "workId": "anilist:166531",
-      "rank": 194,
-      "titleZh": "【我推的孩子】 第二季",
-      "titleOriginal": "[Oshi no Ko] 2nd Season",
-      "year": 2024,
-      "studios": [
-        "KADOKAWA"
-      ],
-      "genres": [
-        "Drama",
-        "Mystery",
-        "Psychological",
-        "Supernatural"
-      ],
-      "compositeScore": 80.7,
-      "sourceScores": {
-        "anilist": {
-          "score": 85,
-          "votes": 171943
-        },
-        "mal": {
-          "score": 8.51,
-          "votes": 268693
-        },
-        "bangumi": {
-          "score": 7.2,
-          "votes": 12472
-        }
-      }
-    },
-    {
       "workId": "anilist:5341",
-      "rank": 195,
+      "rank": 194,
       "titleZh": "狼与香辛料 第二季",
       "titleOriginal": "Ookami to Koushinryou II",
       "year": 2009,
@@ -5977,11 +5946,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 96338
+          "votes": 96921
         },
         "mal": {
           "score": 8.3,
-          "votes": 290569
+          "votes": 290556
         },
         "bangumi": {
           "score": 7.8,
@@ -5990,8 +5959,69 @@
       }
     },
     {
-      "workId": "anilist:171018",
+      "workId": "anilist:166521",
+      "rank": 195,
+      "titleZh": "黄金神威 最终章",
+      "titleOriginal": "Golden Kamuy: Saishuushou",
+      "year": 2026,
+      "studios": [
+        "Brain's Base"
+      ],
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "compositeScore": 80.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 21089
+        },
+        "mal": {
+          "score": 8.4,
+          "votes": 19600
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 1027
+        }
+      }
+    },
+    {
+      "workId": "anilist:166531",
       "rank": 196,
+      "titleZh": "【我推的孩子】 第二季",
+      "titleOriginal": "[Oshi no Ko] 2nd Season",
+      "year": 2024,
+      "studios": [
+        "KADOKAWA"
+      ],
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "compositeScore": 80.6667,
+      "sourceScores": {
+        "anilist": {
+          "score": 85,
+          "votes": 175015
+        },
+        "mal": {
+          "score": 8.5,
+          "votes": 268838
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 12472
+        }
+      }
+    },
+    {
+      "workId": "anilist:171018",
+      "rank": 197,
       "titleZh": "胆大党",
       "titleOriginal": "Dandadan",
       "year": 2024,
@@ -6010,11 +6040,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 367859
+          "votes": 376018
         },
         "mal": {
           "score": 8.4,
-          "votes": 611590
+          "votes": 612175
         },
         "bangumi": {
           "score": 7.5,
@@ -6024,7 +6054,7 @@
     },
     {
       "workId": "anilist:182309",
-      "rank": 197,
+      "rank": 198,
       "titleZh": "碧蓝之海 第二季",
       "titleOriginal": "Grand Blue Season 2",
       "year": 2025,
@@ -6040,11 +6070,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 63679
+          "votes": 65961
         },
         "mal": {
           "score": 8.5,
-          "votes": 94754
+          "votes": 95206
         },
         "bangumi": {
           "score": 7.3,
@@ -6054,7 +6084,7 @@
     },
     {
       "workId": "anilist:5028",
-      "rank": 198,
+      "rank": 199,
       "titleZh": "棒球大联盟 第五季",
       "titleOriginal": "Major S5",
       "year": 2009,
@@ -6071,7 +6101,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 13477
+          "votes": 13562
         },
         "mal": {
           "score": 8.39,
@@ -6085,7 +6115,7 @@
     },
     {
       "workId": "anilist:140842",
-      "rank": 199,
+      "rank": 200,
       "titleZh": "吉伊卡哇",
       "titleOriginal": "Chiikawa",
       "year": 2022,
@@ -6100,45 +6130,15 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 9664
+          "votes": 10320
         },
         "mal": {
           "score": 8.59,
-          "votes": 6993
+          "votes": 7037
         },
         "bangumi": {
           "score": 7.2,
           "votes": 719
-        }
-      }
-    },
-    {
-      "workId": "anilist:166521",
-      "rank": 200,
-      "titleZh": "黄金神威 最终章",
-      "titleOriginal": "Golden Kamuy: Saishuushou",
-      "year": 2026,
-      "studios": [
-        "Brain's Base"
-      ],
-      "genres": [
-        "Action",
-        "Adventure",
-        "Comedy"
-      ],
-      "compositeScore": 80.6333,
-      "sourceScores": {
-        "anilist": {
-          "score": 82,
-          "votes": 20521
-        },
-        "mal": {
-          "score": 8.39,
-          "votes": 18671
-        },
-        "bangumi": {
-          "score": 7.6,
-          "votes": 1027
         }
       }
     },
@@ -6160,11 +6160,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 288563
+          "votes": 291001
         },
         "mal": {
           "score": 8.37,
-          "votes": 652776
+          "votes": 653087
         },
         "bangumi": {
           "score": 7.5,
@@ -6191,11 +6191,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 303320
+          "votes": 305882
         },
         "mal": {
           "score": 8.45,
-          "votes": 417066
+          "votes": 418250
         },
         "bangumi": {
           "score": 7.3,
@@ -6204,38 +6204,8 @@
       }
     },
     {
-      "workId": "anilist:185407",
-      "rank": 203,
-      "titleZh": "章鱼哔的原罪",
-      "titleOriginal": "Takopii no Genzai",
-      "year": 2025,
-      "studios": [
-        "ENISHIYA"
-      ],
-      "genres": [
-        "Drama",
-        "Psychological",
-        "Sci-Fi"
-      ],
-      "compositeScore": 80.5,
-      "sourceScores": {
-        "anilist": {
-          "score": 86,
-          "votes": 133255
-        },
-        "mal": {
-          "score": 8.75,
-          "votes": 187557
-        },
-        "bangumi": {
-          "score": 6.8,
-          "votes": 10619
-        }
-      }
-    },
-    {
       "workId": "anilist:512",
-      "rank": 204,
+      "rank": 203,
       "titleZh": "魔女宅急便",
       "titleOriginal": "Majo no Takkyuubin",
       "year": 1989,
@@ -6252,15 +6222,45 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 182356
+          "votes": 184257
         },
         "mal": {
           "score": 8.24,
-          "votes": 432921
+          "votes": 433038
         },
         "bangumi": {
           "score": 7.8,
           "votes": 6592
+        }
+      }
+    },
+    {
+      "workId": "anilist:185407",
+      "rank": 204,
+      "titleZh": "章鱼哔的原罪",
+      "titleOriginal": "Takopii no Genzai",
+      "year": 2025,
+      "studios": [
+        "ENISHIYA"
+      ],
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sci-Fi"
+      ],
+      "compositeScore": 80.4667,
+      "sourceScores": {
+        "anilist": {
+          "score": 86,
+          "votes": 137329
+        },
+        "mal": {
+          "score": 8.74,
+          "votes": 191939
+        },
+        "bangumi": {
+          "score": 6.8,
+          "votes": 10619
         }
       }
     },
@@ -6285,11 +6285,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 182904
+          "votes": 184558
         },
         "mal": {
           "score": 8.52,
-          "votes": 305554
+          "votes": 305684
         },
         "bangumi": {
           "score": 7.1,
@@ -6316,11 +6316,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 46641
+          "votes": 47687
         },
         "mal": {
           "score": 8.41,
-          "votes": 44688
+          "votes": 45489
         },
         "bangumi": {
           "score": 7.3,
@@ -6346,7 +6346,7 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 143227
+          "votes": 144758
         },
         "mal": {
           "score": 8.4,
@@ -6359,37 +6359,8 @@
       }
     },
     {
-      "workId": "anilist:140499",
-      "rank": 208,
-      "titleZh": "蓝色巨星",
-      "titleOriginal": "BLUE GIANT",
-      "year": 2023,
-      "studios": [
-        "Toho"
-      ],
-      "genres": [
-        "Drama",
-        "Music"
-      ],
-      "compositeScore": 80.3333,
-      "sourceScores": {
-        "anilist": {
-          "score": 83,
-          "votes": 24209
-        },
-        "mal": {
-          "score": 8.4,
-          "votes": 18460
-        },
-        "bangumi": {
-          "score": 7.4,
-          "votes": 1369
-        }
-      }
-    },
-    {
       "workId": "anilist:153152",
-      "rank": 209,
+      "rank": 208,
       "titleZh": "我心里危险的东西",
       "titleOriginal": "Boku no Kokoro no Yabai Yatsu",
       "year": 2023,
@@ -6405,7 +6376,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 153879
+          "votes": 157388
         },
         "mal": {
           "score": 8.2,
@@ -6414,6 +6385,35 @@
         "bangumi": {
           "score": 7.8,
           "votes": 15677
+        }
+      }
+    },
+    {
+      "workId": "anilist:140499",
+      "rank": 209,
+      "titleZh": "蓝色巨星",
+      "titleOriginal": "BLUE GIANT",
+      "year": 2023,
+      "studios": [
+        "Toho"
+      ],
+      "genres": [
+        "Drama",
+        "Music"
+      ],
+      "compositeScore": 80.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 24586
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 18668
+        },
+        "bangumi": {
+          "score": 7.4,
+          "votes": 1369
         }
       }
     },
@@ -6434,7 +6434,7 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 27499
+          "votes": 28406
         },
         "mal": {
           "score": 8.67,
@@ -6462,11 +6462,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 5078
+          "votes": 5147
         },
         "mal": {
           "score": 8.36,
-          "votes": 14640
+          "votes": 14747
         },
         "bangumi": {
           "score": 7.6,
@@ -6493,11 +6493,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 368431
+          "votes": 372249
         },
         "mal": {
           "score": 8.24,
-          "votes": 1099769
+          "votes": 1100143
         },
         "bangumi": {
           "score": 7.7,
@@ -6527,11 +6527,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 100876
+          "votes": 102803
         },
         "mal": {
           "score": 8.44,
-          "votes": 113314
+          "votes": 114454
         },
         "bangumi": {
           "score": 7.2,
@@ -6540,8 +6540,39 @@
       }
     },
     {
-      "workId": "anilist:108632",
+      "workId": "anilist:20478",
       "rank": 214,
+      "titleZh": "夏目友人帐 曾几何时下雪之日",
+      "titleOriginal": "Natsume Yuujinchou: Itsuka Yuki no Hi ni",
+      "year": 2014,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Drama",
+        "Fantasy",
+        "Slice of Life",
+        "Supernatural"
+      ],
+      "compositeScore": 80.1,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 16902
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 38969
+        },
+        "bangumi": {
+          "score": 7.6,
+          "votes": 2091
+        }
+      }
+    },
+    {
+      "workId": "anilist:108632",
+      "rank": 215,
       "titleZh": "Re：从零开始的异世界生活 第二季",
       "titleOriginal": "Re:Zero kara Hajimeru Isekai Seikatsu 2nd Season",
       "year": 2020,
@@ -6560,11 +6591,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 367678
+          "votes": 373170
         },
         "mal": {
           "score": 8.33,
-          "votes": 771111
+          "votes": 771906
         },
         "bangumi": {
           "score": 7.4,
@@ -6574,7 +6605,7 @@
     },
     {
       "workId": "anilist:7655",
-      "rank": 215,
+      "rank": 216,
       "titleZh": "棒球大联盟 第六季",
       "titleOriginal": "Major S6",
       "year": 2010,
@@ -6590,46 +6621,15 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 12488
+          "votes": 12553
         },
         "mal": {
           "score": 8.32,
-          "votes": 39075
+          "votes": 39108
         },
         "bangumi": {
           "score": 7.5,
           "votes": 227
-        }
-      }
-    },
-    {
-      "workId": "anilist:20478",
-      "rank": 216,
-      "titleZh": "夏目友人帐 曾几何时下雪之日",
-      "titleOriginal": "Natsume Yuujinchou: Itsuka Yuki no Hi ni",
-      "year": 2014,
-      "studios": [
-        "Aniplex"
-      ],
-      "genres": [
-        "Drama",
-        "Fantasy",
-        "Slice of Life",
-        "Supernatural"
-      ],
-      "compositeScore": 80.0667,
-      "sourceScores": {
-        "anilist": {
-          "score": 81,
-          "votes": 16807
-        },
-        "mal": {
-          "score": 8.32,
-          "votes": 38917
-        },
-        "bangumi": {
-          "score": 7.6,
-          "votes": 2091
         }
       }
     },
@@ -6652,11 +6652,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 201036
+          "votes": 202655
         },
         "mal": {
           "score": 8.32,
-          "votes": 609253
+          "votes": 610570
         },
         "bangumi": {
           "score": 7.5,
@@ -6683,11 +6683,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 37083
+          "votes": 37555
         },
         "mal": {
           "score": 8.41,
-          "votes": 92024
+          "votes": 92349
         },
         "bangumi": {
           "score": 7.3,
@@ -6714,11 +6714,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 107543
+          "votes": 108754
         },
         "mal": {
           "score": 8.21,
-          "votes": 268570
+          "votes": 269380
         },
         "bangumi": {
           "score": 7.7,
@@ -6746,11 +6746,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 592557
+          "votes": 598364
         },
         "mal": {
           "score": 8.3,
-          "votes": 1487314
+          "votes": 1487449
         },
         "bangumi": {
           "score": 7.6,
@@ -6778,11 +6778,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 969571
+          "votes": 981136
         },
         "mal": {
           "score": 8.4,
-          "votes": 2383196
+          "votes": 2386842
         },
         "bangumi": {
           "score": 7.3,
@@ -6808,11 +6808,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 943354
+          "votes": 957110
         },
         "mal": {
           "score": 8.5,
-          "votes": 2025814
+          "votes": 2027215
         },
         "bangumi": {
           "score": 7.1,
@@ -6839,7 +6839,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 206543
+          "votes": 209597
         },
         "mal": {
           "score": 8.2,
@@ -6870,11 +6870,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 133312
+          "votes": 136147
         },
         "mal": {
           "score": 8.3,
-          "votes": 240403
+          "votes": 240558
         },
         "bangumi": {
           "score": 7.4,
@@ -6901,7 +6901,7 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 80766
+          "votes": 81531
         },
         "mal": {
           "score": 8.29,
@@ -6931,11 +6931,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 132503
+          "votes": 133287
         },
         "mal": {
           "score": 8.29,
-          "votes": 224105
+          "votes": 224370
         },
         "bangumi": {
           "score": 7.6,
@@ -6961,11 +6961,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 7444
+          "votes": 7563
         },
         "mal": {
           "score": 8.29,
-          "votes": 6460
+          "votes": 6515
         },
         "bangumi": {
           "score": 7.6,
@@ -6990,7 +6990,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 12723
+          "votes": 12920
         },
         "mal": {
           "score": 8.19,
@@ -7022,11 +7022,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 25305
+          "votes": 25501
         },
         "mal": {
           "score": 8.19,
-          "votes": 16146
+          "votes": 16273
         },
         "bangumi": {
           "score": 7.7,
@@ -7035,8 +7035,39 @@
       }
     },
     {
-      "workId": "anilist:185660",
+      "workId": "anilist:210031",
       "rank": 230,
+      "titleZh": "相反的你和我 第二季",
+      "titleOriginal": "Seihantai na Kimi to Boku 2nd Season",
+      "year": 2026,
+      "studios": [
+        "Lapin Track"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 79.9667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 49680
+        },
+        "mal": {
+          "score": 8.39,
+          "votes": 10168
+        },
+        "bangumi": {
+          "score": 7.5,
+          "votes": 605
+        }
+      }
+    },
+    {
+      "workId": "anilist:185660",
+      "rank": 231,
       "titleZh": "胆大党 第二季",
       "titleOriginal": "Dandadan 2nd Season",
       "year": 2025,
@@ -7051,15 +7082,15 @@
         "Sci-Fi",
         "Supernatural"
       ],
-      "compositeScore": 79.9667,
+      "compositeScore": 79.9333,
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 215471
+          "votes": 220786
         },
         "mal": {
-          "score": 8.39,
-          "votes": 308771
+          "score": 8.38,
+          "votes": 315124
         },
         "bangumi": {
           "score": 7.3,
@@ -7069,7 +7100,7 @@
     },
     {
       "workId": "anilist:126819",
-      "rank": 231,
+      "rank": 232,
       "titleZh": "银魂 THE SEMI-FINAL",
       "titleOriginal": "Gintama: THE SEMI-FINAL",
       "year": 2021,
@@ -7084,11 +7115,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 31148
+          "votes": 31458
         },
         "mal": {
           "score": 8.45,
-          "votes": 47934
+          "votes": 48191
         },
         "bangumi": {
           "score": 7.2,
@@ -7098,7 +7129,7 @@
     },
     {
       "workId": "anilist:128890",
-      "rank": 232,
+      "rank": 233,
       "titleZh": "IDOLiSH7-偶像星愿- Third BEAT! 第2部分",
       "titleOriginal": "IDOLiSH7: Third BEAT! Part 2",
       "year": 2022,
@@ -7114,46 +7145,15 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 5330
+          "votes": 5379
         },
         "mal": {
           "score": 8.34,
-          "votes": 6060
+          "votes": 6099
         },
         "bangumi": {
           "score": 7.3,
           "votes": 157
-        }
-      }
-    },
-    {
-      "workId": "anilist:210031",
-      "rank": 233,
-      "titleZh": "相反的你和我 第二季",
-      "titleOriginal": "Seihantai na Kimi to Boku 2nd Season",
-      "year": 2026,
-      "studios": [
-        "Lapin Track"
-      ],
-      "genres": [
-        "Comedy",
-        "Drama",
-        "Romance",
-        "Slice of Life"
-      ],
-      "compositeScore": 79.8,
-      "sourceScores": {
-        "anilist": {
-          "score": 81,
-          "votes": 38169
-        },
-        "mal": {
-          "score": 8.34,
-          "votes": 5239
-        },
-        "bangumi": {
-          "score": 7.5,
-          "votes": 605
         }
       }
     },
@@ -7176,7 +7176,7 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 18062
+          "votes": 18210
         },
         "mal": {
           "score": 8.42,
@@ -7207,11 +7207,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 554083
+          "votes": 561758
         },
         "mal": {
           "score": 8.41,
-          "votes": 1177060
+          "votes": 1177536
         },
         "bangumi": {
           "score": 7.2,
@@ -7220,38 +7220,8 @@
       }
     },
     {
-      "workId": "anilist:199111",
-      "rank": 236,
-      "titleZh": "碧蓝之海 第三季",
-      "titleOriginal": "Grand Blue Season 3",
-      "year": 2026,
-      "studios": [
-        "NBCUniversal Entertainment Japan"
-      ],
-      "genres": [
-        "Comedy",
-        "Slice of Life",
-        "Sports"
-      ],
-      "compositeScore": 79.7,
-      "sourceScores": {
-        "anilist": {
-          "score": 82,
-          "votes": 29364
-        },
-        "mal": {
-          "score": 8.41,
-          "votes": 3898
-        },
-        "bangumi": {
-          "score": 7.3,
-          "votes": 457
-        }
-      }
-    },
-    {
       "workId": "anilist:6811",
-      "rank": 237,
+      "rank": 236,
       "titleZh": "犬夜叉 完结篇",
       "titleOriginal": "Inuyasha: Kanketsu-hen",
       "year": 2009,
@@ -7269,11 +7239,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 51137
+          "votes": 51524
         },
         "mal": {
           "score": 8.2,
-          "votes": 154118
+          "votes": 154406
         },
         "bangumi": {
           "score": 7.6,
@@ -7282,38 +7252,8 @@
       }
     },
     {
-      "workId": "anilist:181444",
-      "rank": 238,
-      "titleZh": "薰香花朵凛然绽放",
-      "titleOriginal": "Kaoru Hana wa Rin to Saku",
-      "year": 2025,
-      "studios": [
-        "Aniplex"
-      ],
-      "genres": [
-        "Comedy",
-        "Drama",
-        "Romance"
-      ],
-      "compositeScore": 79.6333,
-      "sourceScores": {
-        "anilist": {
-          "score": 85,
-          "votes": 194162
-        },
-        "mal": {
-          "score": 8.49,
-          "votes": 240573
-        },
-        "bangumi": {
-          "score": 6.9,
-          "votes": 6062
-        }
-      }
-    },
-    {
       "workId": "anilist:104460",
-      "rank": 239,
+      "rank": 237,
       "titleZh": "电影 摇曳露营△",
       "titleOriginal": "Yuru Camp△ Movie",
       "year": 2022,
@@ -7328,7 +7268,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 38786
+          "votes": 39074
         },
         "mal": {
           "score": 8.38,
@@ -7342,7 +7282,7 @@
     },
     {
       "workId": "anilist:105749",
-      "rank": 240,
+      "rank": 238,
       "titleZh": "钻石王牌 act2",
       "titleOriginal": "Diamond no Ace act II",
       "year": 2019,
@@ -7356,11 +7296,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 26402
+          "votes": 26612
         },
         "mal": {
           "score": 8.28,
-          "votes": 51686
+          "votes": 51872
         },
         "bangumi": {
           "score": 7.4,
@@ -7370,7 +7310,7 @@
     },
     {
       "workId": "anilist:166617",
-      "rank": 241,
+      "rank": 239,
       "titleZh": "Fate/strange Fake",
       "titleOriginal": "Fate/strange Fake",
       "year": 2026,
@@ -7388,11 +7328,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 78089
+          "votes": 80071
         },
         "mal": {
           "score": 8.28,
-          "votes": 67987
+          "votes": 68127
         },
         "bangumi": {
           "score": 7.3,
@@ -7402,7 +7342,7 @@
     },
     {
       "workId": "anilist:21096",
-      "rank": 242,
+      "rank": 240,
       "titleZh": "同级生",
       "titleOriginal": "Doukyuusei",
       "year": 2016,
@@ -7419,11 +7359,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 82775
+          "votes": 83462
         },
         "mal": {
           "score": 8.27,
-          "votes": 159782
+          "votes": 160248
         },
         "bangumi": {
           "score": 7.5,
@@ -7432,38 +7372,8 @@
       }
     },
     {
-      "workId": "anilist:196187",
-      "rank": 243,
-      "titleZh": "在超市后门吸烟的二人",
-      "titleOriginal": "Super no Ura de Yani Suu Futari",
-      "year": 2026,
-      "studios": [
-        "Asahi Production"
-      ],
-      "genres": [
-        "Comedy",
-        "Romance",
-        "Slice of Life"
-      ],
-      "compositeScore": 79.5667,
-      "sourceScores": {
-        "anilist": {
-          "score": 83,
-          "votes": 81873
-        },
-        "mal": {
-          "score": 8.47,
-          "votes": 32953
-        },
-        "bangumi": {
-          "score": 7.1,
-          "votes": 2703
-        }
-      }
-    },
-    {
       "workId": "anilist:21355",
-      "rank": 244,
+      "rank": 241,
       "titleZh": "Re：从零开始的异世界生活",
       "titleOriginal": "Re:Zero kara Hajimeru Isekai Seikatsu",
       "year": 2016,
@@ -7483,11 +7393,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 603015
+          "votes": 611366
         },
         "mal": {
           "score": 8.25,
-          "votes": 1584666
+          "votes": 1585571
         },
         "bangumi": {
           "score": 7.5,
@@ -7497,7 +7407,7 @@
     },
     {
       "workId": "anilist:99750",
-      "rank": 245,
+      "rank": 242,
       "titleZh": "我想吃掉你的胰脏",
       "titleOriginal": "Kimi no Suizou wo Tabetai",
       "year": 2018,
@@ -7513,7 +7423,7 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 363217
+          "votes": 368728
         },
         "mal": {
           "score": 8.55,
@@ -7526,8 +7436,38 @@
       }
     },
     {
+      "workId": "anilist:199111",
+      "rank": 243,
+      "titleZh": "碧蓝之海 第三季",
+      "titleOriginal": "Grand Blue Season 3",
+      "year": 2026,
+      "studios": [
+        "NBCUniversal Entertainment Japan"
+      ],
+      "genres": [
+        "Comedy",
+        "Slice of Life",
+        "Sports"
+      ],
+      "compositeScore": 79.3667,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 36156
+        },
+        "mal": {
+          "score": 8.41,
+          "votes": 4821
+        },
+        "bangumi": {
+          "score": 7.3,
+          "votes": 457
+        }
+      }
+    },
+    {
       "workId": "anilist:12531",
-      "rank": 246,
+      "rank": 244,
       "titleZh": "坂道上的阿波罗",
       "titleOriginal": "Sakamichi no Apollon",
       "year": 2012,
@@ -7544,11 +7484,11 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 95122
+          "votes": 95697
         },
         "mal": {
           "score": 8.29,
-          "votes": 183019
+          "votes": 183277
         },
         "bangumi": {
           "score": 7.5,
@@ -7557,8 +7497,38 @@
       }
     },
     {
+      "workId": "anilist:181444",
+      "rank": 245,
+      "titleZh": "薰香花朵凛然绽放",
+      "titleOriginal": "Kaoru Hana wa Rin to Saku",
+      "year": 2025,
+      "studios": [
+        "Aniplex"
+      ],
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "compositeScore": 79.3,
+      "sourceScores": {
+        "anilist": {
+          "score": 84,
+          "votes": 201427
+        },
+        "mal": {
+          "score": 8.49,
+          "votes": 240876
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 6062
+        }
+      }
+    },
+    {
       "workId": "anilist:98885",
-      "rank": 247,
+      "rank": 246,
       "titleZh": "排球少年 观念之战",
       "titleOriginal": "Haikyuu!!: Concept no Tatakai",
       "year": 2017,
@@ -7574,11 +7544,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 29715
+          "votes": 30053
         },
         "mal": {
           "score": 8.27,
-          "votes": 43200
+          "votes": 43460
         },
         "bangumi": {
           "score": 7.4,
@@ -7588,7 +7558,7 @@
     },
     {
       "workId": "anilist:172019",
-      "rank": 248,
+      "rank": 247,
       "titleZh": "石纪元 科学与未来",
       "titleOriginal": "Dr. STONE: SCIENCE FUTURE",
       "year": 2025,
@@ -7605,11 +7575,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 110281
+          "votes": 113139
         },
         "mal": {
           "score": 8.26,
-          "votes": 158397
+          "votes": 158770
         },
         "bangumi": {
           "score": 7.3,
@@ -7619,7 +7589,7 @@
     },
     {
       "workId": "anilist:161964",
-      "rank": 249,
+      "rank": 248,
       "titleZh": "想要成为影之实力者！ 第二季",
       "titleOriginal": "Kage no Jitsuryokusha ni Naritakute! 2nd season",
       "year": 2023,
@@ -7631,15 +7601,15 @@
         "Comedy",
         "Fantasy"
       ],
-      "compositeScore": 79.1667,
+      "compositeScore": 79.1333,
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 187015
+          "votes": 190936
         },
         "mal": {
-          "score": 8.25,
-          "votes": 306616
+          "score": 8.24,
+          "votes": 309423
         },
         "bangumi": {
           "score": 7.3,
@@ -7649,7 +7619,7 @@
     },
     {
       "workId": "anilist:101291",
-      "rank": 250,
+      "rank": 249,
       "titleZh": "青春猪头少年不会梦到兔女郎学姐",
       "titleOriginal": "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai",
       "year": 2018,
@@ -7668,11 +7638,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 564277
+          "votes": 571609
         },
         "mal": {
           "score": 8.23,
-          "votes": 1249612
+          "votes": 1249793
         },
         "bangumi": {
           "score": 7.4,
@@ -7681,37 +7651,8 @@
       }
     },
     {
-      "workId": "anilist:135865",
-      "rank": 251,
-      "titleZh": "幼女战记 第二季",
-      "titleOriginal": "Youjo Senki II",
-      "year": 2026,
-      "studios": [
-        "NUT"
-      ],
-      "genres": [
-        "Action",
-        "Fantasy"
-      ],
-      "compositeScore": 79.1,
-      "sourceScores": {
-        "anilist": {
-          "score": 81,
-          "votes": 74427
-        },
-        "mal": {
-          "score": 8.43,
-          "votes": 4145
-        },
-        "bangumi": {
-          "score": 7.2,
-          "votes": 311
-        }
-      }
-    },
-    {
       "workId": "anilist:101302",
-      "rank": 252,
+      "rank": 250,
       "titleZh": "龙珠超 布罗利",
       "titleOriginal": "Dragon Ball Super: Broly",
       "year": 2018,
@@ -7728,11 +7669,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 120784
+          "votes": 122156
         },
         "mal": {
           "score": 8.21,
-          "votes": 327973
+          "votes": 329287
         },
         "bangumi": {
           "score": 7.4,
@@ -7742,7 +7683,7 @@
     },
     {
       "workId": "anilist:177937",
-      "rank": 253,
+      "rank": 251,
       "titleZh": "间谍过家家 第三季",
       "titleOriginal": "SPY×FAMILY Season 3",
       "year": 2025,
@@ -7759,11 +7700,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 125634
+          "votes": 129106
         },
         "mal": {
           "score": 8.21,
-          "votes": 142352
+          "votes": 142656
         },
         "bangumi": {
           "score": 7.3,
@@ -7773,7 +7714,7 @@
     },
     {
       "workId": "anilist:20698",
-      "rank": 254,
+      "rank": 252,
       "titleZh": "我的青春恋爱物语果然有问题 续",
       "titleOriginal": "Yahari Ore no Seishun Love Come wa Machigatteiru. Zoku",
       "year": 2015,
@@ -7790,11 +7731,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 269984
+          "votes": 273047
         },
         "mal": {
           "score": 8.2,
-          "votes": 751988
+          "votes": 754065
         },
         "bangumi": {
           "score": 7.4,
@@ -7804,7 +7745,7 @@
     },
     {
       "workId": "anilist:21673",
-      "rank": 255,
+      "rank": 253,
       "titleZh": "战姬绝唱SYMPHOGEAR XV",
       "titleOriginal": "Senki Zesshou Symphogear XV",
       "year": 2019,
@@ -7822,11 +7763,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 18633
+          "votes": 18756
         },
         "mal": {
           "score": 8.2,
-          "votes": 15859
+          "votes": 15904
         },
         "bangumi": {
           "score": 7.3,
@@ -7835,8 +7776,38 @@
       }
     },
     {
+      "workId": "anilist:196187",
+      "rank": 254,
+      "titleZh": "在超市后门吸烟的二人",
+      "titleOriginal": "Super no Ura de Yani Suu Futari",
+      "year": 2026,
+      "studios": [
+        "Asahi Production"
+      ],
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Slice of Life"
+      ],
+      "compositeScore": 78.9333,
+      "sourceScores": {
+        "anilist": {
+          "score": 82,
+          "votes": 102347
+        },
+        "mal": {
+          "score": 8.38,
+          "votes": 45056
+        },
+        "bangumi": {
+          "score": 7.1,
+          "votes": 2703
+        }
+      }
+    },
+    {
       "workId": "anilist:21588",
-      "rank": 256,
+      "rank": 255,
       "titleZh": "银魂 爱染香篇",
       "titleOriginal": "Gintamaº: Aizome Kaori-hen",
       "year": 2016,
@@ -7850,15 +7821,44 @@
       "sourceScores": {
         "anilist": {
           "score": 80,
-          "votes": 21351
+          "votes": 21472
         },
         "mal": {
           "score": 8.37,
-          "votes": 49256
+          "votes": 49364
         },
         "bangumi": {
           "score": 7.3,
           "votes": 797
+        }
+      }
+    },
+    {
+      "workId": "anilist:135865",
+      "rank": 256,
+      "titleZh": "幼女战记 第二季",
+      "titleOriginal": "Youjo Senki II",
+      "year": 2026,
+      "studios": [
+        "NUT"
+      ],
+      "genres": [
+        "Action",
+        "Fantasy"
+      ],
+      "compositeScore": 78.9,
+      "sourceScores": {
+        "anilist": {
+          "score": 81,
+          "votes": 85408
+        },
+        "mal": {
+          "score": 8.37,
+          "votes": 10011
+        },
+        "bangumi": {
+          "score": 7.2,
+          "votes": 311
         }
       }
     },
@@ -7880,11 +7880,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 50885
+          "votes": 54487
         },
         "mal": {
           "score": 8.56,
-          "votes": 35435
+          "votes": 35822
         },
         "bangumi": {
           "score": 6.7,
@@ -7911,11 +7911,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 609355
+          "votes": 620260
         },
         "mal": {
           "score": 8.42,
-          "votes": 1165436
+          "votes": 1166208
         },
         "bangumi": {
           "score": 6.9,
@@ -7939,11 +7939,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 116496
+          "votes": 119528
         },
         "mal": {
           "score": 8.72,
-          "votes": 125072
+          "votes": 125165
         },
         "bangumi": {
           "score": 6.3,
@@ -7969,11 +7969,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 29873
+          "votes": 31421
         },
         "mal": {
           "score": 8.2,
-          "votes": 18880
+          "votes": 19015
         },
         "bangumi": {
           "score": 7.3,
@@ -8000,11 +8000,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 321198
+          "votes": 325017
         },
         "mal": {
           "score": 8.19,
-          "votes": 627756
+          "votes": 631275
         },
         "bangumi": {
           "score": 7.3,
@@ -8031,11 +8031,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 541642
+          "votes": 547998
         },
         "mal": {
           "score": 8.26,
-          "votes": 1190903
+          "votes": 1191080
         },
         "bangumi": {
           "score": 7.2,
@@ -8062,11 +8062,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 91200
+          "votes": 92298
         },
         "mal": {
           "score": 8.24,
-          "votes": 252058
+          "votes": 253153
         },
         "bangumi": {
           "score": 7.1,
@@ -8075,37 +8075,8 @@
       }
     },
     {
-      "workId": "anilist:177687",
-      "rank": 264,
-      "titleZh": "百米。",
-      "titleOriginal": "Hyakuemu.",
-      "year": 2025,
-      "studios": [
-        "Pony Canyon"
-      ],
-      "genres": [
-        "Drama",
-        "Sports"
-      ],
-      "compositeScore": 78.4667,
-      "sourceScores": {
-        "anilist": {
-          "score": 83,
-          "votes": 39416
-        },
-        "mal": {
-          "score": 8.34,
-          "votes": 46842
-        },
-        "bangumi": {
-          "score": 6.9,
-          "votes": 1920
-        }
-      }
-    },
-    {
       "workId": "anilist:15227",
-      "rank": 265,
+      "rank": 264,
       "titleZh": "在这世界的角落",
       "titleOriginal": "Kono Sekai no Katasumi ni",
       "year": 2016,
@@ -8120,15 +8091,44 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 62856
+          "votes": 63303
         },
         "mal": {
           "score": 8.23,
-          "votes": 84950
+          "votes": 85153
         },
         "bangumi": {
           "score": 7.2,
           "votes": 1894
+        }
+      }
+    },
+    {
+      "workId": "anilist:177687",
+      "rank": 265,
+      "titleZh": "百米。",
+      "titleOriginal": "Hyakuemu.",
+      "year": 2025,
+      "studios": [
+        "Pony Canyon"
+      ],
+      "genres": [
+        "Drama",
+        "Sports"
+      ],
+      "compositeScore": 78.4333,
+      "sourceScores": {
+        "anilist": {
+          "score": 83,
+          "votes": 41164
+        },
+        "mal": {
+          "score": 8.33,
+          "votes": 48772
+        },
+        "bangumi": {
+          "score": 6.9,
+          "votes": 1920
         }
       }
     },
@@ -8151,11 +8151,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 62981
+          "votes": 70539
         },
         "mal": {
           "score": 8.23,
-          "votes": 41979
+          "votes": 42806
         },
         "bangumi": {
           "score": 7.1,
@@ -8182,11 +8182,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 106907
+          "votes": 108258
         },
         "mal": {
           "score": 8.41,
-          "votes": 151510
+          "votes": 152566
         },
         "bangumi": {
           "score": 6.7,
@@ -8212,11 +8212,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 166071
+          "votes": 167356
         },
         "mal": {
           "score": 8.2,
-          "votes": 485906
+          "votes": 486640
         },
         "bangumi": {
           "score": 7.2,
@@ -8244,7 +8244,7 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 30558
+          "votes": 31072
         },
         "mal": {
           "score": 8.2,
@@ -8275,11 +8275,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 226567
+          "votes": 228562
         },
         "mal": {
           "score": 8.19,
-          "votes": 359795
+          "votes": 359853
         },
         "bangumi": {
           "score": 7.2,
@@ -8306,11 +8306,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 80787
+          "votes": 82946
         },
         "mal": {
           "score": 8.28,
-          "votes": 87014
+          "votes": 88822
         },
         "bangumi": {
           "score": 6.9,
@@ -8337,11 +8337,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 346926
+          "votes": 351189
         },
         "mal": {
           "score": 8.27,
-          "votes": 684457
+          "votes": 686938
         },
         "bangumi": {
           "score": 7.1,
@@ -8366,11 +8366,11 @@
       "sourceScores": {
         "anilist": {
           "score": 84,
-          "votes": 33297
+          "votes": 35255
         },
         "mal": {
           "score": 8.46,
-          "votes": 23932
+          "votes": 25481
         },
         "bangumi": {
           "score": 6.6,
@@ -8399,7 +8399,7 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 68204
+          "votes": 68833
         },
         "mal": {
           "score": 8.45,
@@ -8429,11 +8429,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 7882
+          "votes": 7942
         },
         "mal": {
           "score": 8.24,
-          "votes": 9232
+          "votes": 9278
         },
         "bangumi": {
           "score": 7.1,
@@ -8458,11 +8458,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 97078
+          "votes": 100130
         },
         "mal": {
           "score": 8.23,
-          "votes": 179825
+          "votes": 180610
         },
         "bangumi": {
           "score": 7.1,
@@ -8488,11 +8488,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 300952
+          "votes": 307259
         },
         "mal": {
           "score": 8.21,
-          "votes": 479208
+          "votes": 479800
         },
         "bangumi": {
           "score": 7.1,
@@ -8520,11 +8520,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 304339
+          "votes": 307676
         },
         "mal": {
           "score": 8.2,
-          "votes": 453608
+          "votes": 453839
         },
         "bangumi": {
           "score": 7,
@@ -8550,7 +8550,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 179779
+          "votes": 182635
         },
         "mal": {
           "score": 8.38,
@@ -8582,11 +8582,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 51587
+          "votes": 52005
         },
         "mal": {
           "score": 8.25,
-          "votes": 105878
+          "votes": 105871
         },
         "bangumi": {
           "score": 7,
@@ -8608,15 +8608,15 @@
         "Drama",
         "Fantasy"
       ],
-      "compositeScore": 77.7667,
+      "compositeScore": 77.7333,
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 200929
+          "votes": 213797
         },
         "mal": {
-          "score": 8.53,
-          "votes": 144774
+          "score": 8.52,
+          "votes": 156543
         },
         "bangumi": {
           "score": 6.3,
@@ -8641,11 +8641,11 @@
       "sourceScores": {
         "anilist": {
           "score": 87,
-          "votes": 124003
+          "votes": 128395
         },
         "mal": {
           "score": 8.71,
-          "votes": 173412
+          "votes": 173915
         },
         "bangumi": {
           "score": 5.9,
@@ -8672,11 +8672,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 207436
+          "votes": 209329
         },
         "mal": {
           "score": 8.29,
-          "votes": 349823
+          "votes": 350975
         },
         "bangumi": {
           "score": 6.7,
@@ -8701,11 +8701,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 6887
+          "votes": 6992
         },
         "mal": {
           "score": 8.36,
-          "votes": 9808
+          "votes": 9814
         },
         "bangumi": {
           "score": 6.7,
@@ -8732,11 +8732,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 218850
+          "votes": 221593
         },
         "mal": {
           "score": 8.35,
-          "votes": 461848
+          "votes": 463718
         },
         "bangumi": {
           "score": 6.7,
@@ -8763,11 +8763,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 7001
+          "votes": 7061
         },
         "mal": {
           "score": 8.26,
-          "votes": 16553
+          "votes": 16595
         },
         "bangumi": {
           "score": 6.8,
@@ -8794,7 +8794,7 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 5296
+          "votes": 5480
         },
         "mal": {
           "score": 8.46,
@@ -8825,11 +8825,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 24953
+          "votes": 25736
         },
         "mal": {
           "score": 8.31,
-          "votes": 15077
+          "votes": 16510
         },
         "bangumi": {
           "score": 6.6,
@@ -8856,11 +8856,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 78213
+          "votes": 79532
         },
         "mal": {
           "score": 8.6,
-          "votes": 123670
+          "votes": 124725
         },
         "bangumi": {
           "score": 6,
@@ -8887,11 +8887,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 194684
+          "votes": 196335
         },
         "mal": {
           "score": 8.19,
-          "votes": 380472
+          "votes": 381602
         },
         "bangumi": {
           "score": 6.8,
@@ -8919,11 +8919,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 310207
+          "votes": 313699
         },
         "mal": {
           "score": 8.35,
-          "votes": 429616
+          "votes": 429720
         },
         "bangumi": {
           "score": 6.6,
@@ -8950,11 +8950,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 193949
+          "votes": 197366
         },
         "mal": {
           "score": 8.24,
-          "votes": 286061
+          "votes": 286274
         },
         "bangumi": {
           "score": 6.6,
@@ -8981,11 +8981,11 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 67137
+          "votes": 68333
         },
         "mal": {
           "score": 8.62,
-          "votes": 82440
+          "votes": 83506
         },
         "bangumi": {
           "score": 5.7,
@@ -9012,11 +9012,11 @@
       "sourceScores": {
         "anilist": {
           "score": 85,
-          "votes": 120810
+          "votes": 123621
         },
         "mal": {
           "score": 8.67,
-          "votes": 116588
+          "votes": 116684
         },
         "bangumi": {
           "score": 5.7,
@@ -9043,7 +9043,7 @@
       "sourceScores": {
         "anilist": {
           "score": 86,
-          "votes": 24193
+          "votes": 24607
         },
         "mal": {
           "score": 8.64,
@@ -9072,11 +9072,11 @@
       "sourceScores": {
         "anilist": {
           "score": 81,
-          "votes": 134110
+          "votes": 136863
         },
         "mal": {
           "score": 8.19,
-          "votes": 164707
+          "votes": 164768
         },
         "bangumi": {
           "score": 6.5,
@@ -9103,11 +9103,11 @@
       "sourceScores": {
         "anilist": {
           "score": 83,
-          "votes": 311173
+          "votes": 316021
         },
         "mal": {
           "score": 8.33,
-          "votes": 656053
+          "votes": 656636
         },
         "bangumi": {
           "score": 6.1,
@@ -9133,11 +9133,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 239167
+          "votes": 247265
         },
         "mal": {
           "score": 8.21,
-          "votes": 235288
+          "votes": 235566
         },
         "bangumi": {
           "score": 6.2,
@@ -9164,11 +9164,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 106774
+          "votes": 113731
         },
         "mal": {
           "score": 8.2,
-          "votes": 71985
+          "votes": 76438
         },
         "bangumi": {
           "score": 6.2,
@@ -9196,11 +9196,11 @@
       "sourceScores": {
         "anilist": {
           "score": 82,
-          "votes": 15455
+          "votes": 15872
         },
         "mal": {
           "score": 8.25,
-          "votes": 21156
+          "votes": 21421
         },
         "bangumi": {
           "score": 6.1,
