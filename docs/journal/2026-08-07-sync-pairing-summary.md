@@ -21,7 +21,8 @@
 - `RankingWorkspace` 接入保险库和同步队列；同步结果回写本地进度库。
 - `SyncSettings` 增加同步状态、立即同步按钮和准确的二维码说明。
 - 已补齐 D1、迁移和同步 Worker，并使用固定主站 origin 配置 CORS。
-- 已通过：TypeScript、同步核心测试、32 个同步/排行榜 DOM 测试；完整测试在主站重新发布前重跑。
+- 已通过：TypeScript、同步核心测试、32 个同步/排行榜 DOM 测试；重新发布前再次通过 97 个核心测试、27 个 DOM 测试、lint 与 diff 检查。
+- 发布冒烟检查发现 Vinext/Vite 不会用 `process.env.VITE_SYNC_BASE_URL` 注入浏览器端配置；已改为 `import.meta.env.VITE_SYNC_BASE_URL`，并补充 `vite-env.d.ts` 类型声明，待重新发布确认线上状态文案。
 
 ## 事故教训
 
@@ -30,7 +31,7 @@
 
 ## 未决问题与下一步
 
-- 重新发布主站，确认两台浏览器使用同一二维码后能看到彼此的标记。
+- 重新发布主站，确认线上页面显示同步已启用，并在两台浏览器使用同一二维码后能看到彼此的标记。
 - 观察首次同步失败时的提示，以及冲突合并后的结果。
 
 完整会话证据（当前运行时可取得的已清洗部分）：[2026-08-07-sync-pairing-transcript-partial.md](./2026-08-07-sync-pairing-transcript-partial.md)

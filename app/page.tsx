@@ -5,7 +5,7 @@ import { AppStatus } from "../src/features/app/AppStatus.tsx";
 
 export default function Home() {
   const snapshot = parseRankingSnapshot(rankingData);
-  const syncBaseUrl = process.env.VITE_SYNC_BASE_URL ?? "";
+  const syncBaseUrl = import.meta.env.VITE_SYNC_BASE_URL ?? "";
 
   return <main><AppStatus syncBaseUrl={syncBaseUrl} /><RankingWorkspace works={snapshot.works} methodologyVersion={snapshot.methodologyVersion} sourceSnapshotVersion={snapshot.version} syncBaseUrl={syncBaseUrl} /></main>;
 }

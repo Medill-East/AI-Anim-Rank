@@ -24,4 +24,5 @@
 
 ## 待完成
 
-- 远端 D1 与同步 Worker 部署、主站重新构建并验证两台设备的实际同步。
+- 远端 D1 与同步 Worker 已部署；主站第一次发布后的冒烟检查仍显示旧的“仅本机保存”文案。根因是浏览器端构建读取了 `process.env`，而该构建使用 Vite 的 `import.meta.env`。已改为 `import.meta.env.VITE_SYNC_BASE_URL`，新增 `vite-env.d.ts`，并通过 TypeScript、测试、lint 和 diff 检查，等待重新发布后的线上验证。
+- 线上验证重点：主站同步状态文案、同步 Worker 的 CORS 预检，以及两台浏览器用同一恢复凭证后的拉取/上传链路。
