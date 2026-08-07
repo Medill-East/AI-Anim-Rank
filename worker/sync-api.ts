@@ -1,19 +1,25 @@
 const MAX_BODY_BYTES = 1_048_576;
 const VAULT_ID = /^[A-Za-z0-9_-]{43}$/;
 const BASE64_URL = /^[A-Za-z0-9_-]+$/;
+const PAYLOAD_VERSION = 1 as const;
 
 export interface SyncEnv {
   DB: D1Database;
   ALLOWED_ORIGIN?: string;
 }
 
-interface VaultPayload {
+interface VaultFields {
   ciphertext: string;
   iv: string;
   salt: string;
 }
 
-interface VaultRow extends VaultPayload {
+interface VaultPayload extends VaultFields {
+  vaultId: string;
+  version: typeof PAYLOAD_VERSION;
+}
+
+interface VaultRow extends VaultFields {
   vault_id: string;
   version: number;
 }
@@ -48,7 +54,7 @@ async function getVault(vaultId: string, env: SyncEnv, cors: HeadersInit | undef
 }
 
 async function putVault(request: Request, vaultId: string, env: SyncEnv, cors: HeadersInit | undefined): Promise<Response> {
-  const payload = await readPayload(request);
+  const payload = await readPayload(request, vaultId);
   if (!payload) return response("Invalid encrypted payload", 400, cors);
 
   const existing = await readVault(vaultId, env.DB);
@@ -84,7 +90,7 @@ async function readVault(vaultId: string, db: D1Database): Promise<VaultRow | nu
   ).bind(vaultId).first<VaultRow>();
 }
 
-async function readPayload(request: Request): Promise<VaultPayload | null> {
+async function readPayload(request: Request, vaultId: string): Promise<VaultPayload | null> {
   const length = Number(request.headers.get("content-length"));
   if ((Number.isFinite(length) && length > MAX_BODY_BYTES) || !request.headers.get("content-type")?.includes("application/json")) {
     return null;
@@ -97,14 +103,15 @@ async function readPayload(request: Request): Promise<VaultPayload | null> {
   } catch {
     return null;
   }
-  if (!isPayload(value)) return null;
+  if (!isPayload(value, vaultId)) return null;
   return value;
 }
 
-function isPayload(value: unknown): value is VaultPayload {
+function isPayload(value: unknown, vaultId: string): value is VaultPayload {
   if (typeof value !== "object" || value === null) return false;
   const payload = value as Record<string, unknown>;
-  return Object.keys(payload).length === 3 &&
+  return Object.keys(payload).length === 5 &&
+    payload.vaultId === vaultId && payload.version === PAYLOAD_VERSION &&
     typeof payload.ciphertext === "string" && isBase64Url(payload.ciphertext) &&
     typeof payload.iv === "string" && payload.iv.length === 16 && isBase64Url(payload.iv) &&
     typeof payload.salt === "string" && payload.salt.length === 43 && isBase64Url(payload.salt);
@@ -120,7 +127,7 @@ function vaultIdFromPath(pathname: string): string | null {
 }
 
 function payloadFromRow(row: VaultRow): VaultPayload {
-  return { ciphertext: row.ciphertext, iv: row.iv, salt: row.salt };
+  return { vaultId: row.vault_id, ciphertext: row.ciphertext, iv: row.iv, salt: row.salt, version: PAYLOAD_VERSION };
 }
 
 function parseEtag(value: string | null): number | null {

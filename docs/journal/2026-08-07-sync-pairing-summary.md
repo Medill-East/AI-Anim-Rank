@@ -23,11 +23,13 @@
 - 已补齐 D1、迁移和同步 Worker，并使用固定主站 origin 配置 CORS。
 - 已通过：TypeScript、同步核心测试、32 个同步/排行榜 DOM 测试；重新发布前再次通过 97 个核心测试、27 个 DOM 测试、lint 与 diff 检查。
 - 发布冒烟检查发现 Vinext/Vite 不会用 `process.env.VITE_SYNC_BASE_URL` 注入浏览器端配置；已改为 `import.meta.env.VITE_SYNC_BASE_URL`，并补充 `vite-env.d.ts` 类型声明，待重新发布确认线上状态文案。
+- 真实端点预检后发现 Worker 旧协议只接受三字段密文，而客户端载荷还需要 `vaultId` 与协议 `version` 才能在另一台设备解密；已统一 Worker 的读写协议为五字段，并新增路径绑定校验。
 
 ## 事故教训
 
 - “二维码导入成功”只代表本地恢复凭证有效，不代表远端同步已经建立；必须同时验证客户端调用、端点配置和 Worker/D1 部署状态。
 - `VITE_SYNC_BASE_URL` 过去只用于显示配置状态，文档措辞曾暗示同步能力，需让 UI 状态和真实链路一致。
+- 端到端协议必须同时验证客户端请求、Worker 入参校验和 Worker 返回值；仅有模拟 transport 测试不足以证明线上接口可用。
 
 ## 未决问题与下一步
 

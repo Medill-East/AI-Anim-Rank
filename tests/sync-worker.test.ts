@@ -8,9 +8,11 @@ import { Miniflare } from "miniflare";
 
 const vaultId = "a".repeat(43);
 const payload = {
+  vaultId,
   ciphertext: "b".repeat(32),
   iv: "c".repeat(16),
   salt: "d".repeat(43),
+  version: 1,
 };
 
 test("encrypted vault worker creates, fetches, rejects stale writes, and validates input", async () => {
@@ -90,6 +92,13 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
       body: JSON.stringify({ ...payload, iv: "!" }),
     });
     assert.equal(invalidPayload.status, 400);
+
+    const wrongVaultPayload = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json", "if-match": '"2"' },
+      body: JSON.stringify({ ...payload, vaultId: "z".repeat(43) }),
+    });
+    assert.equal(wrongVaultPayload.status, 400);
 
     const untrustedOrigin = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
       headers: { origin: "https://untrusted.example" },
