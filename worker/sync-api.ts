@@ -131,7 +131,7 @@ function payloadFromRow(row: VaultRow): VaultPayload {
 }
 
 function parseEtag(value: string | null): number | null {
-  const match = /^"([1-9][0-9]*)"$/.exec(value ?? "");
+  const match = /^(?:W\/)?"([1-9][0-9]*)"$/.exec(value ?? "");
   return match ? Number(match[1]) : null;
 }
 

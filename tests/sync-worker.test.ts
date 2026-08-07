@@ -74,14 +74,23 @@ test("encrypted vault worker creates, fetches, rejects stale writes, and validat
     assert.equal(updated.headers.get("etag"), '"2"');
     assert.equal(updated.headers.get("access-control-expose-headers"), "ETag");
 
+    const weakUpdatedPayload = { ...updatedPayload, ciphertext: "g".repeat(32) };
+    const weakUpdated = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json", "if-match": 'W/"2"', origin: "https://app.example" },
+      body: JSON.stringify(weakUpdatedPayload),
+    });
+    assert.equal(weakUpdated.status, 200);
+    assert.equal(weakUpdated.headers.get("etag"), '"3"');
+
     const stale = await mf.dispatchFetch(`https://sync.example/v1/vaults/${vaultId}`, {
       method: "PUT",
       headers: { "content-type": "application/json", "if-match": '"1"', origin: "https://app.example" },
       body: JSON.stringify({ ...payload, ciphertext: "f".repeat(32) }),
     });
     assert.equal(stale.status, 409);
-    assert.deepEqual(await stale.json(), updatedPayload);
-    assert.equal(stale.headers.get("etag"), '"2"');
+    assert.deepEqual(await stale.json(), weakUpdatedPayload);
+    assert.equal(stale.headers.get("etag"), '"3"');
     assert.equal(stale.headers.get("access-control-expose-headers"), "ETag");
 
     const invalidId = await mf.dispatchFetch("https://sync.example/v1/vaults/not-valid!");

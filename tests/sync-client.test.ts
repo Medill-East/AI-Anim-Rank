@@ -113,3 +113,21 @@ test("HttpSyncTransport maps the encrypted Worker protocol and version headers",
     globalThis.fetch = originalFetch;
   }
 });
+
+test("HttpSyncTransport accepts weak ETags returned by Cloudflare", async () => {
+  const vault = await createRecoveryVault();
+  const payload = await encryptProgressPayload([base], vault);
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (input, init) => {
+    if (init?.method === "PUT") return new Response(JSON.stringify(payload), { status: 200, headers: { ETag: 'W/"7"' } });
+    return new Response(JSON.stringify(payload), { status: 200, headers: { ETag: 'W/"6"' } });
+  };
+
+  try {
+    const transport = new HttpSyncTransport("https://sync.example");
+    assert.equal((await transport.fetch(vault.vaultId))?.version, 6);
+    assert.deepEqual(await transport.put(payload, 6), { status: 200, version: 7 });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});

@@ -137,7 +137,7 @@ function unsynced(records: readonly ProgressRecord[]): SyncResult {
 }
 
 function parseVersion(value: string | null): number | null {
-  const match = /^"([1-9][0-9]*)"$/.exec(value ?? "");
+  const match = /^(?:W\/)?"([1-9][0-9]*)"$/.exec(value ?? "");
   return match ? Number(match[1]) : null;
 }
 
