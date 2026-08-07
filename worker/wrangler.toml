@@ -3,12 +3,11 @@ main = "sync-api.ts"
 compatibility_date = "2026-07-12"
 workers_dev = true
 
-# Replace this placeholder after `wrangler d1 create ai-anim-rank-sync`.
-# Keeping a non-existent ID prevents accidental deployment to an unknown D1 database.
+# The sync Worker stores only encrypted progress payloads in this database.
 [[d1_databases]]
 binding = "DB"
 database_name = "ai-anim-rank-sync"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "f328465a-321a-40d0-99db-0658ffac29f7"
 migrations_dir = "migrations"
 
 # ALLOWED_ORIGIN is deliberately not a `vars` binding. Set it explicitly with

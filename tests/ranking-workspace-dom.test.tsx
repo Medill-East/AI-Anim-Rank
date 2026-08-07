@@ -14,6 +14,7 @@ import type { ProgressRecord } from "../src/domain/progress.ts";
 import { ProgressRepository } from "../src/storage/progress-db.ts";
 import { serializeRecoveryPayload, SyncVaultStore } from "../src/storage/sync-vault.ts";
 import { createRecoveryVault, type RecoveryVault } from "../src/sync/crypto.ts";
+import type { EncryptedProgressPayload } from "../src/sync/types.ts";
 import { IDBFactory } from "fake-indexeddb";
 
 const work: RankedWork = {
@@ -39,6 +40,13 @@ test("app status explains offline availability without claiming unconfigured rem
   assert.match(html, /本机保存/);
   assert.match(html, /未配置远程同步端点/);
   assert.doesNotMatch(html, /已同步/);
+});
+
+test("app status describes configured remote sync accurately", () => {
+  const html = renderToStaticMarkup(<AppStatus syncBaseUrl="https://sync.example" />);
+
+  assert.match(html, /远程同步已启用/);
+  assert.doesNotMatch(html, /尚未启用/);
 });
 
 test("workspace explains the auditable three-source ranking methodology and source snapshot date", () => {
@@ -93,6 +101,51 @@ test("workspace keeps backup actions and ranking methodology in the primary flow
     [...dom.window.document.querySelectorAll(".ranking-methodology a")].map((link) => link.getAttribute("href")),
     ["https://anilist.co/", "https://myanimelist.net/", "https://bgm.tv/"],
   );
+});
+
+test("workspace syncs local progress through the configured encrypted vault", async () => {
+  const dom = new JSDOM("<!doctype html><html><body><div id=\"root\"></div></body></html>", { url: "http://localhost" });
+  const originalGlobals = installDom(dom);
+  const originalFetch = globalThis.fetch;
+  const vault = await createRecoveryVault();
+  const vaultStore = new SyncVaultStore(dom.window.localStorage);
+  vaultStore.save(vault);
+  const repository = new ProgressRepository(new IDBFactory());
+  let remotePayload: EncryptedProgressPayload | null = null;
+  let remoteVersion = 0;
+  let putCount = 0;
+  globalThis.fetch = async (input, init) => {
+    const request = new Request(input, init);
+    if (request.method === "GET") {
+      return remotePayload
+        ? new Response(JSON.stringify(remotePayload), { status: 200, headers: { ETag: `"${remoteVersion}"` } })
+        : new Response("Not found", { status: 404 });
+    }
+    remotePayload = JSON.parse(await request.text()) as EncryptedProgressPayload;
+    putCount += 1;
+    remoteVersion += 1;
+    return new Response(JSON.stringify(remotePayload), { status: remoteVersion === 1 ? 201 : 200, headers: { ETag: `"${remoteVersion}"` } });
+  };
+  const root = createRoot(document.getElementById("root")!);
+
+  try {
+    await act(async () => root.render(<RankingWorkspace works={[work]} progressRepository={repository} syncBaseUrl="https://sync.example" />));
+    await act(async () => { await flush(900); });
+    assert.equal(putCount, 1);
+
+    const recommended = document.querySelector<HTMLButtonElement>('[data-progress-action="recommended"]');
+    assert.ok(recommended);
+    await act(async () => recommended.click());
+    await act(async () => { await flush(1000); });
+
+    assert.equal(putCount, 2);
+    assert.match(document.querySelector(".sync-status-row")?.textContent ?? "", /已同步/);
+    assert.equal((await repository.loadAll())[0]?.recommended, true);
+  } finally {
+    await act(async () => root.unmount());
+    globalThis.fetch = originalFetch;
+    originalGlobals.restore();
+  }
 });
 
 test("workspace offers floating jumps to the page start, end, and last private operation", () => {

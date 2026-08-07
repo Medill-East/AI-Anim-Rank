@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useReducer, useRef, useState, type Ref } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState, type Ref } from "react";
 
 import type { RankedWork } from "../../data/schema.ts";
 import { applyProgressPatch, type ProgressPatch, type ProgressRecord } from "../../domain/progress.ts";
 import { applyProgressBackup, exportProgressBackup, parseProgressBackup, type ProgressBackup } from "../../storage/backup.ts";
 import { ProgressRepository } from "../../storage/progress-db.ts";
+import { HttpSyncTransport, SyncClient } from "../../sync/client.ts";
+import type { RecoveryVault } from "../../sync/crypto.ts";
+import type { SyncStatus } from "../../sync/types.ts";
 import { SyncSettings } from "../progress/SyncSettings.tsx";
 import { deriveProgressInsights } from "./insights.ts";
 import { createRankingWorkspaceState, reduceRankingWorkspaceState, visibleRankingWorks } from "./workspace.ts";
@@ -21,6 +24,7 @@ interface RankingWorkspaceProps {
   methodologyVersion?: string;
   sourceSnapshotVersion?: string;
   progressRepository?: ProgressStore;
+  syncBaseUrl?: string;
 }
 
 const statusOptions: ReadonlyArray<{ value: PrivateStatusFilter; label: string }> = [
@@ -31,10 +35,10 @@ const sortOptions: ReadonlyArray<{ value: RankingSortField; label: string }> = [
   { value: "rank", label: "排名" }, { value: "compositeScore", label: "综合分" }, { value: "year", label: "年份" },
 ];
 
-export function RankingWorkspace({ works, methodologyVersion, sourceSnapshotVersion, progressRepository }: RankingWorkspaceProps) {
+export function RankingWorkspace({ works, methodologyVersion, sourceSnapshotVersion, progressRepository, syncBaseUrl }: RankingWorkspaceProps) {
   if (works.length === 0) return <EmptyRankingWorkspace />;
 
-  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} sourceSnapshotVersion={sourceSnapshotVersion} progressRepository={progressRepository} />;
+  return <PopulatedRankingWorkspace works={works} methodologyVersion={methodologyVersion} sourceSnapshotVersion={sourceSnapshotVersion} progressRepository={progressRepository} syncBaseUrl={syncBaseUrl} />;
 }
 
 function EmptyRankingWorkspace() {
@@ -44,13 +48,14 @@ function EmptyRankingWorkspace() {
   </section>;
 }
 
-function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", sourceSnapshotVersion = "2026-07-12", progressRepository }: RankingWorkspaceProps) {
+function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-three-source", sourceSnapshotVersion = "2026-07-12", progressRepository, syncBaseUrl = "" }: RankingWorkspaceProps) {
   const [state, dispatch] = useReducer(reduceRankingWorkspaceState, undefined, createRankingWorkspaceState);
   const [records, setRecords] = useState<ProgressRecord[]>([]);
   const [theme, setTheme] = useState<Theme>("light");
   const [saveStatus, setSaveStatus] = useState("");
   const [filterNotice, setFilterNotice] = useState("");
   const [pendingBackup, setPendingBackup] = useState<ProgressBackup | null>(null);
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>(syncBaseUrl.trim() ? "idle" : "disabled");
   const detailTriggerRef = useRef<HTMLElement | null>(null);
   const rankingControlsRef = useRef<HTMLFormElement>(null);
   const workspaceRef = useRef<HTMLElement>(null);
@@ -60,21 +65,51 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   const pendingLastOperationWorkIdRef = useRef<string | null>(null);
   const recordsRef = useRef<ProgressRecord[]>([]);
   const pendingSavesRef = useRef<Promise<void>>(Promise.resolve());
+  const syncQueueRef = useRef<Promise<void>>(Promise.resolve());
+  const syncClientRef = useRef<SyncClient | null>(null);
+  const progressReadyRef = useRef(false);
   const repository = useMemo<ProgressStore>(() => progressRepository ?? new ProgressRepository(), [progressRepository]);
+
+  const runSync = useCallback((localRecords: readonly ProgressRecord[]) => {
+    const client = syncClientRef.current;
+    if (!client) return Promise.resolve();
+    setSyncStatus("syncing");
+    const operation = syncQueueRef.current.then(async () => {
+      const result = await client.sync(localRecords);
+      if (result.state !== "synced") {
+        setSyncStatus("error");
+        return;
+      }
+      await repository.replaceAll(result.records);
+      recordsRef.current = result.records;
+      setRecords(result.records);
+      setSyncStatus("synced");
+    });
+    syncQueueRef.current = operation.catch(() => { setSyncStatus("error"); });
+    return syncQueueRef.current;
+  }, [repository]);
 
   useEffect(() => {
     let active = true;
     void repository.loadAll().then(
       (loaded) => {
-        if (active && loaded.length > 0) {
+        if (active) {
           recordsRef.current = loaded;
           setRecords(loaded);
+          progressReadyRef.current = true;
+          if (syncClientRef.current) void runSync(loaded);
         }
       },
-      () => {},
+      () => { progressReadyRef.current = true; },
     );
     return () => { active = false; };
-  }, [repository]);
+  }, [repository, runSync]);
+
+  const handleVaultChange = useCallback((vault: RecoveryVault | null) => {
+    syncClientRef.current = vault && syncBaseUrl.trim() ? new SyncClient(new HttpSyncTransport(syncBaseUrl), vault) : null;
+    setSyncStatus(vault && syncBaseUrl.trim() ? "idle" : "disabled");
+    if (vault && syncBaseUrl.trim() && progressReadyRef.current) void runSync(recordsRef.current);
+  }, [runSync, syncBaseUrl]);
 
   useEffect(() => {
     if (readThemePreference() !== "dark") return;
@@ -110,6 +145,7 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
     return save.then(
       () => {
       setSaveStatus("已保存");
+      void runSync(updatedRecords);
       },
       () => { setSaveStatus("保存失败"); },
     );
@@ -136,6 +172,7 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
       setRecords(next);
       setPendingBackup(null);
       setSaveStatus("已保存");
+      void runSync(next);
     } catch {
       setSaveStatus("保存失败");
     }
@@ -202,7 +239,7 @@ function PopulatedRankingWorkspace({ works, methodologyVersion = "v1-auditable-t
   return <section ref={workspaceRef} className="ranking-workspace" data-page-jump-target="page-start" aria-label="AnimeRank">
     <header className="ranking-masthead"><div className="masthead-utility"><p className="ranking-kicker">PUBLIC ANIMATION INDEX</p><ThemeToggle theme={theme} onToggle={() => setTheme((current) => current === "light" ? "dark" : "light")} /></div><h1>AnimeRank</h1><p>公开作品资料与可复核排序，个人进度仅保留在本地。</p></header>
     <PrivateSummary works={works} records={records} onStatusSelect={applyInsightStatus} onGenreSelect={applyInsightGenre} onStudioSelect={applyStudioFilter} />
-    <section className="data-tools" aria-label="备份与同步"><div className="section-heading"><div><h2>备份与同步</h2><p>个人标记默认仅保存在此浏览器。</p></div><span>数据由你掌握</span></div><div className="data-tools-grid"><section className="data-tool data-tool-backup" aria-label="本地备份"><div className="data-tool-copy"><h3>本地备份</h3><p>导出或恢复 JSON 个人标记。</p></div><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出备份</button><label>导入备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，选择导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换现有数据</button></div>}</section><section className="data-tool data-tool-sync" aria-label="私密同步"><div className="data-tool-copy"><h3>私密同步 <small>可选 · 端到端加密</small></h3></div><SyncSettings heading={false} /></section></div></section>
+    <section className="data-tools" aria-label="备份与同步"><div className="section-heading"><div><h2>备份与同步</h2><p>个人标记默认仅保存在此浏览器。</p></div><span>数据由你掌握</span></div><div className="data-tools-grid"><section className="data-tool data-tool-backup" aria-label="本地备份"><div className="data-tool-copy"><h3>本地备份</h3><p>导出或恢复 JSON 个人标记。</p></div><div className="backup-actions"><button type="button" onClick={downloadBackup}>导出备份</button><label>导入备份<input type="file" accept="application/json,.json" onChange={importBackup} /></label></div>{pendingBackup && <div className="backup-confirm" role="group" aria-label="确认导入方式"><p>备份已验证，选择导入方式：</p><button type="button" onClick={() => void confirmImport("merge")}>合并导入</button><button type="button" onClick={() => void confirmImport("replace")}>替换现有数据</button></div>}</section><section className="data-tool data-tool-sync" aria-label="私密同步"><div className="data-tool-copy"><h3>私密同步 <small>可选 · 端到端加密</small></h3></div><SyncSettings heading={false} syncBaseUrl={syncBaseUrl} syncStatus={syncStatus} onSyncNow={() => void runSync(recordsRef.current)} onVaultChange={handleVaultChange} /></section></div></section>
     <p className="save-status" role="status" aria-live="polite">{saveStatus}</p>
     <section className="ranking-methodology" aria-label="排名依据"><div className="section-heading"><h2>排名依据</h2><span>三个来源等权 · 可复核快照</span></div><div><p>本榜单汇总 <a href="https://anilist.co/" target="_blank" rel="noreferrer">AniList</a>、<a href="https://myanimelist.net/" target="_blank" rel="noreferrer">MyAnimeList（MAL）</a> 与 <a href="https://bgm.tv/" target="_blank" rel="noreferrer">Bangumi</a> 的公开评分。</p><p>三个来源统一换算为 0–100 后等权取平均；样本量仅用于最低门槛筛选。</p><p>条目通过可审阅的跨站映射合并；续作、剧场版与独立作品分别计入。</p><p>数据快照日期：{sourceSnapshotVersion} · 数据版本：{methodologyVersion}。它适合作为发现作品的入口，不替代个人判断。</p></div></section>
     <p className="filter-status" role="status" aria-live="polite">{filterNotice}</p>

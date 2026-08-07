@@ -3,7 +3,7 @@ import test from "node:test";
 
 import type { ProgressRecord } from "../src/domain/progress.ts";
 import { createRecoveryVault, encryptProgressPayload } from "../src/sync/crypto.ts";
-import { mergeRecords, SyncClient } from "../src/sync/client.ts";
+import { HttpSyncTransport, mergeRecords, SyncClient } from "../src/sync/client.ts";
 import type { EncryptedProgressPayload, SyncTransport } from "../src/sync/types.ts";
 
 const base: ProgressRecord = {
@@ -90,4 +90,26 @@ test("SyncClient preserves local records when a remote payload is malformed", as
 
   assert.deepEqual(result, { state: "unsynced", records: [base] });
   assert.equal(puts, 0);
+});
+
+test("HttpSyncTransport maps the encrypted Worker protocol and version headers", async () => {
+  const vault = await createRecoveryVault();
+  const payload = await encryptProgressPayload([base], vault);
+  const requests: Request[] = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (input, init) => {
+    requests.push(new Request(input, init));
+    if (init?.method === "PUT") return new Response(JSON.stringify(payload), { status: 201, headers: { ETag: '"7"' } });
+    return new Response(JSON.stringify(payload), { status: 200, headers: { ETag: '"6"' } });
+  };
+
+  try {
+    const transport = new HttpSyncTransport("https://sync.example/");
+    assert.equal((await transport.fetch(vault.vaultId))?.version, 6);
+    assert.deepEqual(await transport.put(payload, 6), { status: 201, version: 7 });
+    assert.equal(requests[0]?.url, `https://sync.example/v1/vaults/${vault.vaultId}`);
+    assert.equal(requests[1]?.headers.get("if-match"), '"6"');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });

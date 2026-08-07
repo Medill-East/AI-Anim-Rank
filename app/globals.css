@@ -119,6 +119,9 @@ button.summary-stat:hover { background: var(--surface-hover); color: var(--accen
 .sync-settings p { color: var(--muted); font-size: .78rem; line-height: 1.5; margin: 4px 0 0; max-width: 46rem; }
 .sync-settings button, .recovery-actions button, .disconnect-warning button, dialog > button { background: var(--surface); border: 1px solid var(--rule); color: var(--foreground); margin-top: 8px; padding: 8px 10px; }
 .data-tool-sync .sync-settings button { background: transparent; font-size: .8rem; margin-top: 10px; padding: 7px 9px; }
+.sync-status-row { align-items: center; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.sync-status-row p { color: var(--accent); font: .72rem var(--font-mono), monospace; margin: 0; }
+.sync-status-row button { margin-top: 0; }
 .disconnect-warning { border-left: 2px solid var(--accent); margin-top: 10px; padding-left: 12px; }
 .disconnect-warning button + button { margin-left: 8px; }
 .pairing-panel { border-top: 1px solid var(--rule); margin-top: 16px; padding-top: 12px; }

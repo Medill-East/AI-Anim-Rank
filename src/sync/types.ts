@@ -16,10 +16,12 @@ export interface RemoteVault {
 export interface SyncTransport {
   fetch(vaultId: string): Promise<RemoteVault | undefined>;
   put(payload: EncryptedProgressPayload, ifMatch: number | null): Promise<
-    | { status: 200; version: number }
+    | { status: 200 | 201; version: number }
     | { status: 409 }
   >;
 }
+
+export type SyncStatus = "disabled" | "idle" | "syncing" | "synced" | "error";
 
 export type SyncResult =
   | { state: "synced"; records: ProgressRecord[]; version: number }

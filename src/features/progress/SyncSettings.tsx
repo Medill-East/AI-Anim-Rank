@@ -5,15 +5,20 @@ import QRCode from "qrcode";
 
 import { type RecoveryVault } from "../../sync/crypto.ts";
 import { parseRecoveryPayload, serializeRecoveryPayload, SyncVaultStore } from "../../storage/sync-vault.ts";
+import type { SyncStatus } from "../../sync/types.ts";
 import { RecoveryDialog } from "./RecoveryDialog.tsx";
 
 interface SyncSettingsProps {
   vaultStore?: SyncVaultStore;
   createVault?: () => Promise<RecoveryVault>;
   heading?: boolean;
+  syncBaseUrl?: string;
+  syncStatus?: SyncStatus;
+  onSyncNow?: () => void;
+  onVaultChange?: (vault: RecoveryVault | null) => void;
 }
 
-export function SyncSettings({ vaultStore: providedVaultStore, createVault, heading = true }: SyncSettingsProps) {
+export function SyncSettings({ vaultStore: providedVaultStore, createVault, heading = true, syncBaseUrl = "", syncStatus = "disabled", onSyncNow, onVaultChange }: SyncSettingsProps) {
   const vaultStore = useMemo(() => providedVaultStore ?? new SyncVaultStore(), [providedVaultStore]);
   const [showRecovery, setShowRecovery] = useState(false);
   const [localVault, setLocalVault] = useState<RecoveryVault | null>(null);
@@ -26,18 +31,21 @@ export function SyncSettings({ vaultStore: providedVaultStore, createVault, head
     void vaultStore.load().then((vault) => {
       if (!active) return;
       setLocalVault(vault);
+      onVaultChange?.(vault);
       setHydrationState("ready");
     });
     return () => { active = false; };
-  }, [vaultStore]);
+  }, [onVaultChange, vaultStore]);
   const saveVault = async (vault: RecoveryVault) => {
     vaultStore.save(vault);
     setLocalVault(vault);
+    onVaultChange?.(vault);
   };
   const disconnect = () => {
     try {
       vaultStore.clear();
       setLocalVault(null);
+      onVaultChange?.(null);
       setConfirmDisconnect(false);
     } catch {
       setStorageError("无法移除本地凭证，请检查浏览器存储设置");
@@ -47,17 +55,23 @@ export function SyncSettings({ vaultStore: providedVaultStore, createVault, head
   return <section className="sync-settings" aria-label="私密同步设置">
     {heading && <h2>私密同步</h2>}
     {hydrationState === "loading" ? <p role="status">正在检查本地保险库…</p> : localVault ? <>
-      <p>本地保险库已启用。恢复短语仅保存在此浏览器的本地存储中；持有恢复短语的人可以读取和更改这些数据。</p>
+      <p>本地保险库已启用。恢复短语仅保存在此浏览器的本地存储中；持有恢复短语的人可以读取和更改这些数据。{syncBaseUrl ? "云端同步已连接，标记会自动加密同步。" : "当前部署未配置云端同步；配对二维码只能迁移凭证，不能同步标记。"}</p>
+      {syncBaseUrl && <SyncStatusRow status={syncStatus} onSyncNow={onSyncNow} />}
       <PairingExport vault={localVault} />
       {confirmDisconnect ? <div className="disconnect-warning" role="alert"><p>断开只会移除这台设备上的本地访问，不会删除远端密文。</p><button type="button" onClick={disconnect}>确认断开本地访问</button><button type="button" onClick={() => setConfirmDisconnect(false)}>取消</button></div> : <button type="button" onClick={() => setConfirmDisconnect(true)}>断开本地保险库</button>}
       {storageError && <p role="status">{storageError}</p>}
     </> : <>
-    <p>无需账户；Cloudflare 只存储密文，无法读取你的进度。恢复短语丢失且本地数据被清除时无法恢复，持有者可以读取和更改数据。</p>
+    <p>无需账户；Cloudflare 只存储密文，无法读取你的进度。{syncBaseUrl ? "启用后会自动同步到云端保险库。" : "当前部署未配置云端同步，个人进度仅保存在本机。"}恢复短语丢失且本地数据被清除时无法恢复，持有者可以读取和更改数据。</p>
     <button type="button" onClick={() => setShowRecovery(true)}>启用私密同步</button>
     <PairingImport onImported={saveVault} />
     {showRecovery && <RecoveryDialog onClose={() => setShowRecovery(false)} onContinue={saveVault} createVault={createVault} />}
     </>}
   </section>;
+}
+
+function SyncStatusRow({ status, onSyncNow }: { status: SyncStatus; onSyncNow?: () => void }) {
+  const copy = status === "syncing" ? "正在同步…" : status === "synced" ? "已同步" : status === "error" ? "同步失败，将继续保存在本机" : "等待同步";
+  return <div className="sync-status-row"><p role="status" aria-live="polite">{copy}</p><button type="button" onClick={onSyncNow} disabled={status === "syncing"}>立即同步</button></div>;
 }
 
 function PairingExport({ vault }: { vault: RecoveryVault }) {

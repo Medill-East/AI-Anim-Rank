@@ -34,7 +34,7 @@ export function AppStatus({ syncBaseUrl }: AppStatusProps) {
     ? "排行榜与公开资料可离线查看；恢复短语和本机进度不会写入离线缓存。"
     : "离线排行榜尚未就绪。";
   const syncMessage = remoteSyncConfigured
-    ? "远程同步端点已配置，自动同步尚未启用。"
+    ? "远程同步已启用；个人标记会在保险库接入后自动加密同步。"
     : "未配置远程同步端点；个人进度仅本机保存。";
 
   return <p className="app-status" role="status" aria-live="polite">

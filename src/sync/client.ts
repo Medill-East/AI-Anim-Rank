@@ -1,6 +1,40 @@
 import type { ProgressRecord } from "../domain/progress.ts";
 import { decryptProgressPayload, encryptProgressPayload, type RecoveryVault } from "./crypto.ts";
-import type { SyncResult, SyncTransport } from "./types.ts";
+import type { EncryptedProgressPayload, RemoteVault, SyncResult, SyncTransport } from "./types.ts";
+
+export class HttpSyncTransport implements SyncTransport {
+  private readonly baseUrl: string;
+
+  constructor(baseUrl: string) {
+    const normalized = baseUrl.trim().replace(/\/+$/, "");
+    if (!/^https?:\/\//.test(normalized)) throw new Error("同步端点地址无效");
+    this.baseUrl = normalized;
+  }
+
+  async fetch(vaultId: string): Promise<RemoteVault | undefined> {
+    const response = await globalThis.fetch(this.url(vaultId), { headers: { Accept: "application/json" } });
+    if (response.status === 404) return undefined;
+    if (!response.ok) throw new Error(`同步读取失败（${response.status}）`);
+    const version = parseVersion(response.headers.get("etag"));
+    if (version === null) throw new Error("同步响应缺少版本号");
+    return { payload: await response.json() as EncryptedProgressPayload, version };
+  }
+
+  async put(payload: EncryptedProgressPayload, ifMatch: number | null): Promise<{ status: 200 | 201; version: number } | { status: 409 }> {
+    const headers: Record<string, string> = { Accept: "application/json", "Content-Type": "application/json" };
+    if (ifMatch !== null) headers["If-Match"] = `"${ifMatch}"`;
+    const response = await globalThis.fetch(this.url(payload.vaultId), { method: "PUT", headers, body: JSON.stringify(payload) });
+    if (response.status === 409) return { status: 409 };
+    if (response.status !== 200 && response.status !== 201) throw new Error(`同步写入失败（${response.status}）`);
+    const version = parseVersion(response.headers.get("etag"));
+    if (version === null) throw new Error("同步响应缺少版本号");
+    return { status: response.status, version };
+  }
+
+  private url(vaultId: string): string {
+    return `${this.baseUrl}/v1/vaults/${encodeURIComponent(vaultId)}`;
+  }
+}
 
 export class SyncClient {
   private readonly transport: SyncTransport;
@@ -100,6 +134,11 @@ function isValidRecord(record: ProgressRecord): boolean {
 
 function unsynced(records: readonly ProgressRecord[]): SyncResult {
   return { state: "unsynced", records: copyRecords(records) };
+}
+
+function parseVersion(value: string | null): number | null {
+  const match = /^"([1-9][0-9]*)"$/.exec(value ?? "");
+  return match ? Number(match[1]) : null;
 }
 
 function copyRecords(records: readonly ProgressRecord[]): ProgressRecord[] {
